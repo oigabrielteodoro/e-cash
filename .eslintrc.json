@@ -1,0 +1,44 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "standard"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  "rules": {
+    "prettier/prettier": 2,
+    "import/order": 2,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/no-unused-vars": 2,
+    "no-use-before-define": 0,
+    "no-console": [2, { "allow": ["error"] }],
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "comma-dangle": [2, "always-multiline"],
+    "space-before-function-paren": 0,
+    "space-before-paren": 0,
+    "indent": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "camelcase": 0,
+    "multiline-ternary": 0,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
