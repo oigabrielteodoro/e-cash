@@ -17,7 +17,7 @@ export const Style = createGlobalStyle`
   }
 
   body {
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     scroll-behavior: smooth;
     font-family: ${theme.font.family};

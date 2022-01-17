@@ -7,7 +7,7 @@ export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={SignIn} />
+        <Route path='/' element={<SignIn />} />
       </Routes>
     </BrowserRouter>
   )
