@@ -8,12 +8,11 @@
     "lint": "eslint --max-warnings=0",
     "lint:next": "next lint",
     "test": "NODE_ENV=test && jest -i --silent",
-    "test:watch": "jest --maxWorkers=25% --watch",
+    "test:watch": "NODE_ENV=test && jest --maxWorkers=25% --watch",
+    "test:ci": "NODE_ENV=test && jest --passWithNoTests --ci --watchAll=false",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "prettier": "prettier --write '**/*.{ts,tsx,json,md}'",
     "prettier:check": "prettier -c '**/*.{ts,tsx,json,md}'",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "prepare": "husky install"
   },
   "lint-staged": {
