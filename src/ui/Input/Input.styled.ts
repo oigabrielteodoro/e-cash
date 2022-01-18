@@ -25,6 +25,21 @@ export const Wrapper = styled.fieldset`
   }
 `
 
+export const ErrorContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 0.8rem;
+
+  svg {
+    color: ${theme.colors.red[400]};
+    margin-right: 0.8rem;
+  }
+
+  span {
+    color: ${theme.colors.red[400]};
+  }
+`
+
 export const Container = styled.div<Props>`
   display: flex;
   align-items: center;
@@ -64,7 +79,7 @@ export const Container = styled.div<Props>`
     flex: 1;
     border: 0;
     background: transparent;
-    padding: 1.8rem 0 1.8rem 2rem;
+    padding: 1.8rem 2rem;
     color: ${theme.colors.neutral[900]};
     font-size: ${theme.font.sizes.paragraph};
     border-radius: 0.5rem;

@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { AiOutlineLock } from 'react-icons/ai'
 import { MdAlternateEmail } from 'react-icons/md'
 
 import { useForm } from 'react-hook-form'
 
-import { Button, Input } from 'ui'
+import { Button, Input, PasswordInput } from 'ui'
 
 import { Layout } from './Layout'
 
@@ -24,14 +23,14 @@ export function SignIn() {
         </h4>
         <form>
           <Input
-            label='E-mail'
+            label='Email'
             icon={MdAlternateEmail}
             placeholder='example@mail.com'
+            error='Invalid email format.'
             {...register('email')}
           />
-          <Input
+          <PasswordInput
             label='Password'
-            icon={AiOutlineLock}
             placeholder='Secret password'
             {...register('password')}
           />

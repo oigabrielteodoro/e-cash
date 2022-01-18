@@ -6,6 +6,7 @@ import React, {
   ForwardRefRenderFunction,
   FocusEvent,
 } from 'react'
+import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import type { IconBaseProps } from 'react-icons'
 
 import * as S from './Input.styled'
@@ -47,7 +48,12 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
         />
         {Icon && <Icon size={22} />}
       </S.Container>
-      {error && <span>{error}</span>}
+      {error && (
+        <S.ErrorContainer>
+          <AiOutlineExclamationCircle size={18} />
+          <span>{error}</span>
+        </S.ErrorContainer>
+      )}
     </S.Wrapper>
   )
 }

@@ -15,6 +15,9 @@ export const theme = {
       300: '#a4b7eA',
       500: '#3a67e1',
     },
+    red: {
+      400: '#fc6471',
+    },
     neutral: {
       100: '#eef1f5',
       500: '#a1a7ae',
