@@ -67,6 +67,7 @@ export const Container = styled.div<Props>`
     padding: 1.8rem 0 1.8rem 2rem;
     color: ${theme.colors.neutral[900]};
     font-size: ${theme.font.sizes.paragraph};
+    border-radius: 0.5rem;
 
     &::placeholder {
       color: ${theme.colors.neutral[500]};

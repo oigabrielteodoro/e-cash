@@ -9,6 +9,13 @@ export const Wrapper = styled.main`
   height: 100vh;
 `
 
+export const ShapeImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+`
+
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
