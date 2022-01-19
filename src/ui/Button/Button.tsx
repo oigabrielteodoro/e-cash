@@ -4,19 +4,22 @@ import React, {
   forwardRef,
 } from 'react'
 
+import { AiOutlineSync } from 'react-icons/ai'
+
 import * as S from './Button.styled'
 
 type Props = {
   children: string
+  loading?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const ForwardButton: ForwardRefRenderFunction<HTMLButtonElement, Props> = (
-  { children, ...rest },
+  { children, loading = false, disabled = false, ...rest },
   ref,
 ) => {
   return (
-    <S.Container ref={ref} {...rest}>
-      {children}
+    <S.Container ref={ref} disabled={loading || disabled} {...rest}>
+      {loading ? <AiOutlineSync size={24} /> : children}
     </S.Container>
   )
 }

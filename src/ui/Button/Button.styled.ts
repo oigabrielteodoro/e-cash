@@ -1,5 +1,15 @@
+import styled, { keyframes } from 'styled-components'
 import { theme } from 'config'
-import styled from 'styled-components'
+
+const loading = keyframes`
+  0% {
+    transform: rotate(0)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+`
 
 export const Container = styled.button`
   border: 0;
@@ -14,6 +24,14 @@ export const Container = styled.button`
   font-weight: 500;
   font-size: ${theme.font.sizes.paragraph};
   transition: 300ms;
+
+  &:disabled {
+    opacity: 0.8;
+  }
+
+  svg {
+    animation: ${loading} 1.2s ease-in-out infinite;
+  }
 
   &:hover {
     filter: brightness(0.9);

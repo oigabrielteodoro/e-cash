@@ -28,7 +28,7 @@ const ForwardPasswordInput: ForwardRefRenderFunction<HTMLInputElement, Props> =
 
     function ControlButton(props: IconBaseProps) {
       return (
-        <S.Button onClick={handleOnClick}>
+        <S.Button type='button' onClick={handleOnClick}>
           {isPasswordVisible ? (
             <AiOutlineUnlock {...props} />
           ) : (
