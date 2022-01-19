@@ -18,5 +18,6 @@ export const Container = styled.button`
   &:hover {
     filter: brightness(0.9);
     transform: scale(0.99);
+    box-shadow: 0 0 0 0.4rem #a4b7ea20;
   }
 `

@@ -2,7 +2,9 @@ import { theme } from 'config'
 import styled, { css } from 'styled-components'
 
 type Props = {
-  isFocused?: boolean
+  isFilled: boolean
+  isFocused: boolean
+  isErrored: boolean
 }
 
 export const Wrapper = styled.fieldset`
@@ -49,14 +51,6 @@ export const Container = styled.div<Props>`
   transition: 300ms;
   width: 100%;
 
-  &:hover {
-    border: 0.1rem solid ${theme.colors.blue[500]};
-
-    svg {
-      color: ${theme.colors.blue[500]};
-    }
-  }
-
   svg {
     margin-left: auto;
     margin-right: 2rem;
@@ -64,14 +58,53 @@ export const Container = styled.div<Props>`
     transition: 300ms;
   }
 
+  ${({ isFilled }) =>
+    isFilled &&
+    css`
+      svg {
+        color: ${theme.colors.blue[500]};
+      }
+    `}
+
   ${({ isFocused }) =>
     isFocused &&
     css`
       border: 0.1rem solid ${theme.colors.blue[500]};
-      box-shadow: 0 0 0 0.4rem #a4b7ea20;
+      box-shadow: 0 0 0 0.4rem ${theme.shadow.blue[300]};
+
+      &:hover {
+        border: 0.1rem solid ${theme.colors.blue[500]};
+
+        svg {
+          color: ${theme.colors.blue[500]};
+        }
+      }
 
       svg {
         color: ${theme.colors.blue[300]};
+      }
+    `}
+
+  ${({ isErrored, isFocused }) =>
+    isErrored &&
+    css`
+      border: 0.1rem solid ${theme.colors.red[400]};
+
+      ${isFocused &&
+      css`
+        box-shadow: 0 0 0 0.4rem ${theme.shadow.red[400]};
+
+        &:hover {
+          border: 0.1rem solid ${theme.colors.red[400]};
+
+          svg {
+            color: ${theme.colors.red[400]};
+          }
+        }
+      `}
+
+      svg {
+        color: ${theme.colors.red[400]};
       }
     `}
 

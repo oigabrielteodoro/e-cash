@@ -21,7 +21,10 @@ export const Container = styled(motion.section).attrs({
     duration: 2,
   },
 })`
-  padding: 15rem 22rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 22rem;
 
   h1 {
     display: inline-flex;

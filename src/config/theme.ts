@@ -25,4 +25,12 @@ export const theme = {
       900: '#18171d',
     },
   },
+  shadow: {
+    blue: {
+      300: '#a4b7ea20',
+    },
+    red: {
+      400: '#fc647120',
+    },
+  },
 }
