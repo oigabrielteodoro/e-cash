@@ -43,9 +43,12 @@ export function SignIn() {
             Join in account
           </Button>
           <S.Separator>OR</S.Separator>
-          <S.CreateAccountLink to='/register'>
-            Create an account
-          </S.CreateAccountLink>
+          <S.CreateAccountText>
+            Don&apos;t have an account
+            <S.CreateAccountLink to='/register'>
+              Sign up for free
+            </S.CreateAccountLink>
+          </S.CreateAccountText>
         </form>
       </S.Container>
     </Layout>

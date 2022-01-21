@@ -107,12 +107,17 @@ export const Separator = styled.span`
   }
 `
 
+export const CreateAccountText = styled.span`
+  margin: 0 auto;
+  color: ${theme.colors.neutral[500]};
+`
+
 export const CreateAccountLink = styled(Link)`
   color: ${theme.colors.blue[500]};
   font-weight: 500;
   transition: 300ms;
   flex: 0;
-  margin: 0 auto;
+  margin-left: 0.6rem;
 
   &:hover {
     opacity: 0.8;

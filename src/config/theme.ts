@@ -11,17 +11,33 @@ export const theme = {
   },
   colors: {
     white: '#ffffff',
+    green: {
+      100: '#ecf7ee',
+      200: '#c8e2cd',
+      500: '#5fb263',
+    },
     blue: {
+      100: '#e7eff9',
+      200: '#b9cfe6',
       300: '#a4b7eA',
       500: '#3a67e1',
     },
     red: {
+      100: '#faede9',
+      200: '#eccbc0',
       400: '#fc6471',
+      500: '#db5a3a',
+    },
+    yellow: {
+      100: '#fef8eb',
+      200: '#f4e1c0',
+      500: '#e29936',
     },
     neutral: {
       100: '#eef1f5',
       500: '#a1a7ae',
       600: '#4d4f51',
+      700: '#393e48',
       900: '#18171d',
     },
   },
@@ -30,6 +46,7 @@ export const theme = {
       300: '#a4b7ea30',
     },
     red: {
+      200: '#eccbc030',
       400: '#fc647120',
     },
   },
