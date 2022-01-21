@@ -27,7 +27,7 @@ export const theme = {
   },
   shadow: {
     blue: {
-      300: '#a4b7ea20',
+      300: '#a4b7ea30',
     },
     red: {
       400: '#fc647120',

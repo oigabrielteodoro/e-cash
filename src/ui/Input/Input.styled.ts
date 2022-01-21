@@ -58,6 +58,14 @@ export const Container = styled.div<Props>`
     transition: 300ms;
   }
 
+  &:hover {
+    border: 0.1rem solid ${theme.colors.blue[500]};
+
+    svg {
+      color: ${theme.colors.blue[500]};
+    }
+  }
+
   ${({ isFilled }) =>
     isFilled &&
     css`

@@ -2,6 +2,8 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
+import { useSession } from 'client'
+
 type UseFormData = {
   email: string
   password: string
@@ -16,19 +18,21 @@ export function useSignIn() {
   const {
     register,
     handleSubmit,
-    setFocus,
     formState: { errors },
   } = useForm<UseFormData>({
     resolver: yupResolver(schema),
+    shouldFocusError: true,
   })
 
-  function handleOnSubmit() {
-    alert('Submited')
+  const { createSession, isLoading } = useSession()
+
+  async function handleOnSubmit(data: UseFormData) {
+    await createSession(data)
   }
 
   return {
     errors,
-    setFocus,
+    isLoading,
     register,
     onSubmit: handleSubmit(handleOnSubmit),
   }

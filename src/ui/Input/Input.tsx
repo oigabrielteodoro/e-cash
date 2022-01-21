@@ -5,7 +5,6 @@ import React, {
   forwardRef,
   ForwardRefRenderFunction,
   FocusEvent,
-  KeyboardEvent,
 } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 
@@ -22,17 +21,7 @@ type Props = {
 } & InputHTMLAttributes<HTMLInputElement>
 
 const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
-  {
-    id,
-    defaultValue,
-    label,
-    error,
-    icon: Icon,
-    onBlur,
-    onFocus,
-    onKeyDown,
-    ...rest
-  },
+  { id, defaultValue, label, error, icon: Icon, onBlur, onFocus, ...rest },
   ref,
 ) => {
   const [isFilled, setIsFilled] = useState(!!defaultValue)
@@ -41,14 +30,6 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
   const isErrored = !!error
 
   const errorMessage = error ? capitalize(error) : ''
-
-  function handleOnKeyDown(event: KeyboardEvent<HTMLInputElement>) {
-    if (!onKeyDown) return
-
-    if (event.key === 'Enter') {
-      onKeyDown(event)
-    }
-  }
 
   function handleOnBlur(event: FocusEvent<HTMLInputElement>) {
     event.preventDefault()
@@ -79,7 +60,6 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
           ref={ref}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
-          onKeyDown={handleOnKeyDown}
           {...rest}
         />
         {Icon && <Icon size={22} />}

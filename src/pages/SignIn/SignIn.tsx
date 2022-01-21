@@ -10,12 +10,12 @@ import { useSignIn } from './useSignIn'
 import * as S from './SignIn.styled'
 
 export function SignIn() {
-  const { errors, register, setFocus, onSubmit } = useSignIn()
+  const { errors, isLoading, register, onSubmit } = useSignIn()
 
   return (
     <Layout>
       <S.Container>
-        <h1>Welcome to e-cash</h1>
+        <h1>Hello 👋, welcome!</h1>
         <h4>
           Take full control of your financial life from
           <br /> now on with our help
@@ -27,7 +27,6 @@ export function SignIn() {
             icon={MdAlternateEmail}
             placeholder='example@mail.com'
             error={errors.email?.message}
-            onKeyDown={() => setFocus('password')}
             {...register('email')}
           />
           <PasswordInput
@@ -40,7 +39,9 @@ export function SignIn() {
           <S.ForgotPasswordLink to='/forgot_password'>
             Forgot your password?
           </S.ForgotPasswordLink>
-          <Button type='submit'>Join in account</Button>
+          <Button type='submit' loading={isLoading}>
+            Join in account
+          </Button>
           <S.Separator>OR</S.Separator>
           <S.CreateAccountLink to='/register'>
             Create an account

@@ -39,6 +39,8 @@ export const Container = styled(motion.section).attrs({
   }
 
   form {
+    display: flex;
+    flex-direction: column;
     margin-top: 5rem;
 
     ${InputWrapper} {
@@ -49,12 +51,11 @@ export const Container = styled(motion.section).attrs({
 
 export const ForgotPasswordLink = styled(Link)`
   display: block;
-  margin: 2rem 0;
+  margin: 2rem auto 2rem 0;
   color: ${theme.colors.neutral[500]};
   font-weight: 500;
   transition: 300ms;
   position: relative;
-  width: 16rem;
 
   &::before {
     content: '';
@@ -107,11 +108,11 @@ export const Separator = styled.span`
 `
 
 export const CreateAccountLink = styled(Link)`
-  display: block;
   color: ${theme.colors.blue[500]};
   font-weight: 500;
   transition: 300ms;
-  text-align: center;
+  flex: 0;
+  margin: 0 auto;
 
   &:hover {
     opacity: 0.8;
