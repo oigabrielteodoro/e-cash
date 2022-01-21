@@ -22,6 +22,20 @@ const useStore = create<StoreState>(
   }),
 )
 
+export function setToken(token: string) {
+  return useStore.setState({
+    accessToken: token,
+    isAuthenticated: true,
+  })
+}
+
+export function clearToken() {
+  useStore.setState({
+    accessToken: null,
+    isAuthenticated: false,
+  })
+}
+
 export function getToken() {
   return useStore.getState().accessToken
 }

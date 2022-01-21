@@ -10,7 +10,7 @@ const props = {
   info: 'Info',
 }
 
-describe('<Toast />', () => {
+describe('Toast', () => {
   const openToast = jest.fn()
 
   beforeEach(() => {
