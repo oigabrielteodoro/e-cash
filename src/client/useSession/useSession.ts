@@ -5,6 +5,7 @@ import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router'
 
 import { toast } from 'ui'
+import { DASHBOARD } from 'lib'
 import { api, ApiError } from 'client'
 
 import type { StoreState, SessionData, SessionPayload } from './types'
@@ -66,7 +67,7 @@ export function useSession() {
         session_id,
       })
 
-      navigate('/dashboard')
+      navigate(DASHBOARD)
     },
     onError: (error) => {
       if (error.response?.data) {

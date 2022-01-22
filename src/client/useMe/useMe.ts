@@ -10,9 +10,9 @@ export function useMe() {
   const user_id = getUserId()
 
   const { data, ...rest } = useQuery({
+    enabled: !!user_id,
     queryKey: ['profile', { user_id }],
     queryFn: getMe,
-    enabled: !!user_id,
   })
 
   return {
