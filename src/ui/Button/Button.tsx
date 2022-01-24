@@ -17,9 +17,11 @@ const ForwardButton: ForwardRefRenderFunction<HTMLButtonElement, Props> = (
   { children, loading = false, disabled = false, ...rest },
   ref,
 ) => {
+  const isDisabled = loading || disabled
+
   return (
-    <S.Container ref={ref} disabled={loading || disabled} {...rest}>
-      {loading ? <AiOutlineSync size={18} /> : children}
+    <S.Container ref={ref} disabled={isDisabled} {...rest}>
+      {loading ? <AiOutlineSync aria-label='loading' size={18} /> : children}
     </S.Container>
   )
 }
