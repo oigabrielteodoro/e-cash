@@ -1,4 +1,10 @@
 export const theme = {
+  grid: {
+    sideBar: {
+      open: '40rem',
+      closed: '10rem',
+    },
+  },
   font: {
     family: 'Barlow',
     sizes: {
