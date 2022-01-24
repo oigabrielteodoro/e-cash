@@ -1,29 +1,27 @@
-import React, {
-  ButtonHTMLAttributes,
-  ForwardRefRenderFunction,
-  forwardRef,
-} from 'react'
-
-import { AiOutlineSync } from 'react-icons/ai'
+import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import * as S from './Button.styled'
 
-type Props = {
-  children: string
+export type ButtonProps = {
+  children: ReactNode
   loading?: boolean
+  size?: 'sm' | 'md' | 'lg'
+  variant?: 'primary' | 'secondary' | 'outline' | 'icon'
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-const ForwardButton: ForwardRefRenderFunction<HTMLButtonElement, Props> = (
-  { children, loading = false, disabled = false, ...rest },
-  ref,
-) => {
+export function Button({
+  children,
+  loading = false,
+  disabled = false,
+  variant = 'primary',
+  size = 'md',
+  ...rest
+}: ButtonProps) {
   const isDisabled = loading || disabled
 
   return (
-    <S.Container ref={ref} disabled={isDisabled} {...rest}>
-      {loading ? <AiOutlineSync aria-label='loading' size={18} /> : children}
+    <S.Container disabled={isDisabled} variant={variant} size={size} {...rest}>
+      {loading ? <S.LoadIcon /> : children}
     </S.Container>
   )
 }
-
-export const Button = forwardRef(ForwardButton)

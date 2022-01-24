@@ -1,6 +1,8 @@
 import React, { ElementType, ComponentType } from 'react'
 import type { IconBaseProps } from 'react-icons'
 
+import { useIsOpen } from '../useSideBar'
+
 import * as S from './NavItem.styled'
 
 type Props = {
@@ -10,10 +12,12 @@ type Props = {
 }
 
 export function NavItem({ as, children, icon: Icon }: Props) {
+  const isOpen = useIsOpen()
+
   return (
     <S.Container as={as}>
       <Icon size={24} />
-      <span>{children}</span>
+      {isOpen && <span>{children}</span>}
     </S.Container>
   )
 }
