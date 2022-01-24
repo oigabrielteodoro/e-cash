@@ -21,7 +21,17 @@ type Props = {
 } & InputHTMLAttributes<HTMLInputElement>
 
 const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
-  { id, defaultValue, label, error, icon: Icon, onBlur, onFocus, ...rest },
+  {
+    id,
+    defaultValue,
+    label,
+    error,
+    icon: Icon,
+    name,
+    onBlur,
+    onFocus,
+    ...rest
+  },
   ref,
 ) => {
   const [isFilled, setIsFilled] = useState(!!defaultValue)
@@ -58,6 +68,8 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
         <input
           id={id}
           ref={ref}
+          name={name}
+          aria-label={name}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           {...rest}

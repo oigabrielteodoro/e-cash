@@ -10,7 +10,7 @@ import { api, ApiError } from 'client'
 
 import type { StoreState, SessionData, SessionPayload } from './types'
 
-const initialState = {
+const initialState: StoreState = {
   user_id: null,
   session_id: null,
   accessToken: null,
