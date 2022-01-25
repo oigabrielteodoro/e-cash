@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 import { theme } from 'config'
 
+import { TextBoldWithAnimation } from './WithAnimation'
+
 type Props = {
   isOpen: boolean
 }
@@ -17,6 +19,20 @@ export const Container = styled.aside<Props>`
     css`
       width: ${theme.grid.sideBar.open};
     `}
+`
+
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const LogoTitle = styled(TextBoldWithAnimation).attrs({
+  transition: {
+    duration: 0.2,
+  },
+})`
+  font-size: ${theme.font.sizes.subtitle};
+  white-space: nowrap;
 `
 
 export const SideBarButton = styled.button<Props>`

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { theme } from 'config'
 
-import { WithTextAnimation } from '../WithAnimation'
+import { TextWithAnimation } from '../WithAnimation'
 
 type Props = {
   isOpen: boolean
@@ -61,6 +61,6 @@ export const Container = styled(Link)<Props>`
   }
 `
 
-export const NavItemText = styled(WithTextAnimation)`
+export const NavItemText = styled(TextWithAnimation)`
   color: ${theme.colors.neutral[500]};
 `

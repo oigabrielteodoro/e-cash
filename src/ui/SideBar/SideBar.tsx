@@ -6,15 +6,18 @@ import {
   AiOutlineBarChart,
   AiOutlineSetting,
   AiOutlineUsergroupAdd,
+  AiOutlineAppstoreAdd,
+  AiOutlineSliders,
 } from 'react-icons/ai'
 import { FiChevronRight } from 'react-icons/fi'
+import { AnimatePresence } from 'framer-motion'
 
 import { Button, Logo, Tooltip } from 'ui'
 import { theme } from 'config'
 
 import { NavItem } from './NavItem'
 import { AccountUser } from './AccountUser'
-import { WithTextAnimation } from './WithAnimation'
+import { TextWithAnimation } from './WithAnimation'
 
 import { useIsOpen, setState } from './useSideBar'
 
@@ -30,7 +33,12 @@ export function SideBar() {
   return (
     <S.Container isOpen={isOpen}>
       <S.Content isOpen={isOpen}>
-        <Logo />
+        <S.LogoContainer>
+          <Logo />
+          <AnimatePresence>
+            {isOpen && <S.LogoTitle>E-cash</S.LogoTitle>}
+          </AnimatePresence>
+        </S.LogoContainer>
         <S.SideBarButton isOpen={isOpen} onClick={handleOnClick}>
           <FiChevronRight size={16} color={theme.colors.neutral[500]} />
         </S.SideBarButton>
@@ -40,7 +48,7 @@ export function SideBar() {
               <S.NewButtonContainer isOpen={isOpen}>
                 <Button size='sm' variant='icon'>
                   <AiOutlinePlus size={24} />
-                  {isOpen && <WithTextAnimation>Create</WithTextAnimation>}
+                  {isOpen && <TextWithAnimation>Create</TextWithAnimation>}
                 </Button>
               </S.NewButtonContainer>
             </Tooltip>
@@ -55,6 +63,12 @@ export function SideBar() {
             </NavItem>
             <NavItem to='/budgets' icon={AiOutlineUsergroupAdd}>
               Budgets
+            </NavItem>
+            <NavItem to='/investiments' icon={AiOutlineSliders}>
+              Investiments
+            </NavItem>
+            <NavItem to='/planning' icon={AiOutlineAppstoreAdd}>
+              Planning
             </NavItem>
             <NavItem to='/settings' icon={AiOutlineSetting}>
               Settings

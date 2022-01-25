@@ -11,6 +11,7 @@ export const Container = styled.section`
 export const Content = styled(ContainerWithAnimation)`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 `
 
 export const Title = styled.strong`
