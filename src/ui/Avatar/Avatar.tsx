@@ -3,7 +3,10 @@ import React, { useState, ImgHTMLAttributes, SyntheticEvent } from 'react'
 import * as S from './Avatar.styled'
 import { NotFoundAvatar } from './NotFoundAvatar'
 
-type Props = ImgHTMLAttributes<HTMLImageElement>
+type Props = { src?: string | null } & Omit<
+  ImgHTMLAttributes<HTMLImageElement>,
+  'src'
+>
 
 export function Avatar({ src, onError, ...rest }: Props) {
   const [isError, setIsError] = useState(false)
@@ -18,5 +21,5 @@ export function Avatar({ src, onError, ...rest }: Props) {
     return <NotFoundAvatar />
   }
 
-  return <S.Element src={src} onError={handleOnError} {...rest} />
+  return <S.Element src={src || 'unknown'} onError={handleOnError} {...rest} />
 }

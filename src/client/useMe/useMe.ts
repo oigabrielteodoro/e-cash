@@ -1,22 +1,29 @@
 import { useQuery } from 'react-query'
 
-import { api, getUserId } from 'client'
+import { api, useToken, useUserId } from 'client'
+
+import type { UseMeResponse } from './types'
 
 export function getMe() {
-  return api.get('/profile')
+  return api
+    .get<UseMeResponse>('/users/profile')
+    .then((response) => response.data)
 }
 
 export function useMe() {
-  const user_id = getUserId()
+  const token = useToken()
+  const user_id = useUserId()
+
+  const isEnabled = !!token && !!user_id
 
   const { data, ...rest } = useQuery({
-    enabled: !!user_id,
+    enabled: isEnabled,
     queryKey: ['profile', { user_id }],
     queryFn: getMe,
   })
 
   return {
-    user: data,
+    user: data?.user,
     ...rest,
   }
 }

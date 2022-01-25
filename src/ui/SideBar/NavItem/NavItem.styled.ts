@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import { theme } from 'config'
-import { motion } from 'framer-motion'
+
+import { WithTextAnimation } from '../WithAnimation'
 
 type Props = {
   isOpen: boolean
@@ -13,13 +14,13 @@ type NavItemIconProps = Pick<Props, 'isActive'>
 
 export const NavItemIcon = styled.div<NavItemIconProps>`
   transition: 300ms;
-  width: 4.2rem;
-  height: 4.2rem;
+  min-width: 4.2rem;
+  min-height: 4.2rem;
   display: grid;
   place-items: center;
   border-radius: 0.5rem;
-  z-index: 1;
   position: relative;
+  z-index: 1;
 
   svg {
     transition: 300ms;
@@ -60,26 +61,6 @@ export const Container = styled(Link)<Props>`
   }
 `
 
-export const NavItemText = styled(motion.span).attrs({
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
-  variants: {
-    hidden: {
-      opacity: 0,
-      translateX: '-1.6rem',
-      transition: {
-        duration: 0.3,
-      },
-    },
-    visible: {
-      opacity: 1,
-      translateX: '1.6rem',
-      transition: {
-        duration: 0.3,
-      },
-    },
-  },
-})`
+export const NavItemText = styled(WithTextAnimation)`
   color: ${theme.colors.neutral[500]};
 `

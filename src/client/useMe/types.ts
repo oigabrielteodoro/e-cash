@@ -4,3 +4,7 @@ export type User = {
   like_be_called: string
   avatar_url: string | null
 }
+
+export type UseMeResponse = {
+  user: User
+}

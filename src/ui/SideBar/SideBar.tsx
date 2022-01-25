@@ -9,10 +9,13 @@ import {
 } from 'react-icons/ai'
 import { FiChevronRight } from 'react-icons/fi'
 
-import { Avatar, Button, Logo, Tooltip } from 'ui'
-
+import { Button, Logo, Tooltip } from 'ui'
 import { theme } from 'config'
+
 import { NavItem } from './NavItem'
+import { AccountUser } from './AccountUser'
+import { WithTextAnimation } from './WithAnimation'
+
 import { useIsOpen, setState } from './useSideBar'
 
 import * as S from './SideBar.styled'
@@ -37,7 +40,7 @@ export function SideBar() {
               <S.NewButtonContainer isOpen={isOpen}>
                 <Button size='sm' variant='icon'>
                   <AiOutlinePlus size={24} />
-                  {isOpen && <S.NewButtonText>Create</S.NewButtonText>}
+                  {isOpen && <WithTextAnimation>Create</WithTextAnimation>}
                 </Button>
               </S.NewButtonContainer>
             </Tooltip>
@@ -58,7 +61,7 @@ export function SideBar() {
             </NavItem>
           </ul>
         </nav>
-        <Avatar src='unknown' alt='Unknown' />
+        <AccountUser />
       </S.Content>
     </S.Container>
   )

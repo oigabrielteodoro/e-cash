@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components'
 import { theme } from 'config'
-import { motion } from 'framer-motion'
 
 type Props = {
   isOpen: boolean
@@ -26,7 +25,7 @@ export const SideBarButton = styled.button<Props>`
   top: 10rem;
   border: 0;
   background: ${theme.colors.white};
-  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.3);
+  border: 0.3rem solid ${theme.colors.neutral[100]};
   height: 2.4rem;
   width: 2.4rem;
   border-radius: 50%;
@@ -56,28 +55,6 @@ export const NewButtonContainer = styled.div<Props>`
       `}
   }
 `
-
-export const NewButtonText = styled(motion.span).attrs({
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
-  variants: {
-    hidden: {
-      opacity: 0,
-      translateX: '-1.6rem',
-      transition: {
-        duration: 0.3,
-      },
-    },
-    visible: {
-      opacity: 1,
-      translateX: '1.6rem',
-      transition: {
-        duration: 0.3,
-      },
-    },
-  },
-})``
 
 export const Content = styled.div<Props>`
   background: ${theme.colors.neutral[100]};

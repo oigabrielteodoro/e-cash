@@ -49,6 +49,14 @@ export function useIsAuthenticated() {
   return useStore((state) => state.isAuthenticated)
 }
 
+export function useToken() {
+  return useStore((state) => state.accessToken)
+}
+
+export function useUserId() {
+  return useStore((state) => state.user_id)
+}
+
 export function useSession() {
   const navigate = useNavigate()
 
