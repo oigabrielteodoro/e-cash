@@ -1,7 +1,7 @@
 export const theme = {
   grid: {
     sideBar: {
-      open: '40rem',
+      open: '25rem',
       closed: '10rem',
     },
   },

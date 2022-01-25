@@ -26,7 +26,7 @@ export function SideBar() {
 
   return (
     <S.Container isOpen={isOpen}>
-      <S.Content>
+      <S.Content isOpen={isOpen}>
         <Logo />
         <S.SideBarButton isOpen={isOpen} onClick={handleOnClick}>
           <FiChevronRight size={16} color={theme.colors.neutral[500]} />
@@ -38,11 +38,21 @@ export function SideBar() {
                 <AiOutlinePlus size={24} />
               </Button>
             </li>
-            <NavItem icon={AiOutlineBarChart}>Home</NavItem>
-            <NavItem icon={AiOutlineUnorderedList}>Transactions</NavItem>
-            <NavItem icon={AiOutlineBank}>Accounts</NavItem>
-            <NavItem icon={AiOutlineUsergroupAdd}>Budgets</NavItem>
-            <NavItem icon={AiOutlineSetting}>Configurações</NavItem>
+            <NavItem to='/dashboard' icon={AiOutlineBarChart}>
+              Dashboard
+            </NavItem>
+            <NavItem to='/transactions' icon={AiOutlineUnorderedList}>
+              Transactions
+            </NavItem>
+            <NavItem to='/accounts' icon={AiOutlineBank}>
+              Accounts
+            </NavItem>
+            <NavItem to='/budgets' icon={AiOutlineUsergroupAdd}>
+              Budgets
+            </NavItem>
+            <NavItem to='/settings' icon={AiOutlineSetting}>
+              Settings
+            </NavItem>
           </ul>
         </nav>
         <S.Avatar

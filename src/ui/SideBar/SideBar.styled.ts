@@ -1,15 +1,11 @@
 import styled, { css } from 'styled-components'
 import { theme } from 'config'
 
-type ContainerProps = {
+type Props = {
   isOpen: boolean
 }
 
-type SideBarButtonProps = {
-  isOpen: boolean
-}
-
-export const Container = styled.aside<ContainerProps>`
+export const Container = styled.aside<Props>`
   top: 0;
   bottom: 0;
   position: fixed;
@@ -23,7 +19,7 @@ export const Container = styled.aside<ContainerProps>`
     `}
 `
 
-export const SideBarButton = styled.button<SideBarButtonProps>`
+export const SideBarButton = styled.button<Props>`
   position: absolute;
   right: calc(-2.4rem / 2);
   top: 10rem;
@@ -45,11 +41,11 @@ export const SideBarButton = styled.button<SideBarButtonProps>`
     `}
 `
 
-export const Content = styled.div`
+export const Content = styled.div<Props>`
   background: ${theme.colors.neutral[100]};
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 2.4rem;
   height: 100%;
@@ -63,7 +59,9 @@ export const Content = styled.div`
   nav ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-left: 0.5rem;
+    transition: 300ms;
 
     li + li {
       margin-top: 2rem;
