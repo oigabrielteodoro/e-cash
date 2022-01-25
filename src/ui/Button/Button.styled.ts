@@ -5,7 +5,7 @@ import { theme } from 'config'
 
 import { ButtonProps } from '.'
 
-type ContainerProps = Required<Pick<ButtonProps, 'size' | 'variant'>>
+type ContainerProps = Required<Pick<ButtonProps, 'size' | 'variant' | 'full'>>
 
 const loading = keyframes`
   0% {
@@ -20,6 +20,7 @@ const loading = keyframes`
 const modifiers = {
   sm: css`
     padding: 0.8rem 1.6rem;
+    font-size: ${theme.font.sizes.small};
   `,
   md: css`
     padding: 1.2rem 2.4rem;
@@ -36,7 +37,7 @@ const variants = {
   secondary: css``,
   outline: css``,
   icon: css`
-    width: 4.2rem;
+    min-width: 4.2rem;
     height: 4.2rem;
     background: ${theme.colors.blue[500]};
     padding: 0;
@@ -50,10 +51,10 @@ export const Container = styled.button<ContainerProps>`
   justify-content: center;
   color: ${theme.colors.white};
   border-radius: 0.5rem;
-  width: 100%;
   font-weight: 500;
   font-size: ${theme.font.sizes.paragraph};
   transition: 300ms;
+  width: 100%;
 
   ${({ size }) => modifiers[size]}
   ${({ variant }) => variants[variant]}

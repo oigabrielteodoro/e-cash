@@ -9,7 +9,7 @@ import {
 } from 'react-icons/ai'
 import { FiChevronRight } from 'react-icons/fi'
 
-import { Button, Logo } from 'ui'
+import { Avatar, Button, Logo, Tooltip } from 'ui'
 
 import { theme } from 'config'
 import { NavItem } from './NavItem'
@@ -33,11 +33,14 @@ export function SideBar() {
         </S.SideBarButton>
         <nav>
           <ul>
-            <li>
-              <Button size='sm' variant='icon'>
-                <AiOutlinePlus size={24} />
-              </Button>
-            </li>
+            <Tooltip as='li' isDisabled={isOpen} message='Create'>
+              <S.NewButtonContainer isOpen={isOpen}>
+                <Button size='sm' variant='icon'>
+                  <AiOutlinePlus size={24} />
+                  {isOpen && <S.NewButtonText>Create</S.NewButtonText>}
+                </Button>
+              </S.NewButtonContainer>
+            </Tooltip>
             <NavItem to='/dashboard' icon={AiOutlineBarChart}>
               Dashboard
             </NavItem>
@@ -55,10 +58,7 @@ export function SideBar() {
             </NavItem>
           </ul>
         </nav>
-        <S.Avatar
-          src='https://github.com/oigabrielteodoro.png'
-          alt='Gabriel Teodoro'
-        />
+        <Avatar src='unknown' alt='Unknown' />
       </S.Content>
     </S.Container>
   )

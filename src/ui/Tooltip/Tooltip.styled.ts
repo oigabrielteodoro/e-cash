@@ -10,6 +10,7 @@ const modifiers = {
     top: 0;
     left: 50%;
     transform: translate(-50%, calc(-100% - 0.7rem));
+
     &::before {
       bottom: -0.5rem;
       left: 50%;
@@ -22,6 +23,7 @@ const modifiers = {
     left: 50%;
     bottom: 0;
     transform: translate(-50%, calc(100% + 0.7rem));
+
     &::before {
       top: -0.5rem;
       left: 50%;
@@ -33,7 +35,8 @@ const modifiers = {
   right: css`
     top: 50%;
     right: 0;
-    transform: translate(calc(100% + 0.7rem), -50%);
+    transform: translate(calc(100% + 1.6rem), -50%);
+
     &::before {
       top: 50%;
       left: -0.5rem;
@@ -45,7 +48,8 @@ const modifiers = {
   left: css`
     top: 50%;
     left: 0;
-    transform: translate(calc(-100% - 0.7rem), -50%);
+    transform: translate(calc(-100% - 1.6rem), -50%);
+
     &::before {
       right: -0.5rem;
       top: 50%;
@@ -71,6 +75,7 @@ export const Container = styled.span<Props>`
   transition: opacity 300ms, visibility 300ms;
   text-align: center;
   z-index: 1;
+
   &::before {
     content: '';
     position: absolute;
@@ -78,6 +83,7 @@ export const Container = styled.span<Props>`
     border-width: 0.6rem;
     border-color: transparent;
   }
+
   ${({ position }) => modifiers[position]}
 `
 

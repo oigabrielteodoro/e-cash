@@ -7,6 +7,7 @@ export type ButtonProps = {
   loading?: boolean
   size?: 'sm' | 'md' | 'lg'
   variant?: 'primary' | 'secondary' | 'outline' | 'icon'
+  full?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 export function Button({
@@ -15,12 +16,19 @@ export function Button({
   disabled = false,
   variant = 'primary',
   size = 'md',
+  full = variant !== 'icon',
   ...rest
 }: ButtonProps) {
   const isDisabled = loading || disabled
 
   return (
-    <S.Container disabled={isDisabled} variant={variant} size={size} {...rest}>
+    <S.Container
+      full={full}
+      disabled={isDisabled}
+      variant={variant}
+      size={size}
+      {...rest}
+    >
       {loading ? <S.LoadIcon /> : children}
     </S.Container>
   )
