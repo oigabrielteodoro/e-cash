@@ -17,18 +17,20 @@ export function AccountUser() {
   }
 
   return (
-    <Tooltip isDisabled={isOpen} message={user.like_be_called}>
-      <S.Container>
-        <Avatar src={user.avatar_url} alt={user.full_name} />
-        <AnimatePresence>
-          {isOpen && (
-            <S.Content>
-              <S.Title>{user.like_be_called}</S.Title>
-              <S.Email>{user.email}</S.Email>
-            </S.Content>
-          )}
-        </AnimatePresence>
-      </S.Container>
-    </Tooltip>
+    <S.Wrapper>
+      <Tooltip isDisabled={isOpen} message={user.like_be_called}>
+        <S.Container isOpen={isOpen}>
+          <Avatar src={user.avatar_url} alt={user.full_name} />
+          <AnimatePresence>
+            {isOpen && (
+              <S.Content>
+                <S.Title>{user.like_be_called}</S.Title>
+                <S.Email>{user.email}</S.Email>
+              </S.Content>
+            )}
+          </AnimatePresence>
+        </S.Container>
+      </Tooltip>
+    </S.Wrapper>
   )
 }

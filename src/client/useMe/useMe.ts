@@ -17,6 +17,7 @@ export function useMe() {
   const isEnabled = !!token && !!user_id
 
   const { data, ...rest } = useQuery({
+    retry: false,
     enabled: isEnabled,
     queryKey: ['profile', { user_id }],
     queryFn: getMe,
