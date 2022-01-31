@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   width: 100%;
 `
 
-export const Container = styled.button<ContainerProps>`
+export const Container = styled.div<ContainerProps>`
   width: 100%;
   display: flex;
   align-items: center;
