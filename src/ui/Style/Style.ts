@@ -17,7 +17,7 @@ export const Style = createGlobalStyle`
   }
 
   body {
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     scroll-behavior: smooth;
     font-family: ${theme.font.family};
@@ -35,5 +35,15 @@ export const Style = createGlobalStyle`
 
   ul {
     list-style: none;
+  }
+
+  input:-webkit-autofill {
+    box-shadow:0 0 0 5rem ${theme.colors.white} inset;
+    -webkit-text-fill-color: ${theme.colors.neutral[900]};
+  }
+
+  input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 5rem ${theme.colors.white} inset;
+    -webkit-text-fill-color: ${theme.colors.neutral[900]};
   }
 `

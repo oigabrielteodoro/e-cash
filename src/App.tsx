@@ -1,12 +1,20 @@
 import React from 'react'
 
-import { Style } from 'ui'
+import { QueryClientProvider, QueryClient } from 'react-query'
+
+import { Style, ToastContainer } from 'ui'
+import { Router } from 'lib'
+
+import 'react-toastify/dist/ReactToastify.css'
+
+const queryClient = new QueryClient()
 
 export function App() {
   return (
-    <>
-      <h1>E-cash application</h1>
+    <QueryClientProvider client={queryClient}>
       <Style />
-    </>
+      <Router />
+      <ToastContainer />
+    </QueryClientProvider>
   )
 }
