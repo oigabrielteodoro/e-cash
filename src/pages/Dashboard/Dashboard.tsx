@@ -1,10 +1,16 @@
 import React from 'react'
+
 import { AppLayout } from 'ui'
+
+import { Calendar } from './Calendar'
 
 export function Dashboard() {
   return (
     <AppLayout>
-      <h1>Dashboard</h1>
+      <AppLayout.Header title='Dashboard'>
+        <Calendar />
+      </AppLayout.Header>
+      <AppLayout.Content></AppLayout.Content>
     </AppLayout>
   )
 }
