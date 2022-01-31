@@ -39,6 +39,7 @@ export const Content = styled(ContainerWithAnimation)`
   align-items: flex-start;
   position: absolute;
   left: calc(4rem + 1.6rem);
+  width: 100%;
 `
 
 export const Title = styled.strong`

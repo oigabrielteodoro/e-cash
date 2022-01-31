@@ -20,6 +20,7 @@
     "axios": "0.25.0",
     "framer-motion": "5.6.0",
     "lodash": "4.17.21",
+    "polished": "4.1.4",
     "react": "17.0.0",
     "react-dom": "17.0.0",
     "react-hook-form": "7.24.1",
