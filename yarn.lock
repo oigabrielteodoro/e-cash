@@ -1115,6 +1115,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@faker-js/faker@6.0.0-alpha.5":
+  version "6.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-6.0.0-alpha.5.tgz#2c1ab022b3aed76d563b1510ba2b797ce141d25e"
+  integrity sha512-8Is/xFxNgricqmhQR/AJ4Vi0cKzSR7FcpE0ImG9dWciuSxUkyCiK+B5/hTQP8jrVbtgTjpFC1AaTCnALJOBDmw==
+
 "@hookform/resolvers@2.8.7":
   version "2.8.7"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.8.7.tgz#71d61a1c3d4bb16861d9fac5e74845f836cdc498"
@@ -2923,6 +2928,13 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
+fishery@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/fishery/-/fishery-2.1.0.tgz#6472582fd0f305530f789ef291adf2e550ef7704"
+  integrity sha512-CGXNmOkth/Je/oIM5UqB4TKz2p9A/GrappTw8nEOCy50vqx18S51jp4OARRPfxofhSx3ihZwI6t3wh+SA5mz4A==
+  dependencies:
+    lodash.mergewith "^4.6.2"
+
 flat-cache@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"
@@ -4080,6 +4092,11 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash.mergewith@^4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
+  integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
 
 lodash.set@^4.3.2:
   version "4.3.2"

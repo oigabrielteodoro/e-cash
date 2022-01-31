@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query'
 
-import { api, useToken, useUserId } from 'client'
+import { authenticatedApi, useToken, useUserId } from 'client'
 
 import type { UseMeResponse } from './types'
 
 export function getMe() {
-  return api
+  return authenticatedApi
     .get<UseMeResponse>('/users/profile')
     .then((response) => response.data)
 }

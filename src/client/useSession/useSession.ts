@@ -30,6 +30,12 @@ export function setToken(token: string) {
   })
 }
 
+export function setUserId(user_id: string) {
+  return useStore.setState({
+    user_id,
+  })
+}
+
 export function clearToken() {
   useStore.setState({
     accessToken: null,
@@ -91,3 +97,5 @@ export function useSession() {
     ...rest,
   }
 }
+
+export { useStore as useSessionStore }

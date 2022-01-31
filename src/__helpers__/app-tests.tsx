@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import nock from 'nock'
 
 import { clearToken, setToken } from 'client'
 
@@ -57,4 +58,4 @@ function render(
 }
 
 export * from '@testing-library/react'
-export { render, userEvent }
+export { render, userEvent, nock }

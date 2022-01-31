@@ -39,7 +39,7 @@ export function SignIn() {
           <S.ForgotPasswordLink to='/forgot_password'>
             Forgot your password?
           </S.ForgotPasswordLink>
-          <Button type='submit' loading={isLoading}>
+          <Button size='lg' type='submit' loading={isLoading}>
             Join in account
           </Button>
           <S.Separator>OR</S.Separator>
