@@ -1,4 +1,5 @@
 import React from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import {
   FiChevronDown,
@@ -8,7 +9,6 @@ import {
   FiChevronLeft,
 } from 'react-icons/fi'
 
-import { AnimatePresence } from 'framer-motion'
 import { Tooltip } from 'ui'
 import { Period, useCalendar } from './useCalendar'
 
@@ -43,12 +43,18 @@ export function Calendar() {
             <S.CalendarHeader>
               <section>
                 <Tooltip position='top' message='Previous year'>
-                  <button onClick={() => handlePrevious(Period.YEAR)}>
+                  <button
+                    aria-label='Previous year'
+                    onClick={() => handlePrevious(Period.YEAR)}
+                  >
                     <FiChevronsLeft size={20} />
                   </button>
                 </Tooltip>
                 <Tooltip position='top' message='Previous month'>
-                  <button onClick={() => handlePrevious(Period.MONTH)}>
+                  <button
+                    aria-label='Previous month'
+                    onClick={() => handlePrevious(Period.MONTH)}
+                  >
                     <FiChevronLeft size={20} />
                   </button>
                 </Tooltip>
@@ -56,12 +62,18 @@ export function Calendar() {
               <strong>{selectedMonthFormatted}</strong>
               <section>
                 <Tooltip position='top' message='Next month'>
-                  <button onClick={() => handleNext(Period.MONTH)}>
+                  <button
+                    aria-label='Next month'
+                    onClick={() => handleNext(Period.MONTH)}
+                  >
                     <FiChevronRight size={20} />
                   </button>
                 </Tooltip>
                 <Tooltip position='top' message='Next year'>
-                  <button onClick={() => handleNext(Period.YEAR)}>
+                  <button
+                    aria-label='Next year'
+                    onClick={() => handleNext(Period.YEAR)}
+                  >
                     <FiChevronsRight size={20} />
                   </button>
                 </Tooltip>
