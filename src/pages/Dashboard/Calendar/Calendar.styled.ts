@@ -64,6 +64,22 @@ export const Calendar = styled(motion.div).attrs({
   padding: 1.6rem;
   right: 0;
   top: calc(100% + 1.6rem);
+  border: 0.1rem solid ${theme.colors.neutral[200]};
+  z-index: 2;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -0.6rem;
+    right: 2.4rem;
+    width: 1rem;
+    height: 1rem;
+    background: ${theme.colors.white};
+    border: 0.1rem solid ${theme.colors.neutral[200]};
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    transform: rotate(-45deg);
+  }
 
   ul {
     display: grid;
