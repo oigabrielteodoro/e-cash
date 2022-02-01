@@ -9,7 +9,6 @@ export const Container = styled.div<ContainerProps>`
   margin-left: ${theme.grid.sideBar.closed};
   transition: 500ms;
   padding: 4rem;
-
   ${({ isOpen }) =>
     isOpen &&
     css`
