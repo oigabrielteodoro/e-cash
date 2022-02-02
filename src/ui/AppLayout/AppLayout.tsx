@@ -28,7 +28,12 @@ export function AppLayout({ children }: Props) {
 AppLayout.Header = function Header({ title, children }: HeaderProps) {
   return (
     <S.Header>
-      <S.Title>{title}</S.Title>
+      <section>
+        <S.Title>{title}</S.Title>
+        <S.Description>
+          Welcome back, Let&apos;s get back to work.
+        </S.Description>
+      </section>
       {children}
     </S.Header>
   )

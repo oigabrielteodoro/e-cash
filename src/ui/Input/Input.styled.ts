@@ -1,10 +1,21 @@
 import { theme } from 'config'
 import styled, { css } from 'styled-components'
 
+import { InputProps } from 'ui'
+
 type Props = {
   isFilled: boolean
   isFocused: boolean
   isErrored: boolean
+} & Required<Pick<InputProps, 'variant'>>
+
+const modifiers = {
+  primary: css`
+    background: ${theme.colors.white};
+  `,
+  secondary: css`
+    background: ${theme.colors.neutral[200]};
+  `,
 }
 
 export const Wrapper = styled.fieldset`
@@ -50,6 +61,8 @@ export const Container = styled.div<Props>`
   margin-top: 0.8rem;
   transition: 300ms;
   width: 100%;
+
+  ${({ variant }) => modifiers[variant]}
 
   svg {
     margin-left: auto;
