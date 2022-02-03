@@ -95,13 +95,13 @@ export function useCalendar({ maxSelectedDates = 2 }: Props = {}) {
   const handleOnClick = useCallback(
     (date: Date) => {
       setSelectedDates((prevState) => {
-        const alreadyAddedDate = prevState.find((storagedDate) =>
+        const alreadyAddedDate = !!prevState.find((storagedDate) =>
           isSameDay(date, storagedDate),
         )
 
         if (alreadyAddedDate) {
           return prevState.filter(
-            (storagedDate) => storagedDate.getTime() !== date.getTime(),
+            (storagedDate) => !isSameDay(date, storagedDate),
           )
         }
 

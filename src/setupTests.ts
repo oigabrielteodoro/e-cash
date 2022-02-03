@@ -49,6 +49,7 @@ afterEach(() => {
 
 process.env = Object.assign(process.env, {
   VITE_API_URL: 'http://localhost',
+  TZ: 'UTC',
 })
 
 module.exports = 'test-file-stub'
