@@ -5,7 +5,7 @@ import { theme } from 'config'
 
 import { ShimmerEffectProps } from '.'
 
-type Props = Required<Pick<ShimmerEffectProps, 'size' | 'variant'>>
+type Props = Required<Pick<ShimmerEffectProps, 'size' | 'variant' | 'space'>>
 
 const modifiers = {
   sm: css`
@@ -55,7 +55,7 @@ export const Container = styled.span<Props>`
   opacity: 0.1;
 
   & + span {
-    margin-top: 0.8rem;
+    margin-top: ${({ space }) => `${space}px`};
   }
 
   ${({ size }) => modifiers[size]}

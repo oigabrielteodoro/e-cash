@@ -13,7 +13,7 @@ type CalendarItemProps = {
   isInside?: boolean
 }
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.div`
   position: relative;
 `
 
@@ -59,8 +59,8 @@ export const Calendar = styled(motion.div).attrs({
 })`
   position: absolute;
   background: ${theme.colors.white};
-  border-radius: 1rem;
-  box-shadow: 0 0 10rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: ${theme.radius.popover};
+  box-shadow: ${theme.dropShadow.popover};
   padding: 1.6rem;
   right: 0;
   top: calc(100% + 1.6rem);
@@ -103,7 +103,7 @@ export const CalendarHeader = styled.div`
       border: 0;
       height: 4.2rem;
       width: 4.2rem;
-      border-radius: 1rem;
+      border-radius: ${theme.radius.popover};
       color: ${theme.colors.neutral[500]};
       transition: 300ms;
 
@@ -123,7 +123,7 @@ export const CalendarItem = styled.button<CalendarItemProps>`
   border: 0;
   height: 4.2rem;
   width: 4.2rem;
-  border-radius: 1rem;
+  border-radius: ${theme.radius.popover};
   transition: 300ms;
 
   &:hover {

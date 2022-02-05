@@ -25,6 +25,10 @@ export const Style = createGlobalStyle`
     background-color: ${theme.colors.white};
   }
 
+  strong {
+    font-family: ${theme.font.family};
+  }
+
   button {
     cursor: pointer;
   }

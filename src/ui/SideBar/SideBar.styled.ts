@@ -13,6 +13,7 @@ export const Container = styled.aside<Props>`
   position: fixed;
   width: ${theme.grid.sideBar.closed};
   transition: 500ms;
+  z-index: 1;
 
   ${({ isOpen }) =>
     isOpen &&
