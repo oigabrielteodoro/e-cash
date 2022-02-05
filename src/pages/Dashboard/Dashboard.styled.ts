@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
+export const Card = styled.div`
+  border: 1px solid black;
 `

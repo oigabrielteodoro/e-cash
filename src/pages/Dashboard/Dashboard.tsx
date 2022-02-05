@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AppLayout } from 'ui'
+import { AppLayout, Row, Col } from 'ui'
 
 import { Search } from './Search'
 import { Calendar } from './Calendar'
@@ -11,12 +11,30 @@ export function Dashboard() {
   return (
     <AppLayout>
       <AppLayout.Header title='Dashboard'>
-        <S.Row as='section'>
+        <Row gutter={[0, 0]} as='section'>
           <Calendar />
           <Search />
-        </S.Row>
+        </Row>
       </AppLayout.Header>
-      <AppLayout.Content></AppLayout.Content>
+      <AppLayout.Content>
+        <Row gutter={[24, 24]}>
+          <Col span={8}>
+            <S.Card>
+              <h1>Teste</h1>
+            </S.Card>
+          </Col>
+          <Col span={8}>
+            <S.Card>
+              <h1>Teste</h1>
+            </S.Card>
+          </Col>
+          <Col span={8}>
+            <S.Card>
+              <h1>Teste</h1>
+            </S.Card>
+          </Col>
+        </Row>
+      </AppLayout.Content>
     </AppLayout>
   )
 }
