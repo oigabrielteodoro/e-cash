@@ -147,5 +147,6 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: test
+        run: yarn test:ci
         env:
           SKIP_PREFLIGHT_CHECK: true
