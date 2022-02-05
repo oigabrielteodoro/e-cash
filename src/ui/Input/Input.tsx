@@ -14,18 +14,20 @@ import type { IconBaseProps } from 'react-icons'
 
 import * as S from './Input.styled'
 
-type Props = {
+export type InputProps = {
   label: string
   error?: string
+  variant?: 'primary' | 'secondary'
   icon: ComponentType<IconBaseProps>
 } & InputHTMLAttributes<HTMLInputElement>
 
-const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
+const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   {
     id,
     defaultValue,
     label,
     error,
+    variant = 'primary',
     icon: Icon,
     name,
     onBlur,
@@ -61,6 +63,7 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, Props> = (
     <S.Wrapper>
       <label htmlFor={id}>{label}</label>
       <S.Container
+        variant={variant}
         isFilled={isFilled}
         isFocused={isFocused}
         isErrored={isErrored}

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { configure } from '@testing-library/react'
 import { setLogger } from 'react-query'
+import nock from 'nock'
 
+import '@testing-library/jest-dom/extend-expect'
 import '@testing-library/jest-dom'
 import 'jest-styled-components'
-import nock from 'nock'
 
 configure({ asyncUtilTimeout: 5000 })
 
@@ -49,6 +51,7 @@ afterEach(() => {
 
 process.env = Object.assign(process.env, {
   VITE_API_URL: 'http://localhost',
+  TZ: 'UTC',
 })
 
 module.exports = 'test-file-stub'

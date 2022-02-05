@@ -41,6 +41,8 @@ export const theme = {
     },
     neutral: {
       100: '#eef1f5',
+      200: '#cfd7e3',
+      400: '#afbdd0',
       500: '#a1a7ae',
       600: '#4d4f51',
       700: '#393e48',
@@ -54,6 +56,9 @@ export const theme = {
     red: {
       200: '#eccbc030',
       400: '#fc647120',
+    },
+    neutral: {
+      500: '#a1a7ae20',
     },
   },
 }

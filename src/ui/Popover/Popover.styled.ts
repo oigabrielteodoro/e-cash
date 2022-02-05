@@ -28,11 +28,11 @@ const modifiers = {
 const arrowModifiers = {
   top: css`
     bottom: -0.8rem;
-    top: -1.6rem;
+    top: -2.2rem;
     left: 50%;
-    transform: translateX(-50%);
-    border-bottom-width: 0;
-    border-top-color: ${theme.colors.white};
+    transform: translateX(-50%) rotate(-45deg);
+    border-top-color: transparent;
+    border-right-color: transparent;
   `,
   bottom: css``,
   right: css``,
@@ -65,9 +65,10 @@ export const Popover = styled(motion.div).attrs({
   exit: 'hidden',
 })<Props>`
   width: ${({ customWidth }) => customWidth};
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   background: ${theme.colors.white};
   box-shadow: 0 0 10rem 1rem rgba(0, 0, 0, 0.1);
+  border: 0.1rem solid ${theme.colors.neutral[200]};
   position: absolute;
   z-index: 1;
 
@@ -76,11 +77,11 @@ export const Popover = styled(motion.div).attrs({
 
 export const PopoverArrow = styled.div<PopoverArrowProps>`
   position: absolute;
-  border-style: solid;
-  border-width: 0.8rem;
-  border-color: transparent;
-  height: 1.6rem;
-  z-index: 1;
+  background: ${theme.colors.white};
+  height: 1rem;
+  width: 1rem;
+  z-index: 2;
+  border: 0.1rem solid ${theme.colors.neutral[200]};
 
   ${({ position }) => arrowModifiers[position]};
 `
