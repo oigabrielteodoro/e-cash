@@ -12,7 +12,6 @@ type ColProps = {
 }
 
 export const Col = styled.div<ColProps>`
-  display: block;
   max-width: ${({ span }) => `${percentFromInt(span, 24)}%`};
   flex: ${({ span }) => `0 0 ${percentFromInt(span, 24)}%`};
 `
