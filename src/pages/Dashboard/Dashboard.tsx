@@ -11,7 +11,7 @@ export function Dashboard() {
   return (
     <AppLayout>
       <AppLayout.Header title='Dashboard'>
-        <Row gutter={[0, 0]} as='section'>
+        <Row alignItems='center' gutter={[0, 0]} as='section'>
           <Calendar />
           <Search />
         </Row>
