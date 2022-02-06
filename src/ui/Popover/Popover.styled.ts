@@ -65,9 +65,9 @@ export const Popover = styled(motion.div).attrs({
   exit: 'hidden',
 })<Props>`
   width: ${({ customWidth }) => customWidth};
-  border-radius: 1rem;
+  border-radius: ${theme.radius.popover};
   background: ${theme.colors.white};
-  box-shadow: 0 0 10rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: ${theme.dropShadow.popover};
   border: 0.1rem solid ${theme.colors.neutral[200]};
   position: absolute;
   z-index: 1;

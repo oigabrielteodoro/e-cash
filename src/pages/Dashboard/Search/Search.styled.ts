@@ -24,7 +24,7 @@ export const Container = styled.div<Props>`
   display: flex;
   border-radius: 0.5rem;
   transition: 300ms;
-  box-shadow: 0 0 10rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: ${theme.dropShadow.popover};
 
   input {
     height: 4rem;

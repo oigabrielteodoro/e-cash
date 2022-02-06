@@ -5,6 +5,10 @@ export const theme = {
       closed: '10rem',
     },
   },
+  radius: {
+    card: '0.5rem',
+    popover: '1rem',
+  },
   font: {
     family: 'Barlow',
     sizes: {
@@ -60,5 +64,8 @@ export const theme = {
     neutral: {
       500: '#a1a7ae20',
     },
+  },
+  dropShadow: {
+    popover: '0 0 10rem 1rem rgba(0, 0, 0, 0.1)',
   },
 }

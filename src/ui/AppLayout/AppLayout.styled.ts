@@ -16,13 +16,6 @@ export const Container = styled.div<ContainerProps>`
     `}
 `
 
-export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-`
-
 export const Content = styled.main``
 
 export const Title = styled.h1`

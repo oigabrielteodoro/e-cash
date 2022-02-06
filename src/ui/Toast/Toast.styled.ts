@@ -21,7 +21,7 @@ export const Container = styled(ToastContainer)`
   }
 
   .Toastify__toast {
-    border-radius: 1rem;
+    border-radius: ${theme.radius.popover};
     box-shadow: none;
     padding: 0.5rem;
     min-height: 0;

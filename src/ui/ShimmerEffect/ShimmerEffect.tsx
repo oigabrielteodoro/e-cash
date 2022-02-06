@@ -10,6 +10,7 @@ export type ShimmerEffectProps = {
   size?: 'sm' | 'md' | 'lg'
   variant?: 'image' | 'text'
   count?: number
+  space?: number
 }
 
 export function ShimmerEffect({
@@ -18,6 +19,7 @@ export function ShimmerEffect({
   size = 'md',
   variant = 'text',
   count = 1,
+  space = 8,
 }: ShimmerEffectProps) {
   const loaderRange = range(count)
 
@@ -27,6 +29,7 @@ export function ShimmerEffect({
         {loaderRange.map((loaderId) => (
           <S.Container
             size={size}
+            space={space}
             variant={variant}
             key={`ShimmerEffect_${loaderId}`}
             data-testid='ShimmerEffect'

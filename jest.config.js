@@ -13,7 +13,6 @@ module.exports = {
     '!src/main.tsx',
     '!src/routes.ts',
   ],
-  maxWorkers: '50%',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   modulePaths: ['<rootDir>/src'],
 }

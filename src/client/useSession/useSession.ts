@@ -6,15 +6,16 @@ import { useNavigate } from 'react-router'
 
 import { toast } from 'ui'
 import { DASHBOARD } from 'lib'
-import { api, ApiError } from 'client'
+import { ApiError, api } from 'client'
 
 import type { StoreState, SessionData, SessionPayload } from './types'
 
 const initialState: StoreState = {
   user_id: null,
   session_id: null,
-  accessToken: null,
+  token: null,
   isAuthenticated: false,
+  isRefreshingToken: false,
 }
 
 const useStore = create<StoreState>(
@@ -25,7 +26,7 @@ const useStore = create<StoreState>(
 
 export function setToken(token: string) {
   return useStore.setState({
-    accessToken: token,
+    token: token,
     isAuthenticated: true,
   })
 }
@@ -36,19 +37,29 @@ export function setUserId(user_id: string) {
   })
 }
 
+export function setIsRefreshingToken(isRefreshingToken: boolean) {
+  return useStore.setState({
+    isRefreshingToken,
+  })
+}
+
 export function clearToken() {
   useStore.setState({
-    accessToken: null,
+    token: null,
     isAuthenticated: false,
   })
 }
 
 export function getToken() {
-  return useStore.getState().accessToken
+  return useStore.getState().token
 }
 
 export function getUserId() {
   return useStore.getState().user_id
+}
+
+export function getSession() {
+  return useStore.getState()
 }
 
 export function useIsAuthenticated() {
@@ -56,7 +67,7 @@ export function useIsAuthenticated() {
 }
 
 export function useToken() {
-  return useStore((state) => state.accessToken)
+  return useStore((state) => state.token)
 }
 
 export function useUserId() {
@@ -64,6 +75,7 @@ export function useUserId() {
 }
 
 export function useSession() {
+  const store = useStore((state) => state)
   const navigate = useNavigate()
 
   const { mutateAsync: createSession, ...rest } = useMutation<
@@ -75,11 +87,13 @@ export function useSession() {
       api.post('sessions', data).then((response) => response.data),
     onSuccess: ({ user_id, token, session_id }) => {
       useStore.setState({
-        accessToken: token,
+        token: token,
         isAuthenticated: true,
         user_id,
         session_id,
       })
+
+      api.defaults.headers.common.authorization = `Bearer ${token}`
 
       navigate(DASHBOARD)
     },
@@ -94,6 +108,7 @@ export function useSession() {
 
   return {
     createSession,
+    ...store,
     ...rest,
   }
 }
