@@ -2,6 +2,8 @@ import React from 'react'
 import { FiSmile, FiActivity } from 'react-icons/fi'
 import { AiOutlinePieChart, AiOutlineLogout } from 'react-icons/ai'
 
+import { clearToken } from 'client'
+
 import * as S from './InnerPopoverContent.styled'
 
 export function InnerPopoverContent() {
@@ -26,7 +28,7 @@ export function InnerPopoverContent() {
         </button>
       </li>
       <li>
-        <button>
+        <button onClick={clearToken}>
           <AiOutlineLogout size={20} />
           Log out
         </button>

@@ -14,13 +14,13 @@ const user = userFactory.build()
 describe('AccountUser', () => {
   it('should be able render correctly', async () => {
     useSessionStore.setState({
-      accessToken: 'jwt-valid-token',
+      token: 'jwt-valid-token',
       isAuthenticated: true,
       user_id: faker.datatype.uuid(),
       session_id: faker.datatype.uuid(),
     })
 
-    const userMock = nock(baseURL).get('/users/profile').reply(200, { user })
+    const userMock = nock(baseURL).get('/profile').reply(200, { user })
 
     render(<AccountUser />)
 
@@ -36,7 +36,7 @@ describe('AccountUser', () => {
   })
 
   it('should not be able render component when user is null', async () => {
-    const userMock = nock(baseURL).get('/users/profile').reply(401)
+    const userMock = nock(baseURL).get('/profile').reply(401)
 
     render(<AccountUser />)
 

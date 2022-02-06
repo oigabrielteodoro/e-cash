@@ -4,10 +4,11 @@ export type SessionData = {
 }
 
 export type StoreState = {
+  token: string | null
   user_id: string | null
   session_id: string | null
-  accessToken: string | null
   isAuthenticated: boolean
+  isRefreshingToken: boolean
 }
 
 export type SessionPayload = {
