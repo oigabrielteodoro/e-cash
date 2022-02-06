@@ -5,7 +5,7 @@ import { userFactory } from '__factories__'
 import { render, screen, waitFor, nock, userEvent } from '__helpers__/app-tests'
 
 import { baseURL } from 'config'
-import { useSessionStore } from 'client'
+import { sessionStore } from 'client'
 
 import { AccountUser } from '.'
 
@@ -13,7 +13,7 @@ const user = userFactory.build()
 
 describe('AccountUser', () => {
   it('should be able render correctly', async () => {
-    useSessionStore.setState({
+    sessionStore.setState({
       token: 'jwt-valid-token',
       isAuthenticated: true,
       user_id: Faker.datatype.uuid(),
@@ -48,7 +48,7 @@ describe('AccountUser', () => {
   })
 
   it('should be able open popover', async () => {
-    useSessionStore.setState({
+    sessionStore.setState({
       token: 'jwt-valid-token',
       isAuthenticated: true,
       user_id: Faker.datatype.uuid(),

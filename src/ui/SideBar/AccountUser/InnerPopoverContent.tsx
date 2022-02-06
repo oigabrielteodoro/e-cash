@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiSmile, FiActivity } from 'react-icons/fi'
 import { AiOutlinePieChart, AiOutlineLogout } from 'react-icons/ai'
 
-import { clearToken } from 'client'
+import { LogOut } from './LogOut'
 
 import * as S from './InnerPopoverContent.styled'
 
 export function InnerPopoverContent() {
+  const [isLogOutVisible, setIsLogOutVisible] = useState(false)
+
   return (
     <S.Container>
       <li>
@@ -28,10 +30,15 @@ export function InnerPopoverContent() {
         </button>
       </li>
       <li>
-        <button onClick={clearToken}>
+        <button onClick={() => setIsLogOutVisible(true)}>
           <AiOutlineLogout size={20} />
           Log out
         </button>
+
+        <LogOut
+          isOpen={isLogOutVisible}
+          onClose={() => setIsLogOutVisible(false)}
+        />
       </li>
     </S.Container>
   )

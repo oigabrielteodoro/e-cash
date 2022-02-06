@@ -1,5 +1,7 @@
 import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
+import { LoadIcon } from 'ui'
+
 import * as S from './Button.styled'
 
 export type ButtonProps = {
@@ -29,7 +31,7 @@ export function Button({
       size={size}
       {...rest}
     >
-      {loading ? <S.LoadIcon /> : children}
+      {loading ? <LoadIcon /> : children}
     </S.Container>
   )
 }

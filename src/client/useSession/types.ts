@@ -8,7 +8,6 @@ export type StoreState = {
   user_id: string | null
   session_id: string | null
   isAuthenticated: boolean
-  isRefreshingToken: boolean
 }
 
 export type SessionPayload = {

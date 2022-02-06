@@ -6,11 +6,11 @@ import { theme } from 'config'
 import { TextWithAnimation } from '../WithAnimation'
 
 type Props = {
-  isOpen: boolean
-  isActive: boolean
+  $isActive: boolean
+  $isVisible: boolean
 }
 
-type NavItemIconProps = Pick<Props, 'isActive'>
+type NavItemIconProps = Pick<Props, '$isActive'>
 
 export const NavItemIcon = styled.div<NavItemIconProps>`
   transition: 300ms;
@@ -27,8 +27,8 @@ export const NavItemIcon = styled.div<NavItemIconProps>`
     color: ${theme.colors.neutral[500]};
   }
 
-  ${({ isActive }) =>
-    isActive &&
+  ${({ $isActive }) =>
+    $isActive &&
     css`
       background: ${theme.colors.white};
 
@@ -46,8 +46,8 @@ export const Container = styled(Link)<Props>`
   text-decoration: none;
   position: relative;
 
-  ${({ isOpen }) =>
-    isOpen &&
+  ${({ $isVisible }) =>
+    $isVisible &&
     css`
       width: 100%;
     `}
