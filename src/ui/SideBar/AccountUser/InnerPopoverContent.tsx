@@ -24,7 +24,7 @@ export function InnerPopoverContent() {
       <li>
         <button>
           <FiActivity size={20} />
-          Status
+          Sessions
         </button>
       </li>
       <li>

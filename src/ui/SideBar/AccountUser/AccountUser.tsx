@@ -19,7 +19,11 @@ export function AccountUser() {
   }
 
   return (
-    <Popover customWidth='20.2rem' innerContent={<InnerPopoverContent />}>
+    <Popover
+      name={user?.like_be_called}
+      customWidth='20.2rem'
+      innerContent={<InnerPopoverContent />}
+    >
       <S.Wrapper>
         <Tooltip isDisabled={isOpen} message={user?.like_be_called ?? ''}>
           <S.Container isOpen={isOpen}>
