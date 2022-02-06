@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { api, queryDefaultOptions, useSession } from 'client'
+import { api, queryDefaultOptions, useSessionStoraged } from 'client'
 
 import type { UseMeResponse } from './types'
 
@@ -9,7 +9,7 @@ export function getMe() {
 }
 
 export function useMe() {
-  const { token, user_id } = useSession()
+  const { token, user_id } = useSessionStoraged()
 
   const isEnabled = !!token && !!user_id
 

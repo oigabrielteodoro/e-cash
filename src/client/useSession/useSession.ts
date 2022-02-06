@@ -5,7 +5,7 @@ import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router'
 
 import { toast } from 'ui'
-import { DASHBOARD } from 'lib'
+import { DASHBOARD, SIGN_IN } from 'lib'
 import { ApiError, api } from 'client'
 
 import type { StoreState, SessionData, SessionPayload } from './types'
@@ -15,7 +15,6 @@ const initialState: StoreState = {
   session_id: null,
   token: null,
   isAuthenticated: false,
-  isRefreshingToken: false,
 }
 
 const useStore = create<StoreState>(
@@ -37,12 +36,6 @@ export function setUserId(user_id: string) {
   })
 }
 
-export function setIsRefreshingToken(isRefreshingToken: boolean) {
-  return useStore.setState({
-    isRefreshingToken,
-  })
-}
-
 export function clearToken() {
   useStore.setState({
     token: null,
@@ -54,10 +47,6 @@ export function getToken() {
   return useStore.getState().token
 }
 
-export function getUserId() {
-  return useStore.getState().user_id
-}
-
 export function getSession() {
   return useStore.getState()
 }
@@ -66,16 +55,11 @@ export function useIsAuthenticated() {
   return useStore((state) => state.isAuthenticated)
 }
 
-export function useToken() {
-  return useStore((state) => state.token)
-}
-
-export function useUserId() {
-  return useStore((state) => state.user_id)
+export function useSessionStoraged() {
+  return useStore((state) => state)
 }
 
 export function useSession() {
-  const store = useStore((state) => state)
   const navigate = useNavigate()
 
   const { mutateAsync: createSession, ...rest } = useMutation<
@@ -99,7 +83,7 @@ export function useSession() {
     },
     onError: (error) => {
       if (error.response?.data) {
-        toast.error(error.response.data.message)
+        toast.error(error.response?.data?.message)
       } else {
         toast.error(error.message)
       }
@@ -108,9 +92,39 @@ export function useSession() {
 
   return {
     createSession,
-    ...store,
     ...rest,
   }
 }
 
-export { useStore as useSessionStore }
+export function useLogOut() {
+  const navigate = useNavigate()
+  const { session_id } = useSessionStoraged()
+
+  const { mutateAsync: logOut, ...rest } = useMutation<
+    SessionPayload,
+    ApiError
+  >({
+    mutationFn: () => api.delete(`/sessions/${session_id}`),
+    onSuccess: () => {
+      delete api.defaults.headers.common.authorization
+
+      useStore.setState(() => initialState)
+
+      navigate(SIGN_IN)
+    },
+    onError: (error) => {
+      if (error.response?.data) {
+        toast.error(error.response?.data?.message)
+      } else {
+        toast.error(error.message)
+      }
+    },
+  })
+
+  return {
+    logOut,
+    ...rest,
+  }
+}
+
+export { useStore as sessionStore }

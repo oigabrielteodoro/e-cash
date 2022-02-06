@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 import * as S from './Popover.styled'
 
 export type PopoverProps = {
+  name?: string
   innerContent: ReactNode
   children: ReactNode
   position?: 'left' | 'right' | 'top' | 'bottom'
@@ -11,6 +12,7 @@ export type PopoverProps = {
 }
 
 export function Popover({
+  name,
   children,
   innerContent,
   position = 'top',
@@ -24,11 +26,17 @@ export function Popover({
 
   return (
     <S.Wrapper>
-      <S.Container onClick={handleOnClick}>{children}</S.Container>
+      <S.Container aria-label={name} onClick={handleOnClick}>
+        {children}
+      </S.Container>
       <AnimatePresence>
         {isOpen && (
           <>
-            <S.Popover customWidth={customWidth} position={position}>
+            <S.Popover
+              aria-label='popover'
+              customWidth={customWidth}
+              position={position}
+            >
               {innerContent}
             </S.Popover>
             <S.PopoverArrow position={position} />

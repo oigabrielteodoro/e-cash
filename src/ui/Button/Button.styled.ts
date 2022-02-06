@@ -1,21 +1,10 @@
-import styled, { keyframes, css } from 'styled-components'
-import { AiOutlineSync } from 'react-icons/ai'
+import styled, { css } from 'styled-components'
 
 import { theme } from 'config'
 
 import { ButtonProps } from '.'
 
 type ContainerProps = Required<Pick<ButtonProps, 'size' | 'variant' | 'full'>>
-
-const loading = keyframes`
-  0% {
-    transform: rotate(0)
-  }
-
-  100% {
-    transform: rotate(360deg)
-  }
-`
 
 const modifiers = {
   sm: css`
@@ -68,11 +57,4 @@ export const Container = styled.button<ContainerProps>`
     transform: scale(0.99);
     box-shadow: 0 0 0 0.4rem ${theme.shadow.blue[300]};
   }
-`
-
-export const LoadIcon = styled(AiOutlineSync).attrs({
-  size: 18,
-  'aria-label': 'loading',
-})`
-  animation: ${loading} 1.2s ease-in-out infinite;
 `

@@ -8,6 +8,7 @@ export const theme = {
   radius: {
     card: '0.5rem',
     popover: '1rem',
+    modal: '1rem',
   },
   font: {
     family: 'Barlow',
