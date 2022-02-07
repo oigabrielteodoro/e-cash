@@ -8,6 +8,7 @@ import {
   ApiError,
   FailedRequestQueue,
 } from 'client'
+import { toast } from 'ui'
 
 let isRefreshing = false
 let failedRequestQueue: FailedRequestQueue[] = []
@@ -79,6 +80,24 @@ api.interceptors.response.use(
     } else {
       return Promise.reject(error)
     }
+  },
+)
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => error,
+)
+
+api.interceptors.response.use(
+  (response) => response,
+  (error: ApiError) => {
+    const responseStatus = error?.response?.status ?? 0
+
+    if (responseStatus >= 500) {
+      toast.error('There was an error communicating with our server')
+    }
+
+    return Promise.reject(error)
   },
 )
 
