@@ -20,6 +20,10 @@ export const theme = {
       title: '3.2rem',
     },
   },
+  layers: {
+    base: 1,
+    alwaysOnTop: 2,
+  },
   colors: {
     white: '#ffffff',
     green: {

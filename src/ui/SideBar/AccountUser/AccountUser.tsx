@@ -6,7 +6,7 @@ import { useMe } from 'client'
 
 import { useIsOpen } from '../useSideBar'
 
-import { InnerPopoverContent } from './InnerPopoverContent'
+import { AccountUserOptions } from './AccountUserOptions'
 
 import * as S from './AccountUser.styled'
 
@@ -22,7 +22,8 @@ export function AccountUser() {
     <Popover
       name={user?.like_be_called}
       customWidth='20.2rem'
-      innerContent={<InnerPopoverContent />}
+      innerContent={<AccountUserOptions />}
+      wrapperStyle={{ marginTop: 'auto' }}
     >
       <S.Wrapper>
         <Tooltip isDisabled={isOpen} message={user?.like_be_called ?? ''}>

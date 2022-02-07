@@ -36,11 +36,14 @@ describe('AccountUser', () => {
   })
 
   it('should not be able render component when user is null', async () => {
-    const userMock = nock(baseURL).get('/profile').reply(401)
+    sessionStore.setState({
+      token: null,
+      isAuthenticated: false,
+      user_id: null,
+      session_id: null,
+    })
 
     render(<AccountUser />)
-
-    await waitFor(() => expect(userMock).mockToBeDone())
 
     await waitFor(() =>
       expect(screen.queryByText(user.like_be_called)).not.toBeInTheDocument(),

@@ -5,7 +5,7 @@ import { theme } from 'config'
 import type { PopoverProps } from 'ui'
 
 type Props = Required<Pick<PopoverProps, 'position' | 'customWidth'>>
-type PopoverArrowProps = Required<Pick<PopoverProps, 'position'>>
+type IndicatorProps = Required<Pick<PopoverProps, 'position'>>
 
 const modifiers = {
   top: css`
@@ -16,8 +16,9 @@ const modifiers = {
     bottom: calc(-100% - 0.8rem);
   `,
   right: css`
-    right: calc(-100% - 0.8rem);
-    top: 0;
+    left: calc(100% + 0.8rem);
+    top: 50%;
+    transform: translateY(-50%);
   `,
   left: css`
     left: calc(-100% - 0.8rem);
@@ -35,8 +36,28 @@ const arrowModifiers = {
     border-right-color: transparent;
   `,
   bottom: css``,
-  right: css``,
+  right: css`
+    top: 50%;
+    left: calc(100% + 0.4rem);
+    transform: translateY(-50%) rotate(-45deg);
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+  `,
   left: css``,
+}
+
+const fadeIn = {
+  variants: {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  },
+  initial: 'hidden',
+  animate: 'visible',
+  exit: 'hidden',
 }
 
 export const Wrapper = styled.div`
@@ -51,37 +72,25 @@ export const Container = styled.button`
   transition: 300ms;
 `
 
-export const Popover = styled(motion.div).attrs({
-  variants: {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-    },
-  },
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
-})<Props>`
+export const Popover = styled(motion.div).attrs(fadeIn)<Props>`
   width: ${({ customWidth }) => customWidth};
   border-radius: ${theme.radius.popover};
   background: ${theme.colors.white};
   box-shadow: ${theme.dropShadow.popover};
   border: 0.1rem solid ${theme.colors.neutral[200]};
   position: absolute;
-  z-index: 1;
+  z-index: ${theme.layers.base};
 
   ${({ position }) => modifiers[position]}
 `
 
-export const PopoverArrow = styled.div<PopoverArrowProps>`
+export const Indicator = styled(motion.div).attrs(fadeIn)<IndicatorProps>`
   position: absolute;
   background: ${theme.colors.white};
   height: 1rem;
   width: 1rem;
-  z-index: 2;
   border: 0.1rem solid ${theme.colors.neutral[200]};
+  z-index: ${theme.layers.alwaysOnTop};
 
   ${({ position }) => arrowModifiers[position]};
 `

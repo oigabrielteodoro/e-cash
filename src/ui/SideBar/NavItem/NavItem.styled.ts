@@ -20,7 +20,6 @@ export const NavItemIcon = styled.div<NavItemIconProps>`
   place-items: center;
   border-radius: 0.5rem;
   position: relative;
-  z-index: 1;
 
   svg {
     transition: 300ms;
