@@ -23,8 +23,16 @@ export function NavItem({ to, children, icon: Icon }: Props) {
 
   return (
     <Tooltip as='li' position='right' message={children} isDisabled={isOpen}>
-      <S.Container to={to} $isVisible={isOpen} $isActive={isActive}>
-        <S.NavItemIcon $isActive={isActive}>
+      <S.Container
+        to={to}
+        $isVisible={isOpen}
+        $isActive={isActive}
+        aria-label={children.toLowerCase()}
+      >
+        <S.NavItemIcon
+          aria-label={`${children.toLowerCase()} icon`}
+          $isActive={isActive}
+        >
           <Icon size={24} />
         </S.NavItemIcon>
         <AnimatePresence>

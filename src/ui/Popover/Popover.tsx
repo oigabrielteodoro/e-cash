@@ -10,7 +10,6 @@ export type PopoverProps = {
   position?: 'left' | 'right' | 'top' | 'bottom'
   customWidth?: string
   wrapperStyle?: CSSProperties
-  reajustOnChangeSize?: boolean
 }
 
 export function Popover({

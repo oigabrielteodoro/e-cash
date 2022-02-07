@@ -30,7 +30,7 @@ export function SideBar() {
   }
 
   return (
-    <S.Container isOpen={isOpen}>
+    <S.Container aria-label='sidebar' isOpen={isOpen}>
       <S.Content isOpen={isOpen}>
         <S.LogoContainer>
           <Logo />
@@ -38,7 +38,11 @@ export function SideBar() {
             {isOpen && <S.LogoTitle>E-cash</S.LogoTitle>}
           </AnimatePresence>
         </S.LogoContainer>
-        <S.SideBarButton isOpen={isOpen} onClick={handleOnClick}>
+        <S.SideBarButton
+          isOpen={isOpen}
+          onClick={handleOnClick}
+          aria-label='toggle sidebar'
+        >
           <FiChevronRight size={16} color={theme.colors.neutral[500]} />
         </S.SideBarButton>
         <CreatePopover />

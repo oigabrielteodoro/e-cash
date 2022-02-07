@@ -15,6 +15,10 @@ type Props = {
 export function LogOut({ isOpen, onClose }: Props) {
   const { logOut, isLoading } = useLogOut()
 
+  async function handleOnClick() {
+    await logOut()
+  }
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <S.Container>
@@ -23,7 +27,7 @@ export function LogOut({ isOpen, onClose }: Props) {
 
         <Row height='12.15rem' gutter={[16, 0]} marginTop='2rem'>
           <Col span={12}>
-            <button className='cancel' onClick={onClose}>
+            <button aria-label='cancel' className='cancel' onClick={onClose}>
               <FiX size={24} />
               Cancel
             </button>
@@ -31,8 +35,9 @@ export function LogOut({ isOpen, onClose }: Props) {
           <Col span={12}>
             <button
               className='confirm'
+              aria-label='confirm log out'
               disabled={isLoading}
-              onClick={() => logOut()}
+              onClick={handleOnClick}
             >
               {isLoading ? (
                 <LoadIcon size={24} />
