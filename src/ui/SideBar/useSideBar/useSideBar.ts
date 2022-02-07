@@ -22,3 +22,5 @@ export function setState(stateValue: boolean) {
     isOpen: stateValue,
   })
 }
+
+export { useStore as sidebarStore }
