@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { api, queryDefaultOptions, useSessionStoraged } from 'client'
+import { api, useSessionStoraged } from 'client'
 
 import type { UseMeResponse } from './types'
 
@@ -17,7 +17,6 @@ export function useMe() {
     enabled: isEnabled,
     queryKey: ['profile', { user_id }],
     queryFn: getMe,
-    ...queryDefaultOptions,
   })
 
   return {

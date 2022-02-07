@@ -1,5 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { pipe } from 'fp-ts/function'
+import { tryCatch } from 'fp-ts/TaskEither'
+import { toError } from 'fp-ts/Either'
 import * as yup from 'yup'
 
 import { useSession } from 'client'
@@ -27,7 +30,7 @@ export function useSignIn() {
   const { createSession, isLoading } = useSession()
 
   async function handleOnSubmit(data: UseFormData) {
-    await createSession(data)
+    await pipe(tryCatch(() => createSession(data), toError))()
   }
 
   return {
