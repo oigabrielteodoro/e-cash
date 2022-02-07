@@ -1,7 +1,8 @@
 import React, { useEffect, ReactElement, ReactNode } from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
+import { ToastContainer } from 'react-toastify'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import nock from 'nock'
@@ -21,12 +22,25 @@ type Props = {
   children?: ReactNode
 }
 
+const queryCache = new QueryCache()
+const defaultQueryClient = new QueryClient({
+  defaultOptions: {
+    mutations: {
+      retry: false,
+    },
+    queries: {
+      retry: false,
+    },
+  },
+  queryCache: queryCache,
+})
+
 function render(
   ui: ReactElement,
   {
     initialRoute = '/',
     initialRoutePath = '/',
-    queryClient = new QueryClient(),
+    queryClient = defaultQueryClient,
     authenticated = true,
     routePaths,
   }: Options = {},
@@ -68,6 +82,8 @@ function render(
             ))}
           </Routes>
         </MemoryRouter>
+
+        <ToastContainer />
       </QueryClientProvider>
     )
   }
@@ -80,4 +96,10 @@ function render(
 }
 
 export * from '@testing-library/react'
-export { render, userEvent, nock }
+export {
+  render,
+  userEvent,
+  nock,
+  defaultQueryClient as queryClient,
+  queryCache,
+}

@@ -22,6 +22,8 @@ export const api = axios.create({
   baseURL,
   headers: {
     authorization: `Bearer ${getToken()}`,
+    'Content-Type': 'application/json',
+    'Accept-Language': 'pt_BR',
   },
 })
 
@@ -81,11 +83,6 @@ api.interceptors.response.use(
       return Promise.reject(error)
     }
   },
-)
-
-api.interceptors.response.use(
-  (response) => response,
-  (error) => error,
 )
 
 api.interceptors.response.use(

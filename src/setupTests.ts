@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { configure } from '@testing-library/react'
 import { setLogger } from 'react-query'
 import nock from 'nock'
@@ -51,6 +50,7 @@ afterEach(() => {
 
 process.env = Object.assign(process.env, {
   VITE_API_URL: 'http://localhost',
+  DEBUG: 'nock.*',
   TZ: 'UTC',
 })
 

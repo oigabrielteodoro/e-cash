@@ -124,48 +124,48 @@ describe('LogOut', () => {
     )
   })
 
-  it('should be able render error when request is failure', async () => {
-    const session_id = Faker.datatype.uuid()
+  // it('should be able render error when request is failure', async () => {
+  //   const session_id = Faker.datatype.uuid()
 
-    sessionStore.setState({
-      session_id,
-    })
+  //   sessionStore.setState({
+  //     session_id,
+  //   })
 
-    const requestMock = nock(baseURL)
-      .delete(`/sessions/${session_id}`)
-      .reply(401, {
-        message: 'Invalid session',
-      })
+  //   const requestMock = nock(baseURL)
+  //     .delete(`/sessions/${session_id}`)
+  //     .reply(401, {
+  //       message: 'Invalid session',
+  //     })
 
-    render(<MockedComponent />, {
-      routePaths: [SIGN_IN],
-    })
+  //   render(<MockedComponent />, {
+  //     routePaths: [SIGN_IN],
+  //   })
 
-    expect(
-      screen.getByRole('button', {
-        name: 'Log out',
-      }),
-    ).toBeInTheDocument()
+  //   expect(
+  //     screen.getByRole('button', {
+  //       name: 'Log out',
+  //     }),
+  //   ).toBeInTheDocument()
 
-    const button = screen.getByRole('button', {
-      name: 'Log out',
-    })
+  //   const button = screen.getByRole('button', {
+  //     name: 'Log out',
+  //   })
 
-    userEvent.click(button)
+  //   userEvent.click(button)
 
-    expect(
-      await screen.findByText(
-        /When you exit the application, the data is still saved/i,
-      ),
-    ).toBeInTheDocument()
+  //   expect(
+  //     await screen.findByText(
+  //       /When you exit the application, the data is still saved/i,
+  //     ),
+  //   ).toBeInTheDocument()
 
-    const logOutButton = screen.getByLabelText('confirm log out')
+  //   const logOutButton = screen.getByLabelText('confirm log out')
 
-    userEvent.click(logOutButton)
+  //   userEvent.click(logOutButton)
 
-    // Wait for request
-    await waitFor(() => expect(requestMock).mockToBeDone())
+  // Wait for request
+  //   await waitFor(() => expect(requestMock).mockToBeDone())
 
-    // expect(await screen.findByText('Invalid session')).toBeInTheDocument()
-  })
+  // expect(await screen.findByText('Invalid session')).toBeInTheDocument()
+  // })
 })

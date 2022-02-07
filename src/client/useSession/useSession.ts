@@ -5,8 +5,8 @@ import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router'
 
 import { toast } from 'ui'
-import { DASHBOARD, SIGN_IN } from 'lib'
 import { ApiError, api } from 'client'
+import { DASHBOARD, SIGN_IN } from 'lib'
 
 import type { StoreState, SessionData, SessionPayload } from './types'
 
@@ -113,6 +113,7 @@ export function useLogOut() {
       navigate(SIGN_IN)
     },
     onError: (error) => {
+      console.log('error', error)
       if (error.response?.data) {
         toast.error(error.response?.data?.message)
       } else {
