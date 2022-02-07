@@ -65,7 +65,7 @@ export const Calendar = styled(motion.div).attrs({
   right: 0;
   top: calc(100% + 1.6rem);
   border: 0.1rem solid ${theme.colors.neutral[200]};
-  z-index: 2;
+  z-index: ${theme.layers.base};
 
   &::before {
     content: '';

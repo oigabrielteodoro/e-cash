@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  AiOutlinePlus,
   AiOutlineUnorderedList,
   AiOutlineBank,
   AiOutlineBarChart,
@@ -12,12 +11,12 @@ import {
 import { FiChevronRight } from 'react-icons/fi'
 import { AnimatePresence } from 'framer-motion'
 
-import { Button, Logo, Tooltip } from 'ui'
+import { Logo } from 'ui'
 import { theme } from 'config'
 
 import { NavItem } from './NavItem'
 import { AccountUser } from './AccountUser'
-import { TextWithAnimation } from './WithAnimation'
+import { CreatePopover } from './CreatePopover'
 
 import { useIsOpen, setState } from './useSideBar'
 
@@ -42,16 +41,9 @@ export function SideBar() {
         <S.SideBarButton isOpen={isOpen} onClick={handleOnClick}>
           <FiChevronRight size={16} color={theme.colors.neutral[500]} />
         </S.SideBarButton>
-        <nav>
+        <CreatePopover />
+        <S.Navigation>
           <ul>
-            <Tooltip as='li' isDisabled={isOpen} message='Create'>
-              <S.NewButtonContainer isOpen={isOpen}>
-                <Button size='sm' variant='icon'>
-                  <AiOutlinePlus size={24} />
-                  {isOpen && <TextWithAnimation>Create</TextWithAnimation>}
-                </Button>
-              </S.NewButtonContainer>
-            </Tooltip>
             <NavItem to='/dashboard' icon={AiOutlineBarChart}>
               Dashboard
             </NavItem>
@@ -74,7 +66,7 @@ export function SideBar() {
               Settings
             </NavItem>
           </ul>
-        </nav>
+        </S.Navigation>
         <AccountUser />
       </S.Content>
     </S.Container>

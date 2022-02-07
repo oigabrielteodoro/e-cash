@@ -19,7 +19,12 @@ export function Tooltip({
 }: TooltipProps) {
   return (
     <S.BaseElement as={as}>
-      {!isDisabled && <S.Container position={position}>{message}</S.Container>}
+      {!isDisabled && (
+        <S.Wrapper>
+          <S.Container position={position}>{message}</S.Container>
+          <S.Indicator position={position} />
+        </S.Wrapper>
+      )}
       {children}
     </S.BaseElement>
   )

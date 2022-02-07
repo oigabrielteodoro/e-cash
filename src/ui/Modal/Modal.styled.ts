@@ -7,7 +7,7 @@ export const Container = styled.div`
   position: fixed;
   backdrop-filter: blur(0.1rem);
   overflow: none;
-  z-index: 1;
+  z-index: ${theme.layers.base};
   top: 0;
   bottom: 0;
   left: 0;

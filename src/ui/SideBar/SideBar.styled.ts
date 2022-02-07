@@ -13,7 +13,7 @@ export const Container = styled.aside<Props>`
   position: fixed;
   width: ${theme.grid.sideBar.closed};
   transition: 500ms;
-  z-index: 1;
+  z-index: ${theme.layers.base};
 
   ${({ isOpen }) =>
     isOpen &&
@@ -39,7 +39,7 @@ export const LogoTitle = styled(TextBoldWithAnimation).attrs({
 export const SideBarButton = styled.button<Props>`
   position: absolute;
   right: calc(-2.4rem / 2);
-  top: 10rem;
+  top: 4rem;
   border: 0;
   background: ${theme.colors.white};
   border: 0.3rem solid ${theme.colors.neutral[100]};
@@ -58,27 +58,11 @@ export const SideBarButton = styled.button<Props>`
     `}
 `
 
-export const NewButtonContainer = styled.div<Props>`
-  button {
-    justify-content: flex-start;
-    padding-left: 1rem;
-
-    ${({ isOpen }) =>
-      !isOpen &&
-      css`
-        padding: 0;
-        width: 4.2rem;
-        padding-left: 0.9rem;
-      `}
-  }
-`
-
 export const Content = styled.div<Props>`
   background: ${theme.colors.neutral[100]};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
   padding: 2.4rem;
   height: 100%;
   width: 100%;
@@ -87,23 +71,24 @@ export const Content = styled.div<Props>`
   &:hover ${SideBarButton} {
     opacity: 1;
   }
+`
 
-  nav {
-    width: 100%;
+export const Navigation = styled.nav`
+  width: 100%;
+  margin-top: 3rem;
 
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-left: 0.5rem;
-      transition: 300ms;
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0.5rem;
+    transition: 300ms;
 
-      li {
-        width: 100%;
+    li {
+      width: 100%;
 
-        & + li {
-          margin-top: 2rem;
-        }
+      & + li {
+        margin-top: 2rem;
       }
     }
   }

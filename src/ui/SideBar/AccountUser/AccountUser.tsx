@@ -23,6 +23,8 @@ export function AccountUser() {
       name={user?.like_be_called}
       customWidth='20.2rem'
       innerContent={<InnerPopoverContent />}
+      wrapperStyle={{ marginTop: 'auto' }}
+      reajustOnChangeSize
     >
       <S.Wrapper>
         <Tooltip isDisabled={isOpen} message={user?.like_be_called ?? ''}>
