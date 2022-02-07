@@ -7,12 +7,14 @@ import { v4 as uuid } from 'uuid'
 import nock from 'nock'
 
 import { clearToken, setToken } from 'client'
+import { AppLayout } from 'ui'
 
 type Options = {
   initialRoute?: string
-  routePath?: string
+  initialRoutePath?: string
   authenticated?: boolean
   queryClient?: QueryClient
+  routePaths?: string[]
 }
 
 type Props = {
@@ -23,9 +25,10 @@ function render(
   ui: ReactElement,
   {
     initialRoute = '/',
-    routePath = '/',
+    initialRoutePath = '/',
     queryClient = new QueryClient(),
     authenticated = true,
+    routePaths,
   }: Options = {},
 ) {
   function Wrapper({ children }: Props) {
@@ -39,11 +42,30 @@ function render(
       }
     }, [])
 
+    function MockedPage({ title }: { title: string }) {
+      if (authenticated) {
+        return (
+          <AppLayout>
+            <AppLayout.Content>Page {title}</AppLayout.Content>
+          </AppLayout>
+        )
+      }
+
+      return <h1>Page {title}</h1>
+    }
+
     return (
       <QueryClientProvider client={queryClient}>
         <MemoryRouter initialEntries={[initialRoute]}>
           <Routes>
-            <Route path={routePath} element={children} />
+            <Route path={initialRoutePath} element={children} />
+            {routePaths?.map((routePath) => (
+              <Route
+                key={routePath}
+                path={routePath}
+                element={<MockedPage title={routePath} />}
+              />
+            ))}
           </Routes>
         </MemoryRouter>
       </QueryClientProvider>

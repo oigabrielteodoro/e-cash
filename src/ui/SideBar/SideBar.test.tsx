@@ -1,7 +1,7 @@
-import { theme } from 'config'
 import React from 'react'
 
 import { SideBar } from 'ui'
+import { theme } from 'config'
 import { render, screen, userEvent } from '__helpers__/app-tests'
 
 import { sidebarStore } from './useSideBar'

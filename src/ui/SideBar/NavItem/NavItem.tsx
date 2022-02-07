@@ -27,9 +27,12 @@ export function NavItem({ to, children, icon: Icon }: Props) {
         to={to}
         $isVisible={isOpen}
         $isActive={isActive}
-        aria-label={children}
+        aria-label={children.toLowerCase()}
       >
-        <S.NavItemIcon $isActive={isActive}>
+        <S.NavItemIcon
+          aria-label={`${children.toLowerCase()} icon`}
+          $isActive={isActive}
+        >
           <Icon size={24} />
         </S.NavItemIcon>
         <AnimatePresence>
