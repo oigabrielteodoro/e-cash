@@ -24,7 +24,6 @@ export function AccountUser() {
       customWidth='20.2rem'
       innerContent={<AccountUserOptions />}
       wrapperStyle={{ marginTop: 'auto' }}
-      reajustOnChangeSize
     >
       <S.Wrapper>
         <Tooltip isDisabled={isOpen} message={user?.like_be_called ?? ''}>
