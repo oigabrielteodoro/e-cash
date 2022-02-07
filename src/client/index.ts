@@ -9,14 +9,10 @@ import {
   FailedRequestQueue,
 } from 'client'
 import { toast } from 'ui'
+import type { DefaultOptions } from 'react-query'
 
 let isRefreshing = false
 let failedRequestQueue: FailedRequestQueue[] = []
-
-export const queryDefaultOptions = {
-  retry: false,
-  refetchOnWindowFocus: false,
-}
 
 export const api = axios.create({
   baseURL,
@@ -26,6 +22,26 @@ export const api = axios.create({
     'Accept-Language': 'pt_BR',
   },
 })
+
+export const queryConfigDefault: DefaultOptions<ApiError> = {
+  queries: {
+    retry: false,
+    refetchOnWindowFocus: false,
+    onError,
+  },
+  mutations: {
+    retry: false,
+    onError,
+  },
+}
+
+function onError(error: ApiError) {
+  if (error.response?.data) {
+    toast.error(error.response?.data?.message)
+  } else {
+    toast.error(error.message)
+  }
+}
 
 api.interceptors.response.use(
   (response) => response,

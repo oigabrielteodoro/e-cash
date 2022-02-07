@@ -1,13 +1,18 @@
 import React, { useEffect, ReactElement, ReactNode } from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
+import {
+  DefaultOptions,
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
 import { ToastContainer } from 'react-toastify'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import nock from 'nock'
 
-import { clearToken, setToken } from 'client'
+import { clearToken, queryConfigDefault, setToken } from 'client'
 import { AppLayout } from 'ui'
 
 type Options = {
@@ -24,14 +29,7 @@ type Props = {
 
 const queryCache = new QueryCache()
 const defaultQueryClient = new QueryClient({
-  defaultOptions: {
-    mutations: {
-      retry: false,
-    },
-    queries: {
-      retry: false,
-    },
-  },
+  defaultOptions: queryConfigDefault as DefaultOptions,
   queryCache: queryCache,
 })
 

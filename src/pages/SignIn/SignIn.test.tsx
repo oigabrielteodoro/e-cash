@@ -60,46 +60,45 @@ describe('SignIn', () => {
     await waitFor(() => expect(requestMock).mockToBeDone())
   })
 
-  // it('should not be able sign in when credentials is invalid', async () => {
-  //   const params = {
-  //     email: 'example@example.com',
-  //     password: '123456',
-  //   }
+  it('should not be able sign in when credentials is invalid', async () => {
+    const params = {
+      email: 'example@example.com',
+      password: '123456',
+    }
 
-  //   const requestMock = nock(baseURL).post('/sessions', params).reply(401, {
-  //     message: 'Invalid email/password',
-  //     status: 'user.credentials.invalid',
-  //   })
+    const requestMock = nock(baseURL).post('/sessions', params).reply(401, {
+      message: 'Invalid email/password',
+    })
 
-  //   render(<SignIn />, {
-  //     authenticated: false,
-  //     routePaths: [DASHBOARD],
-  //   })
+    render(<SignIn />, {
+      authenticated: false,
+      routePaths: [DASHBOARD],
+    })
 
-  //   const inputEmail = screen.getByRole('textbox', {
-  //     name: 'email',
-  //   })
+    const inputEmail = screen.getByRole('textbox', {
+      name: 'email',
+    })
 
-  //   const inputPassword = screen.getByLabelText('password')
+    const inputPassword = screen.getByLabelText('password')
 
-  //   const button = screen.getByRole('button', {
-  //     name: 'Join in account',
-  //   })
+    const button = screen.getByRole('button', {
+      name: 'Join in account',
+    })
 
-  //   expect(inputEmail).toBeInTheDocument()
-  //   expect(inputPassword).toBeInTheDocument()
+    expect(inputEmail).toBeInTheDocument()
+    expect(inputPassword).toBeInTheDocument()
 
-  //   userEvent.type(inputEmail, params.email)
-  //   userEvent.type(inputPassword, params.password)
+    userEvent.type(inputEmail, params.email)
+    userEvent.type(inputPassword, params.password)
 
-  //   userEvent.click(button)
+    userEvent.click(button)
 
-  //   await waitFor(() => expect(requestMock).mockToBeDone())
+    await waitFor(() => expect(requestMock).mockToBeDone())
 
-  //   expect(
-  //     await screen.findByText('Invalid email/password'),
-  //   ).toBeInTheDocument()
-  // })
+    expect(
+      await screen.findByText('Invalid email/password'),
+    ).toBeInTheDocument()
+  })
 
   it('should be able render field errors when form is empty', async () => {
     render(<SignIn />, {
