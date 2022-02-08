@@ -21,13 +21,7 @@ export const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   padding: 0 13rem;
-
-  background: radial-gradient(
-      91.91% 75.66% at 10.55% 47.97%,
-      rgba(48, 79, 252, 0.2) 0%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    #060c30;
+  background: ${theme.colors.blue[100]};
 `
 
 export const Title = styled(motion.h1).attrs({
@@ -41,11 +35,12 @@ export const Title = styled(motion.h1).attrs({
     duration: 3,
   },
 })`
-  font-weight: 600;
-  font-size: 6.8rem;
-  color: ${theme.colors.white};
+  font-weight: 700;
+  font-size: 5rem;
+  color: ${theme.colors.blue[500]};
   max-width: 30rem;
   margin-left: 6.5rem;
+  margin-top: 2.8rem;
 `
 
 export const QuoteText = styled(motion.p).attrs({
@@ -67,7 +62,7 @@ export const QuoteText = styled(motion.p).attrs({
 })`
   font-weight: 500;
   margin-top: 6rem;
-  color: ${theme.colors.blue[300]};
+  color: ${theme.colors.neutral[500]};
   margin-left: 10rem;
   width: 30rem;
   position: relative;
@@ -105,11 +100,11 @@ export const AccountContent = styled.div`
 
   strong {
     font-weight: 500;
-    color: ${theme.colors.white};
+    color: ${theme.colors.blue[900]};
   }
 
   span {
-    color: ${theme.colors.blue[300]};
+    color: ${theme.colors.neutral[500]};
     font-size: ${theme.font.sizes.small};
     margin-top: 0.4rem;
   }

@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { motion } from 'framer-motion'
+import { theme } from 'config'
 
 const fadeIn = keyframes`
   0% {
@@ -34,7 +35,7 @@ export const Line = styled(motion.div).attrs({
   },
 })`
   position: absolute;
-  background: #ffffff30;
+  background: ${theme.colors.neutral[200]};
   width: 0.2rem;
   left: 50%;
   transform: translateX(-50%);
@@ -56,7 +57,7 @@ export const HorizontalLine = styled(motion.div).attrs({
 })`
   height: 0.2rem;
   position: absolute;
-  background: #ffffff30;
+  background: ${theme.colors.neutral[200]};
   width: 4rem;
   top: calc(100% + 26rem);
   left: calc(100% + -2.5rem);

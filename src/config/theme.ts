@@ -11,7 +11,7 @@ export const theme = {
     modal: '1rem',
   },
   font: {
-    family: 'Barlow',
+    family: 'Inter',
     sizes: {
       disclaimer: '1.2rem',
       small: '1.4rem',
@@ -36,6 +36,7 @@ export const theme = {
       200: '#b9cfe6',
       300: '#a4b7eA',
       500: '#3a67e1',
+      900: '#060c30',
     },
     red: {
       100: '#faede9',
