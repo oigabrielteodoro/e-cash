@@ -2,6 +2,7 @@ import React from 'react'
 
 import { MdAlternateEmail } from 'react-icons/md'
 
+import { CREATE_ACCOUNT } from 'lib'
 import { Button, Input, PasswordInput } from 'ui'
 
 import { Layout } from './Layout'
@@ -45,7 +46,7 @@ export function SignIn() {
           <S.Separator>OR</S.Separator>
           <S.CreateAccountText>
             Don&apos;t have an account
-            <S.CreateAccountLink to='/register'>
+            <S.CreateAccountLink to={CREATE_ACCOUNT}>
               Sign up for free
             </S.CreateAccountLink>
           </S.CreateAccountText>

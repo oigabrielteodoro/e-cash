@@ -3,24 +3,17 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Wrapper as InputWrapper } from 'ui/Input/Input.styled'
 
+import { fadeIn } from 'ui/_animations'
+
 import { theme } from 'config'
 
-export const Container = styled(motion.section).attrs({
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
-  variants: {
-    hidden: {
-      opacity: 0,
+export const Container = styled(motion.section).attrs(() =>
+  fadeIn({
+    transition: {
+      duration: 2,
     },
-    visible: {
-      opacity: 1,
-    },
-  },
-  transition: {
-    duration: 2,
-  },
-})`
+  }),
+)`
   display: flex;
   flex-direction: column;
   justify-content: center;
