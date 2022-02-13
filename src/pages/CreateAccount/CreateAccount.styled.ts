@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-import { Wrapper as InputWrapper } from 'ui/Input/Input.styled'
-
 import { theme } from 'config'
 import { fadeIn } from 'ui/_animations'
 
@@ -26,20 +24,6 @@ export const Container = styled(motion.section).attrs(
   p {
     margin-top: 0.8rem;
     color: ${theme.colors.neutral[500]};
-  }
-`
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-top: 5rem;
-
-  ${InputWrapper} {
-    margin-top: 1.6rem;
-  }
-
-  button {
-    margin-top: 2rem;
   }
 `
 
