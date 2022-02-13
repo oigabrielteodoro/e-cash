@@ -6,24 +6,27 @@ export type Props = {
   children: ReactNode
   stepIndex?: number
   isActive?: boolean
+  isDisabled?: boolean
   status?: 'error' | 'success' | 'info'
-  onStepClick?: (element: ReactNode) => void
+  onStepClick?: () => void
 }
 
 export function Step({
-  children,
   stepIndex = 1,
   status = 'info',
   isActive = false,
+  isDisabled = false,
   onStepClick,
 }: Props) {
   function handleOnClick() {
-    onStepClick && onStepClick(children)
+    if (isDisabled) return
+
+    onStepClick && onStepClick()
   }
 
   return (
-    <S.Wrapper onClick={handleOnClick}>
-      <S.Container isActive={isActive} status={status}>
+    <S.Wrapper isDisabled={isDisabled} onClick={handleOnClick}>
+      <S.Container isActive={isActive} isDisabled={isDisabled} status={status}>
         {stepIndex}
       </S.Container>
     </S.Wrapper>

@@ -3,9 +3,8 @@ import { theme } from 'config'
 
 import type { Props as StepProps } from '.'
 
-type Props = {
-  isActive?: boolean
-} & Required<Pick<StepProps, 'status'>>
+type Props = Required<Pick<StepProps, 'status' | 'isActive' | 'isDisabled'>>
+type WrapperProps = Pick<Props, 'isDisabled'>
 
 const animation = keyframes`
   from {
@@ -17,13 +16,14 @@ const animation = keyframes`
   }
 `
 
-export const Wrapper = styled.button`
+export const Wrapper = styled.button<WrapperProps>`
   width: 100%;
   position: relative;
   background: transparent;
   border: 0;
   display: flex;
   justify-content: flex-start;
+  cursor: default;
 
   &::after {
     content: '';
@@ -35,6 +35,12 @@ export const Wrapper = styled.button`
     top: 50%;
     transform: translateY(-50%);
     animation: ${animation} 2s;
+
+    ${({ isDisabled }) =>
+      isDisabled &&
+      css`
+        background: ${theme.colors.neutral[100]};
+      `}
   }
 
   &:last-child {
@@ -47,21 +53,30 @@ export const Wrapper = styled.button`
 `
 
 export const Container = styled.div<Props>`
-  border: 0.1rem solid ${theme.colors.neutral[500]};
-  height: 3rem;
   width: 3rem;
-  border-radius: 50%;
+  height: 3rem;
   display: grid;
+  cursor: pointer;
+  transition: 300ms;
+  border-radius: 50%;
   place-items: center;
   color: ${theme.colors.neutral[500]};
-  transition: 300ms;
+  border: 0.1rem solid ${theme.colors.neutral[500]};
+
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      cursor: no-drop;
+      color: ${theme.colors.neutral[100]};
+      border-color: ${theme.colors.neutral[100]};
+    `}
 
   ${({ isActive }) =>
     isActive &&
     css`
-      border-color: transparent;
-      background: ${theme.colors.blue[500]};
-      color: ${theme.colors.white};
       font-weight: 500;
+      border-color: transparent;
+      color: ${theme.colors.white};
+      background: ${theme.colors.blue[500]};
     `}
 `
