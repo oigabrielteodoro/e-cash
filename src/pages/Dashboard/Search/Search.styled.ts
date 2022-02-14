@@ -32,7 +32,7 @@ export const Container = styled.div<Props>`
     background: transparent;
     border: 0;
     color: ${theme.colors.neutral[500]};
-    border: 0.1rem solid ${theme.colors.neutral[200]};
+    border: 0.1rem solid ${theme.colors.neutral[300]};
     border-radius: 0.5rem 0 0 0.5rem;
     transition: 300ms;
 
@@ -55,7 +55,7 @@ export const Container = styled.div<Props>`
     width: 4rem;
     height: 100%;
     background: transparent;
-    border: 0.1rem solid ${theme.colors.neutral[200]};
+    border: 0.1rem solid ${theme.colors.neutral[300]};
     border-left-color: transparent;
     border-radius: 0 0.5rem 0.5rem 0;
     display: grid;

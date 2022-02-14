@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 import { Container as AuthLayoutContainer } from 'ui/AuthLayout/AuthLayout.styled'
+import { fadeIn } from 'ui/_animations'
 
 export const Wrapper = styled.main`
   display: grid;
@@ -9,22 +10,14 @@ export const Wrapper = styled.main`
   height: 100vh;
 `
 
-export const RocketImg = styled(motion.img).attrs({
-  variants: {
-    hidden: {
-      opacity: 0,
+export const RocketImg = styled(motion.img).attrs(
+  fadeIn({
+    transition: {
+      duration: 2,
+      delay: 2.5,
     },
-    visible: {
-      opacity: 1,
-    },
-  },
-  transition: {
-    duration: 2,
-    delay: 2.5,
-  },
-  initial: 'hidden',
-  animate: 'visible',
-})`
+  }),
+)`
   position: absolute;
   left: -5rem;
   bottom: -5rem;
@@ -33,7 +26,7 @@ export const RocketImg = styled(motion.img).attrs({
 `
 
 export const Container = styled(AuthLayoutContainer)`
-  justify-content: normal;
+  justify-content: unset;
   padding: 5rem;
 
   section {

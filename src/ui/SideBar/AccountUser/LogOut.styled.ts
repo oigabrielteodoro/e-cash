@@ -36,7 +36,7 @@ export const Container = styled.div`
       background: ${theme.colors.neutral[100]};
 
       &:hover {
-        background: ${theme.colors.neutral[200]};
+        background: ${theme.colors.neutral[300]};
       }
     }
 

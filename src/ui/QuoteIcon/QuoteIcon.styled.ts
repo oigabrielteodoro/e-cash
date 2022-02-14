@@ -35,7 +35,7 @@ export const Line = styled(motion.div).attrs({
   },
 })`
   position: absolute;
-  background: ${theme.colors.neutral[200]};
+  background: ${theme.colors.neutral[300]};
   width: 0.2rem;
   left: 50%;
   transform: translateX(-50%);
@@ -57,7 +57,7 @@ export const HorizontalLine = styled(motion.div).attrs({
 })`
   height: 0.2rem;
   position: absolute;
-  background: ${theme.colors.neutral[200]};
+  background: ${theme.colors.neutral[300]};
   width: 4rem;
   top: calc(100% + 26rem);
   left: calc(100% + -2.5rem);

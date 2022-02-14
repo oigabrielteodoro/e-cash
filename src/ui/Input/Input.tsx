@@ -73,6 +73,7 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           ref={ref}
           name={name}
           aria-label={name}
+          defaultValue={defaultValue}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           {...rest}

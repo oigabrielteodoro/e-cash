@@ -17,7 +17,9 @@ export const Container = styled(motion.section).attrs(() =>
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 22rem;
+  max-width: 35rem;
+  width: 100%;
+  margin: 0 auto;
 
   h1 {
     display: inline-flex;

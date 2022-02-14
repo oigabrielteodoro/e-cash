@@ -5,8 +5,8 @@ import * as S from './Step.styled'
 export type Props = {
   children: ReactNode
   stepIndex?: number
-  isActive?: boolean
-  isDisabled?: boolean
+  active?: boolean
+  disabled?: boolean
   status?: 'error' | 'success' | 'info'
   onStepClick?: () => void
 }
@@ -14,19 +14,23 @@ export type Props = {
 export function Step({
   stepIndex = 1,
   status = 'info',
-  isActive = false,
-  isDisabled = false,
+  active = false,
+  disabled = false,
   onStepClick,
 }: Props) {
   function handleOnClick() {
-    if (isDisabled) return
+    if (disabled) return
 
     onStepClick && onStepClick()
   }
 
   return (
-    <S.Wrapper isDisabled={isDisabled} onClick={handleOnClick}>
-      <S.Container isActive={isActive} isDisabled={isDisabled} status={status}>
+    <S.Wrapper
+      aria-label={`Step Control ${stepIndex}`}
+      disabled={disabled}
+      onClick={handleOnClick}
+    >
+      <S.Container active={active} disabled={disabled} status={status}>
         {stepIndex}
       </S.Container>
     </S.Wrapper>

@@ -26,7 +26,7 @@ export function AccountUser() {
       wrapperStyle={{ marginTop: 'auto' }}
     >
       <S.Wrapper>
-        <Tooltip isDisabled={isOpen} message={user?.like_be_called ?? ''}>
+        <Tooltip disabled={isOpen} message={user?.like_be_called ?? ''}>
           <S.Container isOpen={isOpen}>
             <ShimmerEffect isLoading={isLoading} variant='image'>
               <Avatar src={user?.avatar_url} alt={user?.full_name} />

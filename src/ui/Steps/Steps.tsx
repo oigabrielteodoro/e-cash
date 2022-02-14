@@ -72,7 +72,7 @@ export function Steps({ stepRef, children, wrapperStyle }: Props) {
             ...child.props,
             stepIndex,
             key: `Step.Item.${stepIndex}`,
-            isActive: currentStepIndex === index,
+            active: currentStepIndex === index,
             onStepClick: () => setCurrentStepIndex(index),
           }
 

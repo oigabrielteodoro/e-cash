@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import { SIGN_IN } from 'lib'
-import { Steps, ForwardedSteps, StepRefProps } from 'ui'
+import { ForwardedSteps, Steps, StepRefProps } from 'ui'
 
 import { Layout } from './Layout'
 import { YourInformation } from './YourInformation'
@@ -24,10 +24,10 @@ export function CreateAccount() {
               onGoTo={() => stepsRef.current?.navigate(1)}
             />
           </Steps.Step>
-          <Steps.Step isDisabled={!email || !full_name}>
+          <Steps.Step disabled={!email || !full_name}>
             <h1>Step 2</h1>
           </Steps.Step>
-          <Steps.Step isDisabled>
+          <Steps.Step disabled>
             <h1>Step 3</h1>
           </Steps.Step>
         </ForwardedSteps>

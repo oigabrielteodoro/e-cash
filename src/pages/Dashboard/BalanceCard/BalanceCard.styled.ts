@@ -29,7 +29,7 @@ export const Card = styled.button`
   align-items: flex-start;
   border: 0;
   transition: 300ms;
-  border: 0.1rem solid ${theme.colors.neutral[200]};
+  border: 0.1rem solid ${theme.colors.neutral[300]};
   transition: 300ms;
 
   &:hover {

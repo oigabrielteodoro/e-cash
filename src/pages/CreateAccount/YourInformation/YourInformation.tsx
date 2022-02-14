@@ -33,7 +33,7 @@ export function YourInformation({ onGoTo, onGoNext }: Props) {
   const { email, full_name } = useCreateAccount()
 
   const {
-    formState: { errors },
+    formState: { errors, touchedFields },
     handleSubmit,
     register,
   } = useForm<FormParams>({
@@ -42,7 +42,13 @@ export function YourInformation({ onGoTo, onGoNext }: Props) {
       email,
       full_name,
     },
+    shouldFocusError: true,
   })
+
+  const isFilled = !!email || !!full_name
+  const isErrored = !!errors?.email || !!errors?.full_name
+  const isTouched = touchedFields.email || touchedFields.full_name
+  const isDisabled = (!isTouched && !isFilled) || isErrored
 
   function handleOnSubmit(data: FormParams) {
     setState(data)
@@ -63,6 +69,7 @@ export function YourInformation({ onGoTo, onGoNext }: Props) {
           icon={MdAlternateEmail}
           placeholder='example@mail.com'
           error={errors.email?.message}
+          defaultValue={email}
           {...register('email')}
         />
         <Input
@@ -71,10 +78,11 @@ export function YourInformation({ onGoTo, onGoNext }: Props) {
           icon={FiUser}
           placeholder='Ex: John Doe'
           error={errors.full_name?.message}
+          defaultValue={full_name}
           {...register('full_name')}
         />
-        <Button size='lg' type='submit'>
-          Continue
+        <Button size='lg' type='submit' disabled={isDisabled}>
+          Confirm your information
         </Button>
       </S.Form>
     </>

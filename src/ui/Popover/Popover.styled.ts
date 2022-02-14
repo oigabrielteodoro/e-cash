@@ -77,7 +77,7 @@ export const Popover = styled(motion.div).attrs(fadeIn)<Props>`
   border-radius: ${theme.radius.popover};
   background: ${theme.colors.white};
   box-shadow: ${theme.dropShadow.popover};
-  border: 0.1rem solid ${theme.colors.neutral[200]};
+  border: 0.1rem solid ${theme.colors.neutral[300]};
   position: absolute;
   z-index: ${theme.layers.base};
 
@@ -89,7 +89,7 @@ export const Indicator = styled(motion.div).attrs(fadeIn)<IndicatorProps>`
   background: ${theme.colors.white};
   height: 1rem;
   width: 1rem;
-  border: 0.1rem solid ${theme.colors.neutral[200]};
+  border: 0.1rem solid ${theme.colors.neutral[300]};
   z-index: ${theme.layers.alwaysOnTop};
 
   ${({ position }) => arrowModifiers[position]};

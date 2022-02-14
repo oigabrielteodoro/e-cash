@@ -44,17 +44,25 @@ export const Container = styled.button<ContainerProps>`
   font-size: ${theme.font.sizes.paragraph};
   transition: 300ms;
   width: 100%;
+  border: 0.1rem solid transparent;
 
   ${({ size }) => modifiers[size]}
   ${({ variant }) => variants[variant]}
-
-  &:disabled {
-    opacity: 0.8;
-  }
 
   &:hover {
     filter: brightness(0.9);
     transform: scale(0.99);
     box-shadow: 0 0 0 0.4rem ${theme.shadow.blue[300]};
+  }
+
+  &:disabled {
+    cursor: no-drop;
+    color: ${theme.colors.neutral[500]};
+    background: ${theme.colors.neutral[200]};
+    border-color: ${theme.colors.neutral[300]};
+
+    &:hover {
+      box-shadow: 0 0 0 0.4rem ${theme.shadow.neutral[500]};
+    }
   }
 `
