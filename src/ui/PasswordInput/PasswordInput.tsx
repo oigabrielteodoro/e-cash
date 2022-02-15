@@ -46,3 +46,5 @@ const ForwardPasswordInput: ForwardRefRenderFunction<HTMLInputElement, Props> =
   }
 
 export const PasswordInput = forwardRef(ForwardPasswordInput)
+
+export * from './PasswordStrength'

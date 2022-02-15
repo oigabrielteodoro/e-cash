@@ -3,20 +3,16 @@ import create from 'zustand'
 type StoreState = {
   email?: string
   full_name?: string
+  password?: string
+  password_confirmation?: string
 }
 
-const initialState: StoreState = {
-  email: undefined,
-  full_name: undefined,
-}
+const initialState: StoreState = {}
 
 const useStore = create<StoreState>(() => initialState)
 
-export function setState({ email, full_name }: StoreState) {
-  useStore.setState({
-    email,
-    full_name,
-  })
+export function setState(state: StoreState) {
+  useStore.setState(state)
 }
 
 export function useCreateAccount() {

@@ -12,8 +12,7 @@ import { setState, useCreateAccount } from '../useCreateAccount'
 import * as S from './YourInformation.styled'
 
 type Props = {
-  onGoTo: () => void
-  onGoNext: () => void
+  onSubmit: () => void
 }
 
 type FormParams = {
@@ -29,7 +28,7 @@ const schema = yup.object().shape({
   full_name: yup.string().required('Full name is a required field'),
 })
 
-export function YourInformation({ onGoTo, onGoNext }: Props) {
+export function YourInformation({ onSubmit }: Props) {
   const { email, full_name } = useCreateAccount()
 
   const {
@@ -52,26 +51,17 @@ export function YourInformation({ onGoTo, onGoNext }: Props) {
 
   function handleOnSubmit(data: FormParams) {
     setState(data)
-    onGoNext()
+    onSubmit()
   }
 
   return (
     <>
-      <strong onClick={onGoTo}>Your information</strong>
+      <strong>Your information</strong>
       <p>
         Tell us a little more about yourself! That way we will be able to create
         a better relationship 😄
       </p>
       <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
-        <Input
-          id='email'
-          label='Email'
-          icon={MdAlternateEmail}
-          placeholder='example@mail.com'
-          error={errors.email?.message}
-          defaultValue={email}
-          {...register('email')}
-        />
         <Input
           id='full_name'
           label='Name'
@@ -81,6 +71,16 @@ export function YourInformation({ onGoTo, onGoNext }: Props) {
           defaultValue={full_name}
           {...register('full_name')}
         />
+        <Input
+          id='email'
+          label='Email'
+          icon={MdAlternateEmail}
+          placeholder='example@mail.com'
+          error={errors.email?.message}
+          defaultValue={email}
+          {...register('email')}
+        />
+
         <Button size='lg' type='submit' disabled={isDisabled}>
           Confirm your information
         </Button>
