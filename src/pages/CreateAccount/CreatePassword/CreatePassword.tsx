@@ -15,11 +15,10 @@ type Props = {
 
 type FormParams = {
   password: string
-  password_confirmation: string
 }
 
 export function CreatePassword({ onSubmit }: Props) {
-  const { password = '', password_confirmation } = useCreateAccount()
+  const { password = '' } = useCreateAccount()
 
   const {
     register,
@@ -31,22 +30,19 @@ export function CreatePassword({ onSubmit }: Props) {
     shouldFocusError: true,
     defaultValues: {
       password,
-      password_confirmation,
     },
   })
 
   const passwordValue = watch('password', password)
 
-  const isFilled = !!password || !!password_confirmation
-  const isErrored = !!errors?.password || !!errors?.password_confirmation
-  const isTouched =
-    touchedFields.password || touchedFields.password_confirmation
+  const isFilled = !!password
+  const isErrored = !!errors?.password
+  const isTouched = touchedFields.password
   const isDisabled = (!isTouched && !isFilled) || isErrored
 
-  function handleOnSubmit({ password, password_confirmation }: FormParams) {
+  function handleOnSubmit({ password }: FormParams) {
     setState({
       password,
-      password_confirmation,
     })
     onSubmit()
   }
@@ -63,12 +59,6 @@ export function CreatePassword({ onSubmit }: Props) {
           {...register('password')}
         />
         <PasswordStrength value={passwordValue} />
-        <PasswordInput
-          label='Confirm password'
-          placeholder='Confirm secret password'
-          error={errors.password_confirmation?.message}
-          {...register('password_confirmation')}
-        />
         <Button size='lg' type='submit' disabled={isDisabled}>
           Create your password
         </Button>
@@ -87,8 +77,4 @@ const schema = yup.object().shape({
     .matches(/[0-9]/, 'Password must have a number')
     .matches(/[a-zA-Z]/, 'Password must have a text')
     .matches(/[^A-Z a-z0-9]/, 'Password must have a symbol'),
-  password_confirmation: yup
-    .string()
-    .required('Confirm password is a required field')
-    .oneOf([yup.ref('password'), null], 'Password must match'),
 })

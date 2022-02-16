@@ -4,7 +4,6 @@ type StoreState = {
   email?: string
   full_name?: string
   password?: string
-  password_confirmation?: string
 }
 
 const initialState: StoreState = {}
