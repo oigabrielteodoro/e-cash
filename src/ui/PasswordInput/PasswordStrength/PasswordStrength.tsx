@@ -2,6 +2,7 @@ import React from 'react'
 
 import { theme } from 'config'
 
+import { Checkbox } from 'ui'
 import * as S from './PasswordStrength.styled'
 
 type Props = {
@@ -28,27 +29,63 @@ export function PasswordStrength({ value }: Props) {
 
   const requirementValue = getRequirementValue(value)
   const passwordStrength = getPasswordStrength(requirementValue)
+  const {
+    passwordHasMinLength,
+    passwordHasNumeric,
+    passwordHasText,
+    passwordHasUppercase,
+    passwordHasLowercase,
+    passwordHasSpecialCharacters,
+  } = getFilledRequirements(value)
+
+  const { color, text } = modifiers[passwordStrength]
+
+  const hasSpecialCharacters = !!passwordHasSpecialCharacters
+  const hasUppercaseAndLowercase =
+    !!passwordHasUppercase && !!passwordHasLowercase
+  const hasMinLengthAndNumeric =
+    !!passwordHasMinLength && !!passwordHasNumeric && !!passwordHasText
 
   return (
     <S.Container>
-      <S.TextContainer color={modifiers[passwordStrength].color}>
+      <S.TextContainer color={color}>
         <span>Password strength</span>
-        <span>{requirementValue > 0 && modifiers[passwordStrength].text}</span>
+        <span>{requirementValue > 0 && text}</span>
       </S.TextContainer>
 
-      <ul>
+      <S.LevelList>
         {requirements.map((requirement) => {
           const isActive = requirementValue > requirement
 
           return (
-            <S.LevelItem
-              active={isActive}
-              color={modifiers[passwordStrength].color}
-              key={requirement}
-            />
+            <S.LevelItem active={isActive} color={color} key={requirement} />
           )
         })}
-      </ul>
+      </S.LevelList>
+
+      <S.RequirementList>
+        <li>
+          <Checkbox
+            checked={hasMinLengthAndNumeric}
+            label='Minimum 6 characters, numbers and letters;'
+            readOnly
+          />
+        </li>
+        <li>
+          <Checkbox
+            checked={hasUppercaseAndLowercase}
+            label='Uppercase and lowercase letters;'
+            readOnly
+          />
+        </li>
+        <li>
+          <Checkbox
+            checked={hasSpecialCharacters}
+            label='Special characters (!@#$%ˆ&*...)'
+            readOnly
+          />
+        </li>
+      </S.RequirementList>
     </S.Container>
   )
 }
@@ -60,7 +97,7 @@ function getFilledRequirements(value: string) {
     passwordHasNumeric: value.match(/[0-9]/),
     passwordHasText: value.match(/[a-zA-Z]/),
     passwordHasMinLength: value.length >= 6,
-    passwordHasSymbols: value.match(/[^A-Z a-z0-9]/),
+    passwordHasSpecialCharacters: value.match(/[^A-Z a-z0-9]/),
   }
 }
 
