@@ -1,16 +1,13 @@
 import React, {
-  useState,
   InputHTMLAttributes,
   ComponentType,
   forwardRef,
   ForwardRefRenderFunction,
-  FocusEvent,
 } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
-
-import capitalize from 'lodash/capitalize'
-
 import type { IconBaseProps } from 'react-icons'
+
+import { useInput } from 'hooks'
 
 import * as S from './Input.styled'
 
@@ -36,28 +33,19 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   },
   ref,
 ) => {
-  const [isFilled, setIsFilled] = useState(!!defaultValue)
-  const [isFocused, setIsFocused] = useState(false)
-
-  const isErrored = !!error
-
-  const errorMessage = error ? capitalize(error) : ''
-
-  function handleOnBlur(event: FocusEvent<HTMLInputElement>) {
-    event.preventDefault()
-
-    setIsFocused(false)
-    setIsFilled(!!event.target.value)
-
-    onBlur && onBlur(event)
-  }
-
-  function handleOnFocus(event: FocusEvent<HTMLInputElement>) {
-    setIsFocused(true)
-    setIsFilled(!!event.target.value)
-
-    onFocus && onFocus(event)
-  }
+  const {
+    isFilled,
+    isFocused,
+    isErrored,
+    errorMessage,
+    handleOnBlur,
+    handleOnFocus,
+  } = useInput({
+    defaultValue,
+    error,
+    onBlur,
+    onFocus,
+  })
 
   return (
     <S.Wrapper>
