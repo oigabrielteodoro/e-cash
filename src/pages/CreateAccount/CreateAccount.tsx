@@ -5,8 +5,8 @@ import { SIGN_IN } from 'lib'
 import { ForwardedSteps, Steps, StepRefProps } from 'ui'
 
 import { Layout } from './Layout'
+import { Contact } from './Contact'
 import { CreatePassword } from './CreatePassword'
-import { YourInformation } from './YourInformation'
 
 import * as S from './CreateAccount.styled'
 import { useCreateAccount } from './useCreateAccount'
@@ -20,7 +20,7 @@ export function CreateAccount() {
       <S.Container>
         <ForwardedSteps ref={stepsRef}>
           <Steps.Step>
-            <YourInformation onSubmit={() => stepsRef.current?.goNext()} />
+            <Contact onSubmit={() => stepsRef.current?.goNext()} />
           </Steps.Step>
           <Steps.Step disabled={!email || !full_name}>
             <CreatePassword onSubmit={() => stepsRef.current?.goNext()} />

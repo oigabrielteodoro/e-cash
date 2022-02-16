@@ -9,7 +9,7 @@ import { Button, Input } from 'ui'
 
 import { setState, useCreateAccount } from '../useCreateAccount'
 
-import * as S from './YourInformation.styled'
+import * as S from './Contact.styled'
 
 type Props = {
   onSubmit: () => void
@@ -28,7 +28,7 @@ const schema = yup.object().shape({
   full_name: yup.string().required('Full name is a required field'),
 })
 
-export function YourInformation({ onSubmit }: Props) {
+export function Contact({ onSubmit }: Props) {
   const { email, full_name } = useCreateAccount()
 
   const {
