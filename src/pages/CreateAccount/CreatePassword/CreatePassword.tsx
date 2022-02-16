@@ -5,7 +5,11 @@ import * as yup from 'yup'
 
 import { Button, PasswordInput, PasswordStrength } from 'ui'
 
-import { setState, useCreateAccount } from '../useCreateAccount'
+import {
+  CreateAccountStoreState,
+  setState,
+  useCreateAccount,
+} from '../useCreateAccount'
 
 import * as S from './CreatePassword.styled'
 
@@ -13,9 +17,7 @@ type Props = {
   onSubmit: () => void
 }
 
-type FormParams = {
-  password: string
-}
+type FormParams = Required<Pick<CreateAccountStoreState, 'password'>>
 
 export function CreatePassword({ onSubmit }: Props) {
   const { password = '' } = useCreateAccount()
@@ -24,7 +26,7 @@ export function CreatePassword({ onSubmit }: Props) {
     register,
     watch,
     handleSubmit,
-    formState: { errors, touchedFields },
+    formState: { errors },
   } = useForm<FormParams>({
     resolver: yupResolver(schema),
     shouldFocusError: true,
@@ -35,10 +37,7 @@ export function CreatePassword({ onSubmit }: Props) {
 
   const passwordValue = watch('password', password)
 
-  const isFilled = !!password
-  const isErrored = !!errors?.password
-  const isTouched = touchedFields.password
-  const isDisabled = (!isTouched && !isFilled) || isErrored
+  const isDisabled = !!errors?.password
 
   function handleOnSubmit({ password }: FormParams) {
     setState({

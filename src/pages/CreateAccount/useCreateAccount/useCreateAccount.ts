@@ -1,16 +1,18 @@
 import create from 'zustand'
 
-type StoreState = {
+export type CreateAccountStoreState = {
   email?: string
   full_name?: string
   password?: string
+  monthly_income?: string
+  financial_objective?: string
 }
 
-const initialState: StoreState = {}
+const initialState: CreateAccountStoreState = {}
 
-const useStore = create<StoreState>(() => initialState)
+const useStore = create<CreateAccountStoreState>(() => initialState)
 
-export function setState(state: StoreState) {
+export function setState(state: CreateAccountStoreState) {
   useStore.setState(state)
 }
 

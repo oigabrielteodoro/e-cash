@@ -10,10 +10,11 @@ import { CreatePassword } from './CreatePassword'
 
 import * as S from './CreateAccount.styled'
 import { useCreateAccount } from './useCreateAccount'
+import { Profile } from './Profile'
 
 export function CreateAccount() {
   const stepsRef = useRef<StepRefProps>(null)
-  const { email, full_name } = useCreateAccount()
+  const { email, full_name, password } = useCreateAccount()
 
   return (
     <Layout>
@@ -25,8 +26,11 @@ export function CreateAccount() {
           <Steps.Step disabled={!email || !full_name}>
             <CreatePassword onSubmit={() => stepsRef.current?.goNext()} />
           </Steps.Step>
-          <Steps.Step disabled>
-            <h1>Step 3</h1>
+          <Steps.Step disabled={!password}>
+            <Profile />
+          </Steps.Step>
+          <Steps.Step disabled={!password}>
+            <h1>Avatar</h1>
           </Steps.Step>
         </ForwardedSteps>
 

@@ -7,7 +7,11 @@ import * as yup from 'yup'
 
 import { Button, Input } from 'ui'
 
-import { setState, useCreateAccount } from '../useCreateAccount'
+import {
+  CreateAccountStoreState,
+  setState,
+  useCreateAccount,
+} from '../useCreateAccount'
 
 import * as S from './Contact.styled'
 
@@ -15,10 +19,7 @@ type Props = {
   onSubmit: () => void
 }
 
-type FormParams = {
-  email: string
-  full_name: string
-}
+type FormParams = Required<Pick<CreateAccountStoreState, 'email' | 'full_name'>>
 
 const schema = yup.object().shape({
   email: yup
