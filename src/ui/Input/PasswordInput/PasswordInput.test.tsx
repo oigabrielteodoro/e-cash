@@ -1,24 +1,24 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-import { PasswordInput } from 'ui'
+import { Input } from 'ui'
 import { render, screen, userEvent } from '__helpers__/app-tests'
 
-function WithForm() {
+function MockedComponent() {
   const { register } = useForm()
 
-  return <PasswordInput label='Password' {...register('password')} />
+  return <Input.Password label='Password' {...register('password')} />
 }
 
 describe('PasswordInput', () => {
   it('should be able render correctly', async () => {
-    render(<WithForm />)
+    render(<MockedComponent />)
 
     expect(screen.getByLabelText('password')).toBeInTheDocument()
   })
 
   it('should be able show and hide password', async () => {
-    render(<WithForm />)
+    render(<MockedComponent />)
 
     const input = screen.getByLabelText('password')
     const button = screen.getByRole('button', {

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { Wrapper as InputWrapper } from 'ui/Input/Input.styled'
-import { Container as PasswordStrengthContainer } from 'ui/PasswordInput/PasswordStrength/PasswordStrength.styled'
+import { Container as PasswordStrengthContainer } from 'ui/Input/PasswordInput/PasswordStrength/PasswordStrength.styled'
 
 export const Form = styled.form`
   display: flex;

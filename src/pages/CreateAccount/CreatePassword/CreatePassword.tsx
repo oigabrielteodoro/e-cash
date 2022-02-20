@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import { Button, PasswordInput, PasswordStrength } from 'ui'
+import { Button, Input, PasswordStrength } from 'ui'
 
 import {
   CreateAccountStoreState,
@@ -51,7 +51,7 @@ export function CreatePassword({ onSubmit }: Props) {
       <strong>Create password</strong>
       <p>Create a password strong enough for anyone to access your account</p>
       <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
-        <PasswordInput
+        <Input.Password
           label='Password'
           placeholder='Secret password'
           error={errors.password?.message}

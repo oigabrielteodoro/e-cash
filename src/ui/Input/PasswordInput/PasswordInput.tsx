@@ -42,7 +42,7 @@ const ForwardPasswordInput: ForwardRefRenderFunction<HTMLInputElement, Props> =
       )
     }
 
-    return <Input type={type} ref={ref} icon={ControlButton} {...rest} />
+    return <Input ref={ref} type={type} icon={ControlButton} {...rest} />
   }
 
 export const PasswordInput = forwardRef(ForwardPasswordInput)

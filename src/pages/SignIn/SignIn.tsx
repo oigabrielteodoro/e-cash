@@ -3,7 +3,7 @@ import React from 'react'
 import { MdAlternateEmail } from 'react-icons/md'
 
 import { CREATE_ACCOUNT } from 'lib'
-import { Button, Input, PasswordInput } from 'ui'
+import { Button, Input } from 'ui'
 
 import { Layout } from './Layout'
 
@@ -30,7 +30,7 @@ export function SignIn() {
             error={errors.email?.message}
             {...register('email')}
           />
-          <PasswordInput
+          <Input.Password
             id='password'
             label='Password'
             placeholder='Secret password'

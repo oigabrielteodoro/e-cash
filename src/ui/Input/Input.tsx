@@ -4,16 +4,19 @@ import React, {
   ComponentType,
   ForwardRefRenderFunction,
   ForwardRefExoticComponent,
+  ForwardedRef,
 } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import type { IconBaseProps } from 'react-icons'
 
 import { useInput } from 'hooks'
 import { AmountInput } from './Amount'
+import { PasswordInput } from './PasswordInput'
 
 import * as S from './Input.styled'
 
 export type InputProps = {
+  ref?: ForwardedRef<HTMLInputElement>
   label: string
   error?: string
   variant?: 'primary' | 'secondary'
@@ -22,6 +25,7 @@ export type InputProps = {
 
 type InputCompoundComponet = {
   Amount: typeof AmountInput
+  Password: typeof PasswordInput
 } & ForwardRefExoticComponent<InputProps>
 
 const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
@@ -87,3 +91,7 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 export const Input = forwardRef(ForwardInput) as InputCompoundComponet
 
 Input.Amount = AmountInput
+
+Input.Password = PasswordInput
+
+export { PasswordStrength } from './PasswordInput'
