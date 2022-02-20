@@ -9,6 +9,11 @@ type Props = {
   isOpen: boolean
 }
 
+export const Wrapper = styled.fieldset`
+  border: 0;
+  position: relative;
+`
+
 export const Container = styled(InputContainer)<Props>`
   ${({ isOpen }) =>
     isOpen &&

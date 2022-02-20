@@ -6,11 +6,11 @@ import { ForwardedSteps, Steps, StepRefProps } from 'ui'
 
 import { Layout } from './Layout'
 import { Contact } from './Contact'
+import { Profile } from './Profile'
 import { CreatePassword } from './CreatePassword'
+import { useCreateAccount } from './useCreateAccount'
 
 import * as S from './CreateAccount.styled'
-import { useCreateAccount } from './useCreateAccount'
-import { Profile } from './Profile'
 
 export function CreateAccount() {
   const stepsRef = useRef<StepRefProps>(null)

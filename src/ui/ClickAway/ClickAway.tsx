@@ -18,11 +18,11 @@ export function ClickAway({
   useEffect(() => {
     function handleOnClick(event: MouseEvent) {
       if (isOpen && ref.current) {
-        const isIgnored = !!ignoredRefs.find(
-          (ignoredRef) => ignoredRef?.current === event.target,
+        const isIgnored = !!ignoredRefs.find((ignoredRef) =>
+          hasBlocked(ignoredRef, event.target),
         )
 
-        if (!ref.current.contains(event.target as Node) && !isIgnored) {
+        if (!hasBlocked(ref, event.target) && !isIgnored) {
           onClose()
         }
       }
@@ -39,4 +39,8 @@ export function ClickAway({
     ...children.props,
     ref,
   })
+}
+
+function hasBlocked(ref: RefObject<HTMLElement>, target: EventTarget | null) {
+  return ref.current?.contains(target as Node)
 }

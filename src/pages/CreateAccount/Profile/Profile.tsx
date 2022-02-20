@@ -1,5 +1,4 @@
 import React from 'react'
-import { FiDollarSign } from 'react-icons/fi'
 import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -35,15 +34,10 @@ export function Profile() {
   })
 
   const {
-    formState: { errors, touchedFields },
+    formState: { errors },
+    register,
     handleSubmit,
   } = form
-
-  const isFilled = !!monthly_income || !!financial_objective
-  const isErrored = !!errors?.monthly_income || !!errors?.financial_objective
-  const isTouched =
-    touchedFields.monthly_income || touchedFields.financial_objective
-  const isDisabled = (!isTouched && !isFilled) || isErrored
 
   async function handleOnSubmit(params: FormParams) {
     console.log(params)
@@ -56,12 +50,11 @@ export function Profile() {
       <strong>A little more about you...</strong>
       <p>We need a little more information to boost your financial life</p>
       <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
-        <Input
-          name='monthly_income'
+        <Input.Amount
           label='Monthly income'
-          icon={FiDollarSign}
           placeholder='Ex. R$ 1.000,00'
           error={errors.monthly_income?.message}
+          {...register('monthly_income')}
         />
         <Select
           name='financial_objective'
@@ -72,9 +65,7 @@ export function Profile() {
           <Select.Option value='teste_1'>Teste 1</Select.Option>
           <Select.Option value='teste_2'>Teste 2</Select.Option>
         </Select>
-        <Button size='lg' disabled={isDisabled}>
-          Confirm your profile
-        </Button>
+        <Button size='lg'>Confirm your profile</Button>
       </S.Form>
     </FormProvider>
   )

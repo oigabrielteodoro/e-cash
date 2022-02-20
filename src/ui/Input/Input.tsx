@@ -1,13 +1,15 @@
 import React, {
+  forwardRef,
   InputHTMLAttributes,
   ComponentType,
-  forwardRef,
   ForwardRefRenderFunction,
+  ForwardRefExoticComponent,
 } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import type { IconBaseProps } from 'react-icons'
 
 import { useInput } from 'hooks'
+import { AmountInput } from './Amount'
 
 import * as S from './Input.styled'
 
@@ -17,6 +19,10 @@ export type InputProps = {
   variant?: 'primary' | 'secondary'
   icon: ComponentType<IconBaseProps>
 } & InputHTMLAttributes<HTMLInputElement>
+
+type InputCompoundComponet = {
+  Amount: typeof AmountInput
+} & ForwardRefExoticComponent<InputProps>
 
 const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   {
@@ -78,4 +84,6 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   )
 }
 
-export const Input = forwardRef(ForwardInput)
+export const Input = forwardRef(ForwardInput) as InputCompoundComponet
+
+Input.Amount = AmountInput

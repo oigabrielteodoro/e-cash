@@ -1,10 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { FiTag } from 'react-icons/fi'
+import Faker from '@faker-js/faker'
 
 import { render, screen, userEvent } from '__helpers__/app-tests'
 
-import { Input } from './Input'
+import { toDecimal } from 'lib'
+import { AmountInput } from './AmountInput'
 
 type Props = {
   error?: string
@@ -13,10 +14,10 @@ type Props = {
 function MockedComponent({ error }: Props) {
   const { register } = useForm()
 
-  return <Input label='Name' error={error} icon={FiTag} {...register('name')} />
+  return <AmountInput label='Value' error={error} {...register('value')} />
 }
 
-describe('Input', () => {
+describe('AmountInput', () => {
   it('should be able render correctly', () => {
     render(<MockedComponent />)
 
@@ -24,21 +25,25 @@ describe('Input', () => {
   })
 
   it('should be able type text correctly', async () => {
+    const valueToType = Faker.datatype.number()
+
     render(<MockedComponent />)
 
     const input = screen.getByRole('textbox')
 
     expect(input).toBeInTheDocument()
 
-    userEvent.type(input, 'John Doe')
+    userEvent.type(input, valueToType.toString())
 
-    expect(await screen.findByRole('textbox')).toHaveValue('John Doe')
+    expect(await screen.findByRole('textbox')).toHaveValue(
+      toDecimal(valueToType),
+    )
   })
 
   it('should be able render error message', async () => {
-    render(<MockedComponent error='Name is required' />)
+    render(<MockedComponent error='Value is required' />)
 
     expect(screen.getByRole('textbox')).toBeInTheDocument()
-    expect(screen.getByText('Name is required')).toBeInTheDocument()
+    expect(screen.getByText('Value is required')).toBeInTheDocument()
   })
 })

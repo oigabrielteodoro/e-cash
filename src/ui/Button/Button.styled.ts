@@ -50,7 +50,7 @@ export const Container = styled.button<ContainerProps>`
   ${({ variant }) => variants[variant]}
 
   &:hover {
-    filter: brightness(0.9);
+    opacity: 0.9;
     transform: scale(0.99);
     box-shadow: 0 0 0 0.4rem ${theme.shadow.blue[300]};
   }

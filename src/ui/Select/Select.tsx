@@ -4,6 +4,7 @@ import React, {
   useEffect,
   cloneElement,
   ReactElement,
+  ChangeEvent,
 } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import { FiChevronDown } from 'react-icons/fi'
@@ -38,6 +39,7 @@ export function Select({
   onFocus,
   ...rest
 }: SelectProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const {
@@ -55,15 +57,12 @@ export function Select({
   })
 
   const [isOpen, setIsOpen] = useState(false)
-  const { register, unregister, setValue } = useFormContext()
+  const [filteredOptions, setFilteredOptions] = useState(toArray(children))
+  const { register, setValue } = useFormContext()
 
   useEffect(() => {
     register(name)
-
-    return () => unregister(name)
-  }, [name, register, unregister])
-
-  const options = toArray(children)
+  }, [name, register])
 
   function handleOnClick(value = '', children = '') {
     setValue(name, value)
@@ -75,47 +74,65 @@ export function Select({
     setIsOpen(false)
   }
 
+  function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
+    const allOptions = toArray(children)
+    const inputValue = event.currentTarget.value
+
+    if (inputValue?.length === 0) {
+      setValue(name, '')
+    }
+
+    setFilteredOptions(
+      allOptions.filter((child) =>
+        child.props.children.toLowerCase().includes(inputValue.toLowerCase()),
+      ),
+    )
+  }
+
   return (
-    <InputStyled.Wrapper>
-      <label htmlFor={id}>{label}</label>
-      <S.Container
-        variant={variant}
-        isOpen={isOpen}
-        isFilled={isFilled}
-        isFocused={isFocused}
-        isErrored={isErrored}
-        onClick={() => setIsOpen(true)}
-      >
-        <input
-          id={id}
-          ref={inputRef}
-          name={name}
-          aria-label={name}
-          defaultValue={defaultValue}
-          onBlur={handleOnBlur}
-          onFocus={handleOnFocus}
-          autoComplete='off'
-          {...rest}
-        />
+    <S.Wrapper>
+      <InputStyled.Wrapper as='div'>
+        <label htmlFor={id}>{label}</label>
+        <S.Container
+          ref={containerRef}
+          variant={variant}
+          isOpen={isOpen}
+          isFilled={isFilled}
+          isFocused={isFocused}
+          isErrored={isErrored}
+          onClick={() => setIsOpen(true)}
+        >
+          <input
+            id={id}
+            ref={inputRef}
+            name={name}
+            aria-label={name}
+            defaultValue={defaultValue}
+            onBlur={handleOnBlur}
+            onFocus={handleOnFocus}
+            onChange={handleOnChange}
+            autoComplete='off'
+            {...rest}
+          />
 
-        <FiChevronDown size={20} />
-      </S.Container>
-      {error && (
-        <InputStyled.ErrorContainer>
-          <AiOutlineExclamationCircle size={18} />
-          <span>{errorMessage}</span>
-        </InputStyled.ErrorContainer>
-      )}
-
+          <FiChevronDown size={20} />
+        </S.Container>
+        {error && !isOpen && (
+          <InputStyled.ErrorContainer>
+            <AiOutlineExclamationCircle size={18} />
+            <span>{errorMessage}</span>
+          </InputStyled.ErrorContainer>
+        )}
+      </InputStyled.Wrapper>
       <AnimatePresence>
         {isOpen && (
           <ClickAway
-            ignoredRefs={[inputRef]}
             isOpen={isOpen}
+            ignoredRefs={[containerRef]}
             onClose={() => setIsOpen(false)}
           >
             <S.Dropdown>
-              {options.map((child) => {
+              {filteredOptions.map((child) => {
                 const props = {
                   ...child.props,
                   key: `Select.Option.${child.props.value}`,
@@ -129,7 +146,7 @@ export function Select({
           </ClickAway>
         )}
       </AnimatePresence>
-    </InputStyled.Wrapper>
+    </S.Wrapper>
   )
 }
 
