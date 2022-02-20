@@ -7,7 +7,7 @@ type Props = {
   onClose: () => void
 }
 
-export function ClickAway({
+export function ClickOutsideElement({
   children,
   isOpen,
   ignoredRefs = [],

@@ -13,7 +13,7 @@ import { useFormContext } from 'react-hook-form'
 
 import toArray from 'lodash/toArray'
 
-import { ClickAway, InputProps } from 'ui'
+import { ClickOutsideElement, InputProps } from 'ui'
 import { useInput } from 'hooks'
 
 import * as InputStyled from 'ui/Input/Input.styled'
@@ -126,7 +126,7 @@ export function Select({
       </InputStyled.Wrapper>
       <AnimatePresence>
         {isOpen && (
-          <ClickAway
+          <ClickOutsideElement
             isOpen={isOpen}
             ignoredRefs={[containerRef]}
             onClose={() => setIsOpen(false)}
@@ -143,7 +143,7 @@ export function Select({
                 return cloneElement(child, props)
               })}
             </S.Dropdown>
-          </ClickAway>
+          </ClickOutsideElement>
         )}
       </AnimatePresence>
     </S.Wrapper>
