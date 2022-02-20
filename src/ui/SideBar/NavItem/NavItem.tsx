@@ -25,13 +25,13 @@ export function NavItem({ to, children, icon: Icon }: Props) {
     <Tooltip as='li' position='right' message={children} disabled={isOpen}>
       <S.Container
         to={to}
-        visible={isOpen}
-        active={isActive}
+        $visible={isOpen}
+        $active={isActive}
         aria-label={children.toLowerCase()}
       >
         <S.NavItemIcon
           aria-label={`${children.toLowerCase()} icon`}
-          active={isActive}
+          $active={isActive}
         >
           <Icon size={24} />
         </S.NavItemIcon>

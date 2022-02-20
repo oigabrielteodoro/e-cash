@@ -62,6 +62,7 @@ export function Profile({ onSubmit }: Props) {
           name='financial_objective'
           label='Financial objective'
           placeholder='Ex. Make extra income'
+          defaultValue={financial_objective}
           error={errors.financial_objective?.message}
         >
           <Select.Option value='make_extra_income'>

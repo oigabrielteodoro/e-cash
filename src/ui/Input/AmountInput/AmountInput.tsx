@@ -1,10 +1,8 @@
 import React, {
-  useState,
   useEffect,
   InputHTMLAttributes,
   KeyboardEvent,
   ChangeEvent,
-  FocusEvent,
 } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
@@ -32,33 +30,34 @@ export function AmountInput({
   name,
   variant = 'primary',
   label,
-  defaultValue,
   error,
   onFocus,
   onBlur,
   ...rest
 }: AmountInputProps) {
-  const { isErrored, errorMessage } = useInput({
-    defaultValue,
-    error,
-  })
+  const { register, watch, setValue } = useFormContext()
 
-  const { register, setValue } = useFormContext()
+  const value = watch(name)
+
+  const {
+    isFocused,
+    isFilled,
+    isErrored,
+    errorMessage,
+    handleOnBlur,
+    handleOnFocus,
+  } = useInput({
+    defaultValue: value,
+    error,
+    onBlur,
+    onFocus,
+  })
 
   useEffect(() => {
     register(name)
+  }, [name, register])
 
-    if (defaultValue) {
-      setValue(name, defaultValue)
-    }
-  }, [name, defaultValue, register, setValue])
-
-  const [isFocused, setIsFocused] = useState(false)
-  const [displayValue, setDisplayValue] = useState<string>('')
-
-  const formattedValue = displayValue
-    ? toDecimal(inputNumberParser(displayValue))
-    : undefined
+  const formattedValue = value ? toDecimal(inputNumberParser(value)) : ''
 
   function handleOnKeyPress(event: KeyboardEvent<HTMLInputElement>) {
     if (!/[0-9]/.test(event.key)) event.preventDefault()
@@ -68,21 +67,7 @@ export function AmountInput({
     const value = event.currentTarget.value
     const amount = inputNumberParser(value)
 
-    setDisplayValue(amount)
-
     setValue(name, amount)
-  }
-
-  function handleOnFocus(event: FocusEvent<HTMLInputElement>) {
-    setIsFocused(true)
-
-    onFocus && onFocus(event)
-  }
-
-  function handleOnBlur(event: FocusEvent<HTMLInputElement>) {
-    setIsFocused(false)
-
-    onBlur && onBlur(event)
   }
 
   return (
@@ -90,7 +75,7 @@ export function AmountInput({
       <label htmlFor={id}>{label}</label>
       <InputStyled.Container
         variant={variant}
-        isFilled={false}
+        isFilled={isFilled}
         isFocused={isFocused}
         isErrored={isErrored}
       >
@@ -99,9 +84,8 @@ export function AmountInput({
           name={name}
           aria-label={name}
           value={formattedValue}
-          defaultValue={defaultValue}
-          onFocus={handleOnFocus}
           onBlur={handleOnBlur}
+          onFocus={handleOnFocus}
           onKeyPress={handleOnKeyPress}
           {...rest}
           onChange={handleOnChange}

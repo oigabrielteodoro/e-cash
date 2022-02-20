@@ -63,11 +63,20 @@ export function Select({
 
   useEffect(() => {
     register(name)
+  }, [name, register])
 
-    if (defaultValue) {
-      setValue(name, defaultValue)
+  useEffect(() => {
+    if (defaultValue && inputRef?.current) {
+      const allOptions = toArray(children)
+      const foundOption = allOptions.find(
+        (option) => option.props.value === defaultValue,
+      )
+
+      if (foundOption) {
+        inputRef.current.value = foundOption.props.children
+      }
     }
-  }, [name, defaultValue, register, setValue])
+  }, [defaultValue, children])
 
   function handleOnClick(value = '', children = '') {
     setValue(name, value)
@@ -117,6 +126,7 @@ export function Select({
             onFocus={handleOnFocus}
             onChange={handleOnChange}
             autoComplete='off'
+            role='combobox'
             {...rest}
           />
 

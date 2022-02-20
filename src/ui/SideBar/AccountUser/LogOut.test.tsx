@@ -13,7 +13,9 @@ function MockedComponent() {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Log out</button>
+      <button aria-label='Log out' onClick={() => setIsOpen(true)}>
+        Log out
+      </button>
       <LogOut isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   )
@@ -88,11 +90,12 @@ describe('LogOut', () => {
       .reply(200)
 
     render(<MockedComponent />, {
-      routePaths: [SIGN_IN],
+      initialRoute: '/dashboard',
+      routePaths: [SIGN_IN, '/dashboard'],
     })
 
     expect(
-      screen.getByRole('button', {
+      await screen.findByRole('button', {
         name: 'Log out',
       }),
     ).toBeInTheDocument()

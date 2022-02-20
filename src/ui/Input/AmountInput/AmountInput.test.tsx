@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import Faker from '@faker-js/faker'
 
 import { render, screen, userEvent } from '__helpers__/app-tests'
@@ -9,12 +9,21 @@ import { AmountInput } from './AmountInput'
 
 type Props = {
   error?: string
+  defaultValue?: string
 }
 
-function MockedComponent({ error }: Props) {
-  const { register } = useForm()
+function MockedComponent({ error, defaultValue }: Props) {
+  const form = useForm({
+    defaultValues: {
+      value: defaultValue,
+    },
+  })
 
-  return <AmountInput label='Value' error={error} {...register('value')} />
+  return (
+    <FormProvider {...form}>
+      <AmountInput name='value' label='Value' error={error} />
+    </FormProvider>
+  )
 }
 
 describe('AmountInput', () => {
@@ -24,16 +33,26 @@ describe('AmountInput', () => {
     expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 
+  it('should be able render with initial values', async () => {
+    const valueToType = Faker.datatype.number().toString()
+
+    render(<MockedComponent defaultValue={valueToType} />)
+
+    expect(await screen.findByRole('textbox')).toHaveValue(
+      toDecimal(valueToType),
+    )
+  })
+
   it('should be able type text correctly', async () => {
-    const valueToType = Faker.datatype.number()
+    const valueToType = Faker.datatype.number().toString()
 
     render(<MockedComponent />)
 
-    const input = screen.getByRole('textbox')
+    const input = await screen.findByRole('textbox')
 
     expect(input).toBeInTheDocument()
 
-    userEvent.type(input, valueToType.toString())
+    userEvent.type(input, valueToType)
 
     expect(await screen.findByRole('textbox')).toHaveValue(
       toDecimal(valueToType),

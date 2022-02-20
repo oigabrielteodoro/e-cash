@@ -20,7 +20,7 @@ export function LogOut({ isOpen, onClose }: Props) {
   const { logOut, isLoading } = useLogOut()
 
   async function handleOnClick() {
-    await pipe(tryCatch(() => logOut(), toError))()
+    await pipe(tryCatch(logOut, toError))()
   }
 
   return (

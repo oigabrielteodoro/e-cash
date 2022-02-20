@@ -12,8 +12,8 @@ import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import nock from 'nock'
 
-import { clearToken, queryConfigDefault, setToken } from 'client'
 import { AppLayout } from 'ui'
+import { clearToken, queryConfigDefault, setToken } from 'client'
 
 type Options = {
   initialRoute?: string
@@ -37,7 +37,6 @@ function render(
   ui: ReactElement,
   {
     initialRoute = '/',
-    initialRoutePath = '/',
     queryClient = defaultQueryClient,
     authenticated = true,
     routePaths,
@@ -70,7 +69,7 @@ function render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter initialEntries={[initialRoute]}>
           <Routes>
-            <Route path={initialRoutePath} element={children} />
+            <Route path={initialRoute} element={children} />
             {routePaths?.map((routePath) => (
               <Route
                 key={routePath}

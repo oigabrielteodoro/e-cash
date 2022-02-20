@@ -13,5 +13,9 @@ export function Option({ children, value, onClick }: OptionProps) {
     onClick && onClick(value, children)
   }
 
-  return <S.Container onClick={handleOnClick}>{children}</S.Container>
+  return (
+    <S.Container role='option' onClick={handleOnClick}>
+      {children}
+    </S.Container>
+  )
 }
