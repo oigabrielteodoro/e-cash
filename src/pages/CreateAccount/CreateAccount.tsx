@@ -7,6 +7,7 @@ import { ForwardedSteps, Steps, StepRefProps } from 'ui'
 import { Layout } from './Layout'
 import { Contact } from './Contact'
 import { Profile } from './Profile'
+import { CreateAvatar } from './CreateAvatar'
 import { CreatePassword } from './CreatePassword'
 import { useCreateAccount } from './useCreateAccount'
 
@@ -34,7 +35,7 @@ export function CreateAccount() {
             <Profile onSubmit={handleOnSubmit} />
           </Steps.Step>
           <Steps.Step disabled={!password}>
-            <h1>Avatar</h1>
+            <CreateAvatar />
           </Steps.Step>
         </ForwardedSteps>
 

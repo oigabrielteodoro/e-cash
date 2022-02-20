@@ -3,12 +3,13 @@ import React, { useState, ImgHTMLAttributes, SyntheticEvent } from 'react'
 import * as S from './Avatar.styled'
 import { NotFoundAvatar } from './NotFoundAvatar'
 
-type Props = { src?: string | null } & Omit<
-  ImgHTMLAttributes<HTMLImageElement>,
-  'src'
->
+export type AvatarProps = {
+  src?: string | null
+  rotate?: string
+  zoom?: string
+} & Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'>
 
-export function Avatar({ src, onError, ...rest }: Props) {
+export function Avatar({ src, onError, zoom, rotate, ...rest }: AvatarProps) {
   const [isError, setIsError] = useState(false)
 
   function handleOnError(event: SyntheticEvent<HTMLImageElement>) {
@@ -21,5 +22,13 @@ export function Avatar({ src, onError, ...rest }: Props) {
     return <NotFoundAvatar />
   }
 
-  return <S.Element src={src || 'unknown'} onError={handleOnError} {...rest} />
+  return (
+    <S.Element
+      src={src || 'unknown'}
+      zoom={zoom}
+      rotate={rotate}
+      onError={handleOnError}
+      {...rest}
+    />
+  )
 }

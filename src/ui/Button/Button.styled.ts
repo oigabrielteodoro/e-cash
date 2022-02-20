@@ -24,7 +24,11 @@ const variants = {
     background: ${theme.colors.blue[500]};
   `,
   secondary: css``,
-  outline: css``,
+  outline: css`
+    background: transparent;
+    color: ${theme.colors.blue[500]};
+    border: 0.2rem solid ${theme.colors.blue[300]};
+  `,
   icon: css`
     min-width: 4.2rem;
     height: 4.2rem;

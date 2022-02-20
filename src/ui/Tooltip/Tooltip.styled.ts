@@ -87,7 +87,7 @@ export const Container = styled.span<Props>`
     border-color: transparent;
   }
 
-  ${({ position }) => modifiers[position]}
+  ${({ position }) => modifiers[position]};
 `
 
 export const Indicator = styled.div<Props>`
