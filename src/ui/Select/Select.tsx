@@ -14,7 +14,7 @@ import { useFormContext } from 'react-hook-form'
 import toArray from 'lodash/toArray'
 
 import { ClickOutsideElement, InputProps } from 'ui'
-import { useInput } from 'hooks'
+import { useInput } from 'lib'
 
 import * as InputStyled from 'ui/Input/Input.styled'
 

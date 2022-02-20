@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { FiSmile, FiActivity } from 'react-icons/fi'
 import { AiOutlinePieChart, AiOutlineLogout } from 'react-icons/ai'
 
-import { LogOut } from './LogOut'
+import { SignOut } from 'core/accounts'
 
 import * as S from './AccountUserOptions.styled'
 
 export function AccountUserOptions() {
-  const [isLogOutVisible, setIsLogOutVisible] = useState(false)
+  const [isSignOutVisible, setIsSignOutVisible] = useState(false)
 
   return (
     <S.Container>
@@ -30,14 +30,14 @@ export function AccountUserOptions() {
         </button>
       </li>
       <li>
-        <button aria-label='log out' onClick={() => setIsLogOutVisible(true)}>
+        <button aria-label='log out' onClick={() => setIsSignOutVisible(true)}>
           <AiOutlineLogout size={20} />
           Log out
         </button>
 
-        <LogOut
-          isOpen={isLogOutVisible}
-          onClose={() => setIsLogOutVisible(false)}
+        <SignOut
+          isOpen={isSignOutVisible}
+          onClose={() => setIsSignOutVisible(false)}
         />
       </li>
     </S.Container>

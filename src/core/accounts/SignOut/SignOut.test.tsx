@@ -6,33 +6,33 @@ import { baseURL } from 'config'
 import { sessionStore } from 'client'
 import { render, screen, userEvent, waitFor, nock } from '__helpers__/app-tests'
 
-import { LogOut } from './LogOut'
+import { SignOut } from './SignOut'
 
 function MockedComponent() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
-      <button aria-label='Log out' onClick={() => setIsOpen(true)}>
-        Log out
+      <button aria-label='Sign Out' onClick={() => setIsOpen(true)}>
+        Sign Out
       </button>
-      <LogOut isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <SignOut isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   )
 }
 
-describe('LogOut', () => {
+describe('SignOut', () => {
   it('should be able render correctly', async () => {
     render(<MockedComponent />)
 
     expect(
       screen.getByRole('button', {
-        name: 'Log out',
+        name: 'Sign Out',
       }),
     ).toBeInTheDocument()
 
     const button = screen.getByRole('button', {
-      name: 'Log out',
+      name: 'Sign Out',
     })
 
     userEvent.click(button)
@@ -49,12 +49,12 @@ describe('LogOut', () => {
 
     expect(
       screen.getByRole('button', {
-        name: 'Log out',
+        name: 'Sign Out',
       }),
     ).toBeInTheDocument()
 
     const button = screen.getByRole('button', {
-      name: 'Log out',
+      name: 'Sign Out',
     })
 
     userEvent.click(button)
@@ -78,7 +78,7 @@ describe('LogOut', () => {
     )
   })
 
-  it('should be able log out user with successfully', async () => {
+  it('should be able sign out user with successfully', async () => {
     const session_id = Faker.datatype.uuid()
 
     sessionStore.setState({
@@ -96,12 +96,12 @@ describe('LogOut', () => {
 
     expect(
       await screen.findByRole('button', {
-        name: 'Log out',
+        name: 'Sign Out',
       }),
     ).toBeInTheDocument()
 
     const button = screen.getByRole('button', {
-      name: 'Log out',
+      name: 'Sign Out',
     })
 
     userEvent.click(button)
@@ -112,7 +112,7 @@ describe('LogOut', () => {
       ),
     ).toBeInTheDocument()
 
-    const logOutButton = screen.getByLabelText('confirm log out')
+    const logOutButton = screen.getByLabelText('confirm sign out')
 
     userEvent.click(logOutButton)
 
@@ -146,12 +146,12 @@ describe('LogOut', () => {
 
     expect(
       screen.getByRole('button', {
-        name: 'Log out',
+        name: 'Sign Out',
       }),
     ).toBeInTheDocument()
 
     const button = screen.getByRole('button', {
-      name: 'Log out',
+      name: 'Sign Out',
     })
 
     userEvent.click(button)
@@ -162,7 +162,7 @@ describe('LogOut', () => {
       ),
     ).toBeInTheDocument()
 
-    const logOutButton = screen.getByLabelText('confirm log out')
+    const logOutButton = screen.getByLabelText('confirm sign out')
 
     userEvent.click(logOutButton)
 

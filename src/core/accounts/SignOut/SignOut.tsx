@@ -3,24 +3,24 @@ import { FiX } from 'react-icons/fi'
 import { AiOutlineLogout } from 'react-icons/ai'
 
 import { pipe } from 'fp-ts/function'
-import { tryCatch } from 'fp-ts/TaskEither'
 import { toError } from 'fp-ts/Either'
+import { tryCatch } from 'fp-ts/TaskEither'
 
 import { Row, Col, Modal, LoadIcon } from 'ui'
-import { useLogOut } from 'client'
+import { useSignOut } from 'client'
 
-import * as S from './LogOut.styled'
+import * as S from './SignOut.styled'
 
 type Props = {
   isOpen: boolean
   onClose: () => void
 }
 
-export function LogOut({ isOpen, onClose }: Props) {
-  const { logOut, isLoading } = useLogOut()
+export function SignOut({ isOpen, onClose }: Props) {
+  const { signOut, isLoading } = useSignOut()
 
   async function handleOnClick() {
-    await pipe(tryCatch(logOut, toError))()
+    await pipe(tryCatch(signOut, toError))()
   }
 
   return (

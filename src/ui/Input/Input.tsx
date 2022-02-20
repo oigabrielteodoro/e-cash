@@ -9,7 +9,7 @@ import React, {
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import type { IconBaseProps } from 'react-icons'
 
-import { useInput } from 'hooks'
+import { useInput } from 'lib'
 import { AmountInput } from './AmountInput'
 import { PasswordInput } from './PasswordInput'
 

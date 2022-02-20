@@ -8,8 +8,7 @@ import { FiDollarSign } from 'react-icons/fi'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import { useFormContext } from 'react-hook-form'
 
-import { useInput } from 'hooks'
-import { toDecimal } from 'lib'
+import { toDecimal, useInput } from 'lib'
 
 import * as InputStyled from '../Input.styled'
 

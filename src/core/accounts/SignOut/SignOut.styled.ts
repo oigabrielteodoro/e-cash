@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { darken } from 'polished'
+
 import { theme } from 'config'
 
 export const Container = styled.div`
