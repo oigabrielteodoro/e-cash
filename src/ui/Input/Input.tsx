@@ -10,7 +10,7 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import type { IconBaseProps } from 'react-icons'
 
 import { useInput } from 'hooks'
-import { AmountInput } from './Amount'
+import { AmountInput } from './AmountInput'
 import { PasswordInput } from './PasswordInput'
 
 import * as S from './Input.styled'

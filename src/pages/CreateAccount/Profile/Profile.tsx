@@ -16,6 +16,10 @@ type FormParams = Required<
   Pick<CreateAccountStoreState, 'monthly_income' | 'financial_objective'>
 >
 
+type Props = {
+  onSubmit: () => void
+}
+
 const schema = yup.object().shape({
   monthly_income: yup.string().required('Monthly income is a required field'),
   financial_objective: yup
@@ -23,7 +27,7 @@ const schema = yup.object().shape({
     .required('Financial objective is a required field'),
 })
 
-export function Profile() {
+export function Profile({ onSubmit }: Props) {
   const { monthly_income, financial_objective } = useCreateAccount()
   const form = useForm<FormParams>({
     defaultValues: {
@@ -35,14 +39,12 @@ export function Profile() {
 
   const {
     formState: { errors },
-    register,
     handleSubmit,
   } = form
 
   async function handleOnSubmit(params: FormParams) {
-    console.log(params)
-
     setState(params)
+    onSubmit()
   }
 
   return (
@@ -51,10 +53,10 @@ export function Profile() {
       <p>We need a little more information to boost your financial life</p>
       <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
         <Input.Amount
+          name='monthly_income'
           label='Monthly income'
           placeholder='Ex. R$ 1.000,00'
           error={errors.monthly_income?.message}
-          {...register('monthly_income')}
         />
         <Select
           name='financial_objective'
@@ -62,8 +64,15 @@ export function Profile() {
           placeholder='Ex. Make extra income'
           error={errors.financial_objective?.message}
         >
-          <Select.Option value='teste_1'>Teste 1</Select.Option>
-          <Select.Option value='teste_2'>Teste 2</Select.Option>
+          <Select.Option value='make_extra_income'>
+            Make extra income
+          </Select.Option>
+          <Select.Option value='make_an_emergency_fund'>
+            Make an emergency fund
+          </Select.Option>
+          <Select.Option value='make_an_investment_portfolio'>
+            Make an investment portfolio
+          </Select.Option>
         </Select>
         <Button size='lg'>Confirm your profile</Button>
       </S.Form>

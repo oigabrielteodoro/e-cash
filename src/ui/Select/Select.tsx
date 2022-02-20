@@ -56,13 +56,18 @@ export function Select({
     onFocus,
   })
 
+  const { register, setValue } = useFormContext()
+
   const [isOpen, setIsOpen] = useState(false)
   const [filteredOptions, setFilteredOptions] = useState(toArray(children))
-  const { register, setValue } = useFormContext()
 
   useEffect(() => {
     register(name)
-  }, [name, register])
+
+    if (defaultValue) {
+      setValue(name, defaultValue)
+    }
+  }, [name, defaultValue, register, setValue])
 
   function handleOnClick(value = '', children = '') {
     setValue(name, value)

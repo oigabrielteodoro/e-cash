@@ -1,17 +1,14 @@
 import React, {
   useState,
-  forwardRef,
+  useEffect,
   InputHTMLAttributes,
   KeyboardEvent,
   ChangeEvent,
   FocusEvent,
-  ForwardRefRenderFunction,
 } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
-
-import { pipe } from 'fp-ts/function'
-import { fromNullable, map } from 'fp-ts/Option'
+import { useFormContext } from 'react-hook-form'
 
 import { useInput } from 'hooks'
 import { toDecimal } from 'lib'
@@ -19,6 +16,7 @@ import { toDecimal } from 'lib'
 import * as InputStyled from '../Input.styled'
 
 export type AmountInputProps = {
+  name: string
   label: string
   error?: string
   variant?: 'primary' | 'secondary'
@@ -29,32 +27,35 @@ function inputNumberParser(value?: string): string {
   return value ? value.replace(/\W/g, '') : ''
 }
 
-const ForwardAmountInput: ForwardRefRenderFunction<
-  HTMLInputElement,
-  AmountInputProps
-> = (
-  {
-    id,
-    name,
-    variant = 'primary',
-    label,
-    defaultValue,
-    error,
-    onChange,
-    onFocus,
-    onBlur,
-    ...rest
-  },
-  ref,
-) => {
+export function AmountInput({
+  id,
+  name,
+  variant = 'primary',
+  label,
+  defaultValue,
+  error,
+  onFocus,
+  onBlur,
+  ...rest
+}: AmountInputProps) {
   const { isErrored, errorMessage } = useInput({
     defaultValue,
     error,
   })
 
-  const [isFocused, setIsFocused] = useState(false)
+  const { register, setValue } = useFormContext()
 
-  const [displayValue, setDisplayValue] = useState<string>(defaultValue ?? '')
+  useEffect(() => {
+    register(name)
+
+    if (defaultValue) {
+      setValue(name, defaultValue)
+    }
+  }, [name, defaultValue, register, setValue])
+
+  const [isFocused, setIsFocused] = useState(false)
+  const [displayValue, setDisplayValue] = useState<string>('')
+
   const formattedValue = displayValue
     ? toDecimal(inputNumberParser(displayValue))
     : undefined
@@ -64,24 +65,12 @@ const ForwardAmountInput: ForwardRefRenderFunction<
   }
 
   function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
-    pipe(
-      event.currentTarget.value,
-      fromNullable,
-      map((amount) => {
-        const parsedAmount = inputNumberParser(amount)
+    const value = event.currentTarget.value
+    const amount = inputNumberParser(value)
 
-        setDisplayValue(parsedAmount)
+    setDisplayValue(amount)
 
-        onChange &&
-          onChange({
-            ...event,
-            currentTarget: {
-              ...event.currentTarget,
-              value: parsedAmount,
-            },
-          })
-      }),
-    )
+    setValue(name, amount)
   }
 
   function handleOnFocus(event: FocusEvent<HTMLInputElement>) {
@@ -107,16 +96,15 @@ const ForwardAmountInput: ForwardRefRenderFunction<
       >
         <input
           id={id}
-          ref={ref}
           name={name}
           aria-label={name}
           value={formattedValue}
           defaultValue={defaultValue}
           onFocus={handleOnFocus}
           onBlur={handleOnBlur}
-          onChange={handleOnChange}
           onKeyPress={handleOnKeyPress}
           {...rest}
+          onChange={handleOnChange}
         />
         <FiDollarSign size={22} />
       </InputStyled.Container>
@@ -129,5 +117,3 @@ const ForwardAmountInput: ForwardRefRenderFunction<
     </InputStyled.Wrapper>
   )
 }
-
-export const AmountInput = forwardRef(ForwardAmountInput)

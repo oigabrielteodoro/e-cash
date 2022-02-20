@@ -16,18 +16,22 @@ export function CreateAccount() {
   const stepsRef = useRef<StepRefProps>(null)
   const { email, full_name, password } = useCreateAccount()
 
+  function handleOnSubmit() {
+    stepsRef.current?.goNext()
+  }
+
   return (
     <Layout>
       <S.Container>
         <ForwardedSteps ref={stepsRef}>
           <Steps.Step>
-            <Contact onSubmit={() => stepsRef.current?.goNext()} />
+            <Contact onSubmit={handleOnSubmit} />
           </Steps.Step>
           <Steps.Step disabled={!email || !full_name}>
-            <CreatePassword onSubmit={() => stepsRef.current?.goNext()} />
+            <CreatePassword onSubmit={handleOnSubmit} />
           </Steps.Step>
           <Steps.Step disabled={!password}>
-            <Profile />
+            <Profile onSubmit={handleOnSubmit} />
           </Steps.Step>
           <Steps.Step disabled={!password}>
             <h1>Avatar</h1>
