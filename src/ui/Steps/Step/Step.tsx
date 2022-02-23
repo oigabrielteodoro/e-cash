@@ -1,4 +1,6 @@
 import React, { ReactNode } from 'react'
+import { AiOutlineClose, AiOutlineCheck } from 'react-icons/ai'
+import { Tooltip } from 'ui'
 
 import * as S from './Step.styled'
 
@@ -7,6 +9,7 @@ export type Props = {
   stepIndex?: number
   active?: boolean
   disabled?: boolean
+  title?: string
   status?: 'error' | 'success' | 'info'
   onStepClick?: () => void
 }
@@ -16,6 +19,7 @@ export function Step({
   status = 'info',
   active = false,
   disabled = false,
+  title,
   onStepClick,
 }: Props) {
   function handleOnClick() {
@@ -30,9 +34,13 @@ export function Step({
       disabled={disabled}
       onClick={handleOnClick}
     >
-      <S.Container active={active} disabled={disabled} status={status}>
-        {stepIndex}
-      </S.Container>
+      <Tooltip position='top' disabled={!title} message={title ?? ''}>
+        <S.Container active={active} disabled={disabled} status={status}>
+          {status === 'info' && stepIndex}
+          {status === 'error' && <AiOutlineClose size={16} />}
+          {status === 'success' && <AiOutlineCheck size={16} />}
+        </S.Container>
+      </Tooltip>
     </S.Wrapper>
   )
 }

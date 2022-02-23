@@ -74,7 +74,7 @@ export const Container = styled.span<Props>`
   padding: 1rem 1.6rem;
   border-radius: 0.5rem;
   white-space: nowrap;
-  transition: opacity 300ms, visibility 300ms;
+  transition: 300ms;
   border: 0.1rem solid ${theme.colors.neutral[300]};
   text-align: center;
   z-index: ${theme.layers.base};

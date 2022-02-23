@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -28,19 +28,27 @@ const schema = yup.object().shape({
 })
 
 export function Profile({ onSubmit }: Props) {
-  const { monthly_income, financial_objective } = useCreateAccount()
   const form = useForm<FormParams>({
-    defaultValues: {
-      monthly_income,
-      financial_objective,
-    },
     resolver: yupResolver(schema),
   })
 
   const {
     formState: { errors },
     handleSubmit,
+    setValue,
   } = form
+
+  const { monthly_income, financial_objective } = useCreateAccount({
+    name: 'profile',
+    errors,
+  })
+
+  useEffect(() => {
+    if (monthly_income) setValue('monthly_income', monthly_income)
+    if (financial_objective) {
+      setValue('financial_objective', financial_objective)
+    }
+  }, [monthly_income, financial_objective, setValue])
 
   async function handleOnSubmit(params: FormParams) {
     setState(params)

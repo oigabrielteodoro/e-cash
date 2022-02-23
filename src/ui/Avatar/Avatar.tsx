@@ -5,11 +5,9 @@ import { NotFoundAvatar } from './NotFoundAvatar'
 
 export type AvatarProps = {
   src?: string | null
-  rotate?: string
-  zoom?: string
 } & Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'>
 
-export function Avatar({ src, onError, zoom, rotate, ...rest }: AvatarProps) {
+export function Avatar({ src, onError, ...rest }: AvatarProps) {
   const [isError, setIsError] = useState(false)
 
   function handleOnError(event: SyntheticEvent<HTMLImageElement>) {
@@ -22,13 +20,5 @@ export function Avatar({ src, onError, zoom, rotate, ...rest }: AvatarProps) {
     return <NotFoundAvatar />
   }
 
-  return (
-    <S.Element
-      src={src || 'unknown'}
-      zoom={zoom}
-      rotate={rotate}
-      onError={handleOnError}
-      {...rest}
-    />
-  )
+  return <S.Element src={src || 'unknown'} onError={handleOnError} {...rest} />
 }

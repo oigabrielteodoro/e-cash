@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -20,20 +20,25 @@ type Props = {
 type FormParams = Required<Pick<CreateAccountStoreState, 'password'>>
 
 export function CreatePassword({ onSubmit }: Props) {
-  const { password = '' } = useCreateAccount()
-
   const {
     register,
     watch,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormParams>({
     resolver: yupResolver(schema),
     shouldFocusError: true,
-    defaultValues: {
-      password,
-    },
   })
+
+  const { password = '' } = useCreateAccount({
+    name: 'password',
+    errors,
+  })
+
+  useEffect(() => {
+    if (password) setValue('password', password)
+  }, [password, setValue])
 
   const passwordValue = watch('password', password)
 

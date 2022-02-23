@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdAlternateEmail } from 'react-icons/md'
 import { FiUser } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
@@ -30,28 +30,33 @@ const schema = yup.object().shape({
 })
 
 export function Contact({ onSubmit }: Props) {
-  const { email, full_name } = useCreateAccount()
-
   const {
     formState: { errors, touchedFields },
     handleSubmit,
     register,
+    setValue,
   } = useForm<FormParams>({
     resolver: yupResolver(schema),
-    defaultValues: {
-      email,
-      full_name,
-    },
     shouldFocusError: true,
   })
 
-  const isFilled = !!email || !!full_name
+  const { email, full_name } = useCreateAccount({
+    name: 'contact',
+    errors,
+  })
+
+  useEffect(() => {
+    if (email) setValue('email', email)
+    if (full_name) setValue('full_name', full_name)
+  }, [email, full_name, setValue])
+
   const isErrored = !!errors?.email || !!errors?.full_name
+  const isFilled = !!email || !!full_name
   const isTouched = touchedFields.email || touchedFields.full_name
   const isDisabled = (!isTouched && !isFilled) || isErrored
 
   function handleOnSubmit(data: FormParams) {
-    setState(data)
+    setState({ ...data })
     onSubmit()
   }
 
