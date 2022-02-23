@@ -1,5 +1,6 @@
 import React from 'react'
 import { AnimatePresence } from 'framer-motion'
+import truncate from 'lodash/truncate'
 
 import { Avatar, Tooltip, ShimmerEffect, Popover } from 'ui'
 import { useMe } from 'client'
@@ -13,6 +14,13 @@ import * as S from './AccountUser.styled'
 export function AccountUser() {
   const { user, isLoading } = useMe()
   const isOpen = useIsOpen()
+
+  const likeBeCalled = truncate(user?.like_be_called, {
+    length: 17,
+  })
+  const email = truncate(user?.email, {
+    length: 20,
+  })
 
   if (!isLoading && !user) {
     return null
@@ -32,11 +40,13 @@ export function AccountUser() {
               <Avatar src={user?.avatar_url} alt={user?.full_name} />
             </ShimmerEffect>
             <AnimatePresence>
-              {isOpen && (
+              {isOpen && user && (
                 <S.Content>
                   <ShimmerEffect isLoading={isLoading} count={2}>
-                    <S.Title>{user?.like_be_called}</S.Title>
-                    <S.Email>{user?.email}</S.Email>
+                    <S.Title>{likeBeCalled}</S.Title>
+                    <Tooltip message={user.email}>
+                      <S.Email>{email}</S.Email>
+                    </Tooltip>
                   </ShimmerEffect>
                 </S.Content>
               )}

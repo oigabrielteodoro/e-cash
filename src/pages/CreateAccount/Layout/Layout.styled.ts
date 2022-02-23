@@ -28,9 +28,9 @@ export const RocketImg = styled(motion.img).attrs(
 export const Container = styled(AuthLayoutContainer)`
   justify-content: unset;
   padding: 5rem;
+`
 
-  section {
-    margin-top: 5rem;
-    margin-left: 5rem;
-  }
+export const Box = styled.section`
+  margin-top: 5rem;
+  margin-left: 5rem;
 `

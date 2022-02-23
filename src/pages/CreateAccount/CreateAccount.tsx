@@ -47,7 +47,7 @@ export function CreateAccount() {
             status={getStatus('profile')}
             disabled={!password}
           >
-            <Profile onSubmit={() => handleOnSubmit('profile')} />
+            <Profile />
           </Steps.Step>
         </ForwardedSteps>
 

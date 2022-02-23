@@ -14,7 +14,7 @@ export function Layout({ children }: Props) {
     <S.Wrapper>
       <S.Container>
         <AuthLayout.Logo />
-        <section>
+        <S.Box>
           <QuoteIcon />
           <AuthLayout.Title>Boost your life with we.</AuthLayout.Title>
           <AuthLayout.QuoteText>
@@ -22,7 +22,7 @@ export function Layout({ children }: Props) {
             eiusmod tempor incididunt ut labore et dolore magna.”
           </AuthLayout.QuoteText>
           <AuthLayout.Account />
-        </section>
+        </S.Box>
         <S.RocketImg src={ROCKET} alt='Rocket' />
       </S.Container>
       {children}

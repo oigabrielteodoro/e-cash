@@ -1,24 +1,14 @@
 import { useEffect } from 'react'
-import { FieldError } from 'react-hook-form'
-
+import { useMutation } from 'react-query'
 import create from 'zustand'
 
-export type CreateAccountStoreState = {
-  email?: string
-  full_name?: string
-  password?: string
-  monthly_income?: string
-  financial_objective?: string
-  errors: string[]
-  passed: string[]
-}
+import { api, ApiError } from 'client'
 
-type UseCreateAccountParams = {
-  name?: string
-  errors?: {
-    [key: string]: FieldError | undefined
-  }
-}
+import type {
+  CreateAccountStoreState,
+  CreateUserAccount,
+  UseCreateAccountParams,
+} from './types'
 
 const initialState: CreateAccountStoreState = {
   errors: [],
@@ -49,6 +39,16 @@ export function useCreateAccount({
   errors = {},
 }: UseCreateAccountParams = {}) {
   const store = useStore((state) => state)
+  const { mutate: createUser, isLoading } = useMutation<
+    unknown,
+    ApiError,
+    CreateUserAccount
+  >({
+    mutationFn: (params) => api.post('/users', params),
+    onSuccess: () => {
+      alert('deu boa')
+    },
+  })
 
   const isErrored = Object.entries(errors).some(([, error]) => !!error?.message)
 
@@ -60,5 +60,7 @@ export function useCreateAccount({
 
   return {
     ...store,
+    createUser,
+    isLoading,
   }
 }
