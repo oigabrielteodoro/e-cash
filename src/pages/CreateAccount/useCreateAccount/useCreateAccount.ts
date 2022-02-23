@@ -11,8 +11,15 @@ import type {
 } from './types'
 
 const initialState: CreateAccountStoreState = {
+  email: '',
+  financial_objective: '',
+  full_name: '',
+  like_be_called: '',
+  monthly_income: '',
+  password: '',
   errors: [],
   passed: [],
+  status: undefined,
 }
 
 const useStore = create<CreateAccountStoreState>(() => initialState)
@@ -34,6 +41,10 @@ export function passStep(name: string) {
   }))
 }
 
+export function clearState() {
+  useStore.setState(() => initialState)
+}
+
 export function useCreateAccount({
   name = '',
   errors = {},
@@ -46,7 +57,7 @@ export function useCreateAccount({
   >({
     mutationFn: (params) => api.post('/users', params),
     onSuccess: () => {
-      alert('deu boa')
+      useStore.setState({ status: 'success' })
     },
   })
 
@@ -62,5 +73,6 @@ export function useCreateAccount({
     ...store,
     createUser,
     isLoading,
+    isSuccess: store.status === 'success',
   }
 }

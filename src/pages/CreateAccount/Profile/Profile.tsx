@@ -36,6 +36,7 @@ export function Profile() {
     email,
     full_name,
     password,
+    isLoading,
     createUser,
   } = useCreateAccount({
     name: 'profile',
@@ -98,7 +99,9 @@ export function Profile() {
             Make an investment portfolio
           </Select.Option>
         </Select>
-        <Button size='lg'>Confirm your profile</Button>
+        <Button size='lg' loading={isLoading}>
+          Confirm your profile
+        </Button>
       </S.Form>
     </FormProvider>
   )

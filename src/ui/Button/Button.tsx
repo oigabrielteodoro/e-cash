@@ -4,13 +4,16 @@ import { LoadIcon } from 'ui'
 
 import * as S from './Button.styled'
 
+type NaviteProps = ButtonHTMLAttributes<HTMLButtonElement>
+
 export type ButtonProps = {
   children: ReactNode
   loading?: boolean
   size?: 'sm' | 'md' | 'lg'
   variant?: 'primary' | 'secondary' | 'outline' | 'icon'
   full?: boolean
-} & ButtonHTMLAttributes<HTMLButtonElement>
+  to?: string
+} & NaviteProps
 
 export function Button({
   children,
@@ -19,9 +22,24 @@ export function Button({
   variant = 'primary',
   size = 'md',
   full = variant !== 'icon',
+  to,
   ...rest
 }: ButtonProps) {
   const isDisabled = loading || disabled
+
+  if (to) {
+    return (
+      <S.LinkWrapper
+        full={full}
+        disabled={isDisabled}
+        variant={variant}
+        size={size}
+        to={to}
+      >
+        {children}
+      </S.LinkWrapper>
+    )
+  }
 
   return (
     <S.Container

@@ -1,8 +1,12 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { motion } from 'framer-motion'
 
 import { theme } from 'config'
 import { fadeIn } from 'ui/_animations'
+
+type ContainerProps = {
+  result?: boolean
+}
 
 export const Container = styled(motion.section).attrs(
   fadeIn({
@@ -10,11 +14,17 @@ export const Container = styled(motion.section).attrs(
       duration: 2,
     },
   }),
-)`
+)<ContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 10rem 17rem 4rem;
+
+  ${({ result }) =>
+    result &&
+    css`
+      padding-bottom: 10rem;
+    `}
 
   strong {
     font-size: 2rem;
@@ -41,4 +51,8 @@ export const AlreadyHaveAccount = styled.span`
       opacity: 0.8;
     }
   }
+`
+
+export const Success = styled.div`
+  margin: auto 0;
 `

@@ -12,6 +12,7 @@ export type CreateUserAccount = {
 export type CreateAccountStoreState = {
   errors: string[]
   passed: string[]
+  status?: 'success' | 'error'
 } & Partial<CreateUserAccount>
 
 export type UseCreateAccountParams = {
