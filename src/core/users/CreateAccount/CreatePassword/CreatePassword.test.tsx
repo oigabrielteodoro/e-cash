@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { clearState, setState } from 'core/accounts'
+import { clearState, setState } from 'core/users'
 import {
   render,
   screen,
