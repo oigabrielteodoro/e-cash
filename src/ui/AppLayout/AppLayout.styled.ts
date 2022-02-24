@@ -23,10 +23,3 @@ export const Title = styled.h1`
   font-size: ${theme.font.sizes.subtitle};
   color: ${theme.colors.neutral[700]};
 `
-
-export const Description = styled.h3`
-  font-size: ${theme.font.sizes.small};
-  color: ${theme.colors.neutral[500]};
-  margin-top: 0.4rem;
-  font-weight: 500;
-`

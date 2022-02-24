@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FiSmile, FiActivity } from 'react-icons/fi'
 import { AiOutlinePieChart, AiOutlineLogout } from 'react-icons/ai'
 
-import { SignOut } from 'core/accounts'
+import { SignOut } from 'core/users'
 
 import * as S from './AccountUserOptions.styled'
 
