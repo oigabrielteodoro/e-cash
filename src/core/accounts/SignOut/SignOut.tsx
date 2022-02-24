@@ -39,7 +39,7 @@ export function SignOut({ isOpen, onClose }: Props) {
           <Col span={12}>
             <button
               className='confirm'
-              aria-label='confirm log out'
+              aria-label='confirm sign out'
               disabled={isLoading}
               onClick={handleOnClick}
             >

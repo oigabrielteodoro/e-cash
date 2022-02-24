@@ -43,9 +43,9 @@ export function Profile() {
     monthly_income,
     financial_objective,
     like_be_called,
-    email,
-    full_name,
-    password,
+    email = '',
+    full_name = '',
+    password = '',
     isLoading,
     createUser,
   } = useCreateAccount({
@@ -66,10 +66,6 @@ export function Profile() {
   }, [monthly_income, financial_objective, like_be_called, watch, setValue])
 
   async function handleOnSubmit(params: FormParams) {
-    const isValid = email && full_name && password
-
-    if (!isValid) return
-
     setState(params)
 
     try {
