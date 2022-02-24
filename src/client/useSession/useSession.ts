@@ -1,7 +1,7 @@
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router'
 
 import { ApiError, api } from 'client'
@@ -92,17 +92,20 @@ export function useSignOut() {
   const navigate = useNavigate()
   const { session_id } = useSessionStoraged()
 
+  const queryClient = useQueryClient()
+
   const { mutateAsync: signOut, ...rest } = useMutation<
     SessionPayload,
     ApiError
   >({
     mutationFn: () => api.delete(`/sessions/${session_id}`),
-    onSuccess: () => {
+    onSuccess: async () => {
       delete api.defaults.headers.common.authorization
-
       useStore.setState(() => initialState)
 
       navigate(SIGN_IN)
+
+      await queryClient.invalidateQueries()
     },
   })
 
