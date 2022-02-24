@@ -99,6 +99,7 @@ export function Profile() {
           icon={FiTag}
           label='Like be called'
           placeholder='How do you like to be called?'
+          error={errors.like_be_called?.message}
           {...register('like_be_called')}
           onBlur={(event) =>
             setState({ like_be_called: event.currentTarget.value })
