@@ -2,10 +2,9 @@ import React from 'react'
 import { BiLineChartDown, BiLineChart } from 'react-icons/bi'
 import { AiOutlineBank, AiOutlineCreditCard } from 'react-icons/ai'
 
-import { AppLayout, Row, Col } from 'ui'
+import { AppLayout, Row, Col, Calendar } from 'ui'
 
 import { Search } from './Search'
-import { Calendar } from './Calendar'
 import { BalanceCard } from './BalanceCard'
 
 export function Dashboard() {

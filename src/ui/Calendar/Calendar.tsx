@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import {
@@ -14,7 +14,11 @@ import { Period, useCalendar } from './useCalendar'
 
 import * as S from './Calendar.styled'
 
-export function Calendar() {
+type Props = {
+  style?: CSSProperties
+}
+
+export function Calendar({ style }: Props) {
   const {
     isOpen,
     daysInMonth,
@@ -28,7 +32,7 @@ export function Calendar() {
   } = useCalendar()
 
   return (
-    <S.Wrapper>
+    <S.Wrapper style={style}>
       <S.Container
         isOpen={isOpen}
         onClick={() => setIsOpen((prevState) => !prevState)}

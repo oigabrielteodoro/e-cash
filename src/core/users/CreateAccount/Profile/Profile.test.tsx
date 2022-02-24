@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { toDecimal } from 'lib'
-import { clearState, setState } from 'core/accounts'
+import { clearState, setState } from 'core/users'
 import { render, screen, userEvent } from '__helpers__/app-tests'
 
 import { Profile } from '.'

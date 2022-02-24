@@ -1,11 +1,11 @@
 import { Factory } from 'fishery'
-import { faker } from '@faker-js/faker'
+import Faker from '@faker-js/faker'
 
 import type { User } from 'client/useMe/types'
 
 export const userFactory = Factory.define<User>(() => ({
-  full_name: faker.name.findName(),
-  like_be_called: faker.name.firstName(),
-  avatar_url: faker.image.avatar(),
-  email: faker.internet.email(),
+  full_name: Faker.name.findName(),
+  like_be_called: Faker.name.firstName(),
+  avatar_url: Faker.image.avatar(),
+  email: Faker.internet.email(),
 }))
