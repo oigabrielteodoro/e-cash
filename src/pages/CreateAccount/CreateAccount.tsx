@@ -37,7 +37,7 @@ export function CreateAccount() {
 
   return (
     <Layout>
-      <S.Container result={isSuccess}>
+      <S.Container isSuccess={isSuccess}>
         {isSuccess ? (
           <S.Success>
             <Result

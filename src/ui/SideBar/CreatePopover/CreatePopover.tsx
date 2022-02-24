@@ -29,7 +29,7 @@ export function CreatePopover() {
         <S.CreateButtonContainer
           size='md'
           variant='icon'
-          full={false}
+          $full={false}
           isOpen={isOpen}
         >
           <AiOutlinePlus size={24} />

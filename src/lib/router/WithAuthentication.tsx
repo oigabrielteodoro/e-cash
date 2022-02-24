@@ -1,11 +1,11 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
 
 import { SIGN_IN } from 'lib'
 import { useIsAuthenticated } from 'client'
 
 type Props = {
-  children: ReactElement
+  children: ReactNode
 }
 
 export function WithAuthentication({ children }: Props) {
@@ -15,5 +15,5 @@ export function WithAuthentication({ children }: Props) {
     return <Navigate to={SIGN_IN} />
   }
 
-  return children
+  return <>{children}</>
 }

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 import { Navigate } from 'react-router'
 
 import { SignIn } from 'pages'
@@ -6,7 +6,7 @@ import { DASHBOARD } from 'lib'
 import { useIsAuthenticated } from 'client'
 
 type Props = {
-  children?: ReactElement
+  children?: ReactNode
 }
 
 export function WithNotAuthentication({ children = <SignIn /> }: Props) {
@@ -16,5 +16,5 @@ export function WithNotAuthentication({ children = <SignIn /> }: Props) {
     return <Navigate to={DASHBOARD} />
   }
 
-  return children
+  return <>{children}</>
 }

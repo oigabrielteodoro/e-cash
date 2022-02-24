@@ -5,7 +5,7 @@ import { theme } from 'config'
 import { fadeIn } from 'ui/_animations'
 
 type ContainerProps = {
-  result?: boolean
+  isSuccess?: boolean
 }
 
 export const Container = styled(motion.section).attrs(
@@ -20,8 +20,8 @@ export const Container = styled(motion.section).attrs(
   justify-content: center;
   padding: 10rem 17rem 4rem;
 
-  ${({ result }) =>
-    result &&
+  ${({ isSuccess }) =>
+    isSuccess &&
     css`
       padding-bottom: 10rem;
     `}

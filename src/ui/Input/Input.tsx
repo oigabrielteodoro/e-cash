@@ -74,6 +74,7 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           defaultValue={defaultValue}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
+          role='textbox'
           {...rest}
         />
         {Icon && <Icon size={22} />}
