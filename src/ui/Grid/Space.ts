@@ -5,6 +5,8 @@ type Props = {
   padding?: string
   margin?: string
   marginRight?: string
+  marginBottom?: string
+  marginLeft?: string
 }
 
 export function Space({ children, ...style }: Props) {

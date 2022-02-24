@@ -20,7 +20,6 @@ export const Style = createGlobalStyle`
 
   body {
     min-height: 100vh;
-    overflow: hidden;
     scroll-behavior: smooth;
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.paragraph};

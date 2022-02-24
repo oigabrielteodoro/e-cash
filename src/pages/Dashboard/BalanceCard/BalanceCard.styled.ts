@@ -31,6 +31,7 @@ export const Card = styled.button`
   transition: 300ms;
   border: 0.1rem solid ${theme.colors.neutral[300]};
   transition: 300ms;
+  height: 13.8rem;
 
   &:hover {
     transform: translateY(-1rem);
@@ -58,7 +59,7 @@ export const CardIcon = styled.div`
 export const CardStatus = styled.div<CardStatusProps>`
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 1.8rem;
 
   ${({ status }) => modifiers[status]};
 
@@ -87,7 +88,7 @@ export const CardContent = styled.div`
 
   strong {
     font-weight: 600;
-    margin-top: 0.6rem;
+    margin-top: 1.2rem;
     font-size: ${theme.font.sizes.subtitle};
   }
 `
