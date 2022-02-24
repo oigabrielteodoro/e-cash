@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import Lottie from 'react-lottie'
+import Lottie from 'react-lottie-player'
 
 import { SUCCESS_LOTTIE } from 'assets'
 
@@ -16,9 +16,10 @@ export function Result({ children, title, description }: Props) {
   return (
     <S.Container>
       <Lottie
-        height={180}
-        width={180}
-        options={{ loop: false, autoplay: true, animationData: SUCCESS_LOTTIE }}
+        loop={false}
+        play
+        animationData={SUCCESS_LOTTIE}
+        style={{ width: 180, height: 180 }}
       />
       <h1>{title}</h1>
       <p>{description}</p>

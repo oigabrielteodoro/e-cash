@@ -15,6 +15,78 @@ describe('CreateAccount', () => {
     expect(screen.getByText('Your information')).toBeInTheDocument()
   })
 
+  it('should be able populate form when has initial values', async () => {
+    const params = {
+      full_name: 'Example',
+      email: 'example@mail.com',
+      password: 'Abc123@',
+      like_be_called: 'Example',
+      monthly_income: '10000',
+      financial_objective: 'Make extra income',
+    }
+
+    render(<CreateAccount />)
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'full_name',
+      }),
+      params.full_name,
+    )
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'email',
+      }),
+      params.email,
+    )
+
+    expect(
+      await screen.findByRole('button', {
+        name: 'Confirm your information',
+      }),
+    ).toBeEnabled()
+
+    userEvent.click(
+      await screen.findByRole('button', {
+        name: 'Confirm your information',
+      }),
+    )
+
+    expect(await screen.findByText('Create password')).toBeInTheDocument()
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'password',
+      }),
+      params.password,
+    )
+
+    expect(
+      await screen.findByRole('button', {
+        name: 'Create your password',
+      }),
+    ).toBeEnabled()
+
+    userEvent.click(
+      await screen.findByRole('button', {
+        name: 'Create your password',
+      }),
+    )
+
+    userEvent.click(
+      screen.getByRole('button', {
+        name: 'Step Control 1',
+      }),
+    )
+
+    expect(
+      await screen.findByRole('textbox', {
+        name: 'password',
+      }),
+    ).toHaveValue(params.password)
+  })
+
   it('should be able create account successfully', async () => {
     const params = {
       full_name: 'Example',
@@ -121,6 +193,114 @@ describe('CreateAccount', () => {
 
     expect(
       await screen.findByText('Your account is created!'),
+    ).toBeInTheDocument()
+  })
+
+  it('should not be able create account when response is an error', async () => {
+    const params = {
+      full_name: 'Example',
+      email: 'example@mail.com',
+      password: 'Abc123@',
+      like_be_called: 'Example',
+      monthly_income: '10000',
+      financial_objective: 'Make extra income',
+    }
+
+    const createAccountMock = nock(baseURL).post('/users').reply(404, {
+      message: 'Already exists user with email',
+    })
+
+    render(<CreateAccount />)
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'full_name',
+      }),
+      params.full_name,
+    )
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'email',
+      }),
+      params.email,
+    )
+
+    expect(
+      await screen.findByRole('button', {
+        name: 'Confirm your information',
+      }),
+    ).toBeEnabled()
+
+    userEvent.click(
+      await screen.findByRole('button', {
+        name: 'Confirm your information',
+      }),
+    )
+
+    expect(await screen.findByText('Create password')).toBeInTheDocument()
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'password',
+      }),
+      params.password,
+    )
+
+    expect(
+      await screen.findByRole('button', {
+        name: 'Create your password',
+      }),
+    ).toBeEnabled()
+
+    userEvent.click(
+      await screen.findByRole('button', {
+        name: 'Create your password',
+      }),
+    )
+
+    expect(
+      await screen.findByText('A little more about you...'),
+    ).toBeInTheDocument()
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'like_be_called',
+      }),
+      params.like_be_called,
+    )
+
+    userEvent.type(
+      screen.getByRole('textbox', {
+        name: 'monthly_income',
+      }),
+      params.monthly_income,
+    )
+
+    userEvent.click(
+      screen.getByRole('combobox', {
+        name: 'financial_objective',
+      }),
+    )
+
+    userEvent.click(await screen.findByText(params.financial_objective))
+
+    expect(
+      await screen.findByRole('button', {
+        name: 'Create your account',
+      }),
+    ).toBeEnabled()
+
+    userEvent.click(
+      await screen.findByRole('button', {
+        name: 'Create your account',
+      }),
+    )
+
+    await waitFor(() => expect(createAccountMock).mockToBeDone())
+
+    expect(
+      await screen.findByText('Already exists user with email'),
     ).toBeInTheDocument()
   })
 })
