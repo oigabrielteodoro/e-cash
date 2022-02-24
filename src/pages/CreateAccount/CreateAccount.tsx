@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 
 import { SIGN_IN } from 'lib'
 import { ForwardedSteps, Steps, StepRefProps, Button, Result } from 'ui'
+import {
+  useCreateAccount,
+  Contact,
+  CreatePassword,
+  Profile,
+  clearState,
+  passStep,
+} from 'core/accounts'
 
 import { Layout } from './Layout'
-import { Contact } from './Contact'
-import { Profile } from './Profile'
-import { CreatePassword } from './CreatePassword'
-import { clearState, passStep, useCreateAccount } from './useCreateAccount'
 
 import * as S from './CreateAccount.styled'
 
