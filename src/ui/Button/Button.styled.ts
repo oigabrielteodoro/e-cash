@@ -6,8 +6,9 @@ import { theme } from 'config'
 import type { ButtonProps } from '.'
 
 type ContainerProps = {
+  $full: boolean
   disabled?: boolean
-} & Required<Pick<ButtonProps, 'size' | 'variant' | 'full'>>
+} & Required<Pick<ButtonProps, 'size' | 'variant'>>
 
 const modifiers = {
   sm: css`
@@ -40,7 +41,7 @@ const variants = {
   `,
 }
 
-const button = ({ full, size, variant }: ContainerProps) => css`
+const button = ({ $full, size, variant }: ContainerProps) => css`
   border: 0;
   display: flex;
   align-items: center;
@@ -52,7 +53,7 @@ const button = ({ full, size, variant }: ContainerProps) => css`
   transition: 300ms;
   border: 0.1rem solid transparent;
 
-  ${full &&
+  ${$full &&
   css`
     width: 100%;
   `}
@@ -79,11 +80,11 @@ const button = ({ full, size, variant }: ContainerProps) => css`
 `
 
 export const Container = styled.button<ContainerProps>`
-  ${({ full, size, variant }) => button({ full, size, variant })}
+  ${({ $full, size, variant }) => button({ $full, size, variant })}
 `
 
 export const LinkWrapper = styled(Link)<ContainerProps>`
   text-decoration: none;
 
-  ${({ full, size, variant }) => button({ full, size, variant })}
+  ${({ $full, size, variant }) => button({ $full, size, variant })}
 `

@@ -30,7 +30,7 @@ export function Button({
   if (to) {
     return (
       <S.LinkWrapper
-        full={full}
+        $full={full}
         disabled={isDisabled}
         variant={variant}
         size={size}
@@ -43,7 +43,7 @@ export function Button({
 
   return (
     <S.Container
-      full={full}
+      $full={full}
       disabled={isDisabled}
       variant={variant}
       size={size}

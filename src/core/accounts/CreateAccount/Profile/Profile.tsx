@@ -131,7 +131,7 @@ export function Profile() {
           </Select.Option>
         </Select>
         <Button size='lg' loading={isLoading}>
-          Confirm your profile
+          Create your account
         </Button>
       </S.Form>
     </FormProvider>
