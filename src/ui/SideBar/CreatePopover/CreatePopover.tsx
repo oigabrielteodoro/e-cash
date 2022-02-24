@@ -25,7 +25,7 @@ export function CreatePopover() {
       customWidth='70rem'
       name='create'
     >
-      <Tooltip isDisabled={isOpen} message='Create'>
+      <Tooltip disabled={isOpen} message='Create'>
         <S.CreateButtonContainer
           size='md'
           variant='icon'

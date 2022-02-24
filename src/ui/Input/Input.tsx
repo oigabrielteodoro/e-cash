@@ -1,25 +1,32 @@
 import React, {
-  useState,
+  forwardRef,
   InputHTMLAttributes,
   ComponentType,
-  forwardRef,
   ForwardRefRenderFunction,
-  FocusEvent,
+  ForwardRefExoticComponent,
+  ForwardedRef,
 } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
-
-import capitalize from 'lodash/capitalize'
-
 import type { IconBaseProps } from 'react-icons'
+
+import { useInput } from 'lib'
+import { AmountInput } from './AmountInput'
+import { PasswordInput } from './PasswordInput'
 
 import * as S from './Input.styled'
 
 export type InputProps = {
+  ref?: ForwardedRef<HTMLInputElement>
   label: string
   error?: string
   variant?: 'primary' | 'secondary'
   icon: ComponentType<IconBaseProps>
 } & InputHTMLAttributes<HTMLInputElement>
+
+type InputCompoundComponet = {
+  Amount: typeof AmountInput
+  Password: typeof PasswordInput
+} & ForwardRefExoticComponent<InputProps>
 
 const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   {
@@ -36,28 +43,19 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   },
   ref,
 ) => {
-  const [isFilled, setIsFilled] = useState(!!defaultValue)
-  const [isFocused, setIsFocused] = useState(false)
-
-  const isErrored = !!error
-
-  const errorMessage = error ? capitalize(error) : ''
-
-  function handleOnBlur(event: FocusEvent<HTMLInputElement>) {
-    event.preventDefault()
-
-    setIsFocused(false)
-    setIsFilled(!!event.target.value)
-
-    onBlur && onBlur(event)
-  }
-
-  function handleOnFocus(event: FocusEvent<HTMLInputElement>) {
-    setIsFocused(true)
-    setIsFilled(!!event.target.value)
-
-    onFocus && onFocus(event)
-  }
+  const {
+    isFilled,
+    isFocused,
+    isErrored,
+    errorMessage,
+    handleOnBlur,
+    handleOnFocus,
+  } = useInput({
+    defaultValue,
+    error,
+    onBlur,
+    onFocus,
+  })
 
   return (
     <S.Wrapper>
@@ -73,6 +71,7 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           ref={ref}
           name={name}
           aria-label={name}
+          defaultValue={defaultValue}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           {...rest}
@@ -89,4 +88,10 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   )
 }
 
-export const Input = forwardRef(ForwardInput)
+export const Input = forwardRef(ForwardInput) as InputCompoundComponet
+
+Input.Amount = AmountInput
+
+Input.Password = PasswordInput
+
+export { PasswordStrength } from './PasswordInput'

@@ -2,7 +2,8 @@ import React from 'react'
 
 import { MdAlternateEmail } from 'react-icons/md'
 
-import { Button, Input, PasswordInput } from 'ui'
+import { CREATE_ACCOUNT } from 'lib'
+import { Button, Input } from 'ui'
 
 import { Layout } from './Layout'
 
@@ -29,7 +30,7 @@ export function SignIn() {
             error={errors.email?.message}
             {...register('email')}
           />
-          <PasswordInput
+          <Input.Password
             id='password'
             label='Password'
             placeholder='Secret password'
@@ -45,7 +46,7 @@ export function SignIn() {
           <S.Separator>OR</S.Separator>
           <S.CreateAccountText>
             Don&apos;t have an account
-            <S.CreateAccountLink to='/register'>
+            <S.CreateAccountLink to={CREATE_ACCOUNT}>
               Sign up for free
             </S.CreateAccountLink>
           </S.CreateAccountText>

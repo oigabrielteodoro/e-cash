@@ -10,7 +10,7 @@ type Props = {
   error?: string
 }
 
-function WithForm({ error }: Props) {
+function MockedComponent({ error }: Props) {
   const { register } = useForm()
 
   return <Input label='Name' error={error} icon={FiTag} {...register('name')} />
@@ -18,13 +18,13 @@ function WithForm({ error }: Props) {
 
 describe('Input', () => {
   it('should be able render correctly', () => {
-    render(<WithForm />)
+    render(<MockedComponent />)
 
     expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 
   it('should be able type text correctly', async () => {
-    render(<WithForm />)
+    render(<MockedComponent />)
 
     const input = screen.getByRole('textbox')
 
@@ -36,7 +36,7 @@ describe('Input', () => {
   })
 
   it('should be able render error message', async () => {
-    render(<WithForm error='Name is required' />)
+    render(<MockedComponent error='Name is required' />)
 
     expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(screen.getByText('Name is required')).toBeInTheDocument()

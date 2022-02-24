@@ -1,7 +1,11 @@
 import styled from 'styled-components'
+import { AvatarProps } from 'ui'
 
-export const Element = styled.img`
+type Props = Pick<AvatarProps, 'src'>
+
+export const Element = styled.img<Props>`
   width: 4rem;
   height: 4rem;
-  border-radius: 50%;
+  border-radius: 0.5rem;
+  object-fit: cover;
 `

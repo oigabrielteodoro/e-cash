@@ -22,16 +22,16 @@ export function NavItem({ to, children, icon: Icon }: Props) {
   const isActive = !!pathMatched
 
   return (
-    <Tooltip as='li' position='right' message={children} isDisabled={isOpen}>
+    <Tooltip as='li' position='right' message={children} disabled={isOpen}>
       <S.Container
         to={to}
-        $isVisible={isOpen}
-        $isActive={isActive}
+        $visible={isOpen}
+        $active={isActive}
         aria-label={children.toLowerCase()}
       >
         <S.NavItemIcon
           aria-label={`${children.toLowerCase()} icon`}
-          $isActive={isActive}
+          $active={isActive}
         >
           <Icon size={24} />
         </S.NavItemIcon>

@@ -64,7 +64,7 @@ export const Calendar = styled(motion.div).attrs({
   padding: 1.6rem;
   right: 0;
   top: calc(100% + 1.6rem);
-  border: 0.1rem solid ${theme.colors.neutral[200]};
+  border: 0.1rem solid ${theme.colors.neutral[300]};
   z-index: ${theme.layers.base};
 
   &::before {
@@ -75,7 +75,7 @@ export const Calendar = styled(motion.div).attrs({
     width: 1rem;
     height: 1rem;
     background: ${theme.colors.white};
-    border: 0.1rem solid ${theme.colors.neutral[200]};
+    border: 0.1rem solid ${theme.colors.neutral[300]};
     border-bottom-color: transparent;
     border-left-color: transparent;
     transform: rotate(-45deg);
@@ -108,7 +108,7 @@ export const CalendarHeader = styled.div`
       transition: 300ms;
 
       &:hover {
-        background: ${theme.colors.neutral[200]};
+        background: ${theme.colors.neutral[300]};
       }
     }
 
@@ -127,7 +127,7 @@ export const CalendarItem = styled.button<CalendarItemProps>`
   transition: 300ms;
 
   &:hover {
-    background: ${theme.colors.neutral[200]};
+    background: ${theme.colors.neutral[300]};
   }
 
   ${({ isInside }) =>

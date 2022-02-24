@@ -1,10 +1,13 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { theme } from 'config'
 
-import { ButtonProps } from '.'
+import type { ButtonProps } from '.'
 
-type ContainerProps = Required<Pick<ButtonProps, 'size' | 'variant' | 'full'>>
+type ContainerProps = {
+  disabled?: boolean
+} & Required<Pick<ButtonProps, 'size' | 'variant' | 'full'>>
 
 const modifiers = {
   sm: css`
@@ -12,10 +15,10 @@ const modifiers = {
     font-size: ${theme.font.sizes.small};
   `,
   md: css`
-    padding: 1.2rem 2.4rem;
+    padding: 1.2rem 3.2rem;
   `,
   lg: css`
-    padding: 1.8rem 3.2rem;
+    padding: 1.8rem 4.2rem;
   `,
 }
 
@@ -24,7 +27,11 @@ const variants = {
     background: ${theme.colors.blue[500]};
   `,
   secondary: css``,
-  outline: css``,
+  outline: css`
+    background: transparent;
+    color: ${theme.colors.blue[500]};
+    border: 0.2rem solid ${theme.colors.blue[300]};
+  `,
   icon: css`
     min-width: 4.2rem;
     height: 4.2rem;
@@ -33,7 +40,7 @@ const variants = {
   `,
 }
 
-export const Container = styled.button<ContainerProps>`
+const button = ({ full, size, variant }: ContainerProps) => css`
   border: 0;
   display: flex;
   align-items: center;
@@ -43,18 +50,40 @@ export const Container = styled.button<ContainerProps>`
   font-weight: 500;
   font-size: ${theme.font.sizes.paragraph};
   transition: 300ms;
-  width: 100%;
+  border: 0.1rem solid transparent;
 
-  ${({ size }) => modifiers[size]}
-  ${({ variant }) => variants[variant]}
+  ${full &&
+  css`
+    width: 100%;
+  `}
 
-  &:disabled {
-    opacity: 0.8;
-  }
+  ${modifiers[size]}
+  ${variants[variant]}
 
   &:hover {
-    filter: brightness(0.9);
+    opacity: 0.9;
     transform: scale(0.99);
     box-shadow: 0 0 0 0.4rem ${theme.shadow.blue[300]};
   }
+
+  &:disabled {
+    cursor: no-drop;
+    color: ${theme.colors.neutral[500]};
+    background: ${theme.colors.neutral[200]};
+    border-color: ${theme.colors.neutral[300]};
+
+    &:hover {
+      box-shadow: 0 0 0 0.4rem ${theme.shadow.neutral[500]};
+    }
+  }
+`
+
+export const Container = styled.button<ContainerProps>`
+  ${({ full, size, variant }) => button({ full, size, variant })}
+`
+
+export const LinkWrapper = styled(Link)<ContainerProps>`
+  text-decoration: none;
+
+  ${({ full, size, variant }) => button({ full, size, variant })}
 `

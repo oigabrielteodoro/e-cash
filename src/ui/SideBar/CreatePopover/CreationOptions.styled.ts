@@ -10,7 +10,7 @@ export const Container = styled.div`
     height: 12rem;
     background: transparent;
     border-radius: ${theme.radius.card};
-    border: 0.1rem solid ${theme.colors.neutral[200]};
+    border: 0.1rem solid ${theme.colors.neutral[300]};
     display: flex;
     flex-direction: column;
     justify-content: center;

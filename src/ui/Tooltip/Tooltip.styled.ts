@@ -74,8 +74,8 @@ export const Container = styled.span<Props>`
   padding: 1rem 1.6rem;
   border-radius: 0.5rem;
   white-space: nowrap;
-  transition: opacity 300ms, visibility 300ms;
-  border: 0.1rem solid ${theme.colors.neutral[200]};
+  transition: 300ms;
+  border: 0.1rem solid ${theme.colors.neutral[300]};
   text-align: center;
   z-index: ${theme.layers.base};
 
@@ -87,7 +87,7 @@ export const Container = styled.span<Props>`
     border-color: transparent;
   }
 
-  ${({ position }) => modifiers[position]}
+  ${({ position }) => modifiers[position]};
 `
 
 export const Indicator = styled.div<Props>`
@@ -95,7 +95,7 @@ export const Indicator = styled.div<Props>`
   background: ${theme.colors.white};
   height: 1rem;
   width: 1rem;
-  border: 0.1rem solid ${theme.colors.neutral[200]};
+  border: 0.1rem solid ${theme.colors.neutral[300]};
   z-index: ${theme.layers.base};
 
   ${({ position }) => arrowModifiers[position]};

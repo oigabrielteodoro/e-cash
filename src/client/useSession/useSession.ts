@@ -88,11 +88,11 @@ export function useSession() {
   }
 }
 
-export function useLogOut() {
+export function useSignOut() {
   const navigate = useNavigate()
   const { session_id } = useSessionStoraged()
 
-  const { mutateAsync: logOut, ...rest } = useMutation<
+  const { mutateAsync: signOut, ...rest } = useMutation<
     SessionPayload,
     ApiError
   >({
@@ -107,7 +107,7 @@ export function useLogOut() {
   })
 
   return {
-    logOut,
+    signOut,
     ...rest,
   }
 }

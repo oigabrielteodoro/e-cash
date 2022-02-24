@@ -7,19 +7,19 @@ export type TooltipProps = {
   as?: ElementType
   children: ReactNode
   position?: 'top' | 'bottom' | 'left' | 'right'
-  isDisabled?: boolean
+  disabled?: boolean
 }
 
 export function Tooltip({
   as,
   message,
   children,
-  isDisabled = false,
+  disabled = false,
   position = 'right',
 }: TooltipProps) {
   return (
     <S.BaseElement as={as}>
-      {!isDisabled && (
+      {!disabled && (
         <S.Wrapper>
           <S.Container position={position}>{message}</S.Container>
           <S.Indicator position={position} />

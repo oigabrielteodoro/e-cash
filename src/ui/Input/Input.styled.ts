@@ -14,7 +14,7 @@ const modifiers = {
     background: ${theme.colors.white};
   `,
   secondary: css`
-    background: ${theme.colors.neutral[200]};
+    background: ${theme.colors.neutral[300]};
   `,
 }
 
