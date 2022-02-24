@@ -12,6 +12,9 @@ import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import nock from 'nock'
 
+import { pipe } from 'fp-ts/function'
+import { TaskEither, map, mapLeft } from 'fp-ts/TaskEither'
+
 import { AppLayout } from 'ui'
 import { clearToken, queryConfigDefault, setToken } from 'client'
 
@@ -26,6 +29,11 @@ type Options = {
 type Props = {
   children?: ReactNode
 }
+
+type Callback = (result: unknown) => unknown
+type MapAll = (
+  fn: Callback,
+) => (data: TaskEither<unknown, unknown>) => TaskEither<unknown, unknown>
 
 const queryCache = new QueryCache()
 const defaultQueryClient = new QueryClient({
@@ -90,6 +98,18 @@ function render(
       wrapper: Wrapper,
     }),
   }
+}
+
+export function unsafe<T>(value: unknown) {
+  return value as T
+}
+
+export const mapAll: MapAll = (fn) => (data) => {
+  return pipe(data, map(fn), mapLeft(fn))
+}
+
+export function getErrorMessage(errors: unknown): string {
+  return Array.isArray(errors) ? errors[0].message : ''
 }
 
 export * from '@testing-library/react'

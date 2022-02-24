@@ -2,11 +2,18 @@ import React, { useEffect } from 'react'
 import { FiTag } from 'react-icons/fi'
 import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { ValidationError } from 'yup'
 
 import { Button, Input, Select } from 'ui'
+import { getValidationErrors } from 'lib'
 
-import { setState, useCreateAccount } from '../useCreateAccount'
+import { createAccountSchema, profileSchema } from '../types'
+import {
+  getStepsWithError,
+  setErrors,
+  setState,
+  useCreateAccount,
+} from '../useCreateAccount'
 import type { CreateAccountStoreState } from '../useCreateAccount/types'
 
 import * as S from './Profile.styled'
@@ -20,7 +27,8 @@ type FormParams = Required<
 
 export function Profile() {
   const form = useForm<FormParams>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(profileSchema),
+    shouldFocusError: true,
   })
 
   const {
@@ -28,11 +36,13 @@ export function Profile() {
     handleSubmit,
     setValue,
     register,
+    watch,
   } = form
 
   const {
     monthly_income,
     financial_objective,
+    like_be_called,
     email,
     full_name,
     password,
@@ -44,24 +54,43 @@ export function Profile() {
   })
 
   useEffect(() => {
+    if (like_be_called) setValue('like_be_called', like_be_called)
     if (monthly_income) setValue('monthly_income', monthly_income)
     if (financial_objective) {
       setValue('financial_objective', financial_objective)
     }
-  }, [monthly_income, financial_objective, setValue])
 
-  const isValid = email && full_name && password
+    return () => {
+      setState({ financial_objective: watch('financial_objective') })
+    }
+  }, [monthly_income, financial_objective, like_be_called, watch, setValue])
 
   async function handleOnSubmit(params: FormParams) {
+    const isValid = email && full_name && password
+
+    if (!isValid) return
+
     setState(params)
 
-    if (isValid) {
-      createUser({
+    try {
+      const data = { email, full_name, password, ...params }
+
+      await createAccountSchema.validate(data, {
+        abortEarly: false,
+      })
+
+      await createUser({
         email,
         full_name,
         password,
         ...params,
       })
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        const errors = getValidationErrors(error)
+
+        return setErrors(getStepsWithError(errors))
+      }
     }
   }
 
@@ -75,12 +104,18 @@ export function Profile() {
           label='Like be called'
           placeholder='How do you like to be called?'
           {...register('like_be_called')}
+          onBlur={(event) =>
+            setState({ like_be_called: event.currentTarget.value })
+          }
         />
         <Input.Amount
           name='monthly_income'
           label='Monthly income'
           placeholder='Ex. R$ 1.000,00'
           error={errors.monthly_income?.message}
+          onBlur={(event) =>
+            setState({ monthly_income: event.currentTarget.value })
+          }
         />
         <Select
           name='financial_objective'
@@ -106,11 +141,3 @@ export function Profile() {
     </FormProvider>
   )
 }
-
-const schema = yup.object().shape({
-  monthly_income: yup.string().required('Monthly income is a required field'),
-  financial_objective: yup
-    .string()
-    .required('Financial objective is a required field'),
-  like_be_called: yup.string().required('Like be called is a required field'),
-})

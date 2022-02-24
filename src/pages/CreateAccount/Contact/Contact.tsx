@@ -3,15 +3,12 @@ import { MdAlternateEmail } from 'react-icons/md'
 import { FiUser } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 
 import { Button, Input } from 'ui'
 
-import {
-  CreateAccountStoreState,
-  setState,
-  useCreateAccount,
-} from '../useCreateAccount'
+import { contactSchema } from '../types'
+import { setState, useCreateAccount } from '../useCreateAccount'
+import type { CreateAccountStoreState } from '../useCreateAccount/types'
 
 import * as S from './Contact.styled'
 
@@ -21,14 +18,6 @@ type Props = {
 
 type FormParams = Required<Pick<CreateAccountStoreState, 'email' | 'full_name'>>
 
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .required('Email is a required field')
-    .email('Email must be a valid email'),
-  full_name: yup.string().required('Full name is a required field'),
-})
-
 export function Contact({ onSubmit }: Props) {
   const {
     formState: { errors, touchedFields },
@@ -36,7 +25,7 @@ export function Contact({ onSubmit }: Props) {
     register,
     setValue,
   } = useForm<FormParams>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(contactSchema),
     shouldFocusError: true,
   })
 
@@ -76,6 +65,7 @@ export function Contact({ onSubmit }: Props) {
           error={errors.full_name?.message}
           defaultValue={full_name}
           {...register('full_name')}
+          onBlur={(event) => setState({ full_name: event.currentTarget.value })}
         />
         <Input
           id='email'
@@ -85,6 +75,7 @@ export function Contact({ onSubmit }: Props) {
           error={errors.email?.message}
           defaultValue={email}
           {...register('email')}
+          onBlur={(event) => setState({ email: event.currentTarget.value })}
         />
 
         <Button size='lg' type='submit' disabled={isDisabled}>

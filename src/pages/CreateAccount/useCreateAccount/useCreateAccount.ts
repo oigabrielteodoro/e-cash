@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useMutation } from 'react-query'
 import create from 'zustand'
 
+import { Errors } from 'lib'
 import { api, ApiError } from 'client'
 
 import type {
@@ -45,12 +46,26 @@ export function clearState() {
   useStore.setState(() => initialState)
 }
 
+const fieldsWithinStep = {
+  contact: ['full_name', 'email'],
+  password: ['password'],
+  profile: ['like_be_called', 'monthly_income', 'financial_objective'],
+}
+
+export function getStepsWithError(errors: Errors) {
+  const stepsWithError = Object.entries(fieldsWithinStep)
+    .filter(([, fields]) => fields.some((fieldName) => !!errors[fieldName]))
+    .map(([stepName]) => stepName)
+
+  return stepsWithError
+}
+
 export function useCreateAccount({
   name = '',
   errors = {},
 }: UseCreateAccountParams = {}) {
   const store = useStore((state) => state)
-  const { mutate: createUser, isLoading } = useMutation<
+  const { mutateAsync: createUser, isLoading } = useMutation<
     unknown,
     ApiError,
     CreateUserAccount

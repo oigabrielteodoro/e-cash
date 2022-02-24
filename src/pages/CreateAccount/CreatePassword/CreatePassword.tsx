@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 
 import { Button, Input, PasswordStrength } from 'ui'
 
-import {
-  CreateAccountStoreState,
-  setState,
-  useCreateAccount,
-} from '../useCreateAccount'
+import { passwordSchema } from '../types'
+import { setState, useCreateAccount } from '../useCreateAccount'
+import type { CreateAccountStoreState } from '../useCreateAccount/types'
 
 import * as S from './CreatePassword.styled'
 
@@ -27,7 +24,7 @@ export function CreatePassword({ onSubmit }: Props) {
     setValue,
     formState: { errors },
   } = useForm<FormParams>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(passwordSchema),
     shouldFocusError: true,
   })
 
@@ -61,6 +58,11 @@ export function CreatePassword({ onSubmit }: Props) {
           placeholder='Secret password'
           error={errors.password?.message}
           {...register('password')}
+          onBlur={(event) =>
+            setState({
+              password: event.currentTarget.value,
+            })
+          }
         />
         <PasswordStrength value={passwordValue} />
         <Button size='lg' type='submit' disabled={isDisabled}>
@@ -70,15 +72,3 @@ export function CreatePassword({ onSubmit }: Props) {
     </>
   )
 }
-
-const schema = yup.object().shape({
-  password: yup
-    .string()
-    .required('Password is a required field')
-    .min(6, 'Password must be 6 characters long')
-    .matches(/[A-Z]/, 'Password must have an uppercase character')
-    .matches(/[a-z]/, 'Password must have an lowercase character')
-    .matches(/[0-9]/, 'Password must have a number')
-    .matches(/[a-zA-Z]/, 'Password must have a text')
-    .matches(/[^A-Z a-z0-9]/, 'Password must have a symbol'),
-})
