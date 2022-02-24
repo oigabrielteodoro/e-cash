@@ -10,7 +10,7 @@ import {
   Profile,
   clearState,
   passStep,
-} from 'core/accounts'
+} from 'core/users'
 
 import { Layout } from './Layout'
 
