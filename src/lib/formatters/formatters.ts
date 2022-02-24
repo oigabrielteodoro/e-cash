@@ -1,26 +1,22 @@
 import { pipe } from 'fp-ts/function'
 import { tryCatch, toError, fold as foldEither } from 'fp-ts/Either'
-import { fromNullable, fold, isSome } from 'fp-ts/Option'
+import { fromNullable, isSome } from 'fp-ts/Option'
+
 import Big from 'big.js'
 
-export const decimalFromInt = (
-  value?: number | null,
+export function decimalFromInt(
+  value?: number | string | null,
   options?: Intl.NumberFormatOptions,
-) =>
-  pipe(
-    value,
-    fromNullable,
-    fold(
-      () => '-',
-      (value) =>
-        new Intl.NumberFormat('pt-BR', {
-          minimumFractionDigits: value >= 1e6 ? 0 : 2,
-          style: 'currency',
-          currency: 'BRL',
-          ...options,
-        }).format(value),
-    ),
-  )
+) {
+  const amount = toNumber(value)
+
+  return new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: amount >= 1e6 ? 0 : 2,
+    style: 'currency',
+    currency: 'BRL',
+    ...options,
+  }).format(amount)
+}
 
 export function toNumber(value?: string | number | null): number {
   const amount = fromNullable(value)
