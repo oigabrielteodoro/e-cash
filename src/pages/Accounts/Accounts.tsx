@@ -20,7 +20,7 @@ export function Accounts() {
   const accountName = truncate('Conta Principal de Teste', {
     length: MAX_LENGTH,
   })
-
+        
   return (
     <AppLayout>
       <AppLayout.Header title='Accounts'>
