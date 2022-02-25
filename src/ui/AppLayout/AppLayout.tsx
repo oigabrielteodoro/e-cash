@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 import { Row, SideBar } from 'ui'
-import { useIsOpen } from 'ui/SideBar/useSideBar'
+import { useIsOpen } from 'core/layout'
 
 import * as S from './AppLayout.styled'
 

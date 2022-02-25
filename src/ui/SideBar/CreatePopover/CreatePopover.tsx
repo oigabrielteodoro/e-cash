@@ -2,9 +2,9 @@ import React from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 
 import { Tooltip, Popover } from 'ui'
+import { useIsOpen } from 'core/layout'
 
 import { TextWithAnimation } from '../WithAnimation'
-import { useIsOpen } from '../useSideBar'
 
 import { CreationOptions } from './CreationOptions'
 

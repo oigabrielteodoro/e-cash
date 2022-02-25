@@ -13,12 +13,11 @@ import { AnimatePresence } from 'framer-motion'
 
 import { Logo } from 'ui'
 import { theme } from 'config'
+import { useIsOpen, setState } from 'core/layout'
 
 import { NavItem } from './NavItem'
 import { AccountUser } from './AccountUser'
 import { CreatePopover } from './CreatePopover'
-
-import { useIsOpen, setState } from './useSideBar'
 
 import * as S from './SideBar.styled'
 

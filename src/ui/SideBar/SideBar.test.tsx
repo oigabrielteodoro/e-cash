@@ -2,9 +2,8 @@ import React from 'react'
 
 import { SideBar } from 'ui'
 import { theme } from 'config'
+import { sidebarStore } from 'core/layout'
 import { render, screen, userEvent } from '__helpers__/app-tests'
-
-import { sidebarStore } from './useSideBar'
 
 describe('SideBar', () => {
   beforeEach(() => {

@@ -79,5 +79,5 @@ export const Separator = styled.div`
   background: ${theme.colors.neutral[300]};
   height: 3.2rem;
   width: 0.1rem;
-  margin: auto 2.4rem;
+  margin: auto 1.6rem;
 `

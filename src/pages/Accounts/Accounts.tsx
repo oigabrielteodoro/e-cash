@@ -2,14 +2,25 @@ import React from 'react'
 import { FiPlus } from 'react-icons/fi'
 import { AiOutlineBank, AiOutlineBarChart, AiOutlineMore } from 'react-icons/ai'
 
-import { NUBANK } from 'assets'
+import truncate from 'lodash/truncate'
+
 import { AppLayout, Button, Calendar, Row, Grid, Space, Tooltip, Col } from 'ui'
+import { NUBANK } from 'assets'
+import { useIsOpen } from 'core/layout'
 
 import { BalanceCard } from 'pages/Dashboard/BalanceCard'
 
 import * as S from './Accounts.styled'
 
 export function Accounts() {
+  const isOpen = useIsOpen()
+
+  const MAX_LENGTH = isOpen ? 15 : 22
+
+  const accountName = truncate('Conta Principal de Teste', {
+    length: MAX_LENGTH,
+  })
+        
   return (
     <AppLayout>
       <AppLayout.Header title='Accounts'>
@@ -50,7 +61,13 @@ export function Accounts() {
                           <S.AccountBankFlagBox>
                             <S.AccountBankFlagImg src={NUBANK} alt='Nubank' />
                             <S.AccountBankInfoBox>
-                              <h3>Conta Principal</h3>
+                              <Tooltip
+                                disabled={false}
+                                message='Conta Principal de Teste'
+                                position='top'
+                              >
+                                <h3>{accountName}</h3>
+                              </Tooltip>
                               <small>NU PAGAMENTOS S.A</small>
                             </S.AccountBankInfoBox>
                             <S.Separator />
