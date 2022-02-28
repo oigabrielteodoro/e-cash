@@ -38,7 +38,7 @@ export function BankAccounts() {
         </Row>
       </AppLayout.Header>
       <AppLayout.Content>
-        <Row gutter={[32, 32]}>
+        <Row gutter={[24, 24]}>
           <Col span={6}>
             <BankAccountBalanceCard
               title='Current balance'

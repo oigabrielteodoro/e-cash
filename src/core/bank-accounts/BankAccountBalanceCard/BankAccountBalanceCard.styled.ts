@@ -43,7 +43,7 @@ export const Card = styled.button`
 `
 
 export const CardIcon = styled.div`
-  width: 4.5rem;
+  min-width: 4.5rem;
   height: 4.5rem;
   display: grid;
   place-items: center;
