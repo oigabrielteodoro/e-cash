@@ -4,6 +4,12 @@ import { render, screen } from '__helpers__/app-tests'
 import { ShimmerEffect } from '.'
 
 describe('ShimmerEffect', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(<ShimmerEffect isLoading />)
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', () => {
     render(<ShimmerEffect isLoading />)
 
