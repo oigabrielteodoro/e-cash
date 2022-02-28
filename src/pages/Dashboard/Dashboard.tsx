@@ -3,7 +3,7 @@ import { BiLineChartDown, BiLineChart } from 'react-icons/bi'
 import { AiOutlineBank, AiOutlineCreditCard } from 'react-icons/ai'
 
 import { AppLayout, Row, Col, Calendar } from 'ui'
-import { BalanceCard } from 'core/accounts'
+import { BankAccountBalanceCard } from 'core/bank-accounts'
 
 import { Search } from './Search'
 
@@ -19,7 +19,7 @@ export function Dashboard() {
       <AppLayout.Content>
         <Row gutter={[24, 24]}>
           <Col span={6}>
-            <BalanceCard
+            <BankAccountBalanceCard
               title='Current balance'
               currentValue={10000}
               previousValue={7000}
@@ -27,7 +27,7 @@ export function Dashboard() {
             />
           </Col>
           <Col span={6}>
-            <BalanceCard
+            <BankAccountBalanceCard
               title='Incomes'
               currentValue={10000}
               previousValue={7000}
@@ -35,7 +35,7 @@ export function Dashboard() {
             />
           </Col>
           <Col span={6}>
-            <BalanceCard
+            <BankAccountBalanceCard
               title='Expenses'
               currentValue={5500}
               previousValue={10000}
@@ -43,7 +43,7 @@ export function Dashboard() {
             />
           </Col>
           <Col span={6}>
-            <BalanceCard
+            <BankAccountBalanceCard
               title='Credit Card'
               currentValue={150}
               previousValue={500}
