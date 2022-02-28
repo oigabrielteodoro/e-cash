@@ -6,12 +6,12 @@ import { Errors } from 'lib'
 import { api, ApiError } from 'client'
 
 import type {
-  CreateAccountStoreState,
-  CreateUserAccount,
-  UseCreateAccountParams,
+  CreateUserStoreState,
+  CreateUser,
+  UseCreateUserParams,
 } from './types'
 
-const initialState: CreateAccountStoreState = {
+const initialState: CreateUserStoreState = {
   email: '',
   financial_objective: '',
   full_name: '',
@@ -23,10 +23,10 @@ const initialState: CreateAccountStoreState = {
   status: undefined,
 }
 
-const useStore = create<CreateAccountStoreState>(() => initialState)
+const useStore = create<CreateUserStoreState>(() => initialState)
 
 export function setState(
-  state: Omit<CreateAccountStoreState, 'errors' | 'passed'>,
+  state: Omit<CreateUserStoreState, 'errors' | 'passed'>,
 ) {
   useStore.setState(state)
 }
@@ -60,15 +60,15 @@ export function getStepsWithError(errors: Errors) {
   return stepsWithError
 }
 
-export function useCreateAccount({
+export function useCreateUser({
   name = '',
   errors = {},
-}: UseCreateAccountParams = {}) {
+}: UseCreateUserParams = {}) {
   const store = useStore((state) => state)
   const { mutateAsync: createUser, isLoading } = useMutation<
     unknown,
     ApiError,
-    CreateUserAccount
+    CreateUser
   >({
     mutationFn: (params) => api.post('/users', params),
     onSuccess: () => {

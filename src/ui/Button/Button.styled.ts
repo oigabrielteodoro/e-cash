@@ -24,7 +24,7 @@ const types = {
   `,
 }
 
-const modifiers = {
+const sizes = {
   sm: css`
     padding: 0.8rem 1.6rem;
     font-size: ${theme.font.sizes.small};
@@ -91,19 +91,19 @@ const button = ({ $full, size, variant, $buttonType }: ContainerProps) => css`
     width: 100%;
   `};
 
-  ${modifiers[size]};
+  ${sizes[size]};
   ${variants[variant]};
   ${$buttonType && types[$buttonType]};
 `
 
 export const Container = styled.button<ContainerProps>`
   ${({ $full, size, variant, $buttonType }) =>
-    button({ $full, size, variant, $buttonType })}
+    button({ $full, $buttonType, size, variant })}
 `
 
 export const LinkWrapper = styled(Link)<ContainerProps>`
   text-decoration: none;
 
   ${({ $full, size, variant, $buttonType }) =>
-    button({ $full, size, variant, $buttonType })}
+    button({ $full, $buttonType, size, variant })}
 `

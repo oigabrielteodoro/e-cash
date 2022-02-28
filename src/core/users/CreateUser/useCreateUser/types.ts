@@ -1,6 +1,6 @@
 import type { FieldError } from 'react-hook-form'
 
-export type CreateUserAccount = {
+export type CreateUser = {
   email: string
   full_name: string
   password: string
@@ -9,13 +9,13 @@ export type CreateUserAccount = {
   financial_objective: string
 }
 
-export type CreateAccountStoreState = {
+export type CreateUserStoreState = {
   errors: string[]
   passed: string[]
   status?: 'success' | 'error'
-} & Partial<CreateUserAccount>
+} & Partial<CreateUser>
 
-export type UseCreateAccountParams = {
+export type UseCreateUserParams = {
   name?: string
   errors?: {
     [key: string]: FieldError | undefined

@@ -7,8 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Button, Input } from 'ui'
 
 import { contactSchema } from '../types'
-import { setState, useCreateAccount } from '../useCreateAccount'
-import type { CreateAccountStoreState } from '../useCreateAccount/types'
+import { setState, useCreateUser } from '../useCreateUser'
+import type { CreateUserStoreState } from '../useCreateUser/types'
 
 import * as S from './Contact.styled'
 
@@ -16,7 +16,7 @@ type Props = {
   onSubmit: () => void
 }
 
-type FormParams = Required<Pick<CreateAccountStoreState, 'email' | 'full_name'>>
+type FormParams = Required<Pick<CreateUserStoreState, 'email' | 'full_name'>>
 
 export function Contact({ onSubmit }: Props) {
   const {
@@ -29,7 +29,7 @@ export function Contact({ onSubmit }: Props) {
     shouldFocusError: true,
   })
 
-  const { email, full_name } = useCreateAccount({
+  const { email, full_name } = useCreateUser({
     name: 'contact',
     errors,
   })

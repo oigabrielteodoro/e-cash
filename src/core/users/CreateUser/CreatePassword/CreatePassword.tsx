@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Button, Input, PasswordStrength } from 'ui'
 
 import { passwordSchema } from '../types'
-import { setState, useCreateAccount } from '../useCreateAccount'
-import type { CreateAccountStoreState } from '../useCreateAccount/types'
+import { setState, useCreateUser } from '../useCreateUser'
+import type { CreateUserStoreState } from '../useCreateUser/types'
 
 import * as S from './CreatePassword.styled'
 
@@ -14,7 +14,7 @@ type Props = {
   onSubmit: () => void
 }
 
-type FormParams = Required<Pick<CreateAccountStoreState, 'password'>>
+type FormParams = Required<Pick<CreateUserStoreState, 'password'>>
 
 export function CreatePassword({ onSubmit }: Props) {
   const {
@@ -28,7 +28,7 @@ export function CreatePassword({ onSubmit }: Props) {
     shouldFocusError: true,
   })
 
-  const { password = '' } = useCreateAccount({
+  const { password = '' } = useCreateUser({
     name: 'password',
     errors,
   })

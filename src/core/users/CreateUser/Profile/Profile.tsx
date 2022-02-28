@@ -7,20 +7,20 @@ import { ValidationError } from 'yup'
 import { Button, Input, Select } from 'ui'
 import { getValidationErrors } from 'lib'
 
-import { createAccountSchema, profileSchema } from '../types'
+import { createUserSchema, profileSchema } from '../types'
 import {
   getStepsWithError,
   setErrors,
   setState,
-  useCreateAccount,
-} from '../useCreateAccount'
-import type { CreateAccountStoreState } from '../useCreateAccount/types'
+  useCreateUser,
+} from '../useCreateUser'
+import type { CreateUserStoreState } from '../useCreateUser/types'
 
 import * as S from './Profile.styled'
 
 type FormParams = Required<
   Pick<
-    CreateAccountStoreState,
+    CreateUserStoreState,
     'monthly_income' | 'financial_objective' | 'like_be_called'
   >
 >
@@ -48,7 +48,7 @@ export function Profile() {
     password = '',
     isLoading,
     createUser,
-  } = useCreateAccount({
+  } = useCreateUser({
     name: 'profile',
     errors,
   })
@@ -71,7 +71,7 @@ export function Profile() {
     try {
       const data = { email, full_name, password, ...params }
 
-      await createAccountSchema.validate(data, {
+      await createUserSchema.validate(data, {
         abortEarly: false,
       })
 

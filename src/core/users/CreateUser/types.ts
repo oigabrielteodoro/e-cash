@@ -32,7 +32,7 @@ export const contactSchema = yup.object().shape(contactShape)
 export const passwordSchema = yup.object().shape(passwordShape)
 export const profileSchema = yup.object().shape(profileShape)
 
-export const createAccountSchema = yup.object().shape({
+export const createUserSchema = yup.object().shape({
   ...contactShape,
   ...passwordShape,
   ...profileShape,

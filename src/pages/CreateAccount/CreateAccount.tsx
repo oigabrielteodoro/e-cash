@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { SIGN_IN } from 'lib'
 import { ForwardedSteps, Steps, StepRefProps, Button, Result } from 'ui'
 import {
-  useCreateAccount,
+  useCreateUser,
   Contact,
   CreatePassword,
   Profile,
@@ -19,7 +19,7 @@ import * as S from './CreateAccount.styled'
 export function CreateAccount() {
   const stepsRef = useRef<StepRefProps>(null)
   const { email, full_name, password, errors, passed, isSuccess } =
-    useCreateAccount()
+    useCreateUser()
 
   useEffect(() => () => clearState(), [])
 
