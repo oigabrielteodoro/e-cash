@@ -50,7 +50,7 @@ export function Accounts() {
       </AppLayout.Header>
       <AppLayout.Content>
         <Row gutter={[32, 0]}>
-          <Col lg={18} xlg={20}>
+          <Col lg={18} xlg={19}>
             <Row as='ul' gutter={[32, 32]}>
               {[1, 2, 3, 4].map((account) => (
                 <Col as='li' key={account} md={24} lg={12} xlg={8}>
@@ -96,7 +96,7 @@ export function Accounts() {
               ))}
             </Row>
           </Col>
-          <Col lg={6} xlg={4}>
+          <Col lg={6} xlg={5}>
             <Grid columns={1} gutter={[0, 32]}>
               <BalanceCard
                 title='Current balance'
