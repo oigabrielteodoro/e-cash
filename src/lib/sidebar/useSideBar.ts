@@ -1,13 +1,13 @@
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
-import type { StoreState } from './types'
+import type { SideBarStoreState } from './types'
 
-const initialState: StoreState = {
+const initialState: SideBarStoreState = {
   isOpen: false,
 }
 
-const useStore = create<StoreState>(
+const useStore = create<SideBarStoreState>(
   persist((_, __) => initialState, {
     name: '@e-cash:layout',
   }),

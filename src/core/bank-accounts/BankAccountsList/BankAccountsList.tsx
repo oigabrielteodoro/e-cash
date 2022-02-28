@@ -3,8 +3,8 @@ import React from 'react'
 import truncate from 'lodash/truncate'
 
 import { NUBANK } from 'assets'
+import { useIsOpen } from 'lib'
 import { Col, Row, Tooltip } from 'ui'
-import { useIsOpen } from 'core/layout'
 
 import * as S from './BankAccountsList.styled'
 
@@ -14,6 +14,10 @@ export function BankAccountsList() {
   const MAX_LENGTH = isOpen ? 15 : 22
 
   const accountName = truncate('Conta Nubank', {
+    length: MAX_LENGTH,
+  })
+
+  const bankName = truncate('NU PAGAMENTOS S.A', {
     length: MAX_LENGTH,
   })
 
@@ -29,13 +33,12 @@ export function BankAccountsList() {
                     <S.AccountBankFlagImg src={NUBANK} alt='Nubank' />
                     <Row justifyContent='space-between' width='100%'>
                       <S.AccountBankInfoBox>
-                        <Tooltip
-                          message='Conta Principal de Teste'
-                          position='top'
-                        >
+                        <Tooltip message='Conta Nubank' position='top'>
                           <h3>{accountName}</h3>
                         </Tooltip>
-                        <small>NU PAGAMENTOS S.A</small>
+                        <Tooltip message='NU PAGAMENTOS S.A' position='bottom'>
+                          <small>{bankName}</small>
+                        </Tooltip>
                       </S.AccountBankInfoBox>
                       <S.Separator />
                       <S.AccountBankInfo>

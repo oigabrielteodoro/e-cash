@@ -4,7 +4,7 @@ import truncate from 'lodash/truncate'
 
 import { Avatar, Tooltip, ShimmerEffect, Popover } from 'ui'
 import { useMe } from 'client'
-import { useIsOpen } from 'core/layout'
+import { useIsOpen } from 'lib'
 
 import { AccountUserOptions } from './AccountUserOptions'
 

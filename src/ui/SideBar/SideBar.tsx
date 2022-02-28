@@ -13,7 +13,7 @@ import { AnimatePresence } from 'framer-motion'
 
 import { Logo } from 'ui'
 import { theme } from 'config'
-import { useIsOpen, setState } from 'core/layout'
+import { ACCOUNTS, DASHBOARD, useIsOpen, setState } from 'lib'
 
 import { NavItem } from './NavItem'
 import { AccountUser } from './AccountUser'
@@ -47,13 +47,13 @@ export function SideBar() {
         <CreatePopover />
         <S.Navigation>
           <ul>
-            <NavItem to='/dashboard' icon={AiOutlineBarChart}>
+            <NavItem to={DASHBOARD} icon={AiOutlineBarChart}>
               Dashboard
             </NavItem>
             <NavItem to='/transactions' icon={AiOutlineUnorderedList}>
               Transactions
             </NavItem>
-            <NavItem to='/accounts' icon={AiOutlineBank}>
+            <NavItem to={ACCOUNTS} icon={AiOutlineBank}>
               Accounts
             </NavItem>
             <NavItem to='/budgets' icon={AiOutlineUsergroupAdd}>

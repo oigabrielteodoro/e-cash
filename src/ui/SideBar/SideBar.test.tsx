@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SideBar } from 'ui'
 import { theme } from 'config'
-import { sidebarStore } from 'core/layout'
+import { sidebarStore } from 'lib'
 import { render, screen, userEvent } from '__helpers__/app-tests'
 
 describe('SideBar', () => {

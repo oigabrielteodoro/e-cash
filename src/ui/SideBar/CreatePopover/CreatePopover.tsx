@@ -1,8 +1,8 @@
 import React from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 
+import { useIsOpen } from 'lib'
 import { Tooltip, Popover } from 'ui'
-import { useIsOpen } from 'core/layout'
 
 import { TextWithAnimation } from '../WithAnimation'
 

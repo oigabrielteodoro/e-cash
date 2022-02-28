@@ -26,8 +26,13 @@ export const AccountBankInfoBox = styled.div`
   flex-direction: column;
   margin-left: 1.6rem;
 
+  h3 {
+    font-size: 16px;
+  }
+
   small {
     margin-top: 0.4rem;
+    font-size: 12px;
   }
 `
 
