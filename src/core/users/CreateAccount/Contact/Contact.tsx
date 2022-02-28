@@ -78,7 +78,7 @@ export function Contact({ onSubmit }: Props) {
           onBlur={(event) => setState({ email: event.currentTarget.value })}
         />
 
-        <Button size='lg' type='submit' disabled={isDisabled}>
+        <Button size='lg' htmlType='submit' disabled={isDisabled}>
           Confirm your information
         </Button>
       </S.Form>

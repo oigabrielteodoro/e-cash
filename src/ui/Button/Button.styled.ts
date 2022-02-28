@@ -8,7 +8,7 @@ import type { ButtonProps } from '.'
 type ContainerProps = {
   $full: boolean
   disabled?: boolean
-  buttonType?: 'icon' | 'text'
+  $buttonType?: 'icon' | 'text'
 } & Required<Pick<ButtonProps, 'size' | 'variant'>>
 
 const types = {
@@ -58,7 +58,7 @@ const variants = {
   `,
 }
 
-const button = ({ $full, size, variant, buttonType }: ContainerProps) => css`
+const button = ({ $full, size, variant, $buttonType }: ContainerProps) => css`
   border: 0;
   display: flex;
   align-items: center;
@@ -93,17 +93,17 @@ const button = ({ $full, size, variant, buttonType }: ContainerProps) => css`
 
   ${modifiers[size]};
   ${variants[variant]};
-  ${buttonType && types[buttonType]};
+  ${$buttonType && types[$buttonType]};
 `
 
 export const Container = styled.button<ContainerProps>`
-  ${({ $full, size, variant, buttonType }) =>
-    button({ $full, size, variant, buttonType })}
+  ${({ $full, size, variant, $buttonType }) =>
+    button({ $full, size, variant, $buttonType })}
 `
 
 export const LinkWrapper = styled(Link)<ContainerProps>`
   text-decoration: none;
 
-  ${({ $full, size, variant, buttonType }) =>
-    button({ $full, size, variant, buttonType })}
+  ${({ $full, size, variant, $buttonType }) =>
+    button({ $full, size, variant, $buttonType })}
 `

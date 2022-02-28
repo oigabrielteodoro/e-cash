@@ -131,7 +131,7 @@ export function Profile() {
             Make an investment portfolio
           </Select.Option>
         </Select>
-        <Button size='lg' loading={isLoading}>
+        <Button size='lg' htmlType='submit' loading={isLoading}>
           Create your account
         </Button>
       </S.Form>

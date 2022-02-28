@@ -35,11 +35,11 @@ export function Button({
     return (
       <S.LinkWrapper
         $full={full}
+        $buttonType={type}
         disabled={isDisabled}
         variant={variant}
         size={size}
         to={to}
-        buttonType={type}
       >
         {children}
       </S.LinkWrapper>
@@ -53,7 +53,7 @@ export function Button({
       disabled={isDisabled}
       variant={variant}
       size={size}
-      buttonType={type}
+      $buttonType={type}
       {...rest}
     >
       {loading ? <LoadIcon /> : children}

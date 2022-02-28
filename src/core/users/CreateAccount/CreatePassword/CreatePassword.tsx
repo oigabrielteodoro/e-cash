@@ -65,7 +65,7 @@ export function CreatePassword({ onSubmit }: Props) {
           }
         />
         <PasswordStrength value={passwordValue} />
-        <Button size='lg' type='submit' disabled={isDisabled}>
+        <Button size='lg' htmlType='submit' disabled={isDisabled}>
           Create your password
         </Button>
       </S.Form>
