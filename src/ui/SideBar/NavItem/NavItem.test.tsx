@@ -22,6 +22,16 @@ function MockedComponent() {
 }
 
 describe('NavItem', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(
+      <NavItem to='/' icon={AiOutlineDashboard}>
+        Link
+      </NavItem>,
+    )
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', async () => {
     render(
       <NavItem to='/' icon={AiOutlineDashboard}>

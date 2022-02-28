@@ -12,6 +12,12 @@ describe('SideBar', () => {
     })
   })
 
+  it('should be able match snapshot', () => {
+    const { container } = render(<SideBar />)
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', () => {
     render(<SideBar />)
 

@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreatePopover should be able match snapshot 1`] = `
+.c7 {
+  border: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border: 0.1rem solid transparent;
+  padding: 1.2rem 3.2rem;
+  background: #3a67e1;
+}
+
+.c7:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 0 0.4rem #a4b7ea30;
+}
+
+.c7:disabled {
+  cursor: no-drop;
+  color: #a1a7ae;
+  background: #f5f5f5;
+  border-color: #cfd7e3;
+}
+
+.c7:disabled:hover {
+  box-shadow: 0 0 0 0.4rem #a1a7ae20;
+}
+
+.c8 {
+  padding-left: 1.6rem;
+  height: 4.2rem;
+  margin-left: 0.4rem;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding: 0;
+  width: 4.2rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.c5 {
+  position: absolute;
+  color: #18171d;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #ffffff;
+  padding: 1rem 1.6rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border: 0.1rem solid #cfd7e3;
+  text-align: center;
+  z-index: 1;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(calc(100% + 1.6rem),-50%);
+  -ms-transform: translate(calc(100% + 1.6rem),-50%);
+  transform: translate(calc(100% + 1.6rem),-50%);
+}
+
+.c5::before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-color: transparent;
+}
+
+.c6 {
+  position: absolute;
+  background: #ffffff;
+  height: 1rem;
+  width: 1rem;
+  border: 0.1rem solid #cfd7e3;
+  z-index: 1;
+  top: 50%;
+  left: calc(100% + 1.2rem);
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+  -ms-transform: translateY(-50%) rotate(-45deg);
+  transform: translateY(-50%) rotate(-45deg);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.c2 {
+  position: relative;
+}
+
+.c2:hover .c3 {
+  opacity: 1;
+  visibility: visible;
+}
+
+.c0 {
+  width: 100%;
+  position: relative;
+}
+
+.c1 {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+<div>
+  <div
+    class="c0"
+    style="margin-top: 3rem; display: flex; align-items: center;"
+  >
+    <button
+      aria-label="create"
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <div
+          class="c3 c4"
+        >
+          <span
+            class="c5"
+          >
+            Create
+          </span>
+          <div
+            class="c6"
+          />
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            fill="currentColor"
+            height="18"
+            stroke="currentColor"
+            stroke-width="0"
+            t="1551322312294"
+            version="1.1"
+            viewBox="0 0 1024 1024"
+            width="18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs />
+            <path
+              d="M474 152m8 0l60 0q8 0 8 8l0 704q0 8-8 8l-60 0q-8 0-8-8l0-704q0-8 8-8Z"
+            />
+            <path
+              d="M168 474m8 0l672 0q8 0 8 8l0 60q0 8-8 8l-672 0q-8 0-8-8l0-60q0-8 8-8Z"
+            />
+          </svg>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    class="Toastify"
+  />
+</div>
+`;
