@@ -28,11 +28,11 @@ export function CreatePopover() {
       <Tooltip disabled={isOpen} message='Create'>
         <S.CreateButtonContainer
           size='md'
-          variant='icon'
+          variant='primary'
           $full={false}
           isOpen={isOpen}
         >
-          <AiOutlinePlus size={24} />
+          <AiOutlinePlus size={18} />
           {isOpen && <TextWithAnimation>Create</TextWithAnimation>}
         </S.CreateButtonContainer>
       </Tooltip>

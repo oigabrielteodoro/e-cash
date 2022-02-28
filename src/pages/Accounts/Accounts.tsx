@@ -5,11 +5,9 @@ import { AiOutlineBank, AiOutlineBarChart, AiOutlineMore } from 'react-icons/ai'
 import truncate from 'lodash/truncate'
 
 import { AppLayout, Button, Calendar, Row, Grid, Space, Tooltip, Col } from 'ui'
+import { BalanceCard } from 'core/accounts'
 import { NUBANK } from 'assets'
 import { useIsOpen } from 'core/layout'
-
-import { BalanceCard } from 'pages/Dashboard/BalanceCard'
-
 import * as S from './Accounts.styled'
 
 export function Accounts() {
@@ -31,18 +29,18 @@ export function Accounts() {
 
           <Grid columns={3} gutter={[8, 0]}>
             <Tooltip message='New account' position='bottom'>
-              <Button variant='icon'>
-                <FiPlus />
+              <Button variant='primary' type='icon'>
+                <FiPlus size={20} />
               </Button>
             </Tooltip>
             <Tooltip message='Balance projection' position='bottom'>
-              <Button variant='icon'>
-                <AiOutlineBarChart />
+              <Button variant='primary' type='icon'>
+                <AiOutlineBarChart size={20} />
               </Button>
             </Tooltip>
             <Tooltip message='More' position='bottom'>
-              <Button variant='icon'>
-                <AiOutlineMore />
+              <Button variant='primary' type='icon'>
+                <AiOutlineMore size={20} />
               </Button>
             </Tooltip>
           </Grid>

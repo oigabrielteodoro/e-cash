@@ -10,19 +10,23 @@ export type ButtonProps = {
   children: ReactNode
   loading?: boolean
   size?: 'sm' | 'md' | 'lg'
-  variant?: 'primary' | 'secondary' | 'outline' | 'icon'
+  type?: 'icon' | 'text'
+  variant?: 'primary' | 'secondary' | 'outline'
+  htmlType?: 'button' | 'submit' | 'reset'
   full?: boolean
   to?: string
-} & NaviteProps
+} & Omit<NaviteProps, 'type'>
 
 export function Button({
   children,
   loading = false,
   disabled = false,
   variant = 'primary',
-  size = 'md',
-  full = variant !== 'icon',
   to,
+  type,
+  size = 'md',
+  full = type !== 'icon',
+  htmlType = 'button',
   ...rest
 }: ButtonProps) {
   const isDisabled = loading || disabled
@@ -35,6 +39,7 @@ export function Button({
         variant={variant}
         size={size}
         to={to}
+        buttonType={type}
       >
         {children}
       </S.LinkWrapper>
@@ -43,10 +48,12 @@ export function Button({
 
   return (
     <S.Container
+      type={htmlType}
       $full={full}
       disabled={isDisabled}
       variant={variant}
       size={size}
+      buttonType={type}
       {...rest}
     >
       {loading ? <LoadIcon /> : children}

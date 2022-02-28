@@ -8,7 +8,21 @@ import type { ButtonProps } from '.'
 type ContainerProps = {
   $full: boolean
   disabled?: boolean
+  buttonType?: 'icon' | 'text'
 } & Required<Pick<ButtonProps, 'size' | 'variant'>>
+
+const types = {
+  icon: css`
+    min-width: 4.2rem;
+    height: 4.2rem;
+    padding: 0;
+  `,
+  text: css`
+    background: transparent;
+    border: 0;
+    box-shadow: 0;
+  `,
+}
 
 const modifiers = {
   sm: css`
@@ -27,21 +41,24 @@ const variants = {
   primary: css`
     background: ${theme.colors.blue[500]};
   `,
-  secondary: css``,
+  secondary: css`
+    color: ${theme.colors.blue[500]};
+    background: ${theme.colors.blue[100]};
+    border: 0.1rem solid ${theme.colors.blue[500]};
+
+    &:hover {
+      opacity: 1;
+      box-shadow: none;
+    }
+  `,
   outline: css`
     background: transparent;
     color: ${theme.colors.blue[500]};
     border: 0.2rem solid ${theme.colors.blue[300]};
   `,
-  icon: css`
-    min-width: 4.2rem;
-    height: 4.2rem;
-    background: ${theme.colors.blue[500]};
-    padding: 0;
-  `,
 }
 
-const button = ({ $full, size, variant }: ContainerProps) => css`
+const button = ({ $full, size, variant, buttonType }: ContainerProps) => css`
   border: 0;
   display: flex;
   align-items: center;
@@ -53,17 +70,8 @@ const button = ({ $full, size, variant }: ContainerProps) => css`
   transition: 300ms;
   border: 0.1rem solid transparent;
 
-  ${$full &&
-  css`
-    width: 100%;
-  `}
-
-  ${modifiers[size]}
-  ${variants[variant]}
-
   &:hover {
     opacity: 0.9;
-    transform: scale(0.99);
     box-shadow: 0 0 0 0.4rem ${theme.shadow.blue[300]};
   }
 
@@ -77,14 +85,25 @@ const button = ({ $full, size, variant }: ContainerProps) => css`
       box-shadow: 0 0 0 0.4rem ${theme.shadow.neutral[500]};
     }
   }
+
+  ${$full &&
+  css`
+    width: 100%;
+  `};
+
+  ${modifiers[size]};
+  ${variants[variant]};
+  ${buttonType && types[buttonType]};
 `
 
 export const Container = styled.button<ContainerProps>`
-  ${({ $full, size, variant }) => button({ $full, size, variant })}
+  ${({ $full, size, variant, buttonType }) =>
+    button({ $full, size, variant, buttonType })}
 `
 
 export const LinkWrapper = styled(Link)<ContainerProps>`
   text-decoration: none;
 
-  ${({ $full, size, variant }) => button({ $full, size, variant })}
+  ${({ $full, size, variant, buttonType }) =>
+    button({ $full, size, variant, buttonType })}
 `

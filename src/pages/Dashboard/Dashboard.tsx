@@ -3,9 +3,9 @@ import { BiLineChartDown, BiLineChart } from 'react-icons/bi'
 import { AiOutlineBank, AiOutlineCreditCard } from 'react-icons/ai'
 
 import { AppLayout, Row, Col, Calendar } from 'ui'
+import { BalanceCard } from 'core/accounts'
 
 import { Search } from './Search'
-import { BalanceCard } from './BalanceCard'
 
 export function Dashboard() {
   return (
