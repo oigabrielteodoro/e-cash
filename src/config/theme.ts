@@ -5,6 +5,14 @@ export const theme = {
       closed: '10rem',
     },
   },
+  breakpoints: {
+    xsm: '320px',
+    sm: '425px',
+    md: '768px',
+    lg: '1440px',
+    xlg: '1920px',
+    greaterLg: '1441px',
+  },
   radius: {
     card: '0.5rem',
     popover: '1rem',

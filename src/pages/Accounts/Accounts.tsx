@@ -17,7 +17,7 @@ export function Accounts() {
 
   const MAX_LENGTH = isOpen ? 15 : 22
 
-  const accountName = truncate('Conta Principal de Teste', {
+  const accountName = truncate('Conta Nubank', {
     length: MAX_LENGTH,
   })
 
@@ -50,35 +50,36 @@ export function Accounts() {
       </AppLayout.Header>
       <AppLayout.Content>
         <Row gutter={[32, 0]}>
-          <Col span={18}>
+          <Col lg={18} xlg={20}>
             <Row as='ul' gutter={[32, 32]}>
               {[1, 2, 3, 4].map((account) => (
-                <Col as='li' key={account} span={12}>
+                <Col as='li' key={account} md={24} lg={12} xlg={8}>
                   <S.AccountBankCard>
                     <Row>
                       <Col span={24}>
                         <Row>
                           <S.AccountBankFlagBox>
                             <S.AccountBankFlagImg src={NUBANK} alt='Nubank' />
-                            <S.AccountBankInfoBox>
-                              <Tooltip
-                                disabled={false}
-                                message='Conta Principal de Teste'
-                                position='top'
-                              >
-                                <h3>{accountName}</h3>
-                              </Tooltip>
-                              <small>NU PAGAMENTOS S.A</small>
-                            </S.AccountBankInfoBox>
-                            <S.Separator />
-                            <S.AccountBankInfo>
-                              <span>
-                                Ag. <strong>0001</strong>
-                              </span>
-                              <span>
-                                Conta. <strong>17089-1</strong>
-                              </span>
-                            </S.AccountBankInfo>
+                            <Row justifyContent='space-between' width='100%'>
+                              <S.AccountBankInfoBox>
+                                <Tooltip
+                                  message='Conta Principal de Teste'
+                                  position='top'
+                                >
+                                  <h3>{accountName}</h3>
+                                </Tooltip>
+                                <small>NU PAGAMENTOS S.A</small>
+                              </S.AccountBankInfoBox>
+                              <S.Separator />
+                              <S.AccountBankInfo>
+                                <span>
+                                  Ag. <strong>0001</strong>
+                                </span>
+                                <span>
+                                  Conta. <strong>17089-1</strong>
+                                </span>
+                              </S.AccountBankInfo>
+                            </Row>
                           </S.AccountBankFlagBox>
 
                           <S.AccountBankBalanceBox>
@@ -95,7 +96,7 @@ export function Accounts() {
               ))}
             </Row>
           </Col>
-          <Col span={6}>
+          <Col lg={6} xlg={4}>
             <Grid columns={1} gutter={[0, 32]}>
               <BalanceCard
                 title='Current balance'

@@ -13,6 +13,7 @@ export const AccountBankCard = styled.div`
 export const AccountBankFlagBox = styled.div`
   display: flex;
   align-items: flex-start;
+  width: 100%;
 `
 
 export const AccountBankInfoBox = styled.div`

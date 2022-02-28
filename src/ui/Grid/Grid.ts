@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import type { CSSProperties, ElementType } from 'react'
 
 import { percentFromInt } from 'lib'
+import { theme } from 'config'
 
 type RowProps = {
   as?: ElementType
@@ -14,15 +15,71 @@ type GridProps = {
 
 type ColProps = {
   as?: ElementType
-  span: number
+  span?: number
+  xsm?: number
+  sm?: number
+  md?: number
+  lg?: number
+  xlg?: number
 } & Partial<CSSProperties>
 
-export const Col = styled.div.attrs<RowProps>(({ as, ...props }) => ({
+export const Col = styled.div.attrs<ColProps>(({ as, ...props }) => ({
   as,
   style: props,
 }))<ColProps>`
-  max-width: ${({ span }) => percentFromInt(span, 24)}};
-  flex: ${({ span }) => `0 0 ${percentFromInt(span, 24)}`};
+  ${({ span }) =>
+    span &&
+    css`
+    max-width: ${percentFromInt(span, 24)}};
+    flex: 0 0 ${percentFromInt(span, 24)};
+  `};
+
+  ${({ xlg }) =>
+    xlg &&
+    css`
+    @media screen and (min-width: ${theme.breakpoints.greaterLg}) {
+      max-width: ${percentFromInt(xlg, 24)}};
+      flex: 0 0 ${percentFromInt(xlg, 24)};
+    }
+  `}
+
+  ${({ xsm }) =>
+    xsm &&
+    css`
+      @media screen and (max-width: ${theme.breakpoints.xsm}) {
+        max-width: ${percentFromInt(xsm, 24)}};
+        flex: 0 0 ${percentFromInt(xsm, 24)};
+      }
+  `}
+
+  ${({ sm }) =>
+    sm &&
+    css`
+      @media screen and (max-width: ${theme.breakpoints.sm}) {
+        max-width: ${percentFromInt(sm, 24)}};
+        flex: 0 0 ${percentFromInt(sm, 24)};
+      }
+  `}
+
+  ${({ md }) =>
+    md &&
+    css`
+      @media screen and (max-width: ${theme.breakpoints.md}) {
+        max-width: ${percentFromInt(md, 24)}};
+        flex: 0 0 ${percentFromInt(md, 24)};
+      }
+  `}
+
+  ${({ lg }) =>
+    lg &&
+    css`
+      @media screen and (min-width: ${theme.breakpoints.md}) and (max-width: ${
+      theme.breakpoints.lg
+    }) {
+        max-width: ${percentFromInt(lg, 24)}};
+        flex: 0 0 ${percentFromInt(lg, 24)};
+      }
+  `}
 `
 
 export const Row = styled.div.attrs<RowProps>(({ as, ...props }) => ({
