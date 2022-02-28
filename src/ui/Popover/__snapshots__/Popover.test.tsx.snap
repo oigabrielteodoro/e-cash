@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover should be able match snapshot 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+}
+
+.c1 {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1"
+    >
+      Open popover
+    </button>
+  </div>
+  <div
+    class="Toastify"
+  />
+</div>
+`;
