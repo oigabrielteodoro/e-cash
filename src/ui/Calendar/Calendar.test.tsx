@@ -8,6 +8,12 @@ import { theme } from 'config'
 import { Calendar } from '.'
 
 describe('Calendar', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(<Calendar />)
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', async () => {
     const date = new Date()
 
