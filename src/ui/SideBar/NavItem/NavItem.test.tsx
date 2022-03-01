@@ -4,11 +4,7 @@ import { AiOutlineDashboard, AiOutlineUser } from 'react-icons/ai'
 
 import { render, screen, userEvent } from '__helpers__/app-tests'
 import { theme } from 'config'
-<<<<<<< HEAD
 import { sidebarStore } from 'lib'
-=======
-import { sidebarStore } from 'core/layout'
->>>>>>> 0803f31072a817b8a9f829396c56f8be1ed420e3
 
 import { NavItem } from '.'
 
