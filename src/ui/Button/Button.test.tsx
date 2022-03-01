@@ -4,6 +4,12 @@ import { render, screen, userEvent } from '__helpers__/app-tests'
 import { Button } from 'ui'
 
 describe('Button', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(<Button>Click me</Button>)
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', () => {
     render(<Button>Click me</Button>)
 
