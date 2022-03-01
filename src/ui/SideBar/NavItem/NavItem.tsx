@@ -4,7 +4,11 @@ import type { IconBaseProps } from 'react-icons'
 import { useMatch, useResolvedPath } from 'react-router'
 
 import { Tooltip } from 'ui'
+<<<<<<< HEAD
 import { useIsOpen } from 'lib'
+=======
+import { useIsOpen } from 'core/layout'
+>>>>>>> 0803f31072a817b8a9f829396c56f8be1ed420e3
 
 import * as S from './NavItem.styled'
 
