@@ -5,6 +5,12 @@ import { render, screen, userEvent } from '__helpers__/app-tests'
 import { Checkbox } from '.'
 
 describe('Checkbox', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(<Checkbox label='Checkbox' />)
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', () => {
     render(<Checkbox label='Checkbox' />)
 
