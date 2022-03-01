@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Steps should be able match snapshot 1`] = `
+.c2 {
+  position: relative;
+}
+
+.c1 {
+  width: 100%;
+  position: relative;
+  background: transparent;
+  border: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  cursor: default;
+}
+
+.c1::after {
+  content: '';
+  position: absolute;
+  background: #cfd7e3;
+  height: 0.1rem;
+  left: 4.6rem;
+  right: 1.6rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-animation: kKBrSp 2s;
+  animation: kKBrSp 2s;
+}
+
+.c1:last-child {
+  width: 3rem;
+}
+
+.c1:last-child::after {
+  display: none;
+}
+
+.c3 {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  cursor: pointer;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border-radius: 50%;
+  place-items: center;
+  border: 0.1rem solid transparent;
+  color: #a1a7ae;
+  border-color: #a1a7ae;
+  font-weight: 500;
+  border-color: transparent;
+  color: #ffffff;
+  background: #3a67e1;
+}
+
+.c4 {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  cursor: pointer;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border-radius: 50%;
+  place-items: center;
+  border: 0.1rem solid transparent;
+  color: #a1a7ae;
+  border-color: #a1a7ae;
+}
+
+.c4:hover {
+  color: #18171d;
+  border-color: #18171d;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.c5 {
+  margin: 5rem 0 2rem;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      aria-label="Step Control 1"
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <div
+          class="c3"
+        >
+          1
+        </div>
+      </div>
+    </button>
+    <button
+      aria-label="Step Control 2"
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <div
+          class="c4"
+        >
+          2
+        </div>
+      </div>
+    </button>
+    <button
+      aria-label="Step Control 3"
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <div
+          class="c4"
+        >
+          3
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    class="c5"
+  >
+    <h1>
+      Step 1
+    </h1>
+    <button>
+      Go next two
+    </button>
+  </div>
+  <div
+    class="Toastify"
+  />
+</div>
+`;

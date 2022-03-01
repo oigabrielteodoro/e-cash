@@ -27,6 +27,12 @@ function MockedComponent() {
 }
 
 describe('Steps', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(<MockedComponent />)
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', () => {
     render(<MockedComponent />)
 
