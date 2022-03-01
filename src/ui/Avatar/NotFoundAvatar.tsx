@@ -8,6 +8,7 @@ export function NotFoundAvatar() {
       viewBox='0 0 52 52'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      aria-label='unknown avatar'
     >
       <path
         d='M26 49.3333C38.8866 49.3333 49.3333 38.8867 49.3333 26C49.3333 13.1134 38.8866 2.66667 26 2.66667C13.1134 2.66667 2.66666 13.1134 2.66666 26C2.66666 38.8867 13.1134 49.3333 26 49.3333Z'

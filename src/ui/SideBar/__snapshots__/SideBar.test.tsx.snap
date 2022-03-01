@@ -1,0 +1,704 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideBar should be able match snapshot 1`] = `
+.c13 {
+  border: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border: 0.1rem solid transparent;
+  padding: 1.2rem 3.2rem;
+  background: #3a67e1;
+}
+
+.c13:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 0 0.4rem #a4b7ea30;
+}
+
+.c13:disabled {
+  cursor: no-drop;
+  color: #a1a7ae;
+  background: #f5f5f5;
+  border-color: #cfd7e3;
+}
+
+.c13:disabled:hover {
+  box-shadow: 0 0 0 0.4rem #a1a7ae20;
+}
+
+.c3 {
+  border-radius: 1rem;
+  background: #3a67e1;
+  height: 5.5rem;
+  width: 5.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.c18 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  min-width: 4.2rem;
+  min-height: 4.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.c18 svg {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  color: #a1a7ae;
+}
+
+.c16 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.c16:hover .c17 {
+  background: #ffffff;
+}
+
+.c16:hover .c17 svg {
+  color: #3a67e1;
+}
+
+.c14 {
+  padding-left: 1.6rem;
+  height: 4.2rem;
+  margin-left: 0.4rem;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding: 0;
+  width: 4.2rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0 {
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  width: 10rem;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  z-index: 1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  position: absolute;
+  right: calc(-2.4rem / 2);
+  top: 4rem;
+  border: 0;
+  background: #ffffff;
+  border: 0.3rem solid #eef1f5;
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  -webkit-transition: 800ms ease-out;
+  transition: 800ms ease-out;
+  opacity: 0;
+}
+
+.c1 {
+  background: #eef1f5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  padding: 2.4rem;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.c1:hover .c4 {
+  opacity: 1;
+}
+
+.c15 {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.c15 ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  margin-left: 0.5rem;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c15 ul li {
+  width: 100%;
+}
+
+.c15 ul li + li {
+  margin-top: 2rem;
+}
+
+.c10 {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.c11 {
+  position: absolute;
+  color: #18171d;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #ffffff;
+  padding: 1rem 1.6rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border: 0.1rem solid #cfd7e3;
+  text-align: center;
+  z-index: 1;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(calc(100% + 1.6rem),-50%);
+  -ms-transform: translate(calc(100% + 1.6rem),-50%);
+  transform: translate(calc(100% + 1.6rem),-50%);
+}
+
+.c11::before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-color: transparent;
+}
+
+.c12 {
+  position: absolute;
+  background: #ffffff;
+  height: 1rem;
+  width: 1rem;
+  border: 0.1rem solid #cfd7e3;
+  z-index: 1;
+  top: 50%;
+  left: calc(100% + 1.2rem);
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+  -ms-transform: translateY(-50%) rotate(-45deg);
+  transform: translateY(-50%) rotate(-45deg);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c8:hover .c9 {
+  opacity: 1;
+  visibility: visible;
+}
+
+.c6 {
+  width: 100%;
+  position: relative;
+}
+
+.c7 {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+<div>
+  <aside
+    aria-label="sidebar"
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <div
+          class="c3"
+        >
+          <svg
+            color="#ffffff"
+            fill="currentColor"
+            height="28"
+            stroke="currentColor"
+            stroke-width="0"
+            style="color: rgb(255, 255, 255);"
+            viewBox="0 0 512 512"
+            width="28"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              fill="none"
+              height="256"
+              rx="16"
+              ry="16"
+              stroke-linejoin="round"
+              stroke-width="32"
+              transform="rotate(180 256 208)"
+              width="448"
+              x="32"
+              y="80"
+            />
+            <path
+              d="M64 384h384M96 432h320"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+            />
+            <circle
+              cx="256"
+              cy="208"
+              fill="none"
+              r="80"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+            />
+            <path
+              d="M480 160a80 80 0 01-80-80M32 160a80 80 0 0080-80m368 176a80 80 0 00-80 80M32 256a80 80 0 0180 80"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+            />
+          </svg>
+        </div>
+      </div>
+      <button
+        aria-label="toggle sidebar"
+        class="c4 c5"
+      >
+        <svg
+          color="#a1a7ae"
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          style="color: rgb(161, 167, 174);"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline
+            points="9 18 15 12 9 6"
+          />
+        </svg>
+      </button>
+      <div
+        class="c6"
+        style="margin-top: 3rem; display: flex; align-items: center;"
+      >
+        <button
+          aria-label="create"
+          class="c7"
+        >
+          <div
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Create
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <div
+              class="c13 c14"
+            >
+              <svg
+                fill="currentColor"
+                height="18"
+                stroke="currentColor"
+                stroke-width="0"
+                t="1551322312294"
+                version="1.1"
+                viewBox="0 0 1024 1024"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs />
+                <path
+                  d="M474 152m8 0l60 0q8 0 8 8l0 704q0 8-8 8l-60 0q-8 0-8-8l0-704q0-8 8-8Z"
+                />
+                <path
+                  d="M168 474m8 0l672 0q8 0 8 8l0 60q0 8-8 8l-672 0q-8 0-8-8l0-60q0-8 8-8Z"
+                />
+              </svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <nav
+        class="c15"
+      >
+        <ul>
+          <li
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Dashboard
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <a
+              aria-label="dashboard"
+              class="c16"
+              href="/dashboard"
+            >
+              <div
+                aria-label="dashboard icon"
+                class="c17 c18"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm-600-80h56c4.4 0 8-3.6 8-8V560c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v144c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V384c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v320c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V462c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v242c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V304c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v400c0 4.4 3.6 8 8 8z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Transactions
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <a
+              aria-label="transactions"
+              class="c16"
+              href="/transactions"
+            >
+              <div
+                aria-label="transactions icon"
+                class="c17 c18"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Accounts
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <a
+              aria-label="accounts"
+              class="c16"
+              href="/bank_accounts"
+            >
+              <div
+                aria-label="accounts icon"
+                class="c17 c18"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M894 462c30.9 0 43.8-39.7 18.7-58L530.8 126.2a31.81 31.81 0 0 0-37.6 0L111.3 404c-25.1 18.2-12.2 58 18.8 58H192v374h-72c-4.4 0-8 3.6-8 8v52c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-52c0-4.4-3.6-8-8-8h-72V462h62zM512 196.7l271.1 197.2H240.9L512 196.7zM264 462h117v374H264V462zm189 0h117v374H453V462zm307 374H642V462h118v374z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Budgets
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <a
+              aria-label="budgets"
+              class="c16"
+              href="/budgets"
+            >
+              <div
+                aria-label="budgets icon"
+                class="c17 c18"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M892 772h-80v-80c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v80h-80c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h80v80c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-80h80c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM373.5 498.4c-.9-8.7-1.4-17.5-1.4-26.4 0-15.9 1.5-31.4 4.3-46.5.7-3.6-1.2-7.3-4.5-8.8-13.6-6.1-26.1-14.5-36.9-25.1a127.54 127.54 0 0 1-38.7-95.4c.9-32.1 13.8-62.6 36.3-85.6 24.7-25.3 57.9-39.1 93.2-38.7 31.9.3 62.7 12.6 86 34.4 7.9 7.4 14.7 15.6 20.4 24.4 2 3.1 5.9 4.4 9.3 3.2 17.6-6.1 36.2-10.4 55.3-12.4 5.6-.6 8.8-6.6 6.3-11.6-32.5-64.3-98.9-108.7-175.7-109.9-110.8-1.7-203.2 89.2-203.2 200 0 62.8 28.9 118.8 74.2 155.5-31.8 14.7-61.1 35-86.5 60.4-54.8 54.7-85.8 126.9-87.8 204a8 8 0 0 0 8 8.2h56.1c4.3 0 7.9-3.4 8-7.7 1.9-58 25.4-112.3 66.7-153.5 29.4-29.4 65.4-49.8 104.7-59.7 3.8-1.1 6.4-4.8 5.9-8.8zM824 472c0-109.4-87.9-198.3-196.9-200C516.3 270.3 424 361.2 424 472c0 62.8 29 118.8 74.2 155.5a300.95 300.95 0 0 0-86.4 60.4C357 742.6 326 814.8 324 891.8a8 8 0 0 0 8 8.2h56c4.3 0 7.9-3.4 8-7.7 1.9-58 25.4-112.3 66.7-153.5C505.8 695.7 563 672 624 672c110.4 0 200-89.5 200-200zm-109.5 90.5C690.3 586.7 658.2 600 624 600s-66.3-13.3-90.5-37.5a127.26 127.26 0 0 1-37.5-91.8c.3-32.8 13.4-64.5 36.3-88 24-24.6 56.1-38.3 90.4-38.7 33.9-.3 66.8 12.9 91 36.6 24.8 24.3 38.4 56.8 38.4 91.4-.1 34.2-13.4 66.3-37.6 90.5z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Investiments
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <a
+              aria-label="investiments"
+              class="c16"
+              href="/investiments"
+            >
+              <div
+                aria-label="investiments icon"
+                class="c17 c18"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M320 224h-66v-56c0-4.4-3.6-8-8-8h-52c-4.4 0-8 3.6-8 8v56h-66c-4.4 0-8 3.6-8 8v560c0 4.4 3.6 8 8 8h66v56c0 4.4 3.6 8 8 8h52c4.4 0 8-3.6 8-8v-56h66c4.4 0 8-3.6 8-8V232c0-4.4-3.6-8-8-8zm-60 508h-80V292h80v440zm644-436h-66v-96c0-4.4-3.6-8-8-8h-52c-4.4 0-8 3.6-8 8v96h-66c-4.4 0-8 3.6-8 8v416c0 4.4 3.6 8 8 8h66v96c0 4.4 3.6 8 8 8h52c4.4 0 8-3.6 8-8v-96h66c4.4 0 8-3.6 8-8V304c0-4.4-3.6-8-8-8zm-60 364h-80V364h80v296zM612 404h-66V232c0-4.4-3.6-8-8-8h-52c-4.4 0-8 3.6-8 8v172h-66c-4.4 0-8 3.6-8 8v200c0 4.4 3.6 8 8 8h66v172c0 4.4 3.6 8 8 8h52c4.4 0 8-3.6 8-8V620h66c4.4 0 8-3.6 8-8V412c0-4.4-3.6-8-8-8zm-60 145a3 3 0 0 1-3 3h-74a3 3 0 0 1-3-3v-74a3 3 0 0 1 3-3h74a3 3 0 0 1 3 3v74z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Planning
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <a
+              aria-label="planning"
+              class="c16"
+              href="/planning"
+            >
+              <div
+                aria-label="planning icon"
+                class="c17 c18"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  t="1569683928793"
+                  version="1.1"
+                  viewBox="0 0 1024 1024"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs />
+                  <path
+                    d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16z m-52 268H212V212h200v200zM864 144H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16z m-52 268H612V212h200v200zM864 544H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16z m-52 268H612V612h200v200zM424 712H296V584c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v128H104c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h128v128c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V776h128c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li
+            class="c8"
+          >
+            <div
+              class="c9 c10"
+            >
+              <span
+                class="c11"
+              >
+                Settings
+              </span>
+              <div
+                class="c12"
+              />
+            </div>
+            <a
+              aria-label="settings"
+              class="c16"
+              href="/settings"
+            >
+              <div
+                aria-label="settings icon"
+                class="c17 c18"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M924.8 625.7l-65.5-56c3.1-19 4.7-38.4 4.7-57.8s-1.6-38.8-4.7-57.8l65.5-56a32.03 32.03 0 0 0 9.3-35.2l-.9-2.6a443.74 443.74 0 0 0-79.7-137.9l-1.8-2.1a32.12 32.12 0 0 0-35.1-9.5l-81.3 28.9c-30-24.6-63.5-44-99.7-57.6l-15.7-85a32.05 32.05 0 0 0-25.8-25.7l-2.7-.5c-52.1-9.4-106.9-9.4-159 0l-2.7.5a32.05 32.05 0 0 0-25.8 25.7l-15.8 85.4a351.86 351.86 0 0 0-99 57.4l-81.9-29.1a32 32 0 0 0-35.1 9.5l-1.8 2.1a446.02 446.02 0 0 0-79.7 137.9l-.9 2.6c-4.5 12.5-.8 26.5 9.3 35.2l66.3 56.6c-3.1 18.8-4.6 38-4.6 57.1 0 19.2 1.5 38.4 4.6 57.1L99 625.5a32.03 32.03 0 0 0-9.3 35.2l.9 2.6c18.1 50.4 44.9 96.9 79.7 137.9l1.8 2.1a32.12 32.12 0 0 0 35.1 9.5l81.9-29.1c29.8 24.5 63.1 43.9 99 57.4l15.8 85.4a32.05 32.05 0 0 0 25.8 25.7l2.7.5a449.4 449.4 0 0 0 159 0l2.7-.5a32.05 32.05 0 0 0 25.8-25.7l15.7-85a350 350 0 0 0 99.7-57.6l81.3 28.9a32 32 0 0 0 35.1-9.5l1.8-2.1c34.8-41.1 61.6-87.5 79.7-137.9l.9-2.6c4.5-12.3.8-26.3-9.3-35zM788.3 465.9c2.5 15.1 3.8 30.6 3.8 46.1s-1.3 31-3.8 46.1l-6.6 40.1 74.7 63.9a370.03 370.03 0 0 1-42.6 73.6L721 702.8l-31.4 25.8c-23.9 19.6-50.5 35-79.3 45.8l-38.1 14.3-17.9 97a377.5 377.5 0 0 1-85 0l-17.9-97.2-37.8-14.5c-28.5-10.8-55-26.2-78.7-45.7l-31.4-25.9-93.4 33.2c-17-22.9-31.2-47.6-42.6-73.6l75.5-64.5-6.5-40c-2.4-14.9-3.7-30.3-3.7-45.5 0-15.3 1.2-30.6 3.7-45.5l6.5-40-75.5-64.5c11.3-26.1 25.6-50.7 42.6-73.6l93.4 33.2 31.4-25.9c23.7-19.5 50.2-34.9 78.7-45.7l37.9-14.3 17.9-97.2c28.1-3.2 56.8-3.2 85 0l17.9 97 38.1 14.3c28.7 10.8 55.4 26.2 79.3 45.8l31.4 25.8 92.8-32.9c17 22.9 31.2 47.6 42.6 73.6L781.8 426l6.5 39.9zM512 326c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm79.2 255.2A111.6 111.6 0 0 1 512 614c-29.9 0-58-11.7-79.2-32.8A111.6 111.6 0 0 1 400 502c0-29.9 11.7-58 32.8-79.2C454 401.6 482.1 390 512 390c29.9 0 58 11.6 79.2 32.8A111.6 111.6 0 0 1 624 502c0 29.9-11.7 58-32.8 79.2z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <div
+    class="Toastify"
+  />
+</div>
+`;

@@ -5,6 +5,12 @@ import { render, screen, userEvent, waitFor } from '__helpers__/app-tests'
 import { CreatePopover } from '.'
 
 describe('CreatePopover', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(<CreatePopover />)
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', () => {
     render(<CreatePopover />)
 

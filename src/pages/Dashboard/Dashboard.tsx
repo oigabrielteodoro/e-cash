@@ -1,12 +1,9 @@
 import React from 'react'
-import { BiLineChartDown, BiLineChart } from 'react-icons/bi'
-import { AiOutlineBank, AiOutlineCreditCard } from 'react-icons/ai'
+import { BankAccountsSummary } from 'core/bank-accounts'
 
-import { AppLayout, Row, Col } from 'ui'
+import { AppLayout, Row, Calendar } from 'ui'
 
 import { Search } from './Search'
-import { Calendar } from './Calendar'
-import { BalanceCard } from './BalanceCard'
 
 export function Dashboard() {
   return (
@@ -18,39 +15,8 @@ export function Dashboard() {
         </Row>
       </AppLayout.Header>
       <AppLayout.Content>
-        <Row gutter={[24, 24]}>
-          <Col span={6}>
-            <BalanceCard
-              title='Current balance'
-              currentValue={10000}
-              previousValue={7000}
-              icon={AiOutlineBank}
-            />
-          </Col>
-          <Col span={6}>
-            <BalanceCard
-              title='Incomes'
-              currentValue={10000}
-              previousValue={7000}
-              icon={BiLineChart}
-            />
-          </Col>
-          <Col span={6}>
-            <BalanceCard
-              title='Expenses'
-              currentValue={5500}
-              previousValue={10000}
-              icon={BiLineChartDown}
-            />
-          </Col>
-          <Col span={6}>
-            <BalanceCard
-              title='Credit Card'
-              currentValue={150}
-              previousValue={500}
-              icon={AiOutlineCreditCard}
-            />
-          </Col>
+        <Row gutter={[24, 0]}>
+          <BankAccountsSummary />
         </Row>
       </AppLayout.Content>
     </AppLayout>

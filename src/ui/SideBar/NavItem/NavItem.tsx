@@ -4,7 +4,7 @@ import type { IconBaseProps } from 'react-icons'
 import { useMatch, useResolvedPath } from 'react-router'
 
 import { Tooltip } from 'ui'
-import { useIsOpen } from '../useSideBar'
+import { useIsOpen } from 'lib'
 
 import * as S from './NavItem.styled'
 

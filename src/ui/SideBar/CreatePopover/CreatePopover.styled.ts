@@ -7,15 +7,16 @@ type Props = {
 export const CreateButtonContainer = styled(Container).attrs<Props>({
   as: 'div',
 })<Props>`
-  justify-content: flex-start;
-  padding-left: 1rem;
+  padding-left: 1.6rem;
+  height: 4.2rem;
   margin-left: 0.4rem;
+  justify-content: flex-start;
 
   ${({ isOpen }) =>
     !isOpen &&
     css`
       padding: 0;
       width: 4.2rem;
-      padding-left: 0.9rem;
+      justify-content: center;
     `}
 `

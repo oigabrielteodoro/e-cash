@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 import { Row, SideBar } from 'ui'
-import { useIsOpen } from 'ui/SideBar/useSideBar'
+import { useIsOpen } from 'lib'
 
 import * as S from './AppLayout.styled'
 
@@ -35,9 +35,6 @@ AppLayout.Header = function Header({ title, children }: HeaderProps) {
     >
       <section>
         <S.Title>{title}</S.Title>
-        <S.Description>
-          Welcome back, Let&apos;s get back to work.
-        </S.Description>
       </section>
 
       {children}

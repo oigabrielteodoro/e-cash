@@ -2,15 +2,20 @@ import React from 'react'
 
 import { SideBar } from 'ui'
 import { theme } from 'config'
+import { sidebarStore } from 'lib'
 import { render, screen, userEvent } from '__helpers__/app-tests'
-
-import { sidebarStore } from './useSideBar'
 
 describe('SideBar', () => {
   beforeEach(() => {
     sidebarStore.setState({
       isOpen: false,
     })
+  })
+
+  it('should be able match snapshot', () => {
+    const { container } = render(<SideBar />)
+
+    expect(container).toMatchSnapshot()
   })
 
   it('should be able render correctly', () => {

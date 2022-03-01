@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { CreateAccount, Dashboard, SignIn } from 'pages'
-import { CREATE_ACCOUNT, DASHBOARD, SIGN_IN } from 'lib'
+import { BankAccounts, CreateAccount, Dashboard, SignIn } from 'pages'
+import { ACCOUNTS, CREATE_ACCOUNT, DASHBOARD, SIGN_IN } from 'lib'
 
 import { WithAuthentication } from './WithAuthentication'
 import { WithNotAuthentication } from './WithNotAuthentication'
@@ -45,6 +45,14 @@ export function Router() {
           element={
             <AppRoute isPrivate>
               <Dashboard />
+            </AppRoute>
+          }
+        />
+        <Route
+          path={ACCOUNTS}
+          element={
+            <AppRoute isPrivate>
+              <BankAccounts />
             </AppRoute>
           }
         />

@@ -4,8 +4,7 @@ import { AiOutlineDashboard, AiOutlineUser } from 'react-icons/ai'
 
 import { render, screen, userEvent } from '__helpers__/app-tests'
 import { theme } from 'config'
-
-import { sidebarStore } from '../useSideBar'
+import { sidebarStore } from 'lib'
 
 import { NavItem } from '.'
 
@@ -23,6 +22,16 @@ function MockedComponent() {
 }
 
 describe('NavItem', () => {
+  it('should be able match snapshot', () => {
+    const { container } = render(
+      <NavItem to='/' icon={AiOutlineDashboard}>
+        Link
+      </NavItem>,
+    )
+
+    expect(container).toMatchSnapshot()
+  })
+
   it('should be able render correctly', async () => {
     render(
       <NavItem to='/' icon={AiOutlineDashboard}>
