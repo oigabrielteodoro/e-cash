@@ -7,68 +7,80 @@ import { useIsOpen } from 'lib'
 
 import * as S from './BankAccount.styled'
 
-type Props = {
+export type BankAccountProps = {
   name: string
   flag: string
   bankName: string
+  disabled?: boolean
 }
 
-export function BankAccount({ name, flag, bankName }: Props) {
+export function BankAccount({
+  name,
+  flag,
+  bankName,
+  disabled,
+}: BankAccountProps) {
   const isOpen = useIsOpen()
 
-  const MAX_LENGTH = isOpen ? 15 : 22
+  const MAX_LENGTH = isOpen ? 15 : 18
 
-  const nameWithEllipsis = truncate('Conta Nubank', {
+  const nameWithEllipsis = truncate(name, {
     length: MAX_LENGTH,
   })
 
-  const bankNameWithEllipsis = truncate('NU PAGAMENTOS S.A', {
+  const bankNameWithEllipsis = truncate(bankName, {
     length: MAX_LENGTH,
   })
 
   return (
-    <S.AccountBankCard>
+    <S.Container disabled={disabled}>
       <Row>
         <Col span={24}>
           <Row>
-            <S.AccountBankFlagBox>
-              <S.AccountBankFlagImg src={flag} alt='Nubank' />
+            <S.BankAccountFlagBox>
+              <Tooltip
+                disabled={!disabled}
+                message='This bank account is disabled'
+                position='top'
+              >
+                <S.BankAccountFlagImg src={flag} alt='Nubank' />
+              </Tooltip>
               <Row justifyContent='space-between' width='100%'>
-                <S.AccountBankInfoBox>
+                <S.BankAccountInfoBox>
                   <Tooltip
-                    disabled={name.length > MAX_LENGTH}
+                    disabled={name.length <= MAX_LENGTH}
                     message={name}
                     position='top'
                   >
                     <h3>{nameWithEllipsis}</h3>
                   </Tooltip>
                   <Tooltip
-                    disabled={name.length > MAX_LENGTH}
+                    disabled={bankName.length <= MAX_LENGTH}
                     message={bankName}
                     position='bottom'
                   >
                     <small>{bankNameWithEllipsis}</small>
                   </Tooltip>
-                </S.AccountBankInfoBox>
+                </S.BankAccountInfoBox>
                 <S.Separator />
-                <S.AccountBankInfo>
+                <S.BankAccountInfo>
                   <span>
                     Ag. <strong>0001</strong>
                   </span>
                   <span>
                     Conta. <strong>17089-1</strong>
                   </span>
-                </S.AccountBankInfo>
+                </S.BankAccountInfo>
               </Row>
-            </S.AccountBankFlagBox>
+            </S.BankAccountFlagBox>
 
-            <S.AccountBankBalanceBox>
-              <S.AccountBankBalance>R$ 10,000.00</S.AccountBankBalance>
+            <S.BankAccountBalanceBox>
+              <S.BankAccountBalance>R$ 10,000.00</S.BankAccountBalance>
               <span>+30% since last month</span>
-            </S.AccountBankBalanceBox>
+            </S.BankAccountBalanceBox>
           </Row>
         </Col>
       </Row>
-    </S.AccountBankCard>
+    </S.Container>
   )
 }

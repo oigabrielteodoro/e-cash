@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NUBANK } from 'assets'
+import { CAIXA, NUBANK } from 'assets'
 import { Col, Row } from 'ui'
 
 import { BankAccount } from '../BankAccount'
@@ -11,9 +11,10 @@ export function BankAccountsList() {
       {[1, 2, 3, 4].map((account) => (
         <Col as='li' key={account} md={24} lg={12} xlg={8}>
           <BankAccount
-            name='Conta Nubank'
+            disabled={account > 2}
+            name='Conta Nubank de Teste'
             bankName='NU PAGAMENTOS S.A'
-            flag={NUBANK}
+            flag={account > 2 ? NUBANK : CAIXA}
           />
         </Col>
       ))}

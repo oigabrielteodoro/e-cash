@@ -1,8 +1,17 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { theme } from 'config'
+import { BankAccountProps } from '.'
 
-export const AccountBankCard = styled.div`
+type ContainerProps = Pick<BankAccountProps, 'disabled'>
+
+export const BankAccountFlagImg = styled.img`
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: ${theme.radius.card};
+`
+
+export const Container = styled.div<ContainerProps>`
   width: 100%;
   padding: 2.4rem 0.8rem;
   border-radius: ${theme.radius.card};
@@ -10,18 +19,24 @@ export const AccountBankCard = styled.div`
   border: 0.1rem solid ${theme.colors.neutral[300]};
   transition: 300ms;
 
-  &:hover {
-    transform: translateY(-1rem);
-  }
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      border-color: transparent;
+
+      ${BankAccountFlagImg} {
+        filter: grayscale(1);
+      }
+    `}
 `
 
-export const AccountBankFlagBox = styled.div`
+export const BankAccountFlagBox = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
 `
 
-export const AccountBankInfoBox = styled.div`
+export const BankAccountInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1.6rem;
@@ -36,7 +51,7 @@ export const AccountBankInfoBox = styled.div`
   }
 `
 
-export const AccountBankInfo = styled.div`
+export const BankAccountInfo = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 0.6rem;
@@ -53,7 +68,7 @@ export const AccountBankInfo = styled.div`
   }
 `
 
-export const AccountBankBalanceBox = styled.div`
+export const BankAccountBalanceBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,7 +81,7 @@ export const AccountBankBalanceBox = styled.div`
   }
 `
 
-export const AccountBankBalance = styled.button`
+export const BankAccountBalance = styled.button`
   background: ${theme.colors.neutral[200]};
   border: 0.1rem solid ${theme.colors.neutral[300]};
   border-radius: 0.2rem;
@@ -78,12 +93,6 @@ export const AccountBankBalance = styled.button`
   &:hover {
     opacity: 0.8;
   }
-`
-
-export const AccountBankFlagImg = styled.img`
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: ${theme.radius.card};
 `
 
 export const Separator = styled.div`
