@@ -36,14 +36,14 @@ export function BankAccount({ name, flag, bankName }: Props) {
               <Row justifyContent='space-between' width='100%'>
                 <S.AccountBankInfoBox>
                   <Tooltip
-                    disabled={name.length <= MAX_LENGTH}
+                    disabled={name.length > MAX_LENGTH}
                     message={name}
                     position='top'
                   >
                     <h3>{nameWithEllipsis}</h3>
                   </Tooltip>
                   <Tooltip
-                    disabled={name.length <= MAX_LENGTH}
+                    disabled={name.length > MAX_LENGTH}
                     message={bankName}
                     position='bottom'
                   >
