@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 import { theme } from 'config'
 
+import { Card } from 'ui/Card'
+
 type CardStatusProps = {
   status: 'up' | 'down'
 }
@@ -18,18 +20,13 @@ const modifiers = {
   `,
 }
 
-export const Card = styled.button`
-  padding: 2.4rem;
+export const Container = styled(Card).attrs({
+  as: 'button',
+})`
   position: relative;
-  background: ${theme.colors.white};
-  border-radius: ${theme.radius.card};
-  box-shadow: ${theme.dropShadow.popover};
   width: 100%;
   display: flex;
   align-items: flex-start;
-  border: 0;
-  transition: 300ms;
-  border: 0.1rem solid ${theme.colors.neutral[300]};
   transition: 300ms;
   height: 13.8rem;
 

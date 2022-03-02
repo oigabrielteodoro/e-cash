@@ -1,15 +1,13 @@
 import React from 'react'
 import { FiPlus } from 'react-icons/fi'
-import {
-  AiOutlineBank,
-  AiOutlineBarChart,
-  AiOutlineCreditCard,
-  AiOutlineMore,
-} from 'react-icons/ai'
+import { AiOutlineBarChart, AiOutlineMore } from 'react-icons/ai'
 
 import { AppLayout, Button, Calendar, Row, Grid, Space, Tooltip, Col } from 'ui'
-import { BankAccountsList, BankAccountBalanceCard } from 'core/bank-accounts'
-import { BiLineChart, BiLineChartDown } from 'react-icons/bi'
+import {
+  BankAccountsList,
+  BankAccountsSummary,
+  TransactionsList,
+} from 'core/bank-accounts'
 
 export function BankAccounts() {
   return (
@@ -39,40 +37,12 @@ export function BankAccounts() {
       </AppLayout.Header>
       <AppLayout.Content>
         <Row gutter={[24, 24]}>
-          <Col span={6}>
-            <BankAccountBalanceCard
-              title='Current balance'
-              currentValue={10000}
-              previousValue={7000}
-              icon={AiOutlineBank}
-            />
-          </Col>
-          <Col span={6}>
-            <BankAccountBalanceCard
-              title='Incomes'
-              currentValue={10000}
-              previousValue={7000}
-              icon={BiLineChart}
-            />
-          </Col>
-          <Col span={6}>
-            <BankAccountBalanceCard
-              title='Expenses'
-              currentValue={5500}
-              previousValue={10000}
-              icon={BiLineChartDown}
-            />
-          </Col>
-          <Col span={6}>
-            <BankAccountBalanceCard
-              title='Credit Card'
-              currentValue={150}
-              previousValue={500}
-              icon={AiOutlineCreditCard}
-            />
-          </Col>
+          <BankAccountsSummary />
           <Col span={18}>
             <BankAccountsList />
+          </Col>
+          <Col span={6}>
+            <TransactionsList />
           </Col>
         </Row>
       </AppLayout.Content>

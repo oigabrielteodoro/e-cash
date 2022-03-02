@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 
+import { Card } from 'ui/Card'
 import { theme } from 'config'
+
 import { BankAccountProps } from '.'
 
 type ContainerProps = Pick<BankAccountProps, 'disabled'>
@@ -11,13 +13,9 @@ export const BankAccountFlagImg = styled.img`
   border-radius: ${theme.radius.card};
 `
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled(Card)<ContainerProps>`
   width: 100%;
-  padding: 2.4rem 0.8rem;
-  border-radius: ${theme.radius.card};
-  box-shadow: ${theme.dropShadow.popover};
-  border: 0.1rem solid ${theme.colors.neutral[300]};
-  transition: 300ms;
+  padding: 2.4rem 1.2rem;
 
   ${({ disabled }) =>
     disabled &&

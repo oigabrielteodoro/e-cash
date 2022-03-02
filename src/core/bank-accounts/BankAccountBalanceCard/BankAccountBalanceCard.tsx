@@ -44,7 +44,7 @@ export function BankAccountBalanceCard({
   }, [])
 
   return (
-    <S.Card>
+    <S.Container>
       <S.CardContent>
         <ShimmerEffect isLoading={isLoading} count={3} space={12.5} size='lg'>
           <span>{title}</span>
@@ -60,6 +60,6 @@ export function BankAccountBalanceCard({
       <S.CardIcon>
         <Icon size={23} />
       </S.CardIcon>
-    </S.Card>
+    </S.Container>
   )
 }
