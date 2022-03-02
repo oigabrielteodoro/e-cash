@@ -12,7 +12,7 @@ export function BankAccountsList() {
         <Col as='li' key={account} md={24} lg={12} xlg={8}>
           <BankAccount
             disabled={account > 2}
-            name='Conta Nubank de Teste'
+            name='Conta Nubank'
             bankName='NU PAGAMENTOS S.A'
             flag={account > 2 ? NUBANK : CAIXA}
           />

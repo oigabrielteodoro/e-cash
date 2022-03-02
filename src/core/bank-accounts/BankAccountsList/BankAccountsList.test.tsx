@@ -9,6 +9,6 @@ describe('BankAccountsList', () => {
     render(<BankAccountsList />)
 
     // Account name + Tooltip
-    expect(await screen.findAllByText('Conta Nubank')).toHaveLength(8)
+    expect(await screen.findAllByText('Conta Nubank')).toHaveLength(4)
   })
 })
