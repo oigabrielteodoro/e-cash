@@ -3,22 +3,37 @@ import { screen, render, userEvent, waitFor } from '__helpers__/app-tests'
 
 import { Tooltip } from '.'
 
+function MockedComponent() {
+  return (
+    <>
+      <Tooltip message='Tooltip' position='top'>
+        <button>Hover me Top</button>
+      </Tooltip>
+      <Tooltip message='Tooltip' position='bottom'>
+        <button>Hover me Bottom</button>
+      </Tooltip>
+      <Tooltip message='Tooltip' position='right'>
+        <button>Hover me Right</button>
+      </Tooltip>
+      <Tooltip message='Tooltip' position='left'>
+        <button>Hover me Left</button>
+      </Tooltip>
+    </>
+  )
+}
+
 describe('Tooltip', () => {
   it('should be able match snapshot', async () => {
-    const { container } = render(
-      <Tooltip message='Tooltip' position='top'>
-        <button>Hover me</button>
-      </Tooltip>,
-    )
+    const { container } = render(<MockedComponent />)
 
     expect(
       screen.getByRole('button', {
-        name: /hover me/i,
+        name: /hover me top/i,
       }),
     ).toBeInTheDocument()
 
     const button = screen.getByRole('button', {
-      name: /hover me/i,
+      name: /hover me top/i,
     })
 
     userEvent.hover(button)

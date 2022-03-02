@@ -21,6 +21,12 @@ const types = {
     background: transparent;
     border: 0;
     box-shadow: 0;
+    padding: 0;
+
+    &:hover {
+      opacity: 1;
+      box-shadow: none;
+    }
   `,
 }
 

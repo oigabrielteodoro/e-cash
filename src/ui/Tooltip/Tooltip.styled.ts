@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { theme } from 'config'
+
 import type { TooltipProps } from '.'
 
 type Props = Required<Pick<TooltipProps, 'position'>>
@@ -53,7 +54,7 @@ const arrowModifiers = {
   `,
   left: css`
     top: 50%;
-    right: calc(100% + 1.3rem);
+    right: calc(100% + 1.2rem);
     transform: translateY(-50%) rotate(-45deg);
     border-top-color: transparent;
     border-left-color: transparent;

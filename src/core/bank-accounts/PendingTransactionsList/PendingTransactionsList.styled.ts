@@ -1,8 +1,21 @@
 import styled from 'styled-components'
 import { theme } from 'config'
 
+export const Title = styled.strong`
+  display: flex;
+  align-items: center;
+`
+
+export const AmountText = styled.small`
+  margin-left: 1rem;
+  font-weight: 400;
+  color: ${theme.colors.neutral[500]};
+  font-size: ${theme.font.sizes.disclaimer};
+  cursor: default;
+`
+
 export const List = styled.ul`
-  margin-top: 2.4rem;
+  margin: 2.4rem 0;
 
   li {
     display: flex;

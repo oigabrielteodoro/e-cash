@@ -6,7 +6,7 @@ import { AppLayout, Button, Calendar, Row, Grid, Space, Tooltip, Col } from 'ui'
 import {
   BankAccountsList,
   BankAccountsSummary,
-  TransactionsList,
+  PendingTransactionsList,
 } from 'core/bank-accounts'
 
 export function BankAccounts() {
@@ -42,7 +42,7 @@ export function BankAccounts() {
             <BankAccountsList />
           </Col>
           <Col span={6}>
-            <TransactionsList />
+            <PendingTransactionsList />
           </Col>
         </Row>
       </AppLayout.Content>
