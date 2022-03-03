@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiPlus } from 'react-icons/fi'
 import { AiOutlineBarChart, AiOutlineMore } from 'react-icons/ai'
 
@@ -6,10 +6,16 @@ import { AppLayout, Button, Calendar, Row, Grid, Space, Tooltip, Col } from 'ui'
 import {
   BankAccountsList,
   BankAccountsSummary,
+  CreateBankAccountDrawer,
   PendingTransactionsList,
 } from 'core/bank-accounts'
 
 export function BankAccounts() {
+  const [
+    isCreateBankAccountDrawerVisible,
+    setIsCreateBankAccountDrawerVisible,
+  ] = useState(false)
+
   return (
     <AppLayout>
       <AppLayout.Header title='Accounts'>
@@ -39,13 +45,22 @@ export function BankAccounts() {
         <Row gutter={[24, 24]}>
           <BankAccountsSummary />
           <Col span={18}>
-            <BankAccountsList />
+            <BankAccountsList
+              onOpenCreateBankAccountDrawer={() =>
+                setIsCreateBankAccountDrawerVisible(true)
+              }
+            />
           </Col>
           <Col span={6}>
             <PendingTransactionsList />
           </Col>
         </Row>
       </AppLayout.Content>
+
+      <CreateBankAccountDrawer
+        isOpen={isCreateBankAccountDrawerVisible}
+        onClose={() => setIsCreateBankAccountDrawerVisible(false)}
+      />
     </AppLayout>
   )
 }

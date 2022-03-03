@@ -25,9 +25,15 @@ function MockedComponent({ error, defaultValue }: Props) {
         error={error}
         defaultValue={defaultValue}
       >
-        <Select.Option value='option_1'>Option 1</Select.Option>
-        <Select.Option value='option_2'>Option 2</Select.Option>
-        <Select.Option value='option_3'>Option 3</Select.Option>
+        <Select.Option displayValue='Option 1' value='option_1'>
+          Option 1
+        </Select.Option>
+        <Select.Option displayValue='Option 2' value='option_2'>
+          Option 2
+        </Select.Option>
+        <Select.Option displayValue='Option 3' value='option_3'>
+          Option 3
+        </Select.Option>
       </Select>
     </FormProvider>
   )

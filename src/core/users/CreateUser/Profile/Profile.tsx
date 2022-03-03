@@ -121,13 +121,22 @@ export function Profile() {
           defaultValue={financial_objective}
           error={errors.financial_objective?.message}
         >
-          <Select.Option value='make_extra_income'>
+          <Select.Option
+            displayValue='Make extra income'
+            value='make_extra_income'
+          >
             Make extra income
           </Select.Option>
-          <Select.Option value='make_an_emergency_fund'>
+          <Select.Option
+            displayValue='Make an emergency fund'
+            value='make_an_emergency_fund'
+          >
             Make an emergency fund
           </Select.Option>
-          <Select.Option value='make_an_investment_portfolio'>
+          <Select.Option
+            displayValue='Make an investment portfolio'
+            value='make_an_investment_portfolio'
+          >
             Make an investment portfolio
           </Select.Option>
         </Select>

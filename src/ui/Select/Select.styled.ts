@@ -22,6 +22,11 @@ export const Container = styled(InputContainer)<Props>`
       border-color: ${theme.colors.neutral[300]};
       box-shadow: none;
 
+      input {
+        transition: 300ms;
+        color: ${theme.colors.neutral[500]};
+      }
+
       &:hover {
         border-color: ${theme.colors.neutral[300]};
       }
@@ -39,4 +44,5 @@ export const Dropdown = styled(motion.ul).attrs(fadeIn())`
   top: calc(100% - 0.1rem);
   border: 0.1rem solid ${theme.colors.neutral[300]};
   border-radius: 0 0 ${theme.radius.popover} ${theme.radius.popover};
+  z-index: ${theme.layers.alwaysOnTop};
 `

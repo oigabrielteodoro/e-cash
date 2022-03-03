@@ -73,16 +73,16 @@ export function Select({
       )
 
       if (foundOption) {
-        inputRef.current.value = foundOption.props.children
+        inputRef.current.value = foundOption.props.displayValue
       }
     }
   }, [defaultValue, children])
 
-  function handleOnClick(value = '', children = '') {
+  function handleOnClick(value = '', displayValue = '') {
     setValue(name, value)
 
     if (inputRef?.current) {
-      inputRef.current.value = children
+      inputRef.current.value = displayValue
     }
 
     setIsOpen(false)
@@ -98,7 +98,9 @@ export function Select({
 
     setFilteredOptions(
       allOptions.filter((child) =>
-        child.props.children.toLowerCase().includes(inputValue.toLowerCase()),
+        child.props.displayValue
+          .toLowerCase()
+          .includes(inputValue.toLowerCase()),
       ),
     )
   }
@@ -152,7 +154,7 @@ export function Select({
                   ...child.props,
                   key: `Select.Option.${child.props.value}`,
                   onClick: () =>
-                    handleOnClick(child.props.value, child.props.children),
+                    handleOnClick(child.props.value, child.props.displayValue),
                 }
 
                 return cloneElement(child, props)
