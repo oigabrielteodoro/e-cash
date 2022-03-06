@@ -2,19 +2,24 @@ import React from 'react'
 
 import { render, screen, waitFor, userEvent } from '__helpers__/app-tests'
 
-import { Modal } from 'ui'
+import { Drawer } from 'ui'
 
 const onClose = jest.fn()
 
 function MockedComponent() {
   return (
-    <Modal isOpen onClose={onClose}>
-      <h1>Modal</h1>
-    </Modal>
+    <Drawer
+      isOpen
+      onClose={onClose}
+      header={<h1>Header</h1>}
+      footer={<h1>Footer</h1>}
+    >
+      <h1>Drawer</h1>
+    </Drawer>
   )
 }
 
-describe('Modal', () => {
+describe('Drawer', () => {
   beforeEach(() => {
     onClose.mockClear()
   })
@@ -28,10 +33,10 @@ describe('Modal', () => {
   it('should be able render correctly', () => {
     render(<MockedComponent />)
 
-    expect(screen.getByText(/Modal/i)).toBeInTheDocument()
+    expect(screen.getByText(/Drawer/i)).toBeInTheDocument()
   })
 
-  it('should close modal when close button is clicked', async () => {
+  it('should close drawer when close button is clicked', async () => {
     render(<MockedComponent />)
 
     const closeButton = screen.getByLabelText('close button')
@@ -47,7 +52,7 @@ describe('Modal', () => {
     })
   })
 
-  it('should close modal when escape is pressed', async () => {
+  it('should close drawer when escape is pressed', async () => {
     render(<MockedComponent />)
 
     await waitFor(() => {
