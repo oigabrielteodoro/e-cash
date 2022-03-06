@@ -127,7 +127,7 @@ export function BankAccountForm({ formRef, onSubmit }: Props) {
           <Col span={24}>
             <Input.TextArea
               label='Description'
-              placeholder='A brief description about your account'
+              placeholder='A brief description about your bank account'
               maxLength={250}
               rows={5}
               {...register('description')}

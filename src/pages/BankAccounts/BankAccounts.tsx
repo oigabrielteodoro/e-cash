@@ -26,7 +26,11 @@ export function BankAccounts() {
 
           <Grid columns={3} gutter={[8, 0]}>
             <Tooltip message='New account' position='bottom'>
-              <Button variant='primary' type='icon'>
+              <Button
+                type='icon'
+                variant='primary'
+                onClick={() => setIsCreateBankAccountDrawerVisible(true)}
+              >
                 <FiPlus size={20} />
               </Button>
             </Tooltip>
