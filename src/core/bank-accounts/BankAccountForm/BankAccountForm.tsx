@@ -10,7 +10,7 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { CAIXA, NUBANK } from 'assets'
-import { Col, Input, Row, Select } from 'ui'
+import { Col, Input, Row, Select, Switch } from 'ui'
 import { accountNumberWithDigitMask, agencyNumberWithoutDigitMask } from 'lib'
 
 import { bankAccountSchema, BankAccountFormParams } from './types'
@@ -125,13 +125,19 @@ export function BankAccountForm({ formRef, onSubmit }: Props) {
             />
           </Col>
           <Col span={24}>
+            <Switch
+              label='Do you want to include the sum in the dashboard?'
+              {...register('include_sum_on_dashboard')}
+            />
+          </Col>
+          <Col span={24}>
             <Input.TextArea
               label='Description'
               placeholder='A brief description about your bank account'
+              error={errors.description?.message}
               maxLength={250}
               rows={5}
               {...register('description')}
-              error={errors.description?.message}
             />
           </Col>
         </Row>

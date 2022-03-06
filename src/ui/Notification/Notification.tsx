@@ -33,8 +33,8 @@ export function Notification({ type, message, onExpires }: Props) {
   const Icon = icons[type]
 
   return (
-    <S.Container type={type}>
-      <S.IconContainer>
+    <S.Container>
+      <S.IconContainer type={type}>
         <Icon size={20} />
       </S.IconContainer>
       <span>{message}</span>

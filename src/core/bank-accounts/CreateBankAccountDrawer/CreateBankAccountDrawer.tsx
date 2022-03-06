@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { AiOutlineBank } from 'react-icons/ai'
 
-import { Button, Drawer, Row, Space } from 'ui'
+import { Button, Drawer, notification, Row, Space } from 'ui'
 
 import { BankAccountForm } from '../BankAccountForm'
 
@@ -12,6 +12,10 @@ type Props = {
 
 export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
   const formRef = useRef<HTMLButtonElement>(null)
+
+  function handleOnSubmit() {
+    notification.success('Parabéns! Conta bancária adicionada')
+  }
 
   return (
     <Drawer
@@ -41,10 +45,7 @@ export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
         </Space>
       }
     >
-      <BankAccountForm
-        formRef={formRef}
-        onSubmit={(values) => console.log(values)}
-      />
+      <BankAccountForm formRef={formRef} onSubmit={handleOnSubmit} />
     </Drawer>
   )
 }

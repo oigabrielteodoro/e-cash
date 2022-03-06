@@ -10,6 +10,7 @@ export type BankAccountFormParams = {
   banking_agency: string
   banking_account: string
   description?: string
+  include_sum_on_dashboard?: boolean
 }
 
 export const bankAccountSchema = yup.object().shape({
