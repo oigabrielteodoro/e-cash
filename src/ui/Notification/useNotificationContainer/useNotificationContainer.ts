@@ -30,5 +30,8 @@ export function useNotificationContainer() {
     )
   }
 
-  return { notifications, handleRemoveNotification }
+  return {
+    notifications,
+    handleRemoveNotification,
+  }
 }

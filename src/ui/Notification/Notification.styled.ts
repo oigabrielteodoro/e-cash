@@ -56,7 +56,7 @@ const modifiers = {
   `,
 }
 
-export const Container = styled(motion.div).attrs({
+export const Container = styled(motion.li).attrs({
   variants: {
     visible: {
       opacity: 1,
@@ -66,6 +66,9 @@ export const Container = styled(motion.div).attrs({
       opacity: 0,
       transform: 'translateX(-15rem)',
     },
+  },
+  transition: {
+    duration: 1,
   },
   initial: 'hidden',
   animate: 'visible',

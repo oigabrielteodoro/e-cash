@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { FiAlertCircle, FiInfo, FiCheckCircle } from 'react-icons/fi'
 
 import uniqueId from 'lodash/uniqueId'
@@ -18,12 +18,16 @@ const icons = {
 }
 
 export function Notification({ type, title, onExpires }: Props) {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onExpires()
-    }, EXPIRES_NOTIFICATION_IN_SECONDS)
+  const timerRef = useRef<number>()
 
-    return () => clearTimeout(timer)
+  useEffect(() => {
+    if (timerRef.current) return
+
+    timerRef.current = Number(
+      setTimeout(() => {
+        onExpires()
+      }, EXPIRES_NOTIFICATION_IN_SECONDS),
+    )
   }, [onExpires])
 
   const Icon = icons[type]
