@@ -46,7 +46,7 @@ function dispatchNotification(type: NotificationType) {
   return function (message: string) {
     document.dispatchEvent(
       new CustomEvent(NOTIFICATION_EVENT_NAME, {
-        detail: { id: uniqueId(), type, title: message },
+        detail: { id: `Notification.${uniqueId()}`, type, title: message },
       }),
     )
   }
