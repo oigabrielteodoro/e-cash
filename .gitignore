@@ -10,6 +10,7 @@
 
 # production
 /build
+/source-map
 
 # misc
 .DS_Store
