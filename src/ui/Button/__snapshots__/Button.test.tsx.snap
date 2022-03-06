@@ -50,8 +50,5 @@ exports[`Button should be able match snapshot 1`] = `
   >
     Click me
   </button>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

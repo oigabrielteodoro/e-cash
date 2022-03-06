@@ -24,8 +24,5 @@ exports[`ShimmerEffect should be able match snapshot 1`] = `
     class="c0"
     data-testid="ShimmerEffect"
   />
-  <div
-    class="Toastify"
-  />
 </div>
 `;

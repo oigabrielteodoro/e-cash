@@ -58,21 +58,22 @@ const modifiers = {
 
 export const Container = styled(motion.li).attrs({
   variants: {
-    visible: {
+    initial: {
+      opacity: 0,
+      transform: 'translateX(-20%)',
+    },
+    animate: {
       opacity: 1,
       transform: 'translateX(4rem)',
     },
-    hidden: {
+    exit: {
       opacity: 0,
-      transform: 'translateX(-15rem)',
+      transform: 'translateX(-100%)',
     },
   },
-  transition: {
-    duration: 1,
-  },
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
+  initial: 'initial',
+  animate: 'animate',
+  exit: 'exit',
 })<ContainerProps>`
   padding: 1.2rem;
   display: flex;

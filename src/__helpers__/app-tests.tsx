@@ -7,7 +7,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
-import { ToastContainer } from 'react-toastify'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import nock from 'nock'
@@ -15,7 +14,7 @@ import nock from 'nock'
 import { pipe } from 'fp-ts/function'
 import { TaskEither, map, mapLeft } from 'fp-ts/TaskEither'
 
-import { AppLayout } from 'ui'
+import { AppLayout, NotificationContainer } from 'ui'
 import { clearToken, queryConfigDefault, setToken } from 'client'
 
 type Options = {
@@ -88,7 +87,7 @@ function render(
           </Routes>
         </MemoryRouter>
 
-        <ToastContainer />
+        <NotificationContainer />
       </QueryClientProvider>
     )
   }

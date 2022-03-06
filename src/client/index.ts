@@ -8,7 +8,7 @@ import {
   ApiError,
   FailedRequestQueue,
 } from 'client'
-import { toast } from 'ui'
+import { notification } from 'ui'
 import type { DefaultOptions } from 'react-query'
 
 let isRefreshing = false
@@ -37,9 +37,9 @@ export const queryConfigDefault: DefaultOptions<ApiError> = {
 
 function onError(error: ApiError) {
   if (error.response?.data) {
-    toast.error(error.response?.data?.message)
+    notification.error(error.response?.data?.message)
   } else {
-    toast.error(error.message)
+    notification.error(error.message)
   }
 }
 
@@ -107,7 +107,7 @@ api.interceptors.response.use(
     const responseStatus = error?.response?.status ?? 0
 
     if (responseStatus >= 500) {
-      toast.error('There was an error communicating with our server')
+      notification.error('There was an error communicating with our server')
     }
 
     return Promise.reject(error)

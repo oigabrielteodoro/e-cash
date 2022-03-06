@@ -120,8 +120,5 @@ exports[`TextAreaInput should be able match snapshot 1`] = `
       />
     </div>
   </fieldset>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

@@ -143,8 +143,5 @@ exports[`AmountInput should be able match snapshot 1`] = `
       </svg>
     </div>
   </fieldset>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

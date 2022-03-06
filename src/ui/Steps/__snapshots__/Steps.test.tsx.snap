@@ -154,8 +154,5 @@ exports[`Steps should be able match snapshot 1`] = `
       Go next two
     </button>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

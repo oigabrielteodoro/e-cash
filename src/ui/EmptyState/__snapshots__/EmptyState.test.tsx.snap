@@ -413,8 +413,5 @@ exports[`EmptyState should be able match snapshot 1`] = `
   >
     Content
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

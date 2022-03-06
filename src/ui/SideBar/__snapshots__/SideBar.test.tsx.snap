@@ -697,8 +697,5 @@ exports[`SideBar should be able match snapshot 1`] = `
       </nav>
     </div>
   </aside>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

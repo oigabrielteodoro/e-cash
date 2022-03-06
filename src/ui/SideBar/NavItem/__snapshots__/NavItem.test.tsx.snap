@@ -148,8 +148,5 @@ exports[`NavItem should be able match snapshot 1`] = `
       </div>
     </a>
   </li>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

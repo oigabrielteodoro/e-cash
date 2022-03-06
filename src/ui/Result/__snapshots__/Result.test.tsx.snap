@@ -297,8 +297,5 @@ exports[`Result should be able match snapshot 1`] = `
       Click me
     </button>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

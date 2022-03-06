@@ -2,7 +2,6 @@ import React from 'react'
 import { render, screen, userEvent } from '__helpers__/app-tests'
 
 import { notification } from './Notification'
-import { NotificationContainer } from './NotificationContainer'
 
 import type { NotificationType } from './types'
 
@@ -16,7 +15,6 @@ function MockedComponent({ type = 'info' }: MockedComponentProps) {
       <button onClick={() => notification[type]('Notification')}>
         Send notification
       </button>
-      <NotificationContainer />
     </>
   )
 }

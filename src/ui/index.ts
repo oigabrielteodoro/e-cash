@@ -1,7 +1,6 @@
 export * from './Style'
 export * from './Input'
 export * from './Button'
-export * from './Toast'
 export * from './Logo'
 export * from './SideBar'
 export * from './AppLayout'

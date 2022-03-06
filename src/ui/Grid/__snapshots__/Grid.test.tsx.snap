@@ -9,9 +9,6 @@ exports[`Col should be able match snapshot 1`] = `
       Column 1
     </h1>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;
 
@@ -36,9 +33,6 @@ exports[`Grid should be able match snapshot 1`] = `
       Column 3
     </h1>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;
 
@@ -118,9 +112,6 @@ exports[`Row should be able match snapshot 1`] = `
       </h1>
     </div>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;
 
@@ -131,8 +122,5 @@ exports[`Space should be able match snapshot 1`] = `
   >
     Children
   </h1>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

@@ -273,8 +273,5 @@ exports[`Tooltip should be able match snapshot 1`] = `
       Hover me Left
     </button>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;
