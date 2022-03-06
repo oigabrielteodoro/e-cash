@@ -17,6 +17,7 @@ export const theme = {
     card: '0.5rem',
     popover: '1rem',
     modal: '1rem',
+    notification: '0.5rem',
   },
   font: {
     family: 'Inter',

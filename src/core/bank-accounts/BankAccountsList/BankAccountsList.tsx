@@ -10,7 +10,7 @@ type Props = {
 }
 
 export function BankAccountsList({ onOpenCreateBankAccountDrawer }: Props) {
-  const [bankAccounts] = useState<number[]>([])
+  const [bankAccounts] = useState<number[]>([1, 2, 3, 4])
 
   const isEmpty = bankAccounts.length <= 0
 

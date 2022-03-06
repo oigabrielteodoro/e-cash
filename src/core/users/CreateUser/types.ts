@@ -1,5 +1,7 @@
 import * as yup from 'yup'
 
+import { onlyNumbers } from 'lib'
+
 const contactShape = {
   email: yup
     .string()
@@ -21,7 +23,10 @@ const passwordShape = {
 }
 
 const profileShape = {
-  monthly_income: yup.string().required('Monthly income is a required field'),
+  monthly_income: yup
+    .string()
+    .required('Monthly income is a required field')
+    .matches(onlyNumbers, 'Use only numbers'),
   financial_objective: yup
     .string()
     .required('Financial objective is a required field'),

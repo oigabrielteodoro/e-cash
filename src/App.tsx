@@ -7,7 +7,7 @@ import {
   QueryCache,
 } from 'react-query'
 
-import { Style, ToastContainer } from 'ui'
+import { Style, NotificationContainer } from 'ui'
 import { Router } from 'lib'
 import { queryConfigDefault } from 'client'
 
@@ -21,7 +21,7 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <Style />
       <Router />
-      <ToastContainer />
+      <NotificationContainer />
     </QueryClientProvider>
   )
 }
