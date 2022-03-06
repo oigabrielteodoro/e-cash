@@ -51,7 +51,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3.2rem;
+  padding: 2.4rem 3.2rem;
   border-bottom: 0.1rem solid ${theme.colors.neutral[200]};
 
   h3 {
@@ -63,6 +63,12 @@ export const Body = styled.main`
   padding: 3.2rem;
   overflow-y: auto;
   height: 100%;
+`
+
+export const Footer = styled.footer`
+  display: flex;
+  padding: 2.4rem 3.2rem;
+  border-top: 0.1rem solid ${theme.colors.neutral[200]};
 `
 
 export const CloseButton = styled.button`

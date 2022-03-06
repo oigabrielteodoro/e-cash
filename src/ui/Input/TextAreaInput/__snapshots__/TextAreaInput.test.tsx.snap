@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextAreaInput should be able match snapshot 1`] = `
+.c0 {
+  border: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.c0 label {
+  position: absolute;
+  font-size: 1.4rem;
+  left: 1.2rem;
+  top: -0.1rem;
+  background: #ffffff;
+  padding: 0 0.8rem;
+  color: #a1a7ae;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0.1rem solid #a1a7ae;
+  border-radius: 0.5rem;
+  margin-top: 0.8rem;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  width: 100%;
+  background: #ffffff;
+}
+
+.c1 svg {
+  margin-left: auto;
+  margin-right: 2rem;
+  color: #a1a7ae;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c1:hover {
+  border: 0.1rem solid #3a67e1;
+}
+
+.c1:hover svg {
+  color: #3a67e1;
+}
+
+.c1 input,
+.c1 textarea {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 1.8rem 2rem;
+  color: #18171d;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+}
+
+.c1 input::-webkit-input-placeholder,
+.c1 textarea::-webkit-input-placeholder {
+  color: #a1a7ae;
+}
+
+.c1 input::-moz-placeholder,
+.c1 textarea::-moz-placeholder {
+  color: #a1a7ae;
+}
+
+.c1 input:-ms-input-placeholder,
+.c1 textarea:-ms-input-placeholder {
+  color: #a1a7ae;
+}
+
+.c1 input::placeholder,
+.c1 textarea::placeholder {
+  color: #a1a7ae;
+}
+
+.c1 textarea {
+  resize: none;
+  padding: 0 2rem;
+  margin: 2.4rem 0;
+}
+
+<div>
+  <fieldset
+    class="c0"
+  >
+    <label
+      for="name"
+    >
+      Name
+    </label>
+    <div
+      class="c1"
+    >
+      <textarea
+        id="name"
+        name="name"
+      />
+    </div>
+  </fieldset>
+  <div
+    class="Toastify"
+  />
+</div>
+`;

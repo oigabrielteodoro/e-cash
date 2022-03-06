@@ -12,6 +12,7 @@ import type { IconBaseProps } from 'react-icons'
 import { useInput } from 'lib'
 import { AmountInput } from './AmountInput'
 import { PasswordInput } from './PasswordInput'
+import { TextAreaInput } from './TextAreaInput'
 
 import * as S from './Input.styled'
 
@@ -26,17 +27,18 @@ export type InputProps = {
 type InputCompoundComponet = {
   Amount: typeof AmountInput
   Password: typeof PasswordInput
+  TextArea: typeof TextAreaInput
 } & ForwardRefExoticComponent<InputProps>
 
 const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   {
-    id,
     defaultValue,
     label,
     error,
     variant = 'primary',
     icon: Icon,
     name,
+    id = name,
     onBlur,
     onFocus,
     ...rest
@@ -94,5 +96,7 @@ export const Input = forwardRef(ForwardInput) as InputCompoundComponet
 Input.Amount = AmountInput
 
 Input.Password = PasswordInput
+
+Input.TextArea = TextAreaInput
 
 export { PasswordStrength } from './PasswordInput'

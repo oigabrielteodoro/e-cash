@@ -85,7 +85,7 @@ export const Container = styled.div<Props>`
       svg {
         color: ${theme.colors.blue[500]};
       }
-    `}
+    `};
 
   ${({ isFocused }) =>
     isFocused &&
@@ -104,7 +104,7 @@ export const Container = styled.div<Props>`
       svg {
         color: ${theme.colors.blue[300]};
       }
-    `}
+    `};
 
   ${({ isErrored, isFocused }) =>
     isErrored &&
@@ -127,9 +127,10 @@ export const Container = styled.div<Props>`
       svg {
         color: ${theme.colors.red[400]};
       }
-    `}
+    `};
 
-  input {
+  input,
+  textarea {
     flex: 1;
     border: 0;
     background: transparent;
@@ -141,5 +142,11 @@ export const Container = styled.div<Props>`
     &::placeholder {
       color: ${theme.colors.neutral[500]};
     }
+  }
+
+  textarea {
+    resize: none;
+    padding: 0 2rem;
+    margin: 2.4rem 0;
   }
 `

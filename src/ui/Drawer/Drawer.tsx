@@ -11,6 +11,7 @@ type DrawerProps = {
   isOpen: boolean
   children: ReactNode
   header?: ReactNode
+  footer?: ReactNode
   width?: number
   onClose: () => void
 }
@@ -19,6 +20,7 @@ export function Drawer({
   isOpen,
   children,
   header,
+  footer,
   width,
   onClose,
 }: DrawerProps) {
@@ -38,6 +40,7 @@ export function Drawer({
                 </S.CloseButton>
               </S.Header>
               <S.Body>{children}</S.Body>
+              {footer && <S.Footer>{footer}</S.Footer>}
             </S.Dialog>
           </S.Container>
         )}

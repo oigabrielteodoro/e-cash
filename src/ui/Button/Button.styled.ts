@@ -59,8 +59,14 @@ const variants = {
   `,
   outline: css`
     background: transparent;
-    color: ${theme.colors.blue[500]};
-    border: 0.2rem solid ${theme.colors.blue[300]};
+    color: ${theme.colors.neutral[500]};
+    border: 0.1rem solid ${theme.colors.neutral[500]};
+
+    &:hover {
+      opacity: 1;
+      box-shadow: none;
+      filter: brightness(0.6);
+    }
   `,
 }
 

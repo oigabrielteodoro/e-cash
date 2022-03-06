@@ -1,14 +1,10 @@
 import { CAIXA, NUBANK } from 'assets'
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import {
-  AiOutlineAlignCenter,
-  AiOutlineBank,
-  AiOutlineFieldNumber,
-} from 'react-icons/ai'
+import { AiOutlineBank, AiOutlineFieldNumber } from 'react-icons/ai'
 import { FiTag } from 'react-icons/fi'
 
-import { Col, Drawer, Input, Row, Select, Space } from 'ui'
+import { Button, Col, Drawer, Input, Row, Select, Space } from 'ui'
 import { AmountInput } from 'ui/Input/AmountInput'
 
 import * as S from './CreateBankAccount.styled'
@@ -34,6 +30,18 @@ export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
             <h3>Add bank account</h3>
           </Space>
         </Row>
+      }
+      footer={
+        <Space marginLeft='auto'>
+          <Row alignItems='center'>
+            <Space marginRight='1.6rem'>
+              <Button variant='outline' full={false}>
+                Cancel
+              </Button>
+            </Space>
+            <Button full={false}>To send</Button>
+          </Row>
+        </Space>
       }
     >
       <FormProvider {...form}>
@@ -120,10 +128,11 @@ export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
               />
             </Col>
             <Col span={24}>
-              <Input
+              <Input.TextArea
                 label='Description'
-                icon={AiOutlineAlignCenter}
                 placeholder='A brief description about your account'
+                maxLength={250}
+                rows={5}
                 {...register('description')}
               />
             </Col>

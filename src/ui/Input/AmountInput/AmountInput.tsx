@@ -25,8 +25,8 @@ function inputNumberParser(value?: string): string {
 }
 
 export function AmountInput({
-  id,
   name,
+  id = name,
   variant = 'primary',
   label,
   error,

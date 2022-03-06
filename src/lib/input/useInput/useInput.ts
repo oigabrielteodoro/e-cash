@@ -1,9 +1,20 @@
-import { useState, FocusEvent } from 'react'
+import { useState, FocusEvent, FocusEventHandler } from 'react'
 
 import capitalize from 'lodash/capitalize'
-import { InputProps } from 'ui'
 
-type Props = Pick<InputProps, 'defaultValue' | 'error' | 'onFocus' | 'onBlur'>
+import type { InputProps } from 'ui'
+
+type OnFocusEventHandler =
+  | FocusEventHandler<HTMLTextAreaElement>
+  | FocusEventHandler<HTMLInputElement>
+
+type FocusEventParams = FocusEvent<HTMLInputElement> &
+  FocusEvent<HTMLTextAreaElement>
+
+type Props = {
+  onBlur?: OnFocusEventHandler
+  onFocus?: OnFocusEventHandler
+} & Pick<InputProps, 'defaultValue' | 'error'>
 
 export function useInput({ defaultValue, error, onBlur, onFocus }: Props) {
   const [isFilled, setIsFilled] = useState(!!defaultValue)
@@ -12,7 +23,7 @@ export function useInput({ defaultValue, error, onBlur, onFocus }: Props) {
   const isErrored = !!error
   const errorMessage = isErrored ? capitalize(error) : ''
 
-  function handleOnBlur(event: FocusEvent<HTMLInputElement>) {
+  function handleOnBlur(event: FocusEventParams) {
     event.preventDefault()
 
     setIsFocused(false)
@@ -21,7 +32,7 @@ export function useInput({ defaultValue, error, onBlur, onFocus }: Props) {
     onBlur && onBlur(event)
   }
 
-  function handleOnFocus(event: FocusEvent<HTMLInputElement>) {
+  function handleOnFocus(event: FocusEventParams) {
     setIsFocused(true)
     setIsFilled(!!event.target.value)
 

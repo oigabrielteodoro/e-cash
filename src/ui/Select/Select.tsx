@@ -28,8 +28,8 @@ type SelectProps = {
 } & Omit<InputProps, 'icon'>
 
 export function Select({
-  id,
   name,
+  id = name,
   label,
   variant = 'primary',
   defaultValue,
@@ -108,7 +108,6 @@ export function Select({
   return (
     <S.Wrapper>
       <InputStyled.Wrapper as='div'>
-        <label htmlFor={id}>{label}</label>
         <S.Container
           ref={containerRef}
           variant={variant}
@@ -118,6 +117,7 @@ export function Select({
           isErrored={isErrored}
           onClick={() => setIsOpen(true)}
         >
+          <label htmlFor={id}>{label}</label>
           <input
             id={id}
             ref={inputRef}
