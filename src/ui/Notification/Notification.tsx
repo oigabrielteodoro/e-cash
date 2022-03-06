@@ -42,14 +42,12 @@ export function Notification({ type, title, onExpires }: Props) {
   )
 }
 
-function dispatchNotification(type: NotificationType) {
-  return function (message: string) {
-    document.dispatchEvent(
-      new CustomEvent(NOTIFICATION_EVENT_NAME, {
-        detail: { id: `Notification.${uniqueId()}`, type, title: message },
-      }),
-    )
-  }
+const dispatchNotification = (type: NotificationType) => (message: string) => {
+  document.dispatchEvent(
+    new CustomEvent(NOTIFICATION_EVENT_NAME, {
+      detail: { id: `Notification.${uniqueId()}`, type, title: message },
+    }),
+  )
 }
 
 export const notification = {
