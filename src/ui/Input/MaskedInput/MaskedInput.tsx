@@ -1,53 +1,45 @@
 import React, {
-  forwardRef,
+  useEffect,
   InputHTMLAttributes,
   ComponentType,
-  ForwardRefRenderFunction,
-  ForwardRefExoticComponent,
-  ForwardedRef,
+  ChangeEvent,
 } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
+import { useFormContext } from 'react-hook-form'
+
 import type { IconBaseProps } from 'react-icons'
 
-import { useInput } from 'lib'
+import { useInput, toMask, unMask, isResolvedMask } from 'lib'
 
-import { AmountInput } from './AmountInput'
-import { MaskedInput } from './MaskedInput'
-import { PasswordInput } from './PasswordInput'
-import { TextAreaInput } from './TextAreaInput'
+import * as S from '../Input.styled'
 
-import * as S from './Input.styled'
-
-export type InputProps = {
-  ref?: ForwardedRef<HTMLInputElement>
+export type MaskedInputProps = {
+  mask: string[]
+  name: string
   label: string
   error?: string
   variant?: 'primary' | 'secondary'
   icon: ComponentType<IconBaseProps>
 } & InputHTMLAttributes<HTMLInputElement>
 
-type InputCompoundComponet = {
-  Amount: typeof AmountInput
-  Password: typeof PasswordInput
-  TextArea: typeof TextAreaInput
-  Masked: typeof MaskedInput
-} & ForwardRefExoticComponent<InputProps>
+export function MaskedInput({
+  mask,
+  defaultValue,
+  label,
+  error,
+  variant = 'primary',
+  icon: Icon,
+  name,
+  id = name,
+  onBlur,
+  onFocus,
+  onChange,
+  ...rest
+}: MaskedInputProps) {
+  const { register, watch, trigger, setValue } = useFormContext()
 
-const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  {
-    defaultValue,
-    label,
-    error,
-    variant = 'primary',
-    icon: Icon,
-    name,
-    id = name,
-    onBlur,
-    onFocus,
-    ...rest
-  },
-  ref,
-) => {
+  const value = watch(name)
+
   const {
     isFilled,
     isFocused,
@@ -62,6 +54,21 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     onFocus,
   })
 
+  useEffect(() => {
+    register(name)
+  }, [name, register])
+
+  const maskedValue = toMask(value, mask)
+
+  function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
+    if (isResolvedMask(event.currentTarget.value, mask)) return
+
+    setValue(name, unMask(event.currentTarget.value))
+    trigger(name)
+
+    onChange && onChange(event)
+  }
+
   return (
     <S.Wrapper>
       <label htmlFor={id}>{label}</label>
@@ -73,13 +80,14 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
       >
         <input
           id={id}
-          ref={ref}
           name={name}
           aria-label={name}
           defaultValue={defaultValue}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
+          onChange={handleOnChange}
           role='textbox'
+          value={maskedValue}
           {...rest}
         />
         {Icon && <Icon size={22} />}
@@ -93,12 +101,3 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     </S.Wrapper>
   )
 }
-
-export const Input = forwardRef(ForwardInput) as InputCompoundComponet
-
-Input.Amount = AmountInput
-Input.Password = PasswordInput
-Input.TextArea = TextAreaInput
-Input.Masked = MaskedInput
-
-export { PasswordStrength } from './PasswordInput'

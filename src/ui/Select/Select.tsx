@@ -56,7 +56,7 @@ export function Select({
     onFocus,
   })
 
-  const { register, setValue } = useFormContext()
+  const { register, setValue, trigger } = useFormContext()
 
   const [isOpen, setIsOpen] = useState(false)
   const [filteredOptions, setFilteredOptions] = useState(toArray(children))
@@ -86,6 +86,7 @@ export function Select({
     }
 
     setIsOpen(false)
+    trigger(name)
   }
 
   function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
