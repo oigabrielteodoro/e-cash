@@ -17,7 +17,7 @@ export function NotificationContainer() {
           <Notification
             key={notification.id}
             type={notification.type}
-            title={notification.title}
+            message={notification.message}
             onExpires={() => handleRemoveNotification(notification.id)}
           />
         ))}

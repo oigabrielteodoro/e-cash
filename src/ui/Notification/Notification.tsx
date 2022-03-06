@@ -17,7 +17,7 @@ const icons = {
   warning: FiAlertCircle,
 }
 
-export function Notification({ type, title, onExpires }: Props) {
+export function Notification({ type, message, onExpires }: Props) {
   const timerRef = useRef<number>()
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export function Notification({ type, title, onExpires }: Props) {
       <S.IconContainer>
         <Icon size={20} />
       </S.IconContainer>
-      <span>{title}</span>
+      <span>{message}</span>
     </S.Container>
   )
 }
@@ -45,7 +45,7 @@ export function Notification({ type, title, onExpires }: Props) {
 const dispatchNotification = (type: NotificationType) => (message: string) => {
   document.dispatchEvent(
     new CustomEvent(NOTIFICATION_EVENT_NAME, {
-      detail: { id: `Notification.${uniqueId()}`, type, title: message },
+      detail: { id: `Notification.${uniqueId()}`, type, message },
     }),
   )
 }
