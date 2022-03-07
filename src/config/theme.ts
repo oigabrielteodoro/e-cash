@@ -20,7 +20,8 @@ export const theme = {
     notification: '0.5rem',
   },
   font: {
-    family: 'Inter',
+    title: 'Inter',
+    paragraph: 'Poppins',
     sizes: {
       disclaimer: '1.2rem',
       small: '1.4rem',
@@ -82,6 +83,7 @@ export const theme = {
     },
   },
   dropShadow: {
+    card: '0 0 10rem 1rem rgba(0, 0, 0, 0.1)',
     popover: '0 0 10rem 1rem rgba(0, 0, 0, 0.1)',
   },
 }

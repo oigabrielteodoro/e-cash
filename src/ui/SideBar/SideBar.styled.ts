@@ -59,7 +59,7 @@ export const SideBarButton = styled.button<Props>`
 `
 
 export const Content = styled.div<Props>`
-  background: ${theme.colors.neutral[100]};
+  background: ${theme.colors.neutral[200]};
   display: flex;
   flex-direction: column;
   align-items: flex-start;

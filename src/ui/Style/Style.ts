@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { shade } from 'polished'
 
 import { theme } from 'config'
 
@@ -19,13 +20,13 @@ export const Style = createGlobalStyle`
   body {
     min-height: 100vh;
     scroll-behavior: smooth;
-    font-family: ${theme.font.family};
+    font-family: ${theme.font.paragraph};
     font-size: ${theme.font.sizes.paragraph};
-    background-color: ${theme.colors.white};
+    background-color: ${shade(0.03, theme.colors.neutral[200])};
   }
 
-  strong {
-    font-family: ${theme.font.family};
+  h1, h2, h3, h4, h5, h6 {
+    font-family: ${theme.font.title};
   }
 
   button {

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { AiOutlineBank } from 'react-icons/ai'
 
-import { Button, Drawer, notification, Row, Space } from 'ui'
+import { Button, Col, Drawer, notification, Row, Space, InfoBox } from 'ui'
 
 import { BankAccountForm } from '../BankAccountForm'
 import { BankAccountFormParams } from '../BankAccountForm/types'
@@ -48,7 +48,15 @@ export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
         </Space>
       }
     >
-      <BankAccountForm formRef={formRef} onSubmit={handleOnSubmit} />
+      <Row gutter={[0, 32]}>
+        <Col span={24}>
+          <InfoBox message='Your banking information is important for future open banking integration.' />
+        </Col>
+
+        <Col span={24}>
+          <BankAccountForm formRef={formRef} onSubmit={handleOnSubmit} />
+        </Col>
+      </Row>
     </Drawer>
   )
 }

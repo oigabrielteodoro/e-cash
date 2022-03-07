@@ -53,7 +53,7 @@ export function BankAccount({
                     message={name}
                     position='top'
                   >
-                    <h3>{nameWithEllipsis}</h3>
+                    <strong>{nameWithEllipsis}</strong>
                   </Tooltip>
                   <Tooltip
                     disabled={bankName.length <= MAX_LENGTH}

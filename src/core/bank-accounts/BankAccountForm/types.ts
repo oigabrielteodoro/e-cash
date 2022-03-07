@@ -15,12 +15,10 @@ export type BankAccountFormParams = {
 
 export const bankAccountSchema = yup.object().shape({
   name: yup.string().required('Name is a required field'),
-  banking_institution: yup
-    .string()
-    .required('Banking institution is a required field'),
+  banking_institution: yup.string().required('Banking is a required field'),
   amount_balance: yup
     .string()
-    .required('Amount balance is a required field')
+    .required('Balance is a required field')
     .matches(onlyNumbers, 'Use only numbers'),
   category: yup.string().required('Category is a required field'),
   banking_agency: yup

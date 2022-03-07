@@ -48,7 +48,7 @@ export function BankAccountBalanceCard({
       <S.CardContent>
         <ShimmerEffect isLoading={isLoading} count={3} space={12.5} size='lg'>
           <span>{title}</span>
-          <strong>{formattedValue}</strong>
+          <h2>{formattedValue}</h2>
 
           <S.CardStatus status={status}>
             <FiArrowUp size={16} />

@@ -1,10 +1,19 @@
 import { theme } from 'config'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Card = styled.div`
+type CardProps = {
+  boxShadow?: string
+}
+
+export const Card = styled.div<CardProps>`
   padding: 2.4rem;
   background: ${theme.colors.white};
   border-radius: ${theme.radius.card};
-  box-shadow: ${theme.dropShadow.popover};
   border: 0.1rem solid ${theme.colors.neutral[300]};
+
+  ${({ boxShadow }) =>
+    boxShadow &&
+    css`
+      box-shadow: ${boxShadow};
+    `}
 `

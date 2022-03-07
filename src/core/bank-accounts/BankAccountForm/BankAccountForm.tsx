@@ -114,20 +114,8 @@ export function BankAccountForm({ formRef, onSubmit }: Props) {
               label='Do you want to include the sum in the dashboard?'
             />
           </Col>
-          <Col span={24}>
-            <Input.TextArea
-              label='Description'
-              placeholder='A brief description about your bank account'
-              error={errors.description?.message}
-              maxLength={250}
-              rows={5}
-              {...register('description')}
-            />
-          </Col>
         </Row>
-        <button ref={formRef} type='submit' hidden>
-          Submit
-        </button>
+        <button ref={formRef} type='submit' hidden />
       </form>
     </FormProvider>
   )

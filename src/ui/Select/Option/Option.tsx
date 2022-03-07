@@ -20,7 +20,11 @@ export function Option({
   }
 
   return (
-    <S.Container role='option' onClick={handleOnClick}>
+    <S.Container
+      role='option'
+      aria-label={displayValue}
+      onClick={handleOnClick}
+    >
       {children}
     </S.Container>
   )

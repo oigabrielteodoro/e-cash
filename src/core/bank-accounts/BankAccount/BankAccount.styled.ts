@@ -13,9 +13,16 @@ export const BankAccountFlagImg = styled.img`
   border-radius: ${theme.radius.card};
 `
 
-export const Container = styled(Card)<ContainerProps>`
+export const Container = styled(Card).attrs({
+  as: 'button',
+})<ContainerProps>`
   width: 100%;
   padding: 2.4rem 1.2rem;
+  transition: 300ms;
+
+  &:hover {
+    transform: translateY(-1rem);
+  }
 
   ${({ disabled }) =>
     disabled &&
@@ -38,14 +45,15 @@ export const BankAccountInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1.6rem;
+  text-align: left;
 
-  h3 {
-    font-size: 16px;
+  strong {
+    font-size: ${theme.font.sizes.paragraph};
   }
 
   small {
     margin-top: 0.4rem;
-    font-size: 12px;
+    font-size: ${theme.font.sizes.disclaimer};
   }
 `
 

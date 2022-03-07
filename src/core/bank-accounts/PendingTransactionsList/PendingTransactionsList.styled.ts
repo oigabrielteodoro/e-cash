@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { theme } from 'config'
 
-export const Title = styled.strong`
+export const Title = styled.h4`
   display: flex;
   align-items: center;
 `

@@ -51,9 +51,12 @@ export function Switch({
       <input
         hidden
         id={id}
+        name={name}
         type='switch'
+        aria-label={name}
         checked={isChecked}
         onChange={handleOnChange}
+        role='switch'
         {...rest}
       />
       <label htmlFor={id}>{label}</label>

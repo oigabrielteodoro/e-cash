@@ -20,7 +20,7 @@ export function PendingTransactionsList() {
     <Card>
       <S.Title>
         Pending transactions
-        <Tooltip message='50 pending transactions' position='top'>
+        <Tooltip message='50 pen. transactions' position='top'>
           <S.AmountText>(50)</S.AmountText>
         </Tooltip>
       </S.Title>

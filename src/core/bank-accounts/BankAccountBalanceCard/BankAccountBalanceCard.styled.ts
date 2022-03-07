@@ -83,7 +83,7 @@ export const CardContent = styled.div`
     color: ${theme.colors.neutral[500]};
   }
 
-  strong {
+  h2 {
     font-weight: 600;
     margin-top: 1.2rem;
     font-size: ${theme.font.sizes.subtitle};
