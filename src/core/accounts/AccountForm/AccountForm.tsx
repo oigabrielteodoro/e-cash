@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { Col, Input, Row, Select, Switch } from 'ui'
-import { BankingInstitutionsSelect } from 'core/banking-institutions'
+import { BankingInstitutionsSelect } from 'core/bankingInstitutions'
 import { accountNumberWithDigitMask, agencyNumberWithoutDigitMask } from 'lib'
 
 import { AccountFormParams, bankAccountSchema } from './types'
