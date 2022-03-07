@@ -63,7 +63,6 @@ export const CardStatus = styled.div<CardStatusProps>`
   small {
     white-space: nowrap;
     font-size: ${theme.font.sizes.small};
-    font-weight: 500;
   }
 
   svg {

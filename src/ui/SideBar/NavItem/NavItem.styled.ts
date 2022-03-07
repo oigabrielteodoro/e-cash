@@ -29,7 +29,7 @@ export const NavItemIcon = styled.div<NavItemIconProps>`
   ${({ $active }) =>
     $active &&
     css`
-      background: ${theme.colors.white};
+      background: ${theme.colors.neutral[200]};
 
       svg {
         color: ${theme.colors.blue[500]};
@@ -52,7 +52,7 @@ export const Container = styled(Link)<Props>`
     `}
 
   &:hover ${NavItemIcon} {
-    background: ${theme.colors.white};
+    background: ${theme.colors.neutral[200]};
 
     svg {
       color: ${theme.colors.blue[500]};

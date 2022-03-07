@@ -10,7 +10,7 @@ exports[`NavItem should be able match snapshot 1`] = `
   place-items: center;
   border-radius: 0.5rem;
   position: relative;
-  background: #ffffff;
+  background: #f5f5f5;
 }
 
 .c7 svg {
@@ -41,7 +41,7 @@ exports[`NavItem should be able match snapshot 1`] = `
 }
 
 .c5:hover .c6 {
-  background: #ffffff;
+  background: #f5f5f5;
 }
 
 .c5:hover .c6 svg {

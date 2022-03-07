@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import { shade } from 'polished'
 
 import { theme } from 'config'
 
@@ -22,7 +21,7 @@ export const Style = createGlobalStyle`
     scroll-behavior: smooth;
     font-family: ${theme.font.paragraph};
     font-size: ${theme.font.sizes.paragraph};
-    background-color: ${shade(0.03, theme.colors.neutral[200])};
+    background-color: ${theme.colors.neutral[200]};
   }
 
   h1, h2, h3, h4, h5, h6 {
