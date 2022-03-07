@@ -4,6 +4,7 @@ import { AiOutlineBank } from 'react-icons/ai'
 import { Button, Drawer, notification, Row, Space } from 'ui'
 
 import { BankAccountForm } from '../BankAccountForm'
+import { BankAccountFormParams } from '../BankAccountForm/types'
 
 type Props = {
   isOpen: boolean
@@ -13,8 +14,12 @@ type Props = {
 export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
   const formRef = useRef<HTMLButtonElement>(null)
 
-  function handleOnSubmit() {
-    notification.success('Parabéns! Conta bancária adicionada')
+  function handleOnSubmit(params: BankAccountFormParams) {
+    console.log(params)
+
+    notification.success('Congratulations! Added bank account.')
+
+    onClose()
   }
 
   return (

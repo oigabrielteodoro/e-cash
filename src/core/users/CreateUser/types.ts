@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-import { onlyNumbers } from 'lib'
+import { onlyNumbers } from 'lib/matcher'
 
 const contactShape = {
   email: yup

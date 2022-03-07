@@ -107,6 +107,10 @@ exports[`Select should be able match snapshot 1`] = `
   position: relative;
 }
 
+.c3 {
+  height: 5.65rem;
+}
+
 <div>
   <fieldset
     class="c0"
@@ -115,7 +119,7 @@ exports[`Select should be able match snapshot 1`] = `
       class="c1"
     >
       <div
-        class="Selectstyled__Container-sc-1fbxwyn-1 c2"
+        class="c2 c3"
       >
         <label
           for="option"

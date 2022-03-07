@@ -8,6 +8,7 @@ import { Select } from './Select'
 type Props = {
   error?: string
   defaultValue?: string
+  renderOptionElementWhenIsSelected?: boolean
 }
 
 function MockedComponent({ error, defaultValue }: Props) {
@@ -24,6 +25,7 @@ function MockedComponent({ error, defaultValue }: Props) {
         label='Option'
         error={error}
         defaultValue={defaultValue}
+        renderOptionElementWhenIsSelected
       >
         <Select.Option displayValue='Option 1' value='option_1'>
           Option 1

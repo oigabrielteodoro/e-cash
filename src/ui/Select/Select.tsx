@@ -1,30 +1,23 @@
-import React, {
-  useRef,
-  useState,
-  useEffect,
-  cloneElement,
-  ReactElement,
-  ChangeEvent,
-} from 'react'
+import React, { useRef, cloneElement, ReactElement } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import { FiChevronDown } from 'react-icons/fi'
 import { AnimatePresence } from 'framer-motion'
-import { useFormContext } from 'react-hook-form'
 
-import toArray from 'lodash/toArray'
-
-import { ClickOutsideElement, InputProps } from 'ui'
+import { LoadIcon, ClickOutsideElement, InputProps } from 'ui'
 import { useInput } from 'lib'
 
 import * as InputStyled from 'ui/Input/Input.styled'
 
 import { Option, OptionProps } from './Option'
 
+import { useSelect } from './useSelect'
 import * as S from './Select.styled'
 
-type SelectProps = {
+export type SelectProps = {
   name: string
   children: ReactElement<OptionProps>[]
+  loading?: boolean
+  renderOptionElementWhenIsSelected?: boolean
 } & Omit<InputProps, 'icon'>
 
 export function Select({
@@ -35,12 +28,13 @@ export function Select({
   defaultValue,
   error,
   children,
+  loading,
+  renderOptionElementWhenIsSelected = false,
   onBlur,
   onFocus,
   ...rest
 }: SelectProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const {
     isFilled,
@@ -56,55 +50,23 @@ export function Select({
     onFocus,
   })
 
-  const { register, setValue, trigger } = useFormContext()
+  const {
+    inputRef,
+    isOpen,
+    filteredOptions,
+    selectedOptionElement,
+    handleOpen,
+    handleClose,
+    handleOnChange,
+    handleOnClick,
+  } = useSelect({
+    children,
+    name,
+    defaultValue,
+  })
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [filteredOptions, setFilteredOptions] = useState(toArray(children))
-
-  useEffect(() => {
-    register(name)
-  }, [name, register])
-
-  useEffect(() => {
-    if (defaultValue && inputRef?.current) {
-      const allOptions = toArray(children)
-      const foundOption = allOptions.find(
-        (option) => option.props.value === defaultValue,
-      )
-
-      if (foundOption) {
-        inputRef.current.value = foundOption.props.displayValue
-      }
-    }
-  }, [defaultValue, children])
-
-  function handleOnClick(value = '', displayValue = '') {
-    setValue(name, value)
-
-    if (inputRef?.current) {
-      inputRef.current.value = displayValue
-    }
-
-    setIsOpen(false)
-    trigger(name)
-  }
-
-  function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
-    const allOptions = toArray(children)
-    const inputValue = event.currentTarget.value
-
-    if (inputValue?.length === 0) {
-      setValue(name, '')
-    }
-
-    setFilteredOptions(
-      allOptions.filter((child) =>
-        child.props.displayValue
-          .toLowerCase()
-          .includes(inputValue.toLowerCase()),
-      ),
-    )
-  }
+  const inputIsHidden =
+    renderOptionElementWhenIsSelected && !!selectedOptionElement
 
   return (
     <S.Wrapper>
@@ -116,7 +78,7 @@ export function Select({
           isFilled={isFilled}
           isFocused={isFocused}
           isErrored={isErrored}
-          onClick={() => setIsOpen(true)}
+          onClick={handleOpen}
         >
           <label htmlFor={id}>{label}</label>
           <input
@@ -130,8 +92,11 @@ export function Select({
             onChange={handleOnChange}
             autoComplete='off'
             role='combobox'
+            hidden={inputIsHidden}
             {...rest}
           />
+
+          {inputIsHidden && selectedOptionElement}
 
           <FiChevronDown size={20} />
         </S.Container>
@@ -147,20 +112,33 @@ export function Select({
           <ClickOutsideElement
             isOpen={isOpen}
             ignoredRefs={[containerRef]}
-            onClose={() => setIsOpen(false)}
+            onClose={handleClose}
           >
-            <S.Dropdown>
-              {filteredOptions.map((child) => {
-                const props = {
-                  ...child.props,
-                  key: `Select.Option.${child.props.value}`,
-                  onClick: () =>
-                    handleOnClick(child.props.value, child.props.displayValue),
-                }
+            {loading ? (
+              <S.Dropdown>
+                <S.LoadState>
+                  <LoadIcon size={28} />
+                </S.LoadState>
+              </S.Dropdown>
+            ) : (
+              <S.Dropdown>
+                {filteredOptions.map((child) => {
+                  const { value, displayValue } = child.props
 
-                return cloneElement(child, props)
-              })}
-            </S.Dropdown>
+                  const props = {
+                    ...child.props,
+                    key: `Select.Option.${value}`,
+                    onClick: () =>
+                      handleOnClick({
+                        value,
+                        displayValue,
+                      }),
+                  }
+
+                  return cloneElement(child, props)
+                })}
+              </S.Dropdown>
+            )}
           </ClickOutsideElement>
         )}
       </AnimatePresence>

@@ -39,8 +39,9 @@ export function BankAccount({
           <Row>
             <S.BankAccountFlagBox>
               <Tooltip
-                disabled={!disabled}
-                message='This bank account is disabled'
+                message={
+                  disabled ? 'This bank account is disabled' : 'Caixa Econômica'
+                }
                 position='top'
               >
                 <S.BankAccountFlagImg src={flag} alt='Nubank' />

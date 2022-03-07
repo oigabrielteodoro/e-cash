@@ -1,29 +1,26 @@
 import React, { RefObject } from 'react'
 import { FiTag } from 'react-icons/fi'
 import { AiOutlineBank, AiOutlineFieldNumber } from 'react-icons/ai'
-import {
-  FieldValues,
-  FormProvider,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { CAIXA, NUBANK } from 'assets'
 import { Col, Input, Row, Select, Switch } from 'ui'
+import { BankingInstitutionsSelect } from 'core/banking-institutions'
 import { accountNumberWithDigitMask, agencyNumberWithoutDigitMask } from 'lib'
 
-import { bankAccountSchema, BankAccountFormParams } from './types'
-import * as S from './BankAccountForm.styled'
+import { BankAccountFormParams, bankAccountSchema } from './types'
 
 type Props = {
   formRef: RefObject<HTMLButtonElement>
-  onSubmit: SubmitHandler<FieldValues>
+  onSubmit: (params: BankAccountFormParams) => void
 }
 
 export function BankAccountForm({ formRef, onSubmit }: Props) {
   const form = useForm<BankAccountFormParams>({
     resolver: yupResolver(bankAccountSchema),
+    defaultValues: {
+      include_sum_on_dashboard: false,
+    },
   })
 
   const {
@@ -46,25 +43,12 @@ export function BankAccountForm({ formRef, onSubmit }: Props) {
             />
           </Col>
           <Col span={12}>
-            <Select
-              placeholder='Example: PicPay'
+            <BankingInstitutionsSelect
+              placeholder='Select banking institution'
               name='banking_institution'
               label='Banking Institution'
               error={errors.banking_institution?.message}
-            >
-              <Select.Option displayValue='Nubank' value='nubank'>
-                <S.BankOption>
-                  <img src={NUBANK} width={40} height={40} />
-                  Nubank
-                </S.BankOption>
-              </Select.Option>
-              <Select.Option displayValue='Caixa' value='caixa'>
-                <S.BankOption>
-                  <img src={CAIXA} width={40} height={40} />
-                  Caixa
-                </S.BankOption>
-              </Select.Option>
-            </Select>
+            />
           </Col>
           <Col span={12}>
             <Input.Amount
@@ -126,8 +110,8 @@ export function BankAccountForm({ formRef, onSubmit }: Props) {
           </Col>
           <Col span={24}>
             <Switch
+              name='include_sum_on_dashboard'
               label='Do you want to include the sum in the dashboard?'
-              {...register('include_sum_on_dashboard')}
             />
           </Col>
           <Col span={24}>

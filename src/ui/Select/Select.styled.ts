@@ -15,6 +15,8 @@ export const Wrapper = styled.fieldset`
 `
 
 export const Container = styled(InputContainer)<Props>`
+  height: 5.65rem;
+
   ${({ isOpen }) =>
     isOpen &&
     css`
@@ -45,4 +47,22 @@ export const Dropdown = styled(motion.ul).attrs(fadeIn())`
   border: 0.1rem solid ${theme.colors.neutral[300]};
   border-radius: 0 0 ${theme.radius.popover} ${theme.radius.popover};
   z-index: ${theme.layers.alwaysOnTop};
+`
+
+export const LoadState = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: ${theme.colors.neutral[500]};
+  padding: 1.6rem;
+
+  span {
+    margin-top: 0.8rem;
+  }
+`
+
+export const OptionElementSelected = styled.div`
+  margin-left: 1rem;
 `

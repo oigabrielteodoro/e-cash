@@ -62,6 +62,7 @@ export const Container = styled(motion.li).attrs({
   align-items: center;
   border-radius: ${theme.radius.notification};
   background: ${theme.colors.white};
+  box-shadow: ${theme.dropShadow.popover};
 
   span {
     margin-left: 1.6rem;

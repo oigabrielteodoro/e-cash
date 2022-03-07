@@ -11,12 +11,17 @@ type OnFocusEventHandler =
 type FocusEventParams = FocusEvent<HTMLInputElement> &
   FocusEvent<HTMLTextAreaElement>
 
-type Props = {
+export type UseInputParams = {
   onBlur?: OnFocusEventHandler
   onFocus?: OnFocusEventHandler
 } & Pick<InputProps, 'defaultValue' | 'error'>
 
-export function useInput({ defaultValue, error, onBlur, onFocus }: Props) {
+export function useInput({
+  defaultValue,
+  error,
+  onBlur,
+  onFocus,
+}: UseInputParams) {
   const [isFilled, setIsFilled] = useState(!!defaultValue)
   const [isFocused, setIsFocused] = useState(false)
 

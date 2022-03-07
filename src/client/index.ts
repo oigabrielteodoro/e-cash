@@ -117,3 +117,4 @@ api.interceptors.response.use(
 export * from './types'
 export * from './useMe'
 export * from './useSession'
+export * from './useBankingInstitutions'
