@@ -2,7 +2,7 @@ import React from 'react'
 
 import truncate from 'lodash/truncate'
 
-import { Row, Col, Tooltip } from 'ui'
+import { Row, Col, Tooltip, Space } from 'ui'
 import { useIsOpen } from 'lib'
 
 import * as S from './BankAccount.styled'
@@ -55,13 +55,15 @@ export function BankAccount({
                   >
                     <strong>{nameWithEllipsis}</strong>
                   </Tooltip>
-                  <Tooltip
-                    disabled={bankName.length <= MAX_LENGTH}
-                    message={bankName}
-                    position='bottom'
-                  >
-                    <small>{bankNameWithEllipsis}</small>
-                  </Tooltip>
+                  <Space marginTop='-0.4rem'>
+                    <Tooltip
+                      disabled={bankName.length <= MAX_LENGTH}
+                      message={bankName}
+                      position='bottom'
+                    >
+                      <small>{bankNameWithEllipsis}</small>
+                    </Tooltip>
+                  </Space>
                 </S.BankAccountInfoBox>
                 <S.Separator />
                 <S.BankAccountInfo>

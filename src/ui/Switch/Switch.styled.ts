@@ -12,6 +12,12 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
 
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
   label {
     cursor: pointer;
     color: ${theme.colors.neutral[600]};

@@ -49,14 +49,14 @@ export function Switch({
         onClick={() => handleOnChange()}
       />
       <input
-        hidden
         id={id}
         name={name}
         type='switch'
-        aria-label={name}
         checked={isChecked}
         onChange={handleOnChange}
+        onClick={() => handleOnChange()}
         role='switch'
+        aria-label={name}
         {...rest}
       />
       <label htmlFor={id}>{label}</label>

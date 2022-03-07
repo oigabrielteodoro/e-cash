@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should be able match snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.c0 label {
+  cursor: pointer;
+  color: #4d4f51;
+}
+
+.c1 {
+  background: #e7eff9;
+  height: 2.6rem;
+  width: 4.2rem;
+  border-radius: 2.6rem;
+  border: 0;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  margin-right: 1.6rem;
+}
+
+.c1::before {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  height: 1.8rem;
+  width: 1.8rem;
+  border-radius: 100%;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  left: 0.4rem;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1"
+      type="button"
+    />
+    <input
+      aria-label="example"
+      id="example"
+      name="example"
+      role="switch"
+      type="switch"
+    />
+    <label
+      for="example"
+    >
+      Example
+    </label>
+  </div>
+</div>
+`;

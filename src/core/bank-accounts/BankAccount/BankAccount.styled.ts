@@ -13,12 +13,11 @@ export const BankAccountFlagImg = styled.img`
   border-radius: ${theme.radius.card};
 `
 
-export const Container = styled(Card).attrs({
-  as: 'button',
-})<ContainerProps>`
+export const Container = styled(Card)<ContainerProps>`
   width: 100%;
   padding: 2.4rem 1.2rem;
   transition: 300ms;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-1rem);
@@ -48,12 +47,12 @@ export const BankAccountInfoBox = styled.div`
   text-align: left;
 
   strong {
+    font-weight: 600;
     font-size: ${theme.font.sizes.paragraph};
   }
 
   small {
-    margin-top: 0.4rem;
-    font-size: ${theme.font.sizes.disclaimer};
+    font-size: ${theme.font.sizes.small};
   }
 `
 
