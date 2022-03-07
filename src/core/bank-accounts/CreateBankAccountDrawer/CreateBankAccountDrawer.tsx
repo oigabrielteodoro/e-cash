@@ -14,9 +14,7 @@ type Props = {
 export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
   const formRef = useRef<HTMLButtonElement>(null)
 
-  function handleOnSubmit(params: BankAccountFormParams) {
-    console.log(params)
-
+  function handleOnSubmit(_: BankAccountFormParams) {
     notification.success('Congratulations! Added bank account.')
 
     onClose()

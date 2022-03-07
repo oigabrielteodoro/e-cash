@@ -9,9 +9,7 @@ import * as S from './BankingInstitutionsSelect.styled'
 export function BankingInstitutionsSelect(
   props: Omit<SelectProps, 'children'>,
 ) {
-  const { bankingInstitutions = [], isLoading } = useBankingInstitutions()
-
-  console.log(isLoading)
+  const { bankingInstitutions, isLoading } = useBankingInstitutions()
 
   return (
     <Select loading={isLoading} renderOptionElementWhenIsSelected {...props}>

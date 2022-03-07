@@ -60,7 +60,9 @@ export function AmountInput({
   const formattedValue = value ? toDecimal(inputNumberParser(value)) : ''
 
   function handleOnKeyPress(event: KeyboardEvent<HTMLInputElement>) {
-    if (isOnlyNumbers(event.currentTarget.value)) event.preventDefault()
+    if (!isOnlyNumbers(event.key)) {
+      event.preventDefault()
+    }
   }
 
   function handleOnChange(event: ChangeEvent<HTMLInputElement>) {

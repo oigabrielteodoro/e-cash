@@ -11,7 +11,7 @@ async function getBankingInstitutions() {
 }
 
 export function useBankingInstitutions() {
-  const { data, ...rest } = useQuery({
+  const { data = [], ...rest } = useQuery({
     queryKey: 'banking_institutions',
     queryFn: getBankingInstitutions,
   })
