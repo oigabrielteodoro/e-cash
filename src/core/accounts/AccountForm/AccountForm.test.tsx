@@ -5,7 +5,7 @@ import { baseURL } from 'config'
 import { bankingInstitutionFactory } from '__factories__'
 import { render, screen, waitFor, userEvent } from '__helpers__/app-tests'
 
-import { BankAccountForm } from './BankAccountForm'
+import { AccountForm } from './AccountForm'
 
 const bankingInstitutions = bankingInstitutionFactory.buildList(1)
 
@@ -16,13 +16,13 @@ function MockedComponent() {
 
   return (
     <div>
-      <BankAccountForm formRef={formRef} onSubmit={onSubmit} />
+      <AccountForm formRef={formRef} onSubmit={onSubmit} />
       <button onClick={() => formRef.current?.click()}>Submit</button>
     </div>
   )
 }
 
-describe('BankAccountForm', () => {
+describe('AccountForm', () => {
   beforeEach(() => {
     onSubmit.mockClear()
   })

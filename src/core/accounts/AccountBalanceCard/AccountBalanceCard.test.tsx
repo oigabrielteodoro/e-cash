@@ -3,12 +3,12 @@ import { AiOutlineCreditCard } from 'react-icons/ai'
 
 import { render, screen } from '__helpers__/app-tests'
 
-import { BankAccountBalanceCard } from '.'
+import { AccountBalanceCard } from '.'
 
-describe('BankAccountBalanceCard', () => {
+describe('AccountBalanceCard', () => {
   it('should be able render correctly', async () => {
     render(
-      <BankAccountBalanceCard
+      <AccountBalanceCard
         title='Example'
         currentValue={150}
         previousValue={500}

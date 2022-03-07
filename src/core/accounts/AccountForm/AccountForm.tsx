@@ -8,15 +8,15 @@ import { Col, Input, Row, Select, Switch } from 'ui'
 import { BankingInstitutionsSelect } from 'core/banking-institutions'
 import { accountNumberWithDigitMask, agencyNumberWithoutDigitMask } from 'lib'
 
-import { BankAccountFormParams, bankAccountSchema } from './types'
+import { AccountFormParams, bankAccountSchema } from './types'
 
 type Props = {
   formRef: RefObject<HTMLButtonElement>
-  onSubmit: (params: BankAccountFormParams) => void
+  onSubmit: (params: AccountFormParams) => void
 }
 
-export function BankAccountForm({ formRef, onSubmit }: Props) {
-  const form = useForm<BankAccountFormParams>({
+export function AccountForm({ formRef, onSubmit }: Props) {
+  const form = useForm<AccountFormParams>({
     resolver: yupResolver(bankAccountSchema),
     defaultValues: {
       include_sum_on_dashboard: false,

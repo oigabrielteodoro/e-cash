@@ -6,11 +6,11 @@ import { Col, Row, EmptyState, Button, Space } from 'ui'
 import { BankAccount } from '../BankAccount'
 
 type Props = {
-  onOpenCreateBankAccountDrawer: () => void
+  onOpenCreateAccountDrawer: () => void
 }
 
-export function BankAccountsList({ onOpenCreateBankAccountDrawer }: Props) {
-  const [bankAccounts] = useState<number[]>([1, 2, 3, 4])
+export function AccountsList({ onOpenCreateAccountDrawer }: Props) {
+  const [bankAccounts] = useState<number[]>([])
 
   const isEmpty = bankAccounts.length <= 0
 
@@ -22,7 +22,7 @@ export function BankAccountsList({ onOpenCreateBankAccountDrawer }: Props) {
         description="We couldn't find any bank accounts, try to add one first"
       >
         <Space margin='0 auto'>
-          <Button full={false} onClick={onOpenCreateBankAccountDrawer}>
+          <Button full={false} onClick={onOpenCreateAccountDrawer}>
             Add bank account
           </Button>
         </Space>

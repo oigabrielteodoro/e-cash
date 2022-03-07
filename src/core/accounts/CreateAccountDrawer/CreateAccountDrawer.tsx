@@ -3,18 +3,18 @@ import { AiOutlineBank } from 'react-icons/ai'
 
 import { Button, Col, Drawer, notification, Row, Space, InfoBox } from 'ui'
 
-import { BankAccountForm } from '../BankAccountForm'
-import { BankAccountFormParams } from '../BankAccountForm/types'
+import { AccountForm } from '../AccountForm'
+import { AccountFormParams } from '../AccountForm/types'
 
 type Props = {
   isOpen: boolean
   onClose: () => void
 }
 
-export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
+export function CreateAccountDrawer({ isOpen, onClose }: Props) {
   const formRef = useRef<HTMLButtonElement>(null)
 
-  function handleOnSubmit(_: BankAccountFormParams) {
+  function handleOnSubmit(_: AccountFormParams) {
     notification.success('Congratulations! Added bank account.')
 
     onClose()
@@ -54,7 +54,7 @@ export function CreateBankAccountDrawer({ isOpen, onClose }: Props) {
         </Col>
 
         <Col span={24}>
-          <BankAccountForm formRef={formRef} onSubmit={handleOnSubmit} />
+          <AccountForm formRef={formRef} onSubmit={handleOnSubmit} />
         </Col>
       </Row>
     </Drawer>

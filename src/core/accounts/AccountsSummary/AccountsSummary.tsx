@@ -4,13 +4,13 @@ import { BiLineChart, BiLineChartDown } from 'react-icons/bi'
 
 import { Col } from 'ui'
 
-import { BankAccountBalanceCard } from '..'
+import { AccountBalanceCard } from '..'
 
-export function BankAccountsSummary() {
+export function AccountsSummary() {
   return (
     <>
       <Col span={6}>
-        <BankAccountBalanceCard
+        <AccountBalanceCard
           title='Current balance'
           currentValue={10000}
           previousValue={7000}
@@ -18,7 +18,7 @@ export function BankAccountsSummary() {
         />
       </Col>
       <Col span={6}>
-        <BankAccountBalanceCard
+        <AccountBalanceCard
           title='Incomes'
           currentValue={10000}
           previousValue={7000}
@@ -26,7 +26,7 @@ export function BankAccountsSummary() {
         />
       </Col>
       <Col span={6}>
-        <BankAccountBalanceCard
+        <AccountBalanceCard
           title='Expenses'
           currentValue={5500}
           previousValue={10000}
@@ -34,7 +34,7 @@ export function BankAccountsSummary() {
         />
       </Col>
       <Col span={6}>
-        <BankAccountBalanceCard
+        <AccountBalanceCard
           title='Credit Card'
           currentValue={150}
           previousValue={500}

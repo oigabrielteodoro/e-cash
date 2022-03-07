@@ -1,5 +1,5 @@
 import React from 'react'
-import { BankAccountsSummary } from 'core/bank-accounts'
+import { AccountsSummary } from 'core/accounts'
 
 import { AppLayout, Row, Calendar } from 'ui'
 
@@ -16,7 +16,7 @@ export function Dashboard() {
       </AppLayout.Header>
       <AppLayout.Content>
         <Row gutter={[24, 0]}>
-          <BankAccountsSummary />
+          <AccountsSummary />
         </Row>
       </AppLayout.Content>
     </AppLayout>

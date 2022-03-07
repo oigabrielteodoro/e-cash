@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 import { onlyNumbers } from 'lib/matcher'
 
-export type BankAccountFormParams = {
+export type AccountFormParams = {
   name: string
   banking_institution: string
   amount_balance: string

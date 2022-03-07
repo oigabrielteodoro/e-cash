@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { BankAccounts, CreateAccount, Dashboard, SignIn } from 'pages'
+import { Accounts, CreateAccount, Dashboard, SignIn } from 'pages'
 import { ACCOUNTS, CREATE_ACCOUNT, DASHBOARD, SIGN_IN } from 'lib'
 
 import { WithAuthentication } from './WithAuthentication'
@@ -52,7 +52,7 @@ export function Router() {
           path={ACCOUNTS}
           element={
             <AppRoute isPrivate>
-              <BankAccounts />
+              <Accounts />
             </AppRoute>
           }
         />

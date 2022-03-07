@@ -5,7 +5,7 @@ import type { IconBaseProps } from 'react-icons'
 import { ShimmerEffect } from 'ui'
 import { decimalFromInt, percentFromInt } from 'lib'
 
-import * as S from './BankAccountBalanceCard.styled'
+import * as S from './AccountBalanceCard.styled'
 
 type Props = {
   title: string
@@ -14,7 +14,7 @@ type Props = {
   icon: ComponentType<IconBaseProps>
 }
 
-export function BankAccountBalanceCard({
+export function AccountBalanceCard({
   title,
   currentValue,
   previousValue,
