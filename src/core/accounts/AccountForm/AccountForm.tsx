@@ -4,9 +4,11 @@ import { AiOutlineBank, AiOutlineFieldNumber } from 'react-icons/ai'
 import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { Col, Input, Row, Select, Switch } from 'ui'
+import { Col, Input, Row, Switch } from 'ui'
 import { BankingInstitutionsSelect } from 'core/bankingInstitutions'
 import { accountNumberWithDigitMask, agencyNumberWithoutDigitMask } from 'lib'
+
+import { CategoriesSelect } from '../CategoriesSelect'
 
 import { AccountFormParams, bankAccountSchema } from './types'
 
@@ -43,50 +45,28 @@ export function AccountForm({ formRef, onSubmit }: Props) {
             />
           </Col>
           <Col span={12}>
+            <CategoriesSelect
+              placeholder='Example: Investment'
+              name='category'
+              label='Category'
+              error={errors.category?.message}
+            />
+          </Col>
+          <Col span={12}>
+            <Input.Amount
+              name='balance'
+              label='Balance'
+              placeholder='Example: R$ 15,000.00'
+              error={errors.balance?.message}
+            />
+          </Col>
+          <Col span={12}>
             <BankingInstitutionsSelect
               placeholder='Select banking institution'
               name='banking_institution'
               label='Banking Institution'
               error={errors.banking_institution?.message}
             />
-          </Col>
-          <Col span={12}>
-            <Input.Amount
-              name='amount_balance'
-              label='Amount balance'
-              placeholder='Example: R$ 15,000.00'
-              error={errors.amount_balance?.message}
-            />
-          </Col>
-          <Col span={12}>
-            <Select
-              placeholder='Example: Investment'
-              name='category'
-              label='Category'
-              error={errors.category?.message}
-            >
-              <Select.Option displayValue='Investments' value='investments'>
-                Investments
-              </Select.Option>
-              <Select.Option displayValue='Savings' value='savings'>
-                Savings
-              </Select.Option>
-              <Select.Option displayValue='Money' value='money'>
-                Money
-              </Select.Option>
-              <Select.Option
-                displayValue='Checking Account'
-                value='checking_account'
-              >
-                Checking Account
-              </Select.Option>
-              <Select.Option
-                displayValue='Payment Account'
-                value='payment_account'
-              >
-                Payment Account
-              </Select.Option>
-            </Select>
           </Col>
           <Col span={12}>
             <Input.Masked

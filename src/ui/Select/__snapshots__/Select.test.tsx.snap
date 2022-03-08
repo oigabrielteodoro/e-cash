@@ -47,7 +47,7 @@ exports[`Select should be able match snapshot 1`] = `
   background: #ffffff;
 }
 
-.c2 svg {
+.c2 > svg {
   margin-left: auto;
   margin-right: 2rem;
   color: #a1a7ae;
@@ -59,7 +59,7 @@ exports[`Select should be able match snapshot 1`] = `
   border: 0.1rem solid #3a67e1;
 }
 
-.c2:hover svg {
+.c2:hover > svg {
   color: #3a67e1;
 }
 

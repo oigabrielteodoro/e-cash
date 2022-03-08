@@ -5,7 +5,7 @@ import { onlyNumbers } from 'lib/matcher'
 export type AccountFormParams = {
   name: string
   banking_institution: string
-  amount_balance: string
+  balance: string
   category: string
   banking_agency: string
   banking_account: string
@@ -16,7 +16,7 @@ export type AccountFormParams = {
 export const bankAccountSchema = yup.object().shape({
   name: yup.string().required('Name is a required field'),
   banking_institution: yup.string().required('Banking is a required field'),
-  amount_balance: yup
+  balance: yup
     .string()
     .required('Balance is a required field')
     .matches(onlyNumbers, 'Use only numbers'),

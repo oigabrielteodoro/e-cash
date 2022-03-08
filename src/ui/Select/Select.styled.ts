@@ -33,7 +33,7 @@ export const Container = styled(InputContainer)<Props>`
         border-color: ${theme.colors.neutral[300]};
       }
 
-      svg {
+      > svg {
         transform: rotate(-180deg);
       }
     `}

@@ -50,7 +50,7 @@ describe('AccountForm', () => {
 
     expect(
       await screen.findByRole('textbox', {
-        name: 'amount_balance',
+        name: 'balance',
       }),
     ).toBeInTheDocument()
 
@@ -153,7 +153,7 @@ describe('AccountForm', () => {
     const params = {
       name: 'Personal account',
       banking_institution: bankingInstitutions[0].id.toString(),
-      amount_balance: '10000',
+      balance: '10000',
       category: 'money',
       banking_agency: '0000',
       banking_account: '0000001',
@@ -185,9 +185,9 @@ describe('AccountForm', () => {
 
     userEvent.type(
       await screen.findByRole('textbox', {
-        name: 'amount_balance',
+        name: 'balance',
       }),
-      params.amount_balance,
+      params.balance,
     )
 
     userEvent.click(

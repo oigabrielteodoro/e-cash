@@ -47,7 +47,7 @@ exports[`AmountInput should be able match snapshot 1`] = `
   background: #ffffff;
 }
 
-.c1 svg {
+.c1 > svg {
   margin-left: auto;
   margin-right: 2rem;
   color: #a1a7ae;
@@ -59,7 +59,7 @@ exports[`AmountInput should be able match snapshot 1`] = `
   border: 0.1rem solid #3a67e1;
 }
 
-.c1:hover svg {
+.c1:hover > svg {
   color: #3a67e1;
 }
 

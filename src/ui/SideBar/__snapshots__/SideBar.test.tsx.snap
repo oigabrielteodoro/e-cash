@@ -508,7 +508,7 @@ exports[`SideBar should be able match snapshot 1`] = `
             <a
               aria-label="accounts"
               class="c16"
-              href="/bank_accounts"
+              href="/accounts"
             >
               <div
                 aria-label="accounts icon"
