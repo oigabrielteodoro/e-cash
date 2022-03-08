@@ -3,14 +3,18 @@ import styled, { css } from 'styled-components'
 import { Card } from 'ui/Card'
 import { theme } from 'config'
 
-import { BankAccountProps } from '.'
+import { AccountCardProps } from '.'
 
-type ContainerProps = Pick<BankAccountProps, 'disabled'>
+type ContainerProps = Pick<AccountCardProps, 'disabled'>
 
 export const BankAccountFlagImg = styled.img`
   width: 4.5rem;
   height: 4.5rem;
   border-radius: ${theme.radius.card};
+  background: ${theme.colors.neutral[200]};
+  display: grid;
+  place-items: center;
+  color: ${theme.colors.neutral[500]};
 `
 
 export const Container = styled(Card)<ContainerProps>`

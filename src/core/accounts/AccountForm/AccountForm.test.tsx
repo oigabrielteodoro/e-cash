@@ -44,7 +44,7 @@ describe('AccountForm', () => {
 
     expect(
       await screen.findByRole('combobox', {
-        name: 'banking_institution',
+        name: 'banking_institution_id',
       }),
     ).toBeInTheDocument()
 
@@ -177,7 +177,7 @@ describe('AccountForm', () => {
 
     userEvent.click(
       await screen.findByRole('combobox', {
-        name: 'banking_institution',
+        name: 'banking_institution_id',
       }),
     )
 

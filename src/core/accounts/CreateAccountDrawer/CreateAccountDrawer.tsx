@@ -1,10 +1,11 @@
+import { useCreateAccount } from 'client'
 import React, { useRef } from 'react'
 import { AiOutlineBank } from 'react-icons/ai'
 
 import { Button, Col, Drawer, notification, Row, Space, InfoBox } from 'ui'
+import type { AccountFormParams } from 'client'
 
 import { AccountForm } from '../AccountForm'
-import { AccountFormParams } from '../AccountForm/types'
 
 type Props = {
   isOpen: boolean
@@ -14,10 +15,15 @@ type Props = {
 export function CreateAccountDrawer({ isOpen, onClose }: Props) {
   const formRef = useRef<HTMLButtonElement>(null)
 
-  function handleOnSubmit(_: AccountFormParams) {
-    notification.success('Congratulations! Added bank account.')
+  const { createAccount, isLoading } = useCreateAccount({
+    onSuccess: () => {
+      notification.success('Congratulations! Your account been added.')
+      onClose()
+    },
+  })
 
-    onClose()
+  function handleOnSubmit(params: AccountFormParams) {
+    createAccount(params)
   }
 
   return (
@@ -41,7 +47,11 @@ export function CreateAccountDrawer({ isOpen, onClose }: Props) {
                 Cancel
               </Button>
             </Space>
-            <Button full={false} onClick={() => formRef.current?.click()}>
+            <Button
+              full={false}
+              loading={isLoading}
+              onClick={() => formRef.current?.click()}
+            >
               To send
             </Button>
           </Row>

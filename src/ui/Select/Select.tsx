@@ -1,6 +1,6 @@
 import React, { useRef, cloneElement, ReactElement } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
-import { FiChevronDown } from 'react-icons/fi'
+import { FiChevronDown, FiX } from 'react-icons/fi'
 import { AnimatePresence } from 'framer-motion'
 
 import { LoadIcon, ClickOutsideElement, InputProps } from 'ui'
@@ -51,6 +51,7 @@ export function Select({
   })
 
   const {
+    value,
     inputRef,
     isOpen,
     filteredOptions,
@@ -59,6 +60,7 @@ export function Select({
     handleClose,
     handleOnChange,
     handleOnClick,
+    handleClearValue,
   } = useSelect({
     children,
     name,
@@ -97,6 +99,12 @@ export function Select({
           />
 
           {inputIsHidden && selectedOptionElement}
+
+          {!!value && (
+            <S.ClearSelectButton type='button' onClick={handleClearValue}>
+              <FiX size={12} />
+            </S.ClearSelectButton>
+          )}
 
           <FiChevronDown size={20} />
         </S.Container>

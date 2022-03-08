@@ -1,18 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { CAIXA, NUBANK } from 'assets'
 import { Col, Row, EmptyState, Button, Space } from 'ui'
+import { useAccounts } from 'client'
 
-import { BankAccount } from '../BankAccount'
+import { AccountCard } from '../AccountCard'
 
 type Props = {
   onOpenCreateAccountDrawer: () => void
 }
 
 export function AccountsList({ onOpenCreateAccountDrawer }: Props) {
-  const [bankAccounts] = useState<number[]>([1, 2, 3, 4])
-
-  const isEmpty = bankAccounts.length <= 0
+  const { accounts, isEmpty } = useAccounts()
 
   if (isEmpty) {
     return (
@@ -32,13 +30,16 @@ export function AccountsList({ onOpenCreateAccountDrawer }: Props) {
 
   return (
     <Row as='ul' gutter={[24, 24]}>
-      {bankAccounts.map((account) => (
-        <Col as='li' key={account} md={24} lg={12} xlg={8}>
-          <BankAccount
-            disabled={account > 2}
-            name='Conta Nubank'
-            bankName='NU PAGAMENTOS S.A'
-            flag={account > 2 ? NUBANK : CAIXA}
+      {accounts.map((account) => (
+        <Col as='li' key={account.id} md={24} lg={12} xlg={8}>
+          <AccountCard
+            disabled={!account.include_sum_on_dashboard}
+            name={account.name}
+            bankName={account.banking_institution?.institutionName ?? '-/-'}
+            flag={account.banking_institution?.imageUrl}
+            accountNumber={account.banking_account}
+            agencyNumber={account.banking_agency}
+            balance={account.balance}
           />
         </Col>
       ))}

@@ -115,7 +115,16 @@ export function useSelect({ children, name, defaultValue }: UseSelectParams) {
     setIsOpen(true)
   }
 
+  function handleClearValue() {
+    setValue(name, null)
+
+    if (inputRef?.current) {
+      inputRef.current.value = ''
+    }
+  }
+
   return {
+    value,
     isOpen,
     selectedOptionElement,
     filteredOptions,
@@ -124,6 +133,7 @@ export function useSelect({ children, name, defaultValue }: UseSelectParams) {
     handleClose,
     handleOnClick,
     handleOnChange,
+    handleClearValue,
   }
 }
 

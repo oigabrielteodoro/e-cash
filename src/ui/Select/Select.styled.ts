@@ -9,6 +9,25 @@ type Props = {
   isOpen: boolean
 }
 
+export const ClearSelectButton = styled.button`
+  opacity: 0;
+  visibility: hidden;
+  background: ${theme.colors.neutral[300]};
+  border: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  right: 2rem;
+  transition: 300ms;
+
+  svg {
+    color: ${theme.colors.neutral[500]};
+  }
+`
+
 export const Wrapper = styled.fieldset`
   border: 0;
   position: relative;
@@ -16,6 +35,11 @@ export const Wrapper = styled.fieldset`
 
 export const Container = styled(InputContainer)<Props>`
   height: 5.65rem;
+
+  &:hover ${ClearSelectButton} {
+    opacity: 1;
+    visibility: visible;
+  }
 
   ${({ isOpen }) =>
     isOpen &&

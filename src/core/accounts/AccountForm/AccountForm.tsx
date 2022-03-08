@@ -7,10 +7,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Col, Input, Row, Switch } from 'ui'
 import { BankingInstitutionsSelect } from 'core/bankingInstitutions'
 import { accountNumberWithDigitMask, agencyNumberWithoutDigitMask } from 'lib'
+import type { AccountFormParams } from 'client'
 
 import { CategoriesSelect } from '../CategoriesSelect'
 
-import { AccountFormParams, bankAccountSchema } from './types'
+import { accountSchema } from './types'
 
 type Props = {
   formRef: RefObject<HTMLButtonElement>
@@ -19,7 +20,7 @@ type Props = {
 
 export function AccountForm({ formRef, onSubmit }: Props) {
   const form = useForm<AccountFormParams>({
-    resolver: yupResolver(bankAccountSchema),
+    resolver: yupResolver(accountSchema),
     defaultValues: {
       include_sum_on_dashboard: false,
     },
@@ -63,9 +64,9 @@ export function AccountForm({ formRef, onSubmit }: Props) {
           <Col span={12}>
             <BankingInstitutionsSelect
               placeholder='Select banking institution'
-              name='banking_institution'
+              name='banking_institution_id'
               label='Banking Institution'
-              error={errors.banking_institution?.message}
+              error={errors.banking_institution_id?.message}
             />
           </Col>
           <Col span={12}>

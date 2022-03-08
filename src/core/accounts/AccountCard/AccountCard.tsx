@@ -1,28 +1,46 @@
 import React from 'react'
+import { AiOutlineBank } from 'react-icons/ai'
 
 import truncate from 'lodash/truncate'
 
 import { Row, Col, Tooltip, Space } from 'ui'
-import { useIsOpen } from 'lib'
+import {
+  accountNumberWithDigitMask,
+  decimalFromInt,
+  toMask,
+  useIsOpen,
+} from 'lib'
 
-import * as S from './BankAccount.styled'
+import * as S from './AccountCard.styled'
 
-export type BankAccountProps = {
+export type AccountCardProps = {
   name: string
-  flag: string
+  flag?: string
   bankName: string
   disabled?: boolean
+  agencyNumber: string
+  accountNumber: string
+  balance: string
 }
 
-export function BankAccount({
+export function AccountCard({
   name,
   flag,
   bankName,
   disabled,
-}: BankAccountProps) {
+  agencyNumber,
+  accountNumber,
+  balance,
+}: AccountCardProps) {
   const isOpen = useIsOpen()
 
   const MAX_LENGTH = isOpen ? 15 : 18
+
+  const balanceFormatted = decimalFromInt(balance)
+
+  const accountNumberFormatted = toMask(accountNumber, [
+    accountNumberWithDigitMask,
+  ])
 
   const nameWithEllipsis = truncate(name, {
     length: MAX_LENGTH,
@@ -39,12 +57,16 @@ export function BankAccount({
           <Row>
             <S.BankAccountFlagBox>
               <Tooltip
-                message={
-                  disabled ? 'This bank account is disabled' : 'Caixa Econômica'
-                }
+                message={disabled ? 'This bank account is disabled' : name}
                 position='top'
               >
-                <S.BankAccountFlagImg src={flag} alt='Nubank' />
+                {flag ? (
+                  <S.BankAccountFlagImg src={flag} alt={name} />
+                ) : (
+                  <S.BankAccountFlagImg as='div'>
+                    <AiOutlineBank size={28} />
+                  </S.BankAccountFlagImg>
+                )}
               </Tooltip>
               <Row justifyContent='space-between' width='100%'>
                 <S.BankAccountInfoBox>
@@ -68,17 +90,17 @@ export function BankAccount({
                 <S.Separator />
                 <S.BankAccountInfo>
                   <span>
-                    Ag. <strong>0001</strong>
+                    Ag. <strong>{agencyNumber}</strong>
                   </span>
                   <span>
-                    Conta. <strong>17089-1</strong>
+                    Conta. <strong>{accountNumberFormatted}</strong>
                   </span>
                 </S.BankAccountInfo>
               </Row>
             </S.BankAccountFlagBox>
 
             <S.BankAccountBalanceBox>
-              <S.BankAccountBalance>R$ 10,000.00</S.BankAccountBalance>
+              <S.BankAccountBalance>{balanceFormatted}</S.BankAccountBalance>
               <span>+30% since last month</span>
             </S.BankAccountBalanceBox>
           </Row>
