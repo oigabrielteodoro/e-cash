@@ -21,7 +21,7 @@ import * as S from './Profile.styled'
 type FormParams = Required<
   Pick<
     CreateUserStoreState,
-    'monthly_income' | 'financial_objective' | 'like_be_called'
+    'monthlyIncome' | 'financialObjective' | 'likeBeCalled'
   >
 >
 
@@ -40,11 +40,11 @@ export function Profile() {
   } = form
 
   const {
-    monthly_income,
-    financial_objective,
-    like_be_called,
+    monthlyIncome,
+    financialObjective,
+    likeBeCalled,
     email = '',
-    full_name = '',
+    fullName = '',
     password = '',
     isLoading,
     createUser,
@@ -54,22 +54,22 @@ export function Profile() {
   })
 
   useEffect(() => {
-    if (like_be_called) setValue('like_be_called', like_be_called)
-    if (monthly_income) setValue('monthly_income', monthly_income)
-    if (financial_objective) {
-      setValue('financial_objective', financial_objective)
+    if (likeBeCalled) setValue('likeBeCalled', likeBeCalled)
+    if (monthlyIncome) setValue('monthlyIncome', monthlyIncome)
+    if (financialObjective) {
+      setValue('financialObjective', financialObjective)
     }
 
     return () => {
-      setState({ financial_objective: watch('financial_objective') })
+      setState({ financialObjective: watch('financialObjective') })
     }
-  }, [monthly_income, financial_objective, like_be_called, watch, setValue])
+  }, [monthlyIncome, financialObjective, likeBeCalled, watch, setValue])
 
   async function handleOnSubmit(params: FormParams) {
     setState(params)
 
     try {
-      const data = { email, full_name, password, ...params }
+      const data = { email, fullName, password, ...params }
 
       await createUserSchema.validate(data, {
         abortEarly: false,
@@ -77,7 +77,7 @@ export function Profile() {
 
       await createUser({
         email,
-        full_name,
+        fullName,
         password,
         ...params,
       })
@@ -99,27 +99,27 @@ export function Profile() {
           icon={FiTag}
           label='Like be called'
           placeholder='How do you like to be called?'
-          error={errors.like_be_called?.message}
-          {...register('like_be_called')}
+          error={errors.likeBeCalled?.message}
+          {...register('likeBeCalled')}
           onBlur={(event) =>
-            setState({ like_be_called: event.currentTarget.value })
+            setState({ likeBeCalled: event.currentTarget.value })
           }
         />
         <Input.Amount
-          name='monthly_income'
+          name='monthlyIncome'
           label='Monthly income'
           placeholder='Ex. R$ 1.000,00'
-          error={errors.monthly_income?.message}
+          error={errors.monthlyIncome?.message}
           onBlur={(event) =>
-            setState({ monthly_income: event.currentTarget.value })
+            setState({ monthlyIncome: event.currentTarget.value })
           }
         />
         <Select
-          name='financial_objective'
+          name='financialObjective'
           label='Financial objective'
           placeholder='Ex. Make extra income'
-          defaultValue={financial_objective}
-          error={errors.financial_objective?.message}
+          defaultValue={financialObjective}
+          error={errors.financialObjective?.message}
         >
           <Select.Option
             displayValue='Make extra income'

@@ -22,7 +22,7 @@ export function AccountForm({ formRef, onSubmit }: Props) {
   const form = useForm<AccountFormParams>({
     resolver: yupResolver(accountSchema),
     defaultValues: {
-      include_sum_on_dashboard: false,
+      includeSumOnDashboard: false,
     },
   })
 
@@ -64,34 +64,34 @@ export function AccountForm({ formRef, onSubmit }: Props) {
           <Col span={12}>
             <BankingInstitutionsSelect
               placeholder='Select banking institution'
-              name='banking_institution_id'
+              name='bankingInstitutionId'
               label='Banking Institution'
-              error={errors.banking_institution_id?.message}
+              error={errors.bankingInstitutionId?.message}
             />
           </Col>
           <Col span={12}>
             <Input.Masked
-              name='banking_agency'
+              name='agencyNumber'
               mask={[agencyNumberWithoutDigitMask]}
               placeholder='Example: 0000'
               label='Agency (without digit)'
               icon={AiOutlineFieldNumber}
-              error={errors.banking_agency?.message}
+              error={errors.agencyNumber?.message}
             />
           </Col>
           <Col span={12}>
             <Input.Masked
-              name='banking_account'
+              name='accountNumber'
               mask={[accountNumberWithDigitMask]}
               placeholder='Example: 000000-0'
               label='Account (with digit)'
               icon={AiOutlineBank}
-              error={errors.banking_account?.message}
+              error={errors.accountNumber?.message}
             />
           </Col>
           <Col span={24}>
             <Switch
-              name='include_sum_on_dashboard'
+              name='includeSumOnDashboard'
               label='Do you want to include the sum in the dashboard?'
             />
           </Col>

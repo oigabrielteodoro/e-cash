@@ -29,7 +29,7 @@ describe('AccountForm', () => {
 
   it('should be able render correctly', async () => {
     const bankingInstitutionsMock = nock(baseURL)
-      .get('/banking_institutions')
+      .get('/bankingInstitutions')
       .reply(200, bankingInstitutions)
 
     render(<MockedComponent />)
@@ -44,7 +44,7 @@ describe('AccountForm', () => {
 
     expect(
       await screen.findByRole('combobox', {
-        name: 'banking_institution_id',
+        name: 'bankingInstitutionId',
       }),
     ).toBeInTheDocument()
 
@@ -62,24 +62,24 @@ describe('AccountForm', () => {
 
     expect(
       await screen.findByRole('textbox', {
-        name: 'banking_agency',
+        name: 'agencyNumber',
       }),
     ).toBeInTheDocument()
 
     expect(
       await screen.findByRole('textbox', {
-        name: 'banking_account',
+        name: 'accountNumber',
       }),
     ).toBeInTheDocument()
 
     expect(
-      await screen.findByLabelText('include_sum_on_dashboard'),
+      await screen.findByLabelText('includeSumOnDashboard'),
     ).toBeInTheDocument()
   })
 
   it('should be able render errors when fields is invalid', async () => {
     const bankingInstitutionsMock = nock(baseURL)
-      .get('/banking_institutions')
+      .get('/bankingInstitutions')
       .reply(200, bankingInstitutions)
 
     render(<MockedComponent />)
@@ -152,16 +152,16 @@ describe('AccountForm', () => {
   it('should be able submit with successfully', async () => {
     const params = {
       name: 'Personal account',
-      banking_institution: bankingInstitutions[0].id.toString(),
+      bankingInstitution: bankingInstitutions[0].id.toString(),
       balance: '10000',
       category: 'money',
-      banking_agency: '0000',
-      banking_account: '0000001',
-      include_sum_on_dashboard: false,
+      agencyNumber: '0000',
+      accountNumber: '0000001',
+      includeSumOnDashboard: false,
     }
 
     const bankingInstitutionsMock = nock(baseURL)
-      .get('/banking_institutions')
+      .get('/bankingInstitutions')
       .reply(200, bankingInstitutions)
 
     render(<MockedComponent />)
@@ -177,7 +177,7 @@ describe('AccountForm', () => {
 
     userEvent.click(
       await screen.findByRole('combobox', {
-        name: 'banking_institution_id',
+        name: 'bankingInstitutionId',
       }),
     )
 
@@ -200,16 +200,16 @@ describe('AccountForm', () => {
 
     userEvent.type(
       await screen.findByRole('textbox', {
-        name: 'banking_agency',
+        name: 'agencyNumber',
       }),
-      params.banking_agency,
+      params.agencyNumber,
     )
 
     userEvent.type(
       await screen.findByRole('textbox', {
-        name: 'banking_account',
+        name: 'accountNumber',
       }),
-      params.banking_account,
+      params.accountNumber,
     )
 
     userEvent.click(

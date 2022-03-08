@@ -42,7 +42,7 @@ function onError(error: ApiError) {
 api.interceptors.response.use(
   (response) => response,
   (error: ApiError) => {
-    const { user_id, session_id } = getSession()
+    const { userId, sessionId } = getSession()
 
     const originalConfig = error.config
 
@@ -55,8 +55,8 @@ api.interceptors.response.use(
 
         api
           .put('/refresh', {
-            user_id,
-            session_id,
+            userId,
+            sessionId,
           })
           .then((response) => {
             const { token } = response.data

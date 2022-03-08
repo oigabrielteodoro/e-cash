@@ -18,7 +18,7 @@ import * as S from './CreateAccount.styled'
 
 export function CreateAccount() {
   const stepsRef = useRef<StepRefProps>(null)
-  const { email, full_name, password, errors, passed, isSuccess } =
+  const { email, fullName, password, errors, passed, isSuccess } =
     useCreateUser()
 
   useEffect(() => () => clearState(), [])
@@ -59,7 +59,7 @@ export function CreateAccount() {
               <Steps.Step
                 title='Password'
                 status={getStatus('password')}
-                disabled={!email || !full_name}
+                disabled={!email || !fullName}
               >
                 <CreatePassword onSubmit={() => handleOnSubmit('password')} />
               </Steps.Step>

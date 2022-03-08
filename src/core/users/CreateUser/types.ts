@@ -7,7 +7,7 @@ const contactShape = {
     .string()
     .required('Email is a required field')
     .email('Email must be a valid email'),
-  full_name: yup.string().required('Full name is a required field'),
+  fullName: yup.string().required('Full name is a required field'),
 }
 
 const passwordShape = {
@@ -23,14 +23,14 @@ const passwordShape = {
 }
 
 const profileShape = {
-  monthly_income: yup
+  monthlyIncome: yup
     .string()
     .required('Monthly income is a required field')
     .matches(onlyNumbers, 'Use only numbers'),
-  financial_objective: yup
+  financialObjective: yup
     .string()
     .required('Financial objective is a required field'),
-  like_be_called: yup.string().required('Like be called is a required field'),
+  likeBeCalled: yup.string().required('Like be called is a required field'),
 }
 
 export const contactSchema = yup.object().shape(contactShape)

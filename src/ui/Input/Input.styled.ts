@@ -64,7 +64,7 @@ export const Container = styled.div<Props>`
 
   ${({ variant }) => modifiers[variant]}
 
-  > svg {
+  > svg, .icon {
     margin-left: auto;
     margin-right: 2rem;
     color: ${theme.colors.neutral[500]};
@@ -74,7 +74,8 @@ export const Container = styled.div<Props>`
   &:hover {
     border: 0.1rem solid ${theme.colors.blue[500]};
 
-    > svg {
+    > svg,
+    .icon {
       color: ${theme.colors.blue[500]};
     }
   }
@@ -96,12 +97,14 @@ export const Container = styled.div<Props>`
       &:hover {
         border: 0.1rem solid ${theme.colors.blue[500]};
 
-        > svg {
+        > svg,
+        .icon {
           color: ${theme.colors.blue[500]};
         }
       }
 
-      > svg {
+      > svg,
+      .icon {
         color: ${theme.colors.blue[300]};
       }
     `};
@@ -118,13 +121,14 @@ export const Container = styled.div<Props>`
         &:hover {
           border: 0.1rem solid ${theme.colors.red[400]};
 
-          > svg {
+          > svg,
+          .icon {
             color: ${theme.colors.red[400]};
           }
         }
       `}
 
-      > svg {
+      > svg, .icon {
         color: ${theme.colors.red[400]};
       }
     `};

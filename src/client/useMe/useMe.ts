@@ -9,15 +9,17 @@ export function getMe() {
 }
 
 export function useMe() {
-  const { token, user_id } = useSessionStoraged()
+  const { token, userId } = useSessionStoraged()
 
-  const isEnabled = !!token && !!user_id
+  const isEnabled = !!token && !!userId
 
   const { data, ...rest } = useQuery({
     enabled: isEnabled,
-    queryKey: ['profile', { user_id }],
+    queryKey: ['profile', { userId }],
     queryFn: getMe,
   })
+
+  console.log(data)
 
   return {
     user: data?.user,

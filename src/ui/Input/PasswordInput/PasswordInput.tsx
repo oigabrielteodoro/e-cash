@@ -34,9 +34,9 @@ const ForwardPasswordInput: ForwardRefRenderFunction<HTMLInputElement, Props> =
           aria-label='ControlPasswordType'
         >
           {isPasswordVisible ? (
-            <AiOutlineUnlock {...props} />
+            <AiOutlineUnlock className='icon' {...props} />
           ) : (
-            <AiOutlineLock {...props} />
+            <AiOutlineLock className='icon' {...props} />
           )}
         </S.Button>
       )

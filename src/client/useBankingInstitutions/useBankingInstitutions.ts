@@ -6,13 +6,13 @@ import type { BankingInstitution } from './types'
 
 async function getBankingInstitutions() {
   return api
-    .get<BankingInstitution[]>('/banking_institutions')
+    .get<BankingInstitution[]>('/bankingInstitutions')
     .then((response) => response.data)
 }
 
 export function useBankingInstitutions() {
   const { data = [], ...rest } = useQuery({
-    queryKey: 'banking_institutions',
+    queryKey: 'bankingInstitutions',
     queryFn: getBankingInstitutions,
   })
 

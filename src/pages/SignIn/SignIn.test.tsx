@@ -29,8 +29,8 @@ describe('SignIn', () => {
     }
 
     const requestMock = nock(baseURL).post('/sessions', params).reply(200, {
-      user_id: Faker.datatype.uuid(),
-      session_id: Faker.datatype.uuid(),
+      userId: Faker.datatype.uuid(),
+      sessionId: Faker.datatype.uuid(),
       token: Faker.datatype.uuid(),
     })
 

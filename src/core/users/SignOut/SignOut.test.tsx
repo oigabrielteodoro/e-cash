@@ -79,14 +79,14 @@ describe('SignOut', () => {
   })
 
   it('should be able sign out user with successfully', async () => {
-    const session_id = Faker.datatype.uuid()
+    const sessionId = Faker.datatype.uuid()
 
     sessionStore.setState({
-      session_id,
+      sessionId,
     })
 
     const requestMock = nock(baseURL)
-      .delete(`/sessions/${session_id}`)
+      .delete(`/sessions/${sessionId}`)
       .reply(200)
 
     render(<MockedComponent />, {
@@ -128,14 +128,14 @@ describe('SignOut', () => {
   })
 
   it('should be able render error when request is failure', async () => {
-    const session_id = Faker.datatype.uuid()
+    const sessionId = Faker.datatype.uuid()
 
     sessionStore.setState({
-      session_id,
+      sessionId,
     })
 
     const requestMock = nock(baseURL)
-      .delete(`/sessions/${session_id}`)
+      .delete(`/sessions/${sessionId}`)
       .reply(401, {
         message: 'Invalid session',
       })

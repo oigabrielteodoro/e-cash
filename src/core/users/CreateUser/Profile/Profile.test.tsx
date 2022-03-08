@@ -7,9 +7,9 @@ import { render, screen, userEvent } from '__helpers__/app-tests'
 import { Profile } from '.'
 
 type Params = {
-  like_be_called: string
-  monthly_income: string
-  financial_objective: string
+  likeBeCalled: string
+  monthlyIncome: string
+  financialObjective: string
 }
 
 function MockedComponent(params: Params) {
@@ -30,47 +30,47 @@ describe('Profile', () => {
 
     expect(
       screen.getByRole('textbox', {
-        name: 'like_be_called',
+        name: 'likeBeCalled',
       }),
     ).toBeInTheDocument()
 
     expect(
       screen.getByRole('textbox', {
-        name: 'monthly_income',
+        name: 'monthlyIncome',
       }),
     ).toBeInTheDocument()
 
     expect(
       screen.getByRole('combobox', {
-        name: 'financial_objective',
+        name: 'financialObjective',
       }),
     ).toBeInTheDocument()
   })
 
   it('should be able render correctly with initial values', async () => {
     const params = {
-      like_be_called: 'Example',
-      monthly_income: '10000',
-      financial_objective: 'make_extra_income',
+      likeBeCalled: 'Example',
+      monthlyIncome: '10000',
+      financialObjective: 'make_extra_income',
     }
 
     render(<MockedComponent {...params} />)
 
     expect(
       await screen.findByRole('textbox', {
-        name: 'like_be_called',
+        name: 'likeBeCalled',
       }),
-    ).toHaveValue(params.like_be_called)
+    ).toHaveValue(params.likeBeCalled)
 
     expect(
       await screen.findByRole('textbox', {
-        name: 'monthly_income',
+        name: 'monthlyIncome',
       }),
-    ).toHaveValue(toDecimal(params.monthly_income))
+    ).toHaveValue(toDecimal(params.monthlyIncome))
 
     expect(
       await screen.findByRole('combobox', {
-        name: 'financial_objective',
+        name: 'financialObjective',
       }),
     ).toHaveValue('Make extra income')
   })

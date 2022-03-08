@@ -14,7 +14,7 @@ export function AccountUser() {
   const { user, isLoading } = useMe()
   const isOpen = useIsOpen()
 
-  const likeBeCalled = truncate(user?.like_be_called, {
+  const likeBeCalled = truncate(user?.likeBeCalled, {
     length: 17,
   })
   const email = truncate(user?.email, {
@@ -27,16 +27,16 @@ export function AccountUser() {
 
   return (
     <Popover
-      name={user?.like_be_called}
+      name={user?.likeBeCalled}
       customWidth='20.2rem'
       innerContent={<AccountUserOptions />}
       wrapperStyle={{ marginTop: 'auto' }}
     >
       <S.Wrapper>
-        <Tooltip disabled={isOpen} message={user?.like_be_called ?? ''}>
+        <Tooltip disabled={isOpen} message={user?.likeBeCalled ?? ''}>
           <S.Container isOpen={isOpen}>
             <ShimmerEffect isLoading={isLoading} variant='image'>
-              <Avatar src={user?.avatar_url} alt={user?.full_name} />
+              <Avatar src={user?.avatarUrl} alt={user?.fullName} />
             </ShimmerEffect>
             <AnimatePresence>
               {isOpen && user && (

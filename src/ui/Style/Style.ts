@@ -1,8 +1,12 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 import { theme } from 'config'
 
-export const Style = createGlobalStyle`
+type StyleProps = {
+  isAuthenticated?: boolean
+}
+
+export const Style = createGlobalStyle<StyleProps>`
   * {
     margin: 0;
     padding: 0;
@@ -21,7 +25,13 @@ export const Style = createGlobalStyle`
     scroll-behavior: smooth;
     font-family: ${theme.font.paragraph};
     font-size: ${theme.font.sizes.paragraph};
-    background-color: ${theme.colors.neutral[200]};
+    background-color: ${theme.colors.white};
+
+    ${({ isAuthenticated }) =>
+      isAuthenticated &&
+      css`
+        background-color: ${theme.colors.neutral[200]};
+      `}
   }
 
   h1, h2, h3, h4, h5, h6 {

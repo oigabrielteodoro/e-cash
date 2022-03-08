@@ -7,7 +7,7 @@ import { AccountCardProps } from '.'
 
 type ContainerProps = Pick<AccountCardProps, 'disabled'>
 
-export const BankAccountFlagImg = styled.img`
+export const AccountFlagImg = styled.img`
   width: 4.5rem;
   height: 4.5rem;
   border-radius: ${theme.radius.card};
@@ -32,19 +32,19 @@ export const Container = styled(Card)<ContainerProps>`
     css`
       border-color: transparent;
 
-      ${BankAccountFlagImg} {
+      ${AccountFlagImg} {
         filter: grayscale(1);
       }
     `}
 `
 
-export const BankAccountFlagBox = styled.div`
+export const AccountFlagBox = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
 `
 
-export const BankAccountInfoBox = styled.div`
+export const AccountInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1.6rem;
@@ -60,7 +60,7 @@ export const BankAccountInfoBox = styled.div`
   }
 `
 
-export const BankAccountInfo = styled.div`
+export const AccountInfo = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 0.6rem;
@@ -77,7 +77,7 @@ export const BankAccountInfo = styled.div`
   }
 `
 
-export const BankAccountBalanceBox = styled.div`
+export const AccountBalanceBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -90,7 +90,7 @@ export const BankAccountBalanceBox = styled.div`
   }
 `
 
-export const BankAccountBalance = styled.button`
+export const AccountBalance = styled.button`
   background: ${theme.colors.neutral[200]};
   border: 0.1rem solid ${theme.colors.neutral[300]};
   border-radius: 0.2rem;

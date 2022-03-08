@@ -16,8 +16,8 @@ describe('AccountUser', () => {
     sessionStore.setState({
       token: 'jwt-valid-token',
       isAuthenticated: true,
-      user_id: Faker.datatype.uuid(),
-      session_id: Faker.datatype.uuid(),
+      userId: Faker.datatype.uuid(),
+      sessionId: Faker.datatype.uuid(),
     })
 
     const userMock = nock(baseURL).get('/profile').reply(200, { user })
@@ -26,11 +26,11 @@ describe('AccountUser', () => {
 
     await waitFor(() => expect(userMock).mockToBeDone())
 
-    expect(await screen.findByText(user.like_be_called)).toBeInTheDocument()
+    expect(await screen.findByText(user.likeBeCalled)).toBeInTheDocument()
 
     expect(
       await screen.findByRole('img', {
-        name: user.full_name,
+        name: user.fullName,
       }),
     ).toBeInTheDocument()
   })
@@ -39,14 +39,14 @@ describe('AccountUser', () => {
     sessionStore.setState({
       token: null,
       isAuthenticated: false,
-      user_id: null,
-      session_id: null,
+      userId: null,
+      sessionId: null,
     })
 
     render(<AccountUser />)
 
     await waitFor(() =>
-      expect(screen.queryByText(user.like_be_called)).not.toBeInTheDocument(),
+      expect(screen.queryByText(user.likeBeCalled)).not.toBeInTheDocument(),
     )
   })
 
@@ -54,8 +54,8 @@ describe('AccountUser', () => {
     sessionStore.setState({
       token: 'jwt-valid-token',
       isAuthenticated: true,
-      user_id: Faker.datatype.uuid(),
-      session_id: Faker.datatype.uuid(),
+      userId: Faker.datatype.uuid(),
+      sessionId: Faker.datatype.uuid(),
     })
 
     const userMock = nock(baseURL).get('/profile').reply(200, { user })
@@ -64,16 +64,16 @@ describe('AccountUser', () => {
 
     await waitFor(() => expect(userMock).mockToBeDone())
 
-    expect(await screen.findByText(user.like_be_called)).toBeInTheDocument()
+    expect(await screen.findByText(user.likeBeCalled)).toBeInTheDocument()
 
     expect(
       await screen.findByRole('img', {
-        name: user.full_name,
+        name: user.fullName,
       }),
     ).toBeInTheDocument()
 
     const button = screen.getByRole('button', {
-      name: user.like_be_called,
+      name: user.likeBeCalled,
     })
 
     expect(button).toBeInTheDocument()

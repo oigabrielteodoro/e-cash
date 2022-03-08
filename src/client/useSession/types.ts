@@ -5,13 +5,13 @@ export type SessionData = {
 
 export type StoreState = {
   token: string | null
-  user_id: string | null
-  session_id: string | null
+  userId: string | null
+  sessionId: string | null
   isAuthenticated: boolean
 }
 
 export type SessionPayload = {
   token: string
-  user_id: string
-  session_id: string
+  userId: string
+  sessionId: string
 }

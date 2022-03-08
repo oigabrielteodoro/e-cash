@@ -12,7 +12,7 @@ import {
 import { Contact } from '.'
 
 type Params = {
-  full_name: string
+  fullName: string
   email: string
 }
 
@@ -34,7 +34,7 @@ describe('Contact', () => {
 
     expect(
       screen.getByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
     ).toBeInTheDocument()
 
@@ -47,7 +47,7 @@ describe('Contact', () => {
 
   it('should be able render correctly with initial values', async () => {
     const params = {
-      full_name: 'Example',
+      fullName: 'Example',
       email: 'example@mail.com',
     }
 
@@ -55,9 +55,9 @@ describe('Contact', () => {
 
     expect(
       await screen.findByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
-    ).toHaveValue(params.full_name)
+    ).toHaveValue(params.fullName)
 
     expect(
       await screen.findByRole('textbox', {
@@ -70,7 +70,7 @@ describe('Contact', () => {
     const onSubmit = jest.fn()
 
     const params = {
-      full_name: 'Example',
+      fullName: 'Example',
       email: 'example@mail.com',
     }
 
@@ -78,9 +78,9 @@ describe('Contact', () => {
 
     userEvent.type(
       await screen.findByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
-      params.full_name,
+      params.fullName,
     )
 
     userEvent.type(
@@ -110,7 +110,7 @@ describe('Contact', () => {
 
     userEvent.type(
       await screen.findByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
       'Example',
     )
@@ -136,7 +136,7 @@ describe('Contact', () => {
 
     fireEvent.change(
       await screen.findByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
       {
         target: { value: '' },

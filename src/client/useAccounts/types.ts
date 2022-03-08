@@ -1,23 +1,23 @@
 export type AccountFormParams = {
   name: string
-  banking_institution_id: string
+  bankingInstitutionId: string
   balance: string
   category: string
-  banking_agency: string
-  banking_account: string
-  include_sum_on_dashboard?: boolean
+  agencyNumber: string
+  accountNumber: string
+  includeSumOnDashboard?: boolean
 }
 
 export type Account = {
   id: string
   name: string
-  banking_institution_id: string
+  bankingInstitutionId: string
   balance: string
   category: string
-  banking_agency: string
-  banking_account: string
-  include_sum_on_dashboard: boolean
-  banking_institution?: {
+  agencyNumber: string
+  accountNumber: string
+  includeSumOnDashboard: boolean
+  bankingInstitution?: {
     imageUrl: string
     institutionName: string
   }

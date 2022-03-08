@@ -55,21 +55,21 @@ export function AccountCard({
       <Row>
         <Col span={24}>
           <Row>
-            <S.BankAccountFlagBox>
+            <S.AccountFlagBox>
               <Tooltip
                 message={disabled ? 'This bank account is disabled' : name}
                 position='top'
               >
                 {flag ? (
-                  <S.BankAccountFlagImg src={flag} alt={name} />
+                  <S.AccountFlagImg src={flag} alt={name} />
                 ) : (
-                  <S.BankAccountFlagImg as='div'>
+                  <S.AccountFlagImg as='div'>
                     <AiOutlineBank size={28} />
-                  </S.BankAccountFlagImg>
+                  </S.AccountFlagImg>
                 )}
               </Tooltip>
               <Row justifyContent='space-between' width='100%'>
-                <S.BankAccountInfoBox>
+                <S.AccountInfoBox>
                   <Tooltip
                     disabled={name.length <= MAX_LENGTH}
                     message={name}
@@ -86,23 +86,23 @@ export function AccountCard({
                       <small>{bankNameWithEllipsis}</small>
                     </Tooltip>
                   </Space>
-                </S.BankAccountInfoBox>
+                </S.AccountInfoBox>
                 <S.Separator />
-                <S.BankAccountInfo>
+                <S.AccountInfo>
                   <span>
                     Ag. <strong>{agencyNumber}</strong>
                   </span>
                   <span>
                     Conta. <strong>{accountNumberFormatted}</strong>
                   </span>
-                </S.BankAccountInfo>
+                </S.AccountInfo>
               </Row>
-            </S.BankAccountFlagBox>
+            </S.AccountFlagBox>
 
-            <S.BankAccountBalanceBox>
-              <S.BankAccountBalance>{balanceFormatted}</S.BankAccountBalance>
+            <S.AccountBalanceBox>
+              <S.AccountBalance>{balanceFormatted}</S.AccountBalance>
               <span>+30% since last month</span>
-            </S.BankAccountBalanceBox>
+            </S.AccountBalanceBox>
           </Row>
         </Col>
       </Row>

@@ -33,12 +33,12 @@ export function AccountsList({ onOpenCreateAccountDrawer }: Props) {
       {accounts.map((account) => (
         <Col as='li' key={account.id} md={24} lg={12} xlg={8}>
           <AccountCard
-            disabled={!account.include_sum_on_dashboard}
+            disabled={!account.includeSumOnDashboard}
             name={account.name}
-            bankName={account.banking_institution?.institutionName ?? '-/-'}
-            flag={account.banking_institution?.imageUrl}
-            accountNumber={account.banking_account}
-            agencyNumber={account.banking_agency}
+            bankName={account.bankingInstitution?.institutionName ?? '-/-'}
+            flag={account.bankingInstitution?.imageUrl}
+            accountNumber={account.accountNumber}
+            agencyNumber={account.agencyNumber}
             balance={account.balance}
           />
         </Col>
