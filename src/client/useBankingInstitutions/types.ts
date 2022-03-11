@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-export const bankingInstitution = yup.object().shape({
+const bankingInstitution = yup.object().shape({
   id: yup.number().required(),
   name: yup.string().required(),
   imageUrl: yup.string().required(),

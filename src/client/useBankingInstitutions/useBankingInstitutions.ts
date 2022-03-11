@@ -4,9 +4,9 @@ import { api } from 'client'
 
 import { of } from 'fp-ts/Task'
 import { pipe } from 'fp-ts/function'
+import { fromNullable } from 'fp-ts/Option'
 import { isRight, toError } from 'fp-ts/Either'
 import { tryCatch, map, fold } from 'fp-ts/TaskEither'
-import { fromNullable } from 'fp-ts/Option'
 
 import { decode } from 'client/decode'
 

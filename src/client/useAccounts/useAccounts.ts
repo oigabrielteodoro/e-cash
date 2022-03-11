@@ -1,15 +1,35 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
-import { api } from 'client/client'
+import { of } from 'fp-ts/Task'
+import { pipe } from 'fp-ts/function'
+import { isRight, toError } from 'fp-ts/Either'
+import { tryCatch, map, fold } from 'fp-ts/TaskEither'
 
-import type { Account, AccountFormParams } from './types'
+import { api, decode } from 'client'
+
+import { accountsSchema, Account, AccountFormParams } from './types'
 
 type UseCreateAccountParams = {
   onSuccess: () => void
 }
 
-function getAccounts() {
-  return api.get<Account[]>('/accounts').then((response) => response.data)
+async function getAccounts() {
+  const url = '/accounts'
+
+  const response = await pipe(
+    tryCatch(() => api.get<Account[]>(url), toError),
+    map((response) => response.data),
+  )()
+
+  if (!isRight(response)) return null
+
+  return await pipe(
+    tryCatch(() => decode(response.right, accountsSchema), toError),
+    fold(
+      () => of(null),
+      () => of(response.right),
+    ),
+  )()
 }
 
 export function useAccounts() {
@@ -19,8 +39,8 @@ export function useAccounts() {
   })
 
   return {
-    accounts: data,
-    isEmpty: data.length === 0,
+    accounts: data ?? [],
+    isEmpty: data?.length === 0,
     ...rest,
   }
 }
