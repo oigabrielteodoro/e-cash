@@ -34,20 +34,17 @@ export function AccountCard({
 }: AccountCardProps) {
   const isOpen = useIsOpen()
 
-  const MAX_LENGTH = isOpen ? 15 : 18
-
-  const balanceFormatted = decimalFromInt(balance)
-
-  const accountNumberFormatted = toMask(accountNumber, [
-    accountNumberWithDigitMask,
-  ])
-
-  const nameWithEllipsis = truncate(name, {
-    length: MAX_LENGTH,
-  })
-
-  const bankNameWithEllipsis = truncate(bankName, {
-    length: MAX_LENGTH,
+  const {
+    balanceFormatted,
+    accountNumberFormatted,
+    bankNameWithEllipsis,
+    nameWithEllipsis,
+  } = getAccountToRender({
+    isOpen,
+    name,
+    balance,
+    bankName,
+    accountNumber,
   })
 
   return (
@@ -57,11 +54,16 @@ export function AccountCard({
           <Row>
             <S.AccountFlagBox>
               <Tooltip
-                message={disabled ? 'This bank account is disabled' : name}
+                alwaysOnTop
+                message={
+                  disabled
+                    ? 'This account is not include sum on dashboard'
+                    : name
+                }
                 position='top'
               >
                 {flag ? (
-                  <S.AccountFlagImg src={flag} alt={name} />
+                  <S.AccountFlagImg src={flag} alt={bankName} />
                 ) : (
                   <S.AccountFlagImg as='div'>
                     <AiOutlineBank size={28} />
@@ -71,7 +73,7 @@ export function AccountCard({
               <Row justifyContent='space-between' width='100%'>
                 <S.AccountInfoBox>
                   <Tooltip
-                    disabled={name.length <= MAX_LENGTH}
+                    disabled={name.length <= nameWithEllipsis.length}
                     message={name}
                     position='top'
                   >
@@ -79,7 +81,7 @@ export function AccountCard({
                   </Tooltip>
                   <Space marginTop='-0.4rem'>
                     <Tooltip
-                      disabled={bankName.length <= MAX_LENGTH}
+                      disabled={bankName.length <= bankNameWithEllipsis.length}
                       message={bankName}
                       position='bottom'
                     >
@@ -108,4 +110,35 @@ export function AccountCard({
       </Row>
     </S.Container>
   )
+}
+
+function getAccountToRender({
+  isOpen,
+  name,
+  bankName,
+  balance,
+  accountNumber,
+}: { isOpen: boolean } & Pick<
+  AccountCardProps,
+  'balance' | 'name' | 'bankName' | 'accountNumber'
+>) {
+  const balanceFormatted = decimalFromInt(balance)
+  const accountNumberFormatted = toMask(accountNumber, [
+    accountNumberWithDigitMask,
+  ])
+
+  const nameWithEllipsis = truncate(name, {
+    length: isOpen ? 13 : 16,
+  })
+
+  const bankNameWithEllipsis = truncate(bankName, {
+    length: isOpen ? 16 : 20,
+  })
+
+  return {
+    balanceFormatted,
+    nameWithEllipsis,
+    bankNameWithEllipsis,
+    accountNumberFormatted,
+  }
 }

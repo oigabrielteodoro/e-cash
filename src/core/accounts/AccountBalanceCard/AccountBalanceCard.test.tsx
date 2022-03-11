@@ -17,6 +17,6 @@ describe('AccountBalanceCard', () => {
     )
 
     expect(await screen.findByText('Example')).toBeInTheDocument()
-    expect(await screen.findByText('R$ 150,00')).toBeInTheDocument()
+    expect(await screen.findByText('R$ 1,50')).toBeInTheDocument()
   })
 })

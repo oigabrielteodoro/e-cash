@@ -19,8 +19,6 @@ export function useMe() {
     queryFn: getMe,
   })
 
-  console.log(data)
-
   return {
     user: data?.user,
     ...rest,

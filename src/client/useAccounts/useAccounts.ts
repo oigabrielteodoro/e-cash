@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'client/client'
 
@@ -26,13 +26,19 @@ export function useAccounts() {
 }
 
 export function useCreateAccount({ onSuccess }: UseCreateAccountParams) {
+  const queryClient = useQueryClient()
+
   const { mutate: createAccount, ...rest } = useMutation<
     unknown,
     unknown,
     AccountFormParams
   >({
     mutationFn: (data) => api.post('/accounts', data),
-    onSuccess,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries('accounts')
+
+      onSuccess()
+    },
   })
 
   return {

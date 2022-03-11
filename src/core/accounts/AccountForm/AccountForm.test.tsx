@@ -29,7 +29,7 @@ describe('AccountForm', () => {
 
   it('should be able render correctly', async () => {
     const bankingInstitutionsMock = nock(baseURL)
-      .get('/bankingInstitutions')
+      .get('/banking_institutions')
       .reply(200, bankingInstitutions)
 
     render(<MockedComponent />)
@@ -79,7 +79,7 @@ describe('AccountForm', () => {
 
   it('should be able render errors when fields is invalid', async () => {
     const bankingInstitutionsMock = nock(baseURL)
-      .get('/bankingInstitutions')
+      .get('/banking_institutions')
       .reply(200, bankingInstitutions)
 
     render(<MockedComponent />)
@@ -161,7 +161,7 @@ describe('AccountForm', () => {
     }
 
     const bankingInstitutionsMock = nock(baseURL)
-      .get('/bankingInstitutions')
+      .get('/banking_institutions')
       .reply(200, bankingInstitutions)
 
     render(<MockedComponent />)

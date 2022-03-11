@@ -15,7 +15,7 @@ import * as S from './Select.styled'
 
 export type SelectProps = {
   name: string
-  children: ReactElement<OptionProps>[]
+  children?: ReactElement<OptionProps>[]
   loading?: boolean
   renderOptionElementWhenIsSelected?: boolean
 } & Omit<InputProps, 'icon'>

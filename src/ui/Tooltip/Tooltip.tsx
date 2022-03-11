@@ -10,6 +10,7 @@ export type TooltipProps = {
   position?: 'top' | 'bottom' | 'left' | 'right'
   disabled?: boolean
   style?: CSSProperties
+  alwaysOnTop?: boolean
 }
 
 export function Tooltip({
@@ -18,14 +19,17 @@ export function Tooltip({
   children,
   disabled = false,
   position = 'right',
+  alwaysOnTop = false,
   style,
 }: TooltipProps) {
   return (
     <S.BaseElement as={as} style={style}>
       {!disabled && (
         <S.Wrapper>
-          <S.Container position={position}>{message}</S.Container>
-          <S.Indicator position={position} />
+          <S.Container alwaysOnTop={alwaysOnTop} position={position}>
+            {message}
+          </S.Container>
+          <S.Indicator alwaysOnTop={alwaysOnTop} position={position} />
         </S.Wrapper>
       )}
       {children}

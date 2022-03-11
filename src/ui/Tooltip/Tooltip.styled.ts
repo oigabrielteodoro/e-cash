@@ -4,7 +4,7 @@ import { theme } from 'config'
 
 import type { TooltipProps } from '.'
 
-type Props = Required<Pick<TooltipProps, 'position'>>
+type Props = Required<Pick<TooltipProps, 'position' | 'alwaysOnTop'>>
 
 const modifiers = {
   top: css`
@@ -78,7 +78,8 @@ export const Container = styled.span<Props>`
   transition: 300ms;
   border: 0.1rem solid ${theme.colors.neutral[300]};
   text-align: center;
-  z-index: ${theme.layers.base};
+  z-index: ${({ alwaysOnTop }) =>
+    theme.layers[alwaysOnTop ? 'alwaysOnTop' : 'base']};
 
   &::before {
     content: '';
@@ -97,7 +98,8 @@ export const Indicator = styled.div<Props>`
   height: 1rem;
   width: 1rem;
   border: 0.1rem solid ${theme.colors.neutral[300]};
-  z-index: ${theme.layers.base};
+  z-index: ${({ alwaysOnTop }) =>
+    theme.layers[alwaysOnTop ? 'alwaysOnTop' : 'base']};
 
   ${({ position }) => arrowModifiers[position]};
 `

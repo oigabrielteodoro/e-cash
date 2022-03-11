@@ -51,11 +51,15 @@ export const AccountInfoBox = styled.div`
   text-align: left;
 
   strong {
+    width: 25rem;
     font-weight: 600;
     font-size: ${theme.font.sizes.paragraph};
+    text-overflow: ellipsis;
   }
 
   small {
+    width: 25rem;
+    text-overflow: ellipsis;
     font-size: ${theme.font.sizes.small};
   }
 `

@@ -35,7 +35,7 @@ export function AccountsList({ onOpenCreateAccountDrawer }: Props) {
           <AccountCard
             disabled={!account.includeSumOnDashboard}
             name={account.name}
-            bankName={account.bankingInstitution?.institutionName ?? '-/-'}
+            bankName={account.bankingInstitution?.institutionName ?? '--'}
             flag={account.bankingInstitution?.imageUrl}
             accountNumber={account.accountNumber}
             agencyNumber={account.agencyNumber}
