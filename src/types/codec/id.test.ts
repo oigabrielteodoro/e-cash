@@ -20,7 +20,7 @@ describe('id', () => {
 
   it('should return error when uuid is invalid', async () => {
     return pipe(
-      'invalid-uuid',
+      'wrong-uuid',
       idCodec.decode,
       fromEither,
       mapAll((errors) => expect(getErrorMessage(errors)).toBe('Invalid id')),
