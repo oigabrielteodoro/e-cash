@@ -91,7 +91,7 @@ describe('AccountForm', () => {
     ).not.toBeInTheDocument()
 
     expect(
-      screen.queryByText('Banking is a required field'),
+      screen.queryByText('Institution is a required field'),
     ).not.toBeInTheDocument()
 
     expect(
@@ -125,7 +125,7 @@ describe('AccountForm', () => {
     ).toBeInTheDocument()
 
     expect(
-      await screen.findByText('Banking is a required field'),
+      await screen.findByText('Institution is a required field'),
     ).toBeInTheDocument()
 
     expect(

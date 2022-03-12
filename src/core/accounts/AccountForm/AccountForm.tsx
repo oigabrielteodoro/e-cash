@@ -106,18 +106,21 @@ export function AccountForm({ formRef, onSubmit }: Props) {
 }
 
 const resolver = yup.object({
-  name: yup.string().required('Name is a required'),
+  name: yup.string().required('Name is a required field'),
   category: yup.string().required(),
   bankingInstitutionId: yup
     .string()
-    .required('Banking Institution is a required'),
+    .required('Institution is a required field'),
   agencyNumber: yup
     .string()
-    .required('Agency number is a required')
+    .required('Agency is a required field')
     .matches(onlyNumbers),
   accountNumber: yup
     .string()
-    .required('Account number is a required')
+    .required('Account is a required field')
     .matches(onlyNumbers),
-  balance: yup.string().required('Balance is a required').matches(onlyNumbers),
+  balance: yup
+    .string()
+    .required('Balance is a required field')
+    .matches(onlyNumbers),
 })
