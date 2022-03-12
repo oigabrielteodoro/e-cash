@@ -3,15 +3,18 @@ import { FiTag } from 'react-icons/fi'
 import { AiOutlineBank, AiOutlineFieldNumber } from 'react-icons/ai'
 import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 import { Col, Input, Row, Switch } from 'ui'
 import { BankingInstitutionsSelect } from 'core/bankingInstitutions'
-import { accountNumberWithDigitMask, agencyNumberWithoutDigitMask } from 'lib'
+import {
+  accountNumberWithDigitMask,
+  agencyNumberWithoutDigitMask,
+  onlyNumbers,
+} from 'lib'
 import type { AccountFormParams } from 'client'
 
 import { CategoriesSelect } from '../CategoriesSelect'
-
-import { accountSchema } from './types'
 
 type Props = {
   formRef: RefObject<HTMLButtonElement>
@@ -20,7 +23,7 @@ type Props = {
 
 export function AccountForm({ formRef, onSubmit }: Props) {
   const form = useForm<AccountFormParams>({
-    resolver: yupResolver(accountSchema),
+    resolver: yupResolver(resolver),
     defaultValues: {
       includeSumOnDashboard: false,
     },
@@ -101,3 +104,20 @@ export function AccountForm({ formRef, onSubmit }: Props) {
     </FormProvider>
   )
 }
+
+const resolver = yup.object({
+  name: yup.string().required('Name is a required'),
+  category: yup.string().required(),
+  bankingInstitutionId: yup
+    .string()
+    .required('Banking Institution is a required'),
+  agencyNumber: yup
+    .string()
+    .required('Agency number is a required')
+    .matches(onlyNumbers),
+  accountNumber: yup
+    .string()
+    .required('Account number is a required')
+    .matches(onlyNumbers),
+  balance: yup.string().required('Balance is a required').matches(onlyNumbers),
+})

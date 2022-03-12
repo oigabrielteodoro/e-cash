@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Col, Row, EmptyState, Button, Space } from 'ui'
+import { Col, Row, EmptyState, Button, Space, Result } from 'ui'
 import { useAccounts } from 'client'
 
 import { AccountCard } from '../AccountCard'
@@ -10,7 +10,21 @@ type Props = {
 }
 
 export function AccountsList({ onOpenCreateAccountDrawer }: Props) {
-  const { accounts, isEmpty } = useAccounts()
+  const { accounts, isEmpty, isError, isRefetching, refetch } = useAccounts()
+
+  if (isError) {
+    return (
+      <Result
+        status='error'
+        title='An error has occurred'
+        description="We couldn't find your bank accounts, please try again!"
+      >
+        <Button full={false} loading={isRefetching} onClick={() => refetch()}>
+          Try again
+        </Button>
+      </Result>
+    )
+  }
 
   if (isEmpty) {
     return (

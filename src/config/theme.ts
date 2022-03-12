@@ -9,7 +9,7 @@ export const theme = {
     xsm: '320px',
     sm: '425px',
     md: '768px',
-    lg: '1440px',
+    lg: '1441px',
     xlg: '1920px',
     greaterLg: '1441px',
   },

@@ -60,7 +60,7 @@ export function AccountCard({
                     ? 'This account is not include sum on dashboard'
                     : name
                 }
-                position='top'
+                position={disabled ? 'right' : 'top'}
               >
                 {flag ? (
                   <S.AccountFlagImg src={flag} alt={bankName} />
@@ -132,7 +132,7 @@ function getAccountToRender({
   })
 
   const bankNameWithEllipsis = truncate(bankName, {
-    length: isOpen ? 16 : 20,
+    length: isOpen ? 14 : 18,
   })
 
   return {

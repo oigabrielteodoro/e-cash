@@ -19,11 +19,12 @@ export const accountsCodec = t.array(account)
 
 export type Account = t.TypeOf<typeof account>
 
-export type AccountFormParams = Pick<
+export type AccountFormParams = {
+  balance: string
+} & Pick<
   Account,
   | 'name'
   | 'bankingInstitutionId'
-  | 'balance'
   | 'category'
   | 'agencyNumber'
   | 'accountNumber'

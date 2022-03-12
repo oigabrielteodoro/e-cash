@@ -23,7 +23,6 @@ export const queryConfigDefault: DefaultOptions<ApiError> = {
   queries: {
     retry: false,
     refetchOnWindowFocus: false,
-    onError,
   },
   mutations: {
     retry: false,
