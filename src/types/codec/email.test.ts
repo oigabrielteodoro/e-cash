@@ -7,11 +7,13 @@ import { emailCodec } from 'types'
 
 describe('email', () => {
   it('should validate email correctly', async () => {
+    const email = 'example@email.com'
+
     return pipe(
-      'example@email.com',
+      email,
       emailCodec.decode,
       fromEither,
-      mapAll((result) => expect(result).toBe('example@email.com')),
+      mapAll((result) => expect(result).toBe(email)),
     )()
   })
 

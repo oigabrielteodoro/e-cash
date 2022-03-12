@@ -8,11 +8,13 @@ import { passwordCodec } from '.'
 
 describe('password', () => {
   it('should be able return true when password is correctly', async () => {
+    const password = 'Abc123$'
+
     return pipe(
-      'Abc123$',
+      password,
       passwordCodec.decode,
       fromEither,
-      mapAll((result) => expect(result).toBe('Abc123$')),
+      mapAll((result) => expect(result).toBe(password)),
     )()
   })
 

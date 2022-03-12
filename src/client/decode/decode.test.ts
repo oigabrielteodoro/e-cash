@@ -1,4 +1,4 @@
-import * as yup from 'yup'
+import * as t from 'io-ts'
 
 import { of } from 'fp-ts/Task'
 import { pipe } from 'fp-ts/function'
@@ -7,14 +7,14 @@ import { tryCatch, fold } from 'fp-ts/TaskEither'
 
 import { decode } from '.'
 
-const schema = yup.string().required()
+export const decoder = t.string
 
 describe('decode', () => {
   it('should be able decode successfully when data is valid', async () => {
     const params = 'valid'
 
     const result = await pipe(
-      tryCatch(() => decode(params, schema), toError),
+      tryCatch(() => decode(params, decoder), toError),
       fold(
         () => of(null),
         () => of(params),
@@ -28,7 +28,7 @@ describe('decode', () => {
     const params = null
 
     const result = await pipe(
-      tryCatch(() => decode(params, schema), toError),
+      tryCatch(() => decode(params, decoder), toError),
       fold(
         () => of(null),
         () => of(params),

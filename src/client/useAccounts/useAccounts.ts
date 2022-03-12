@@ -7,7 +7,7 @@ import { tryCatch, map, fold } from 'fp-ts/TaskEither'
 
 import { api, decode } from 'client'
 
-import { accountsSchema, Account, AccountFormParams } from './types'
+import { Account, AccountFormParams, accountsCodec } from './types'
 
 type UseCreateAccountParams = {
   onSuccess: () => void
@@ -24,7 +24,7 @@ async function getAccounts() {
   if (!isRight(response)) return null
 
   return await pipe(
-    tryCatch(() => decode(response.right, accountsSchema), toError),
+    tryCatch(() => decode(response.right, accountsCodec), toError),
     fold(
       () => of(null),
       () => of(response.right),

@@ -1,17 +1,15 @@
-import * as yup from 'yup'
+import * as t from 'io-ts'
 
-const bankingInstitution = yup.object().shape({
-  id: yup.number().required(),
-  name: yup.string().required(),
-  imageUrl: yup.string().required(),
-  institutionName: yup.string().required(),
+import { urlCodec } from 'types'
+
+export const bankingInstitution = t.type({
+  id: t.string,
+  name: t.string,
+  imageUrl: urlCodec,
+  institutionName: t.string,
+  institutionUrl: urlCodec,
 })
 
-export const bankingInstitutionsSchema = yup.array(bankingInstitution)
+export type BankingInstitution = t.TypeOf<typeof bankingInstitution>
 
-export type BankingInstitution = {
-  id: number
-  name: string
-  imageUrl: string
-  institutionName: string
-}
+export const bankingInstitutionsCodec = t.array(bankingInstitution)

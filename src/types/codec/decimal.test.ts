@@ -7,11 +7,13 @@ import { decimalCodec } from '.'
 
 describe('decimal', () => {
   it('should validate decimal correctly', async () => {
+    const decimal = '100.13232'
+
     return pipe(
-      '100.13232',
+      decimal,
       decimalCodec.decode,
       fromEither,
-      mapAll((result) => expect(result).toBe('100.13232')),
+      mapAll((result) => expect(result).toBe(decimal)),
     )()
   })
 

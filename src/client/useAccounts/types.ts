@@ -1,51 +1,31 @@
-import * as yup from 'yup'
+import * as t from 'io-ts'
+import { decimalCodec, idCodec } from 'types'
 
-import { onlyNumbers } from 'lib/matcher'
+import { bankingInstitution } from 'client/useBankingInstitutions/types'
 
-const account = yup.object().shape({
-  id: yup.string().required(),
-  name: yup.string().required(),
-  bankingInstitutionId: yup.string().required().matches(onlyNumbers),
-  balance: yup.string().required().matches(onlyNumbers),
-  category: yup.string().required(),
-  agencyNumber: yup.string().required().matches(onlyNumbers),
-  accountNumber: yup.string().required().matches(onlyNumbers),
-  includeSumOnDashboard: yup.bool().optional(),
-  bankingInstitution: yup
-    .object()
-    .shape({
-      id: yup.string().optional().matches(onlyNumbers),
-      name: yup.string().optional(),
-      imageUrl: yup.string().optional(),
-      institutionName: yup.string().optional(),
-      institutionUrl: yup.string().optional().url(),
-    })
-    .optional(),
+export const account = t.type({
+  id: idCodec,
+  name: t.string,
+  bankingInstitutionId: t.string,
+  balance: decimalCodec,
+  category: t.string,
+  agencyNumber: t.string,
+  accountNumber: t.string,
+  includeSumOnDashboard: t.boolean,
+  bankingInstitution: t.union([t.undefined, bankingInstitution]),
 })
 
-export const accountsSchema = yup.array(account)
+export const accountsCodec = t.array(account)
 
-export type AccountFormParams = {
-  name: string
-  bankingInstitutionId: string
-  balance: string
-  category: string
-  agencyNumber: string
-  accountNumber: string
-  includeSumOnDashboard?: boolean
-}
+export type Account = t.TypeOf<typeof account>
 
-export type Account = {
-  id: string
-  name: string
-  bankingInstitutionId: string
-  balance: string
-  category: string
-  agencyNumber: string
-  accountNumber: string
-  includeSumOnDashboard: boolean
-  bankingInstitution?: {
-    imageUrl: string
-    institutionName: string
-  }
-}
+export type AccountFormParams = Pick<
+  Account,
+  | 'name'
+  | 'bankingInstitutionId'
+  | 'balance'
+  | 'category'
+  | 'agencyNumber'
+  | 'accountNumber'
+  | 'includeSumOnDashboard'
+>

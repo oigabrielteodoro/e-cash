@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { isSome } from 'fp-ts/Option'
-
 import { useBankingInstitutions } from 'client'
 
 import { Select, SelectProps } from 'ui'
@@ -13,13 +11,9 @@ export function BankingInstitutionsSelect(
 ) {
   const { bankingInstitutions, isLoading } = useBankingInstitutions()
 
-  if (!isSome(bankingInstitutions)) {
-    return <Select {...props} />
-  }
-
   return (
     <Select loading={isLoading} renderOptionElementWhenIsSelected {...props}>
-      {bankingInstitutions.value.map((bankingInstitution) => (
+      {bankingInstitutions.map((bankingInstitution) => (
         <Select.Option
           key={bankingInstitution.id}
           displayValue={bankingInstitution.name}
