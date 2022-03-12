@@ -8,7 +8,7 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
-import { v4 as uuid } from 'uuid'
+import { generateId } from 'lib'
 import nock from 'nock'
 
 import { pipe } from 'fp-ts/function'
@@ -52,7 +52,7 @@ function render(
   function Wrapper({ children }: Props) {
     useEffect(() => {
       if (authenticated) {
-        setToken(uuid())
+        setToken(generateId())
 
         return () => {
           clearToken()
