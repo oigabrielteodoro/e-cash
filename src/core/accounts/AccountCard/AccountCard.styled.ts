@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { Card } from 'ui/Card'
 import { theme } from 'config'
+import { Card } from 'ui/Card'
 
 import { AccountCardProps } from '.'
 

@@ -1,45 +1,31 @@
 import React from 'react'
 
-import { Col, Row, EmptyState, Button, Space, Result } from 'ui'
+import { Col, Row } from 'ui'
 import { useAccounts } from 'client'
 
 import { AccountCard } from '../AccountCard'
+import { Empty } from './Empty'
+import { Failure } from './Failure'
+import { Loading } from './Loading'
 
 type Props = {
   onOpenCreateAccountDrawer: () => void
 }
 
 export function AccountsList({ onOpenCreateAccountDrawer }: Props) {
-  const { accounts, isEmpty, isError, isRefetching, refetch } = useAccounts()
+  const { accounts, isEmpty, isError, isRefetching, isLoading, refetch } =
+    useAccounts()
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   if (isError) {
-    return (
-      <Result
-        status='error'
-        title='An error has occurred'
-        description="We couldn't find your bank accounts, please try again!"
-      >
-        <Button full={false} loading={isRefetching} onClick={() => refetch()}>
-          Try again
-        </Button>
-      </Result>
-    )
+    return <Failure isLoading={isRefetching} onTryAgain={refetch} />
   }
 
   if (isEmpty) {
-    return (
-      <EmptyState
-        size='lg'
-        title='No bank account found!'
-        description="We couldn't find any bank accounts, try to add one first"
-      >
-        <Space margin='0 auto'>
-          <Button full={false} onClick={onOpenCreateAccountDrawer}>
-            Add bank account
-          </Button>
-        </Space>
-      </EmptyState>
-    )
+    return <Empty onOpenCreateAccountDrawer={onOpenCreateAccountDrawer} />
   }
 
   return (

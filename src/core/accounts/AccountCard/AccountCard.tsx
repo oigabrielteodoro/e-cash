@@ -3,7 +3,7 @@ import { AiOutlineBank } from 'react-icons/ai'
 
 import truncate from 'lodash/truncate'
 
-import { Row, Col, Tooltip, Space } from 'ui'
+import { Row, Col, Tooltip, Space, ShimmerEffect } from 'ui'
 import {
   accountNumberWithDigitMask,
   decimalFromInt,
@@ -104,6 +104,47 @@ export function AccountCard({
             <S.AccountBalanceBox>
               <S.AccountBalance>{balanceFormatted}</S.AccountBalance>
               <span>+30% since last month</span>
+            </S.AccountBalanceBox>
+          </Row>
+        </Col>
+      </Row>
+    </S.Container>
+  )
+}
+
+AccountCard.Skeleton = function Skeleton() {
+  return (
+    <S.Container>
+      <Row>
+        <Col span={24}>
+          <Row>
+            <S.AccountFlagBox>
+              <ShimmerEffect
+                isLoading
+                variant='image'
+                style={{
+                  borderRadius: '0.5rem',
+                  height: '4.2rem',
+                  minWidth: '4.2rem',
+                }}
+              />
+              <Row justifyContent='space-between' width='100%'>
+                <S.AccountInfoBox>
+                  <ShimmerEffect isLoading style={{ width: '20rem' }} />
+                  <ShimmerEffect isLoading style={{ width: '10rem' }} />
+                </S.AccountInfoBox>
+                <Row flexDirection='column'>
+                  <ShimmerEffect isLoading style={{ width: '10rem' }} />
+                  <ShimmerEffect isLoading style={{ width: '10rem' }} />
+                </Row>
+              </Row>
+            </S.AccountFlagBox>
+
+            <S.AccountBalanceBox>
+              <ShimmerEffect size='sm' isLoading />
+              <Space margin='0'>
+                <ShimmerEffect isLoading />
+              </Space>
             </S.AccountBalanceBox>
           </Row>
         </Col>

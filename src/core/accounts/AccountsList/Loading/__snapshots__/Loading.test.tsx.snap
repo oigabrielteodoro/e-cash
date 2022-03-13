@@ -1,0 +1,518 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should be able match snapshot 1`] = `
+.c8 {
+  -webkit-animation: ePEqAU 1.2s ease-in-out infinite;
+  animation: ePEqAU 1.2s ease-in-out infinite;
+  background-image: linear-gradient( 90deg,rgba(0,0,0,0),#fff,rgba(0,0,0,0) );
+  background-color: #b3b3b3;
+  background-size: 20rem 100%;
+  background-repeat: no-repeat;
+  min-width: 3.2rem;
+  height: 1.6rem;
+  opacity: 0.1;
+  width: 50%;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+}
+
+.c8 + span {
+  margin-top: 8px;
+}
+
+.c10 {
+  -webkit-animation: ePEqAU 1.2s ease-in-out infinite;
+  animation: ePEqAU 1.2s ease-in-out infinite;
+  background-image: linear-gradient( 90deg,rgba(0,0,0,0),#fff,rgba(0,0,0,0) );
+  background-color: #b3b3b3;
+  background-size: 20rem 100%;
+  background-repeat: no-repeat;
+  min-width: 3.2rem;
+  height: 1.6rem;
+  opacity: 0.1;
+  width: 50%;
+  border-radius: 0.5rem;
+}
+
+.c10 + span {
+  margin-top: 8px;
+}
+
+.c12 {
+  -webkit-animation: ePEqAU 1.2s ease-in-out infinite;
+  animation: ePEqAU 1.2s ease-in-out infinite;
+  background-image: linear-gradient( 90deg,rgba(0,0,0,0),#fff,rgba(0,0,0,0) );
+  background-color: #b3b3b3;
+  background-size: 20rem 100%;
+  background-repeat: no-repeat;
+  min-width: 3.2rem;
+  height: 1.6rem;
+  opacity: 0.1;
+  width: 25%;
+  border-radius: 0.5rem;
+}
+
+.c12 + span {
+  margin-top: 8px;
+}
+
+.c6 {
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  row-gap: 24px;
+  margin: 0 -12px;
+}
+
+.c0 .c1 {
+  padding: 0 12px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.c3 {
+  padding: 2.4rem;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #cfd7e3;
+}
+
+.c4 {
+  width: 100%;
+  padding: 2.4rem 1.2rem;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.c4:hover {
+  -webkit-transform: translateY(-1rem);
+  -ms-transform: translateY(-1rem);
+  transform: translateY(-1rem);
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: 1.6rem;
+  text-align: left;
+}
+
+.c9 strong {
+  width: 25rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+  text-overflow: ellipsis;
+}
+
+.c9 small {
+  width: 25rem;
+  text-overflow: ellipsis;
+  font-size: 1.4rem;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+  width: 100%;
+}
+
+.c11 span {
+  color: #a1a7ae;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width:768px) {
+  .c2 {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:1441px) {
+  .c2 {
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width:1441px) {
+  .c2 {
+    -webkit-flex: 0 0 33.33%;
+    -ms-flex: 0 0 33.33%;
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1 c2"
+    >
+      <div
+        class="c3 c4"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="c1 c6"
+            span="24"
+          >
+            <div
+              class="c5"
+            >
+              <div
+                class="c7"
+              >
+                <span
+                  class="c8"
+                  data-testid="ShimmerEffect"
+                  style="border-radius: 0.5rem; height: 4.2rem; min-width: 4.2rem;"
+                />
+                <div
+                  class="c5"
+                  style="justify-content: space-between; width: 100%;"
+                  width="100%"
+                >
+                  <div
+                    class="c9"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 20rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                  <div
+                    class="c5"
+                    style="flex-direction: column;"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c11"
+              >
+                <span
+                  class="c12"
+                  data-testid="ShimmerEffect"
+                />
+                <span
+                  class="c10"
+                  data-testid="ShimmerEffect"
+                  style="margin: 0px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c1 c2"
+    >
+      <div
+        class="c3 c4"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="c1 c6"
+            span="24"
+          >
+            <div
+              class="c5"
+            >
+              <div
+                class="c7"
+              >
+                <span
+                  class="c8"
+                  data-testid="ShimmerEffect"
+                  style="border-radius: 0.5rem; height: 4.2rem; min-width: 4.2rem;"
+                />
+                <div
+                  class="c5"
+                  style="justify-content: space-between; width: 100%;"
+                  width="100%"
+                >
+                  <div
+                    class="c9"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 20rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                  <div
+                    class="c5"
+                    style="flex-direction: column;"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c11"
+              >
+                <span
+                  class="c12"
+                  data-testid="ShimmerEffect"
+                />
+                <span
+                  class="c10"
+                  data-testid="ShimmerEffect"
+                  style="margin: 0px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c1 c2"
+    >
+      <div
+        class="c3 c4"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="c1 c6"
+            span="24"
+          >
+            <div
+              class="c5"
+            >
+              <div
+                class="c7"
+              >
+                <span
+                  class="c8"
+                  data-testid="ShimmerEffect"
+                  style="border-radius: 0.5rem; height: 4.2rem; min-width: 4.2rem;"
+                />
+                <div
+                  class="c5"
+                  style="justify-content: space-between; width: 100%;"
+                  width="100%"
+                >
+                  <div
+                    class="c9"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 20rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                  <div
+                    class="c5"
+                    style="flex-direction: column;"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c11"
+              >
+                <span
+                  class="c12"
+                  data-testid="ShimmerEffect"
+                />
+                <span
+                  class="c10"
+                  data-testid="ShimmerEffect"
+                  style="margin: 0px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c1 c2"
+    >
+      <div
+        class="c3 c4"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="c1 c6"
+            span="24"
+          >
+            <div
+              class="c5"
+            >
+              <div
+                class="c7"
+              >
+                <span
+                  class="c8"
+                  data-testid="ShimmerEffect"
+                  style="border-radius: 0.5rem; height: 4.2rem; min-width: 4.2rem;"
+                />
+                <div
+                  class="c5"
+                  style="justify-content: space-between; width: 100%;"
+                  width="100%"
+                >
+                  <div
+                    class="c9"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 20rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                  <div
+                    class="c5"
+                    style="flex-direction: column;"
+                  >
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                    <span
+                      class="c10"
+                      data-testid="ShimmerEffect"
+                      style="width: 10rem;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c11"
+              >
+                <span
+                  class="c12"
+                  data-testid="ShimmerEffect"
+                />
+                <span
+                  class="c10"
+                  data-testid="ShimmerEffect"
+                  style="margin: 0px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
