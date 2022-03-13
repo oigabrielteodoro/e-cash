@@ -15,6 +15,6 @@ export const accountFactory = Factory.define<Account>(() => ({
   balance: unsafe(Faker.finance.amount()),
   bankingInstitutionId: bankingInstitution.id,
   bankingInstitution,
-  category: 'checking_account',
+  category: 'money',
   includeSumOnDashboard: true,
 }))

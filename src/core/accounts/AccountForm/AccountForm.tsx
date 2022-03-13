@@ -99,7 +99,7 @@ export function AccountForm({ formRef, onSubmit }: Props) {
             />
           </Col>
         </Row>
-        <button ref={formRef} type='submit' hidden />
+        <button ref={formRef} aria-label='submit' type='submit' hidden />
       </form>
     </FormProvider>
   )
