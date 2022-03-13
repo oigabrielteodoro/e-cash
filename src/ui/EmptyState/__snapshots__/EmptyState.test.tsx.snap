@@ -1,0 +1,417 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyState should be able match snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 > strong {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.c0 > p {
+  margin-top: 0.8rem;
+  color: #a1a7ae;
+  font-size: 1.4rem;
+}
+
+.c1 {
+  margin-top: 2.4rem;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      style="width: 150px; height: 150px;"
+    >
+      <svg
+        height="910"
+        preserveAspectRatio="xMidYMid meet"
+        style="width: 100%; height: 100%; transform: translate3d(0,0,0);"
+        viewBox="0 0 985 910"
+        width="985"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <clippath
+            id="__lottie_element_2"
+          >
+            <rect
+              height="910"
+              width="985"
+              x="0"
+              y="0"
+            />
+          </clippath>
+          <clippath
+            id="__lottie_element_4"
+          >
+            <path
+              d="M0,0 L985,0 L985,910 L0,910z"
+            />
+          </clippath>
+          <clippath
+            id="__lottie_element_74"
+          >
+            <path
+              d="M0,0 L315,0 L315,246 L0,246z"
+            />
+          </clippath>
+        </defs>
+        <g
+          clip-path="url(#__lottie_element_2)"
+        >
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path />
+            </g>
+          </g>
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path />
+            </g>
+            <g>
+              <path />
+              <path
+                fill-opacity="0"
+                stroke-linecap="butt"
+                stroke-linejoin="miter"
+                stroke-miterlimit="4"
+              />
+            </g>
+          </g>
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path />
+            </g>
+          </g>
+          <g
+            opacity="1"
+            style="display: block;"
+            transform="matrix(1,0,0,1,492.5,455)"
+          >
+            <g
+              opacity="1"
+              transform="matrix(1,0,0,1,0,0)"
+            >
+              <path
+                d="M0 0"
+                fill-opacity="0"
+                stroke="rgb(254,228,189)"
+                stroke-linecap="butt"
+                stroke-linejoin="miter"
+                stroke-miterlimit="4"
+                stroke-opacity="1"
+                stroke-width="3"
+              />
+            </g>
+          </g>
+          <g
+            clip-path="url(#__lottie_element_74)"
+            opacity="1"
+            style="display: block;"
+            transform="matrix(0,0,0,0,413.5,444.00799560546875)"
+          >
+            <g
+              opacity="1"
+              style="display: block;"
+              transform="matrix(1,0,0,1,157.97300720214844,122.95899963378906)"
+            >
+              <g
+                opacity="1"
+                transform="matrix(3,0,0,3,0,0)"
+              >
+                <path
+                  d=" M-24.7549991607666,40.762001037597656 C-22.725000381469727,41.12200164794922 -23.2549991607666,40.38199996948242 -23.844999313354492,38.38199996948242 C-24.44499969482422,36.34199905395508 -34.185001373291016,25.091999053955078 -16.395000457763672,25.091999053955078 C-9.595000267028809,25.091999053955078 -2.934999942779541,26.722000122070312 3.765000104904175,27.881999969482422 C10.414999961853027,29.031999588012695 17.165000915527344,29.562000274658203 23.905000686645508,29.461999893188477 C31.354999542236328,29.351999282836914 43.3650016784668,23.531999588012695 49.314998626708984,10.522000312805176 C54.334999084472656,-0.46799999475479126 52.46500015258789,-9.79800033569336 44.98500061035156,-19.118000030517578 C40.974998474121094,-24.118000030517578 30.325000762939453,-31.288000106811523 24.514999389648438,-33.99800109863281 C16.225000381469727,-37.858001708984375 -9.015000343322754,-44.06800079345703 -24.7549991607666,-38.847999572753906 C-40.48500061035156,-33.62799835205078 -48.755001068115234,-19.118000030517578 -50.005001068115234,-14.248000144958496 C-59.755001068115234,23.812000274658203 -24.7549991607666,40.762001037597656 -24.7549991607666,40.762001037597656z"
+                  fill="rgb(240,240,240)"
+                  fill-opacity="1"
+                />
+              </g>
+            </g>
+          </g>
+          <g
+            opacity="1"
+            style="display: block;"
+            transform="matrix(0,0,0,0,574.5159912109375,424.3349914550781)"
+          >
+            <g
+              opacity="1"
+              transform="matrix(-2.897777557373047,0.7764571309089661,-0.7764571309089661,-2.897777557373047,0,0)"
+            >
+              <path
+                d=" M-16.3700008392334,6.182000160217285 C-15.25,7.0920000076293945 -13.609999656677246,7.4120001792907715 -12.100000381469727,7.322000026702881 C-8.75,7.131999969482422 -7.730000019073486,6.23199987411499 -1.7699999809265137,3.252000093460083 C11.4399995803833,-3.3480000495910645 20.739999771118164,-0.8479999899864197 18.3700008392334,-3.687999963760376 C14.010000228881836,-8.918000221252441 -13.960000038146973,-9.14799976348877 -18.739999771118164,-0.23800000548362732 C-18.709999084472656,2.131999969482422 -18.18000030517578,4.711999893188477 -16.3700008392334,6.182000160217285z"
+                fill="rgb(242,242,242)"
+                fill-opacity="1"
+              />
+            </g>
+          </g>
+          <g
+            opacity="1"
+            style="display: block;"
+            transform="matrix(0,0,0,0,656.1849975585938,350.7879943847656)"
+          >
+            <g
+              opacity="1"
+              transform="matrix(-2.897777557373047,0.7764571309089661,-0.7764571309089661,-2.897777557373047,0,0)"
+            >
+              <path
+                d=" M-7,-0.3100000023841858 C-6.980000019073486,0.949999988079071 -6.630000114440918,2.3299999237060547 -5.420000076293945,3.119999885559082 C-4.670000076293945,3.5999999046325684 -3.700000047683716,3.7799999713897705 -2.759999990463257,3.9000000953674316 C0.49000000953674316,4.309999942779541 2.2300000190734863,3.4800000190734863 4.309999942779541,1.5499999523162842 C5.550000190734863,0.4099999964237213 8.069999694824219,-0.5799999833106995 6.5,-2.0999999046325684 C3.5899999141693115,-4.889999866485596 -7.070000171661377,-4.860000133514404 -7,-0.3100000023841858"
+                fill="rgb(216,216,216)"
+                fill-opacity="1"
+              />
+            </g>
+          </g>
+          <g
+            opacity="1"
+            style="display: block;"
+            transform="matrix(0,0,0,0,385.7099914550781,440.98199462890625)"
+          >
+            <g
+              opacity="1"
+              transform="matrix(-2.598076105117798,1.5,-1.5,-2.598076105117798,0,0)"
+            >
+              <path
+                d=" M-11.359999656677246,3.7899999618530273 C-10.579999923706055,4.349999904632568 -9.4399995803833,4.550000190734863 -8.399999618530273,4.489999771118164 C-6.070000171661377,4.369999885559082 -5.360000133514404,3.819999933242798 -1.2300000190734863,1.9900000095367432 C-1.0679999589920044,1.9190000295639038 -0.906000018119812,1.8489999771118164 -0.7459999918937683,1.781000018119812 C-0.3499999940395355,1.6130000352859497 0.03999999910593033,1.4550000429153442 0.42500001192092896,1.3070000410079956 C8.692999839782715,-1.875 14.288999557495117,-0.6269999742507935 12.739999771118164,-2.259999990463257 C9.720000267028809,-5.46999979019165 -9.680000305175781,-5.610000133514404 -13,-0.15000000596046448 C-12.979999542236328,1.2999999523162842 -12.609999656677246,2.890000104904175 -11.359999656677246,3.7899999618530273z"
+                fill="rgb(216,216,216)"
+                fill-opacity="1"
+              />
+            </g>
+          </g>
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path
+                fill-opacity="0"
+                stroke-linecap="round"
+                stroke-linejoin="miter"
+                stroke-miterlimit="4"
+              />
+            </g>
+          </g>
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path
+                fill-opacity="0"
+                stroke-linecap="round"
+                stroke-linejoin="miter"
+                stroke-miterlimit="4"
+              />
+            </g>
+          </g>
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path
+                fill-opacity="0"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </g>
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path />
+            </g>
+          </g>
+          <g
+            style="display: none;"
+          >
+            <g>
+              <path />
+            </g>
+          </g>
+          <g
+            clip-path="url(#__lottie_element_4)"
+            style="display: none;"
+          >
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <path
+                fill-opacity="0"
+                stroke-linecap="butt"
+                stroke-linejoin="miter"
+                stroke-miterlimit="4"
+              />
+              <g>
+                <path />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="round"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="round"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="round"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="round"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="round"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="round"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            >
+              <g>
+                <path />
+                <path
+                  fill-opacity="0"
+                  stroke-linecap="round"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="4"
+                />
+              </g>
+            </g>
+            <g
+              style="display: none;"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <strong>
+      Title
+    </strong>
+    <p>
+      Description
+    </p>
+  </div>
+  <div
+    class="c1"
+  >
+    Content
+  </div>
+</div>
+`;

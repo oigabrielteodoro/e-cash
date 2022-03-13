@@ -87,8 +87,5 @@ exports[`Checkbox should be able match snapshot 1`] = `
       Checkbox
     </label>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

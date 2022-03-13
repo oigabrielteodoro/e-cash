@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, CSSProperties } from 'react'
 
 import range from 'lodash/range'
 
@@ -11,6 +11,7 @@ export type ShimmerEffectProps = {
   variant?: 'image' | 'text'
   count?: number
   space?: number
+  style?: CSSProperties
 }
 
 export function ShimmerEffect({
@@ -20,6 +21,7 @@ export function ShimmerEffect({
   variant = 'text',
   count = 1,
   space = 8,
+  style,
 }: ShimmerEffectProps) {
   const loaderRange = range(count)
 
@@ -31,6 +33,7 @@ export function ShimmerEffect({
             size={size}
             space={space}
             variant={variant}
+            style={style}
             key={`ShimmerEffect_${loaderId}`}
             data-testid='ShimmerEffect'
           />

@@ -18,11 +18,12 @@ export function ClickOutsideElement({
   useEffect(() => {
     function handleOnClick(event: MouseEvent) {
       if (isOpen && ref.current) {
+        const isBlocked = hasBlocked(ref, event.target)
         const isIgnored = !!ignoredRefs.find((ignoredRef) =>
           hasBlocked(ignoredRef, event.target),
         )
 
-        if (!hasBlocked(ref, event.target) && !isIgnored) {
+        if (!isBlocked && !isIgnored) {
           onClose()
         }
       }

@@ -15,7 +15,7 @@ describe('formatters', () => {
 
   describe('decimalFromInt', () => {
     it('should be able format successfully', () => {
-      expect(decimalFromInt(1000)).toContain('1.000,00')
+      expect(decimalFromInt(1000)).toContain('10,00')
     })
 
     it('should not be able format when value is null, undefined or invalid', () => {

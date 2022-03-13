@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 import { theme } from 'config'
+import { fadeIn } from 'ui/_animations'
 
 export const Container = styled.div`
   position: fixed;
@@ -18,24 +19,23 @@ export const Container = styled.div`
   background: rgba(0, 0, 0, 0.1);
 `
 
-export const Dialog = styled(motion.div).attrs({
-  variants: {
-    hidden: {
-      opacity: 0,
-      scale: 0.7,
-      transition: {
-        duration: 0.2,
+export const Dialog = styled(motion.div).attrs(
+  fadeIn({
+    variants: {
+      hidden: {
+        opacity: 0,
+        scale: 0.7,
+        transition: {
+          duration: 0.2,
+        },
+      },
+      visible: {
+        opacity: 1,
+        scale: 1,
       },
     },
-    visible: {
-      opacity: 1,
-      scale: 1,
-    },
-  },
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
-})`
+  }),
+)`
   padding: 4.5rem;
   min-width: 40rem;
   position: relative;

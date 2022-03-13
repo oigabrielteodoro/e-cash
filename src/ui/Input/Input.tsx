@@ -10,8 +10,11 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import type { IconBaseProps } from 'react-icons'
 
 import { useInput } from 'lib'
+
 import { AmountInput } from './AmountInput'
+import { MaskedInput } from './MaskedInput'
 import { PasswordInput } from './PasswordInput'
+import { TextAreaInput } from './TextAreaInput'
 
 import * as S from './Input.styled'
 
@@ -26,17 +29,19 @@ export type InputProps = {
 type InputCompoundComponet = {
   Amount: typeof AmountInput
   Password: typeof PasswordInput
+  TextArea: typeof TextAreaInput
+  Masked: typeof MaskedInput
 } & ForwardRefExoticComponent<InputProps>
 
 const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   {
-    id,
     defaultValue,
     label,
     error,
     variant = 'primary',
     icon: Icon,
     name,
+    id = name,
     onBlur,
     onFocus,
     ...rest
@@ -92,7 +97,8 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 export const Input = forwardRef(ForwardInput) as InputCompoundComponet
 
 Input.Amount = AmountInput
-
 Input.Password = PasswordInput
+Input.TextArea = TextAreaInput
+Input.Masked = MaskedInput
 
 export { PasswordStrength } from './PasswordInput'

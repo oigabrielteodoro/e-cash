@@ -17,21 +17,21 @@ describe('CreateAccount', () => {
 
   it('should be able populate form when has initial values', async () => {
     const params = {
-      full_name: 'Example',
+      fullName: 'Example',
       email: 'example@mail.com',
       password: 'Abc123@',
-      like_be_called: 'Example',
-      monthly_income: '10000',
-      financial_objective: 'Make extra income',
+      likeBeCalled: 'Example',
+      monthlyIncome: '10000',
+      financialObjective: 'Make extra income',
     }
 
     render(<CreateAccount />)
 
     userEvent.type(
       screen.getByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
-      params.full_name,
+      params.fullName,
     )
 
     userEvent.type(
@@ -89,12 +89,12 @@ describe('CreateAccount', () => {
 
   it('should be able create account successfully', async () => {
     const params = {
-      full_name: 'Example',
+      fullName: 'Example',
       email: 'example@mail.com',
       password: 'Abc123@',
-      like_be_called: 'Example',
-      monthly_income: '10000',
-      financial_objective: 'Make extra income',
+      likeBeCalled: 'Example',
+      monthlyIncome: '10000',
+      financialObjective: 'Make extra income',
     }
 
     const createAccountMock = nock(baseURL).post('/users').reply(200, {
@@ -106,9 +106,9 @@ describe('CreateAccount', () => {
 
     userEvent.type(
       screen.getByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
-      params.full_name,
+      params.fullName,
     )
 
     userEvent.type(
@@ -157,25 +157,25 @@ describe('CreateAccount', () => {
 
     userEvent.type(
       screen.getByRole('textbox', {
-        name: 'like_be_called',
+        name: 'likeBeCalled',
       }),
-      params.like_be_called,
+      params.likeBeCalled,
     )
 
     userEvent.type(
       screen.getByRole('textbox', {
-        name: 'monthly_income',
+        name: 'monthlyIncome',
       }),
-      params.monthly_income,
+      params.monthlyIncome,
     )
 
     userEvent.click(
       screen.getByRole('combobox', {
-        name: 'financial_objective',
+        name: 'financialObjective',
       }),
     )
 
-    userEvent.click(await screen.findByText(params.financial_objective))
+    userEvent.click(await screen.findByText(params.financialObjective))
 
     expect(
       await screen.findByRole('button', {
@@ -198,12 +198,12 @@ describe('CreateAccount', () => {
 
   it('should not be able create account when response is an error', async () => {
     const params = {
-      full_name: 'Example',
+      fullName: 'Example',
       email: 'example@mail.com',
       password: 'Abc123@',
-      like_be_called: 'Example',
-      monthly_income: '10000',
-      financial_objective: 'Make extra income',
+      likeBeCalled: 'Example',
+      monthlyIncome: '10000',
+      financialObjective: 'Make extra income',
     }
 
     const createAccountMock = nock(baseURL).post('/users').reply(404, {
@@ -214,9 +214,9 @@ describe('CreateAccount', () => {
 
     userEvent.type(
       screen.getByRole('textbox', {
-        name: 'full_name',
+        name: 'fullName',
       }),
-      params.full_name,
+      params.fullName,
     )
 
     userEvent.type(
@@ -265,25 +265,25 @@ describe('CreateAccount', () => {
 
     userEvent.type(
       screen.getByRole('textbox', {
-        name: 'like_be_called',
+        name: 'likeBeCalled',
       }),
-      params.like_be_called,
+      params.likeBeCalled,
     )
 
     userEvent.type(
       screen.getByRole('textbox', {
-        name: 'monthly_income',
+        name: 'monthlyIncome',
       }),
-      params.monthly_income,
+      params.monthlyIncome,
     )
 
     userEvent.click(
       screen.getByRole('combobox', {
-        name: 'financial_objective',
+        name: 'financialObjective',
       }),
     )
 
-    userEvent.click(await screen.findByText(params.financial_objective))
+    userEvent.click(await screen.findByText(params.financialObjective))
 
     expect(
       await screen.findByRole('button', {

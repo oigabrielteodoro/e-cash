@@ -64,7 +64,7 @@ export const Container = styled.div<Props>`
 
   ${({ variant }) => modifiers[variant]}
 
-  svg {
+  > svg, .icon {
     margin-left: auto;
     margin-right: 2rem;
     color: ${theme.colors.neutral[500]};
@@ -74,7 +74,8 @@ export const Container = styled.div<Props>`
   &:hover {
     border: 0.1rem solid ${theme.colors.blue[500]};
 
-    svg {
+    > svg,
+    .icon {
       color: ${theme.colors.blue[500]};
     }
   }
@@ -82,10 +83,10 @@ export const Container = styled.div<Props>`
   ${({ isFilled }) =>
     isFilled &&
     css`
-      svg {
+      > svg {
         color: ${theme.colors.blue[500]};
       }
-    `}
+    `};
 
   ${({ isFocused }) =>
     isFocused &&
@@ -96,15 +97,17 @@ export const Container = styled.div<Props>`
       &:hover {
         border: 0.1rem solid ${theme.colors.blue[500]};
 
-        svg {
+        > svg,
+        .icon {
           color: ${theme.colors.blue[500]};
         }
       }
 
-      svg {
+      > svg,
+      .icon {
         color: ${theme.colors.blue[300]};
       }
-    `}
+    `};
 
   ${({ isErrored, isFocused }) =>
     isErrored &&
@@ -118,18 +121,20 @@ export const Container = styled.div<Props>`
         &:hover {
           border: 0.1rem solid ${theme.colors.red[400]};
 
-          svg {
+          > svg,
+          .icon {
             color: ${theme.colors.red[400]};
           }
         }
       `}
 
-      svg {
+      > svg, .icon {
         color: ${theme.colors.red[400]};
       }
-    `}
+    `};
 
-  input {
+  input,
+  textarea {
     flex: 1;
     border: 0;
     background: transparent;
@@ -141,5 +146,11 @@ export const Container = styled.div<Props>`
     &::placeholder {
       color: ${theme.colors.neutral[500]};
     }
+  }
+
+  textarea {
+    resize: none;
+    padding: 0 2rem;
+    margin: 2.4rem 0;
   }
 `

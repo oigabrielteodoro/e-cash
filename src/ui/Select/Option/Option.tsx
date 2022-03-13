@@ -1,20 +1,30 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import * as S from './Option.styled'
 
 export type OptionProps = {
-  children: string
+  children: ReactNode
+  displayValue: string
   value?: string
   onClick?: (value?: string, children?: string) => void
 }
 
-export function Option({ children, value, onClick }: OptionProps) {
+export function Option({
+  children,
+  displayValue,
+  value,
+  onClick,
+}: OptionProps) {
   function handleOnClick() {
-    onClick && onClick(value, children)
+    onClick && onClick(value, displayValue)
   }
 
   return (
-    <S.Container role='option' onClick={handleOnClick}>
+    <S.Container
+      role='option'
+      aria-label={displayValue}
+      onClick={handleOnClick}
+    >
       {children}
     </S.Container>
   )

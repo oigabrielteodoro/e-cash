@@ -8,7 +8,7 @@ import { FiDollarSign } from 'react-icons/fi'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import { useFormContext } from 'react-hook-form'
 
-import { toDecimal, useInput } from 'lib'
+import { isOnlyNumbers, toDecimal, useInput } from 'lib'
 
 import * as InputStyled from '../Input.styled'
 
@@ -25,16 +25,17 @@ function inputNumberParser(value?: string): string {
 }
 
 export function AmountInput({
-  id,
   name,
+  id = name,
   variant = 'primary',
   label,
   error,
   onFocus,
   onBlur,
+  onChange,
   ...rest
 }: AmountInputProps) {
-  const { register, watch, setValue } = useFormContext()
+  const { register, watch, trigger, setValue } = useFormContext()
 
   const value = watch(name)
 
@@ -59,7 +60,9 @@ export function AmountInput({
   const formattedValue = value ? toDecimal(inputNumberParser(value)) : ''
 
   function handleOnKeyPress(event: KeyboardEvent<HTMLInputElement>) {
-    if (!/[0-9]/.test(event.key)) event.preventDefault()
+    if (!isOnlyNumbers(event.key)) {
+      event.preventDefault()
+    }
   }
 
   function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
@@ -67,6 +70,9 @@ export function AmountInput({
     const amount = inputNumberParser(value)
 
     setValue(name, amount)
+    trigger(name)
+
+    onChange && onChange(event)
   }
 
   return (
@@ -86,8 +92,8 @@ export function AmountInput({
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           onKeyPress={handleOnKeyPress}
-          {...rest}
           onChange={handleOnChange}
+          {...rest}
         />
         <FiDollarSign size={22} />
       </InputStyled.Container>

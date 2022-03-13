@@ -63,8 +63,5 @@ exports[`QuoteIcon should be able match snapshot 1`] = `
       style="width: 0px;"
     />
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

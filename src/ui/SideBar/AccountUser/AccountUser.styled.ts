@@ -28,7 +28,7 @@ export const Container = styled.div<ContainerProps>`
       padding: 0 1rem;
 
       &:hover {
-        background: ${theme.colors.white};
+        background: ${theme.colors.neutral[200]};
       }
     `}
 `

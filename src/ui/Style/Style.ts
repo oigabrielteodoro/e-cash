@@ -1,10 +1,12 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 import { theme } from 'config'
 
-import 'react-toastify/dist/ReactToastify.css'
+type StyleProps = {
+  isAuthenticated?: boolean
+}
 
-export const Style = createGlobalStyle`
+export const Style = createGlobalStyle<StyleProps>`
   * {
     margin: 0;
     padding: 0;
@@ -21,13 +23,19 @@ export const Style = createGlobalStyle`
   body {
     min-height: 100vh;
     scroll-behavior: smooth;
-    font-family: ${theme.font.family};
+    font-family: ${theme.font.paragraph};
     font-size: ${theme.font.sizes.paragraph};
     background-color: ${theme.colors.white};
+
+    ${({ isAuthenticated }) =>
+      isAuthenticated &&
+      css`
+        background-color: ${theme.colors.neutral[200]};
+      `}
   }
 
-  strong {
-    font-family: ${theme.font.family};
+  h1, h2, h3, h4, h5, h6 {
+    font-family: ${theme.font.title};
   }
 
   button {

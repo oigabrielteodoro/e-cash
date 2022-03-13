@@ -8,15 +8,8 @@ import { theme } from 'config'
 import { Calendar } from '.'
 
 describe('Calendar', () => {
-  it('should be able match snapshot', () => {
-    const { container } = render(<Calendar />)
-
-    expect(container).toMatchSnapshot()
-  })
-
   it('should be able render correctly', async () => {
     const date = new Date()
-
     const dateFormatted = format(date, 'dd MMM, yyyy')
 
     render(<Calendar />)
@@ -30,7 +23,6 @@ describe('Calendar', () => {
 
   it('should be able open/close calendar', async () => {
     const date = new Date()
-
     const monthFormatted = format(date, 'MMMM yyyy')
     const dateFormatted = format(date, 'dd MMM, yyyy')
 
@@ -57,7 +49,6 @@ describe('Calendar', () => {
 
   it('should be able select single dates', async () => {
     const date = new Date()
-
     const monthFormatted = format(date, 'MMMM yyyy')
     const dateFormatted = format(date, 'dd MMM, yyyy')
 
@@ -73,6 +64,13 @@ describe('Calendar', () => {
     userEvent.click(button)
 
     expect(await screen.findByText(monthFormatted)).toBeInTheDocument()
+
+    // Remove default selected date
+    userEvent.click(
+      await screen.findByRole('button', {
+        name: date.getDate().toString(),
+      }),
+    )
 
     const singleDate = screen.getByRole('button', {
       name: '1',
@@ -90,7 +88,6 @@ describe('Calendar', () => {
 
   it('should be able select between dates', async () => {
     const date = new Date()
-
     const monthFormatted = format(date, 'MMMM yyyy')
     const dateFormatted = format(date, 'dd MMM, yyyy')
 
@@ -156,7 +153,6 @@ describe('Calendar', () => {
 
   it('should be able reset dates when user selects more than allowed', async () => {
     const date = new Date()
-
     const monthFormatted = format(date, 'MMMM yyyy')
     const dateFormatted = format(date, 'dd MMM, yyyy')
 

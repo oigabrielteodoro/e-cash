@@ -51,7 +51,7 @@ describe('NavItem', () => {
 
     expect(screen.getByLabelText('dashboard')).toBeInTheDocument()
     expect(screen.getByLabelText('dashboard icon')).toHaveStyle(
-      `background: ${theme.colors.white}`,
+      `background: ${theme.colors.neutral[200]}`,
     )
   })
 
@@ -69,7 +69,7 @@ describe('NavItem', () => {
     expect(screen.getByLabelText('dashboard')).toBeInTheDocument()
     expect(screen.getByText('Dashboard')).toBeInTheDocument()
     expect(screen.getByLabelText('dashboard icon')).toHaveStyle(
-      `background: ${theme.colors.white}`,
+      `background: ${theme.colors.neutral[200]}`,
     )
   })
 
@@ -82,7 +82,7 @@ describe('NavItem', () => {
 
     expect(screen.getByLabelText('dashboard')).toBeInTheDocument()
     expect(screen.getByLabelText('dashboard icon')).not.toHaveStyle(
-      `background: ${theme.colors.white}`,
+      `background: ${theme.colors.neutral[200]}`,
     )
   })
 
@@ -97,7 +97,7 @@ describe('NavItem', () => {
     expect(screen.getByLabelText('transactions')).toBeInTheDocument()
 
     expect(screen.getByLabelText('dashboard icon')).toHaveStyle(
-      `background: ${theme.colors.white}`,
+      `background: ${theme.colors.neutral[200]}`,
     )
 
     const link = screen.getByLabelText('transactions')
@@ -108,10 +108,10 @@ describe('NavItem', () => {
     expect(await screen.findByLabelText('transactions')).toBeInTheDocument()
 
     expect(await screen.findByLabelText('dashboard icon')).not.toHaveStyle(
-      `background: ${theme.colors.white}`,
+      `background: ${theme.colors.neutral[200]}`,
     )
     expect(await screen.findByLabelText('transactions icon')).toHaveStyle(
-      `background: ${theme.colors.white}`,
+      `background: ${theme.colors.neutral[200]}`,
     )
   })
 })

@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components'
 
 import { theme } from 'config'
+
 import type { TooltipProps } from '.'
 
-type Props = Required<Pick<TooltipProps, 'position'>>
+type Props = Required<Pick<TooltipProps, 'position' | 'alwaysOnTop'>>
 
 const modifiers = {
   top: css`
@@ -53,7 +54,7 @@ const arrowModifiers = {
   `,
   left: css`
     top: 50%;
-    right: calc(100% + 1.3rem);
+    right: calc(100% + 1.2rem);
     transform: translateY(-50%) rotate(-45deg);
     border-top-color: transparent;
     border-left-color: transparent;
@@ -77,7 +78,8 @@ export const Container = styled.span<Props>`
   transition: 300ms;
   border: 0.1rem solid ${theme.colors.neutral[300]};
   text-align: center;
-  z-index: ${theme.layers.base};
+  z-index: ${({ alwaysOnTop }) =>
+    theme.layers[alwaysOnTop ? 'alwaysOnTop' : 'base']};
 
   &::before {
     content: '';
@@ -96,7 +98,8 @@ export const Indicator = styled.div<Props>`
   height: 1rem;
   width: 1rem;
   border: 0.1rem solid ${theme.colors.neutral[300]};
-  z-index: ${theme.layers.base};
+  z-index: ${({ alwaysOnTop }) =>
+    theme.layers[alwaysOnTop ? 'alwaysOnTop' : 'base']};
 
   ${({ position }) => arrowModifiers[position]};
 `

@@ -31,7 +31,7 @@ describe('Modal', () => {
     expect(screen.getByText(/Modal/i)).toBeInTheDocument()
   })
 
-  it('should close Modal when close button is clicked', async () => {
+  it('should close modal when close button is clicked', async () => {
     render(<MockedComponent />)
 
     const closeButton = screen.getByLabelText('close button')
@@ -47,7 +47,7 @@ describe('Modal', () => {
     })
   })
 
-  it('should close Modal when Escape is pressed', async () => {
+  it('should close modal when escape is pressed', async () => {
     render(<MockedComponent />)
 
     await waitFor(() => {

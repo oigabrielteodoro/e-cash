@@ -1,11 +1,13 @@
 import * as yup from 'yup'
 
+import { onlyNumbers } from 'lib/matcher'
+
 const contactShape = {
   email: yup
     .string()
     .required('Email is a required field')
     .email('Email must be a valid email'),
-  full_name: yup.string().required('Full name is a required field'),
+  fullName: yup.string().required('Full name is a required field'),
 }
 
 const passwordShape = {
@@ -21,11 +23,14 @@ const passwordShape = {
 }
 
 const profileShape = {
-  monthly_income: yup.string().required('Monthly income is a required field'),
-  financial_objective: yup
+  monthlyIncome: yup
+    .string()
+    .required('Monthly income is a required field')
+    .matches(onlyNumbers, 'Use only numbers'),
+  financialObjective: yup
     .string()
     .required('Financial objective is a required field'),
-  like_be_called: yup.string().required('Like be called is a required field'),
+  likeBeCalled: yup.string().required('Like be called is a required field'),
 }
 
 export const contactSchema = yup.object().shape(contactShape)

@@ -13,10 +13,10 @@ import type {
 
 const initialState: CreateUserStoreState = {
   email: '',
-  financial_objective: '',
-  full_name: '',
-  like_be_called: '',
-  monthly_income: '',
+  financialObjective: '',
+  fullName: '',
+  likeBeCalled: '',
+  monthlyIncome: '',
   password: '',
   errors: [],
   passed: [],
@@ -47,9 +47,9 @@ export function clearState() {
 }
 
 const fieldsWithinStep = {
-  contact: ['full_name', 'email'],
+  contact: ['fullName', 'email'],
   password: ['password'],
-  profile: ['like_be_called', 'monthly_income', 'financial_objective'],
+  profile: ['likeBeCalled', 'monthlyIncome', 'financialObjective'],
 }
 
 export function getStepsWithError(errors: Errors) {

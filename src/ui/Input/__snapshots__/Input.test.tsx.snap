@@ -47,7 +47,8 @@ exports[`Input should be able match snapshot 1`] = `
   background: #ffffff;
 }
 
-.c1 svg {
+.c1 > svg,
+.c1 .icon {
   margin-left: auto;
   margin-right: 2rem;
   color: #a1a7ae;
@@ -59,11 +60,13 @@ exports[`Input should be able match snapshot 1`] = `
   border: 0.1rem solid #3a67e1;
 }
 
-.c1:hover svg {
+.c1:hover > svg,
+.c1:hover .icon {
   color: #3a67e1;
 }
 
-.c1 input {
+.c1 input,
+.c1 textarea {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -75,27 +78,39 @@ exports[`Input should be able match snapshot 1`] = `
   border-radius: 0.5rem;
 }
 
-.c1 input::-webkit-input-placeholder {
+.c1 input::-webkit-input-placeholder,
+.c1 textarea::-webkit-input-placeholder {
   color: #a1a7ae;
 }
 
-.c1 input::-moz-placeholder {
+.c1 input::-moz-placeholder,
+.c1 textarea::-moz-placeholder {
   color: #a1a7ae;
 }
 
-.c1 input:-ms-input-placeholder {
+.c1 input:-ms-input-placeholder,
+.c1 textarea:-ms-input-placeholder {
   color: #a1a7ae;
 }
 
-.c1 input::placeholder {
+.c1 input::placeholder,
+.c1 textarea::placeholder {
   color: #a1a7ae;
+}
+
+.c1 textarea {
+  resize: none;
+  padding: 0 2rem;
+  margin: 2.4rem 0;
 }
 
 <div>
   <fieldset
     class="c0"
   >
-    <label>
+    <label
+      for="name"
+    >
       Name
     </label>
     <div
@@ -103,6 +118,7 @@ exports[`Input should be able match snapshot 1`] = `
     >
       <input
         aria-label="name"
+        id="name"
         name="name"
         role="textbox"
         value=""
@@ -130,8 +146,5 @@ exports[`Input should be able match snapshot 1`] = `
       </svg>
     </div>
   </fieldset>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

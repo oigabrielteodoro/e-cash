@@ -2,11 +2,11 @@ import type { FieldError } from 'react-hook-form'
 
 export type CreateUser = {
   email: string
-  full_name: string
+  fullName: string
   password: string
-  monthly_income: string
-  like_be_called: string
-  financial_objective: string
+  monthlyIncome: string
+  likeBeCalled: string
+  financialObjective: string
 }
 
 export type CreateUserStoreState = {

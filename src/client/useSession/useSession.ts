@@ -10,8 +10,8 @@ import { DASHBOARD, SIGN_IN } from 'lib'
 import type { StoreState, SessionData, SessionPayload } from './types'
 
 const initialState: StoreState = {
-  user_id: null,
-  session_id: null,
+  userId: null,
+  sessionId: null,
   token: null,
   isAuthenticated: false,
 }
@@ -29,9 +29,9 @@ export function setToken(token: string) {
   })
 }
 
-export function setUserId(user_id: string) {
+export function setUserId(userId: string) {
   return useStore.setState({
-    user_id,
+    userId,
   })
 }
 
@@ -68,12 +68,12 @@ export function useSession() {
   >({
     mutationFn: (data) =>
       api.post('sessions', data).then((response) => response.data),
-    onSuccess: ({ user_id, token, session_id }) => {
+    onSuccess: ({ userId, token, sessionId }) => {
       useStore.setState({
         token: token,
         isAuthenticated: true,
-        user_id,
-        session_id,
+        userId,
+        sessionId,
       })
 
       api.defaults.headers.common.authorization = `Bearer ${token}`
@@ -90,7 +90,7 @@ export function useSession() {
 
 export function useSignOut() {
   const navigate = useNavigate()
-  const { session_id } = useSessionStoraged()
+  const { sessionId } = useSessionStoraged()
 
   const queryClient = useQueryClient()
 
@@ -98,7 +98,7 @@ export function useSignOut() {
     SessionPayload,
     ApiError
   >({
-    mutationFn: () => api.delete(`/sessions/${session_id}`),
+    mutationFn: () => api.delete(`/sessions/${sessionId}`),
     onSuccess: async () => {
       delete api.defaults.headers.common.authorization
       useStore.setState(() => initialState)

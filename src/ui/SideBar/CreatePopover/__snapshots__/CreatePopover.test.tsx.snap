@@ -180,8 +180,5 @@ exports[`CreatePopover should be able match snapshot 1`] = `
       </div>
     </button>
   </div>
-  <div
-    class="Toastify"
-  />
 </div>
 `;

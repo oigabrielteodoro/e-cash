@@ -9,7 +9,7 @@ export const theme = {
     xsm: '320px',
     sm: '425px',
     md: '768px',
-    lg: '1440px',
+    lg: '1441px',
     xlg: '1920px',
     greaterLg: '1441px',
   },
@@ -17,9 +17,11 @@ export const theme = {
     card: '0.5rem',
     popover: '1rem',
     modal: '1rem',
+    notification: '0.5rem',
   },
   font: {
-    family: 'Inter',
+    title: 'Inter',
+    paragraph: 'Poppins',
     sizes: {
       disclaimer: '1.2rem',
       small: '1.4rem',
@@ -81,6 +83,7 @@ export const theme = {
     },
   },
   dropShadow: {
+    card: '0 0 10rem 1rem rgba(0, 0, 0, 0.1)',
     popover: '0 0 10rem 1rem rgba(0, 0, 0, 0.1)',
   },
 }

@@ -16,7 +16,7 @@ type Props = {
   onSubmit: () => void
 }
 
-type FormParams = Required<Pick<CreateUserStoreState, 'email' | 'full_name'>>
+type FormParams = Required<Pick<CreateUserStoreState, 'email' | 'fullName'>>
 
 export function Contact({ onSubmit }: Props) {
   const {
@@ -29,19 +29,19 @@ export function Contact({ onSubmit }: Props) {
     shouldFocusError: true,
   })
 
-  const { email, full_name } = useCreateUser({
+  const { email, fullName } = useCreateUser({
     name: 'contact',
     errors,
   })
 
   useEffect(() => {
     if (email) setValue('email', email)
-    if (full_name) setValue('full_name', full_name)
-  }, [email, full_name, setValue])
+    if (fullName) setValue('fullName', fullName)
+  }, [email, fullName, setValue])
 
-  const isErrored = !!errors?.email || !!errors?.full_name
-  const isFilled = !!email || !!full_name
-  const isTouched = touchedFields.email || touchedFields.full_name
+  const isErrored = !!errors?.email || !!errors?.fullName
+  const isFilled = !!email || !!fullName
+  const isTouched = touchedFields.email || touchedFields.fullName
   const isDisabled = (!isTouched && !isFilled) || isErrored
 
   function handleOnSubmit(data: FormParams) {
@@ -58,14 +58,14 @@ export function Contact({ onSubmit }: Props) {
       </p>
       <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
         <Input
-          id='full_name'
+          id='fullName'
           label='Name'
           icon={FiUser}
           placeholder='Ex: John Doe'
-          error={errors.full_name?.message}
-          defaultValue={full_name}
-          {...register('full_name')}
-          onBlur={(event) => setState({ full_name: event.currentTarget.value })}
+          error={errors.fullName?.message}
+          defaultValue={fullName}
+          {...register('fullName')}
+          onBlur={(event) => setState({ fullName: event.currentTarget.value })}
         />
         <Input
           id='email'

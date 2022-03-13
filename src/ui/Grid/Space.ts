@@ -7,6 +7,7 @@ type Props = {
   marginRight?: string
   marginBottom?: string
   marginLeft?: string
+  marginTop?: string
 }
 
 export function Space({ children, ...style }: Props) {

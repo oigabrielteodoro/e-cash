@@ -7,9 +7,9 @@ import {
   QueryCache,
 } from 'react-query'
 
-import { Style, ToastContainer } from 'ui'
+import { Style, NotificationContainer } from 'ui'
 import { Router } from 'lib'
-import { queryConfigDefault } from 'client'
+import { queryConfigDefault, useIsAuthenticated } from 'client'
 
 export const queryClient = new QueryClient({
   defaultOptions: queryConfigDefault as DefaultOptions,
@@ -17,11 +17,13 @@ export const queryClient = new QueryClient({
 })
 
 export function App() {
+  const isAuthenticated = useIsAuthenticated()
+
   return (
     <QueryClientProvider client={queryClient}>
-      <Style />
+      <Style isAuthenticated={isAuthenticated} />
       <Router />
-      <ToastContainer />
+      <NotificationContainer />
     </QueryClientProvider>
   )
 }

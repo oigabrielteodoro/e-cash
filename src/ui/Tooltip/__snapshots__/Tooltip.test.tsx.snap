@@ -35,6 +35,93 @@ exports[`Tooltip should be able match snapshot 1`] = `
   border-color: transparent;
 }
 
+.c5 {
+  position: absolute;
+  color: #18171d;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #ffffff;
+  padding: 1rem 1.6rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border: 0.1rem solid #cfd7e3;
+  text-align: center;
+  z-index: 1;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%,calc(100% + 1.4rem));
+  -ms-transform: translate(-50%,calc(100% + 1.4rem));
+  transform: translate(-50%,calc(100% + 1.4rem));
+}
+
+.c5::before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-color: transparent;
+}
+
+.c7 {
+  position: absolute;
+  color: #18171d;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #ffffff;
+  padding: 1rem 1.6rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border: 0.1rem solid #cfd7e3;
+  text-align: center;
+  z-index: 1;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(calc(100% + 1.6rem),-50%);
+  -ms-transform: translate(calc(100% + 1.6rem),-50%);
+  transform: translate(calc(100% + 1.6rem),-50%);
+}
+
+.c7::before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-color: transparent;
+}
+
+.c9 {
+  position: absolute;
+  color: #18171d;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #ffffff;
+  padding: 1rem 1.6rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border: 0.1rem solid #cfd7e3;
+  text-align: center;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translate(calc(-100% - 1.6rem),-50%);
+  -ms-transform: translate(calc(-100% - 1.6rem),-50%);
+  transform: translate(calc(-100% - 1.6rem),-50%);
+}
+
+.c9::before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-color: transparent;
+}
+
 .c4 {
   position: absolute;
   background: #ffffff;
@@ -50,6 +137,54 @@ exports[`Tooltip should be able match snapshot 1`] = `
   transform: translateX(-50%) rotate(-45deg);
   border-top-color: transparent;
   border-right-color: transparent;
+}
+
+.c6 {
+  position: absolute;
+  background: #ffffff;
+  height: 1rem;
+  width: 1rem;
+  border: 0.1rem solid #cfd7e3;
+  z-index: 1;
+  bottom: -1.9rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(-45deg);
+  -ms-transform: translateX(-50%) rotate(-45deg);
+  transform: translateX(-50%) rotate(-45deg);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+.c8 {
+  position: absolute;
+  background: #ffffff;
+  height: 1rem;
+  width: 1rem;
+  border: 0.1rem solid #cfd7e3;
+  z-index: 1;
+  top: 50%;
+  left: calc(100% + 1.2rem);
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+  -ms-transform: translateY(-50%) rotate(-45deg);
+  transform: translateY(-50%) rotate(-45deg);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.c10 {
+  position: absolute;
+  background: #ffffff;
+  height: 1rem;
+  width: 1rem;
+  border: 0.1rem solid #cfd7e3;
+  z-index: 1;
+  top: 50%;
+  right: calc(100% + 1.2rem);
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+  -ms-transform: translateY(-50%) rotate(-45deg);
+  transform: translateY(-50%) rotate(-45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
 }
 
 .c0 {
@@ -78,11 +213,65 @@ exports[`Tooltip should be able match snapshot 1`] = `
       />
     </div>
     <button>
-      Hover me
+      Hover me Top
     </button>
   </div>
   <div
-    class="Toastify"
-  />
+    class="c0"
+  >
+    <div
+      class="c1 c2"
+    >
+      <span
+        class="c5"
+      >
+        Tooltip
+      </span>
+      <div
+        class="c6"
+      />
+    </div>
+    <button>
+      Hover me Bottom
+    </button>
+  </div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1 c2"
+    >
+      <span
+        class="c7"
+      >
+        Tooltip
+      </span>
+      <div
+        class="c8"
+      />
+    </div>
+    <button>
+      Hover me Right
+    </button>
+  </div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1 c2"
+    >
+      <span
+        class="c9"
+      >
+        Tooltip
+      </span>
+      <div
+        class="c10"
+      />
+    </div>
+    <button>
+      Hover me Left
+    </button>
+  </div>
 </div>
 `;

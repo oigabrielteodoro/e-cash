@@ -15,7 +15,7 @@ export function decimalFromInt(
     style: 'currency',
     currency: 'BRL',
     ...options,
-  }).format(amount)
+  }).format(toFloat(amount))
 }
 
 export function toNumber(value?: string | number | null): number {
@@ -37,7 +37,7 @@ export function toNumber(value?: string | number | null): number {
 export function toDecimal(value?: string | number | null): string {
   const amount = toNumber(value)
 
-  return decimalFromInt(toFloat(amount), {
+  return decimalFromInt(amount, {
     style: 'decimal',
     currency: 'BRL',
     minimumFractionDigits: 2,
