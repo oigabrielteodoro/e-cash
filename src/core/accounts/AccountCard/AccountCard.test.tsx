@@ -1,6 +1,6 @@
 import React from 'react'
-import { accountFactory } from '__factories__/account'
 
+import { accountFactory } from '__factories__/account'
 import { render, screen } from '__helpers__/app-tests'
 
 import { AccountCard } from '.'
