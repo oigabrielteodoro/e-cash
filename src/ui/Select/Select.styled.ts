@@ -55,6 +55,11 @@ export const Container = styled(InputContainer)<Props>`
 
       &:hover {
         border-color: ${theme.colors.neutral[300]};
+
+        ${ClearSelectButton} {
+          opacity: 0;
+          visibility: hidden;
+        }
       }
 
       > svg {

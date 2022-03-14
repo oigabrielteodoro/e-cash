@@ -51,5 +51,6 @@ export function useInput({
     errorMessage,
     handleOnBlur,
     handleOnFocus,
+    setIsFilled,
   }
 }

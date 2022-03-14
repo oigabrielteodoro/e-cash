@@ -36,7 +36,6 @@ export const Dialog = styled(motion.div).attrs(
     },
   }),
 )`
-  padding: 4.5rem;
   min-width: 40rem;
   position: relative;
   background: ${theme.colors.white};
@@ -46,21 +45,18 @@ export const Dialog = styled(motion.div).attrs(
   flex-direction: column;
 `
 
-export const CloseButton = styled.button`
-  border: 0;
-  display: grid;
-  position: absolute;
-  place-items: center;
-  background: transparent;
-  color: ${theme.colors.neutral[500]};
-  border-radius: ${theme.radius.popover};
-  top: 1rem;
-  right: 1rem;
-  width: 4.2rem;
-  height: 4.2rem;
-  transition: 300ms;
+export const Title = styled.strong`
+  font-weight: 500;
+  font-size: ${theme.font.sizes.paragraph};
+`
 
-  &:hover {
-    background: ${theme.colors.neutral[100]};
-  }
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.6rem 1.6rem 0 2.4rem;
+`
+
+export const Content = styled.div`
+  padding: 2.4rem 4.5rem 4.5rem 4.5rem;
 `

@@ -11,7 +11,7 @@ export type ButtonProps = {
   loading?: boolean
   size?: 'sm' | 'md' | 'lg'
   type?: 'icon' | 'text'
-  variant?: 'primary' | 'secondary' | 'outline'
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
   htmlType?: 'button' | 'submit' | 'reset'
   full?: boolean
   to?: string

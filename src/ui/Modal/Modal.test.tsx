@@ -8,7 +8,7 @@ const onClose = jest.fn()
 
 function MockedComponent() {
   return (
-    <Modal isOpen onClose={onClose}>
+    <Modal title='Title' isOpen onClose={onClose}>
       <h1>Modal</h1>
     </Modal>
   )

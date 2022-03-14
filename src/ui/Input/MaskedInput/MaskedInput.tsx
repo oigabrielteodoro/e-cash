@@ -47,6 +47,7 @@ export function MaskedInput({
     errorMessage,
     handleOnBlur,
     handleOnFocus,
+    setIsFilled,
   } = useInput({
     defaultValue,
     error,
@@ -57,6 +58,12 @@ export function MaskedInput({
   useEffect(() => {
     register(name)
   }, [name, register])
+
+  useEffect(() => {
+    if (value) {
+      setIsFilled(true)
+    }
+  }, [value, setIsFilled])
 
   const maskedValue = toMask(value, mask)
 

@@ -18,14 +18,16 @@ import { CategoriesSelect } from '../CategoriesSelect'
 
 type Props = {
   formRef: RefObject<HTMLButtonElement>
+  initialValues?: Partial<AccountFormParams>
   onSubmit: (params: AccountFormParams) => void
 }
 
-export function AccountForm({ formRef, onSubmit }: Props) {
+export function AccountForm({ formRef, initialValues, onSubmit }: Props) {
   const form = useForm<AccountFormParams>({
     resolver: yupResolver(resolver),
     defaultValues: {
       includeSumOnDashboard: false,
+      ...initialValues,
     },
   })
 
@@ -45,6 +47,7 @@ export function AccountForm({ formRef, onSubmit }: Props) {
               icon={FiTag}
               placeholder='Example: Personal account'
               error={errors.name?.message}
+              defaultValue={initialValues?.name}
               {...register('name')}
             />
           </Col>
@@ -107,7 +110,7 @@ export function AccountForm({ formRef, onSubmit }: Props) {
 
 const resolver = yup.object({
   name: yup.string().required('Name is a required field'),
-  category: yup.string().required(),
+  category: yup.string().required('Category is a required field'),
   bankingInstitutionId: yup
     .string()
     .required('Institution is a required field'),

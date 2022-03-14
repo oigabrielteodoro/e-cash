@@ -116,7 +116,7 @@ export function useSelect({ children, name, defaultValue }: UseSelectParams) {
   }
 
   function handleClearValue() {
-    setValue(name, null)
+    setValue(name, '')
 
     if (inputRef?.current) {
       inputRef.current.value = ''

@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 
 import * as S from './InfoBox.styled'
 
 type Props = {
   message: string
+  style?: CSSProperties
 }
 
-export function InfoBox({ message }: Props) {
+export function InfoBox({ message, style }: Props) {
   return (
-    <S.Container>
+    <S.Container style={style}>
       <S.IconContainer>
         <AiOutlineExclamationCircle size={24} />
       </S.IconContainer>

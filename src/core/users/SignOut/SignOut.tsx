@@ -24,7 +24,7 @@ export function SignOut({ isOpen, onClose }: Props) {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal title='Sign out' isOpen={isOpen} onClose={onClose}>
       <S.Container>
         <h1>Are you sure you want to log out? 😢</h1>
         <p>When you exit the application, the data is still saved</p>
