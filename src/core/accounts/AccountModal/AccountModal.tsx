@@ -12,6 +12,7 @@ import { accountNumberWithDigitMask, decimalFromInt, toMask } from 'lib'
 
 import { EditAccountDrawer } from '../EditAccountDrawer'
 import * as S from './AccountModal.styled'
+import { ConfirmDeleteAccountModal } from './ConfirmDeleteAccountModal'
 
 type Props = {
   account: Account
@@ -20,6 +21,8 @@ type Props = {
 }
 
 export function AccountModal({ isOpen, account, onClose }: Props) {
+  const [isConfirmDeleteAccountModal, setIsConfirmDeleteAccountModal] =
+    useState(false)
   const [isEditAccountDrawerVisible, setIsEditAccountDrawerVisible] =
     useState(false)
 
@@ -38,6 +41,11 @@ export function AccountModal({ isOpen, account, onClose }: Props) {
         onClose={() => setIsEditAccountDrawerVisible(false)}
       />
 
+      <ConfirmDeleteAccountModal
+        isOpen={isConfirmDeleteAccountModal}
+        onClose={() => setIsConfirmDeleteAccountModal(false)}
+      />
+
       <Modal
         title='Account details'
         header={
@@ -52,7 +60,11 @@ export function AccountModal({ isOpen, account, onClose }: Props) {
               </Button>
             </Tooltip>
             <Tooltip position='top' message='Delete account'>
-              <Button type='icon' variant='ghost' onClick={onClose}>
+              <Button
+                type='icon'
+                variant='ghost'
+                onClick={() => setIsConfirmDeleteAccountModal(true)}
+              >
                 <AiOutlineDelete size={20} />
               </Button>
             </Tooltip>

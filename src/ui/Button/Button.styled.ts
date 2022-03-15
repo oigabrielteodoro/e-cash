@@ -96,6 +96,14 @@ const variants = {
       background: ${theme.colors.neutral[100]};
     }
   `,
+  danger: css`
+    background: ${theme.colors.red[400]};
+    border: 0.1rem solid ${theme.colors.red[400]};
+
+    &:hover {
+      box-shadow: 0 0 0 0.4rem ${theme.shadow.red[400]};
+    }
+  `,
 }
 
 const button = ({ $full, size, variant, $buttonType }: ContainerProps) => css`
