@@ -1,13 +1,13 @@
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router'
 
 import { ApiError, api } from 'client'
-import { DASHBOARD, SIGN_IN } from 'lib'
+import { DASHBOARD } from 'lib'
 
-import type { StoreState, SessionData, SessionPayload } from './types'
+import type { StoreState, SessionData, SessionPayload } from '../types'
 
 const initialState: StoreState = {
   userId: null,
@@ -36,10 +36,7 @@ export function setUserId(userId: string) {
 }
 
 export function clearToken() {
-  useStore.setState({
-    token: null,
-    isAuthenticated: false,
-  })
+  useStore.setState(() => initialState)
 }
 
 export function getToken() {
@@ -56,6 +53,10 @@ export function useIsAuthenticated() {
 
 export function useSessionStoraged() {
   return useStore((state) => state)
+}
+
+export function useSessionId() {
+  return useStore((state) => state.sessionId)
 }
 
 export function useSession() {
@@ -84,33 +85,6 @@ export function useSession() {
 
   return {
     createSession,
-    ...rest,
-  }
-}
-
-export function useSignOut() {
-  const navigate = useNavigate()
-  const { sessionId } = useSessionStoraged()
-
-  const queryClient = useQueryClient()
-
-  const { mutateAsync: signOut, ...rest } = useMutation<
-    SessionPayload,
-    ApiError
-  >({
-    mutationFn: () => api.delete(`/sessions/${sessionId}`),
-    onSuccess: async () => {
-      delete api.defaults.headers.common.authorization
-      useStore.setState(() => initialState)
-
-      navigate(SIGN_IN)
-
-      await queryClient.invalidateQueries()
-    },
-  })
-
-  return {
-    signOut,
     ...rest,
   }
 }

@@ -7,7 +7,7 @@ import { pipe } from 'fp-ts/function'
 import { isRight, toError } from 'fp-ts/Either'
 import { tryCatch, map, fold } from 'fp-ts/TaskEither'
 
-import { BankingInstitution, bankingInstitutionsCodec } from './types'
+import { BankingInstitution, bankingInstitutionsCodec } from '../types'
 
 async function getBankingInstitutions() {
   const url = '/banking_institutions'

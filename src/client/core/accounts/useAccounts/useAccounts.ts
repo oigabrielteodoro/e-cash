@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useQuery } from 'react-query'
 
 import { of } from 'fp-ts/Task'
 import { pipe } from 'fp-ts/function'
@@ -7,11 +7,7 @@ import { tryCatch, map, mapLeft, fold } from 'fp-ts/TaskEither'
 
 import { api, decode } from 'client'
 
-import { Account, AccountFormParams, accountsCodec } from './types'
-
-type UseCreateAccountParams = {
-  onSuccess: () => void
-}
+import { Account, accountsCodec } from '../types'
 
 async function getAccounts() {
   const url = '/accounts'
@@ -54,28 +50,6 @@ export function useAccounts() {
     accounts: data ?? [],
     isEmpty: isError ? false : data?.length === 0,
     isError,
-    ...rest,
-  }
-}
-
-export function useCreateAccount({ onSuccess }: UseCreateAccountParams) {
-  const queryClient = useQueryClient()
-
-  const { mutate: createAccount, ...rest } = useMutation<
-    unknown,
-    unknown,
-    AccountFormParams
-  >({
-    mutationFn: (data) => api.post('/accounts', data),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries('accounts')
-
-      onSuccess()
-    },
-  })
-
-  return {
-    createAccount,
     ...rest,
   }
 }

@@ -15,10 +15,10 @@ export function ConfirmDeleteAccountModal({ isOpen, onClose }: Props) {
       <Flex flexDirection='column'>
         <S.Title>
           Are you sure you want
-          <br /> to delete your bank account?
+          <br /> to delete your account?
         </S.Title>
         <S.Description>
-          When deleting the bank account all transactions
+          When deleting the account all transactions
           <br /> linked to it will be lost.
         </S.Description>
         <Row alignItems='center' alignSelf='center' columnGap='2.4rem'>

@@ -1,10 +1,10 @@
 import axios, { AxiosError } from 'axios'
+import type { DefaultOptions } from 'react-query'
 
 import { baseURL } from 'config'
 import { notification } from 'ui'
-import type { DefaultOptions } from 'react-query'
 
-import { getSession, setToken, getToken } from './useSession'
+import { getSession, setToken, getToken } from './core'
 import type { ApiError, FailedRequestQueue } from './types'
 
 let isRefreshing = false

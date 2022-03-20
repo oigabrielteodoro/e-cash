@@ -1,5 +1,4 @@
-import React, { ReactNode, ElementType } from 'react'
-import { CSSProperties } from 'styled-components'
+import React, { ReactNode, ElementType, CSSProperties } from 'react'
 
 import * as S from './Tooltip.styled'
 

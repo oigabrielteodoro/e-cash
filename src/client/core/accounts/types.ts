@@ -1,7 +1,7 @@
 import * as t from 'io-ts'
 import { decimalCodec, idCodec } from 'types'
 
-import { bankingInstitution } from 'client/useBankingInstitutions/types'
+import { bankingInstitution } from 'client'
 
 export const account = t.type({
   id: idCodec,
