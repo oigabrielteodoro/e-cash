@@ -4,11 +4,11 @@ import { api } from 'client'
 
 import type { AccountFormParams } from '../types'
 
-type UseCreateAccountParams = {
+type Options = {
   onSuccess: () => void
 }
 
-export function useCreateAccount({ onSuccess }: UseCreateAccountParams) {
+export function useCreateAccount({ onSuccess }: Options) {
   const queryClient = useQueryClient()
 
   const { mutate: createAccount, ...rest } = useMutation<

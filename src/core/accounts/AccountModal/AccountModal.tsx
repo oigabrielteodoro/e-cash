@@ -42,6 +42,7 @@ export function AccountModal({ isOpen, account, onClose }: Props) {
       />
 
       <ConfirmDeleteAccountModal
+        accountId={account.id}
         isOpen={isConfirmDeleteAccountModal}
         onClose={() => setIsConfirmDeleteAccountModal(false)}
       />

@@ -1,15 +1,33 @@
+import { useDeleteAccount } from 'client'
 import React from 'react'
 
-import { Modal, Row, Button, Flex } from 'ui'
+import { Modal, Row, Button, Flex, notification } from 'ui'
 
 import * as S from './ConfirmDeleteAccountModal.styled'
 
 type Props = {
   isOpen: boolean
+  accountId: string
   onClose: () => void
 }
 
-export function ConfirmDeleteAccountModal({ isOpen, onClose }: Props) {
+export function ConfirmDeleteAccountModal({
+  isOpen,
+  accountId,
+  onClose,
+}: Props) {
+  const { deleteAccount, isLoading } = useDeleteAccount({
+    onSuccess: () => {
+      notification.success('Your account has been deleted!')
+
+      onClose()
+    },
+  })
+
+  function handleOnConfirm() {
+    deleteAccount(accountId)
+  }
+
   return (
     <Modal title='Delete your account?' isOpen={isOpen} onClose={onClose}>
       <Flex flexDirection='column'>
@@ -25,7 +43,13 @@ export function ConfirmDeleteAccountModal({ isOpen, onClose }: Props) {
           <Button full={false} size='lg' variant='outline' onClick={onClose}>
             No, please
           </Button>
-          <Button full={false} size='lg' variant='danger'>
+          <Button
+            full={false}
+            size='lg'
+            variant='danger'
+            loading={isLoading}
+            onClick={handleOnConfirm}
+          >
             Yes, delete!
           </Button>
         </Row>
