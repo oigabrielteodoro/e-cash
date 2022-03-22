@@ -16,11 +16,16 @@ export function ConfirmDeleteAccountModal({
   accountId,
   onClose,
 }: Props) {
-  const { deleteAccount, isLoading } = useDeleteAccount({
+  const { isLoading, deleteAccount } = useDeleteAccount({
     onSuccess: () => {
       notification.success('Your account has been deleted!')
 
       onClose()
+    },
+    onError: () => {
+      notification.error(
+        'Hmm... There was an error trying to delete your account!',
+      )
     },
   })
 

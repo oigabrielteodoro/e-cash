@@ -27,7 +27,10 @@ export function Modal({
       <AnimatePresence>
         {isOpen && (
           <S.Container onClick={onClose}>
-            <S.Dialog onClick={(event) => event.stopPropagation()}>
+            <S.Dialog
+              role='dialog'
+              onClick={(event) => event.stopPropagation()}
+            >
               <S.Header>
                 <S.Title>{title}</S.Title>
                 <Row marginLeft='auto' alignItems='center' columnGap='0.8rem'>
