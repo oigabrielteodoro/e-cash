@@ -27,6 +27,7 @@ type Options = {
 
 type Props = {
   children?: ReactNode
+  client?: QueryClient
 }
 
 type Callback = (result: unknown) => unknown
@@ -39,6 +40,13 @@ const defaultQueryClient = new QueryClient({
   defaultOptions: queryConfigDefault as DefaultOptions,
   queryCache: queryCache,
 })
+
+export function ReactQueryWrapper({
+  children,
+  client = defaultQueryClient,
+}: Props) {
+  return <QueryClientProvider client={client}>{children}</QueryClientProvider>
+}
 
 function render(
   ui: ReactElement,
@@ -73,7 +81,7 @@ function render(
     }
 
     return (
-      <QueryClientProvider client={queryClient}>
+      <ReactQueryWrapper client={queryClient}>
         <MemoryRouter initialEntries={[initialRoute]}>
           <Routes>
             <Route path={initialRoute} element={children} />
@@ -88,7 +96,7 @@ function render(
         </MemoryRouter>
 
         <NotificationContainer />
-      </QueryClientProvider>
+      </ReactQueryWrapper>
     )
   }
 
