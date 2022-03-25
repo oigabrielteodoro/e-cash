@@ -5,10 +5,10 @@ import { api } from 'client'
 import type { AccountFormParams } from '../types'
 
 type Options = {
-  onSuccess: () => void
+  onSuccess?: () => void
 }
 
-export function useCreateAccount({ onSuccess }: Options) {
+export function useCreateAccount({ onSuccess }: Options = {}) {
   const queryClient = useQueryClient()
 
   const { mutate: createAccount, ...rest } = useMutation<
@@ -20,7 +20,7 @@ export function useCreateAccount({ onSuccess }: Options) {
     onSuccess: async () => {
       await queryClient.invalidateQueries('accounts')
 
-      onSuccess()
+      onSuccess && onSuccess()
     },
   })
 
