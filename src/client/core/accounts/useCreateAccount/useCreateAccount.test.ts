@@ -32,9 +32,7 @@ describe('useCreateAccount', () => {
       includeSumOnDashboard: false,
     }
 
-    const createAccountsMock = nock(baseURL)
-      .post('/accounts', params)
-      .reply(200)
+    const createAccountMock = nock(baseURL).post('/accounts', params).reply(200)
 
     const { result, waitFor } = renderHook(
       () => useCreateAccount({ onSuccess }),
@@ -45,7 +43,7 @@ describe('useCreateAccount', () => {
 
     result.current.createAccount(params)
 
-    await waitFor(() => expect(createAccountsMock).mockToBeDone())
+    await waitFor(() => expect(createAccountMock).mockToBeDone())
 
     await waitFor(() => expect(onSuccess).toHaveBeenCalled())
   })
@@ -70,9 +68,7 @@ describe('useCreateAccount', () => {
       includeSumOnDashboard: false,
     }
 
-    const createAccountsMock = nock(baseURL)
-      .post('/accounts', params)
-      .reply(404)
+    const createAccountMock = nock(baseURL).post('/accounts', params).reply(404)
 
     const { result, waitFor } = renderHook(() => useCreateAccount(), {
       wrapper: ReactQueryWrapper,
@@ -82,7 +78,7 @@ describe('useCreateAccount', () => {
       onError,
     })
 
-    await waitFor(() => expect(createAccountsMock).mockToBeDone())
+    await waitFor(() => expect(createAccountMock).mockToBeDone())
 
     await waitFor(() => expect(onError).toHaveBeenCalled())
   })
