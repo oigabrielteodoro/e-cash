@@ -48,6 +48,60 @@ export function ReactQueryWrapper({
   return <QueryClientProvider client={client}>{children}</QueryClientProvider>
 }
 
+export function ReactRouterWrapper({
+  initialRoute = '/',
+  children,
+  routePaths,
+  authenticated = true,
+}: Options & Pick<Props, 'children'>) {
+  function MockedPage({ title }: { title: string }) {
+    if (authenticated) {
+      return (
+        <AppLayout>
+          <AppLayout.Content>Page {title}</AppLayout.Content>
+        </AppLayout>
+      )
+    }
+
+    return <h1>Page {title}</h1>
+  }
+
+  return (
+    <MemoryRouter initialEntries={[initialRoute]}>
+      <Routes>
+        <Route path={initialRoute} element={children} />
+        {routePaths?.map((routePath) => (
+          <Route
+            key={routePath}
+            path={routePath}
+            element={<MockedPage title={routePath} />}
+          />
+        ))}
+      </Routes>
+    </MemoryRouter>
+  )
+}
+
+export function ReactHookWrapper({
+  initialRoute = '/',
+  children,
+  routePaths,
+  authenticated = true,
+  client = defaultQueryClient,
+}: Options & Props) {
+  return (
+    <ReactQueryWrapper client={client}>
+      <ReactRouterWrapper
+        initialRoute={initialRoute}
+        routePaths={routePaths}
+        authenticated={authenticated}
+      >
+        {children}
+      </ReactRouterWrapper>
+    </ReactQueryWrapper>
+  )
+}
+
 function render(
   ui: ReactElement,
   {
@@ -68,32 +122,15 @@ function render(
       }
     }, [])
 
-    function MockedPage({ title }: { title: string }) {
-      if (authenticated) {
-        return (
-          <AppLayout>
-            <AppLayout.Content>Page {title}</AppLayout.Content>
-          </AppLayout>
-        )
-      }
-
-      return <h1>Page {title}</h1>
-    }
-
     return (
       <ReactQueryWrapper client={queryClient}>
-        <MemoryRouter initialEntries={[initialRoute]}>
-          <Routes>
-            <Route path={initialRoute} element={children} />
-            {routePaths?.map((routePath) => (
-              <Route
-                key={routePath}
-                path={routePath}
-                element={<MockedPage title={routePath} />}
-              />
-            ))}
-          </Routes>
-        </MemoryRouter>
+        <ReactRouterWrapper
+          initialRoute={initialRoute}
+          routePaths={routePaths}
+          authenticated={authenticated}
+        >
+          {children}
+        </ReactRouterWrapper>
 
         <NotificationContainer />
       </ReactQueryWrapper>

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router'
 import { ApiError, api } from 'client'
 import { DASHBOARD } from 'lib'
 
-import type { StoreState, SessionData, SessionPayload } from '../types'
+import type { StoreState, SessionData, Session } from '../types'
 
 const initialState: StoreState = {
   userId: null,
@@ -62,8 +62,8 @@ export function useSessionId() {
 export function useSession() {
   const navigate = useNavigate()
 
-  const { mutateAsync: createSession, ...rest } = useMutation<
-    SessionPayload,
+  const { mutate: createSession, ...rest } = useMutation<
+    Session,
     ApiError,
     SessionData
   >({
