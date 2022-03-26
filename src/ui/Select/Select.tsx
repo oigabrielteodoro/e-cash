@@ -30,6 +30,8 @@ export function Select({
   children,
   loading,
   renderOptionElementWhenIsSelected = false,
+  disabled = false,
+  required = false,
   onBlur,
   onFocus,
   ...rest
@@ -72,7 +74,8 @@ export function Select({
 
   return (
     <S.Wrapper>
-      <InputStyled.Wrapper as='div'>
+      <InputStyled.Wrapper as='div' isRequired={required}>
+        <label htmlFor={id}>{label}</label>
         <S.Container
           ref={containerRef}
           variant={variant}
@@ -80,15 +83,17 @@ export function Select({
           isFilled={isFilled}
           isFocused={isFocused}
           isErrored={isErrored}
+          isDisabled={disabled}
           onClick={handleOpen}
         >
-          <label htmlFor={id}>{label}</label>
           <input
             id={id}
             ref={inputRef}
             name={name}
             aria-label={name}
             defaultValue={defaultValue}
+            disabled={disabled}
+            required={required}
             onBlur={handleOnBlur}
             onFocus={handleOnFocus}
             onChange={handleOnChange}

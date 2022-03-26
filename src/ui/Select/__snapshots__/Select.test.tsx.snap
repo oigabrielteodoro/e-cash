@@ -18,12 +18,7 @@ exports[`Select should be able match snapshot 1`] = `
 }
 
 .c1 label {
-  position: absolute;
-  font-size: 1.4rem;
-  left: 1.2rem;
-  top: -0.1rem;
-  background: #ffffff;
-  padding: 0 0.8rem;
+  font-size: 1.6rem;
   color: #a1a7ae;
   font-weight: 500;
   cursor: pointer;
@@ -120,14 +115,14 @@ exports[`Select should be able match snapshot 1`] = `
     <div
       class="c1"
     >
+      <label
+        for="option"
+      >
+        Option
+      </label>
       <div
         class="c2 c3"
       >
-        <label
-          for="option"
-        >
-          Option
-        </label>
         <input
           aria-label="option"
           autocomplete="off"

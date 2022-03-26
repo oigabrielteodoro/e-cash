@@ -17,12 +17,18 @@ import type { AccountFormParams } from 'client'
 import { CategoriesSelect } from '../CategoriesSelect'
 
 type Props = {
+  isDisabled?: boolean
   formRef: RefObject<HTMLButtonElement>
   initialValues?: Partial<AccountFormParams>
   onSubmit: (params: AccountFormParams) => void
 }
 
-export function AccountForm({ formRef, initialValues, onSubmit }: Props) {
+export function AccountForm({
+  isDisabled,
+  formRef,
+  initialValues,
+  onSubmit,
+}: Props) {
   const form = useForm<AccountFormParams>({
     resolver: yupResolver(resolver),
     defaultValues: {
@@ -43,6 +49,7 @@ export function AccountForm({ formRef, initialValues, onSubmit }: Props) {
         <Row gutter={[32, 32]}>
           <Col span={12}>
             <Input
+              required
               label='Name'
               icon={FiTag}
               placeholder='Example: Personal account'
@@ -53,6 +60,7 @@ export function AccountForm({ formRef, initialValues, onSubmit }: Props) {
           </Col>
           <Col span={12}>
             <CategoriesSelect
+              required
               placeholder='Example: Investment'
               name='category'
               label='Category'
@@ -61,38 +69,46 @@ export function AccountForm({ formRef, initialValues, onSubmit }: Props) {
           </Col>
           <Col span={12}>
             <Input.Amount
+              required
               name='balance'
               label='Balance'
               placeholder='Example: R$ 15,000.00'
               error={errors.balance?.message}
+              disabled={isDisabled}
             />
           </Col>
           <Col span={12}>
             <BankingInstitutionsSelect
+              required
               placeholder='Select banking institution'
               name='bankingInstitutionId'
               label='Banking Institution'
               error={errors.bankingInstitutionId?.message}
+              disabled={isDisabled}
             />
           </Col>
           <Col span={12}>
             <Input.Masked
+              required
               name='agencyNumber'
               mask={[agencyNumberWithoutDigitMask]}
               placeholder='Example: 0000'
               label='Agency (without digit)'
               icon={AiOutlineFieldNumber}
               error={errors.agencyNumber?.message}
+              disabled={isDisabled}
             />
           </Col>
           <Col span={12}>
             <Input.Masked
+              required
               name='accountNumber'
               mask={[accountNumberWithDigitMask]}
               placeholder='Example: 000000-0'
               label='Account (with digit)'
               icon={AiOutlineBank}
               error={errors.accountNumber?.message}
+              disabled={isDisabled}
             />
           </Col>
           <Col span={24}>

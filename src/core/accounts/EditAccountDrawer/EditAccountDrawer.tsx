@@ -77,6 +77,7 @@ export function EditAccountDrawer({ isOpen, account, onClose }: Props) {
 
         <Col span={24}>
           <AccountForm
+            isDisabled
             formRef={formRef}
             initialValues={initialValues}
             onSubmit={handleOnSubmit}

@@ -42,6 +42,8 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     icon: Icon,
     name,
     id = name,
+    disabled = false,
+    required = false,
     onBlur,
     onFocus,
     ...rest
@@ -63,13 +65,14 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   })
 
   return (
-    <S.Wrapper>
+    <S.Wrapper isRequired={required}>
       <label htmlFor={id}>{label}</label>
       <S.Container
         variant={variant}
         isFilled={isFilled}
         isFocused={isFocused}
         isErrored={isErrored}
+        isDisabled={disabled}
       >
         <input
           id={id}
@@ -77,6 +80,8 @@ const ForwardInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           name={name}
           aria-label={name}
           defaultValue={defaultValue}
+          disabled={disabled}
+          required={required}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           role='textbox'

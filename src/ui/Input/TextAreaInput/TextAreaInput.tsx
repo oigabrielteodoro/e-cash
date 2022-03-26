@@ -29,6 +29,8 @@ const ForwardTextAreaInput: ForwardRefRenderFunction<
     maxLength,
     variant = 'primary',
     error,
+    disabled = false,
+    required = false,
     onChange,
     onBlur,
     onFocus,
@@ -58,12 +60,13 @@ const ForwardTextAreaInput: ForwardRefRenderFunction<
   }
 
   return (
-    <InputStyled.Wrapper>
+    <InputStyled.Wrapper isRequired={required}>
       <label htmlFor={id}>{label}</label>
       <InputStyled.Container
         isFilled={isFilled}
         isFocused={isFocused}
         isErrored={isErrored}
+        isDisabled={disabled}
         variant={variant}
       >
         <textarea
@@ -71,6 +74,8 @@ const ForwardTextAreaInput: ForwardRefRenderFunction<
           name={name}
           ref={ref}
           maxLength={maxLength}
+          disabled={disabled}
+          required={required}
           onChange={handleOnChange}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
