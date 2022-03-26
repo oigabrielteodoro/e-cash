@@ -4,10 +4,15 @@ import { persist } from 'zustand/middleware'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router'
 
-import { ApiError, api } from 'client'
-import { DASHBOARD } from 'lib'
+import { of } from 'fp-ts/Task'
+import { pipe } from 'fp-ts/function'
+import { toError } from 'fp-ts/Either'
+import { tryCatch, fold } from 'fp-ts/TaskEither'
 
-import type { StoreState, SessionData, Session } from '../types'
+import { DASHBOARD } from 'lib'
+import { api, decode } from 'client'
+
+import { StoreState, SessionData, Session, sessionCodec } from '../types'
 
 const initialState: StoreState = {
   userId: null,
@@ -65,17 +70,34 @@ export function useSessionId() {
   return useStore((state) => state.sessionId)
 }
 
+async function createSessionAuthenticate(params: SessionData) {
+  const url = '/sessions'
+
+  const data = await api
+    .post<Session>(url, params)
+    .then((response) => response.data)
+
+  if (!data) return null
+
+  return await pipe(
+    tryCatch(() => decode(data, sessionCodec), toError),
+    fold(
+      () => of(null),
+      () => of(data),
+    ),
+  )()
+}
+
 export function useSession() {
   const navigate = useNavigate()
 
-  const { mutate: createSession, ...rest } = useMutation<
-    Session,
-    ApiError,
-    SessionData
-  >({
-    mutationFn: (data) =>
-      api.post('sessions', data).then((response) => response.data),
-    onSuccess: ({ userId, token, sessionId }) => {
+  const { mutate: createSession, ...rest } = useMutation({
+    mutationFn: createSessionAuthenticate,
+    onSuccess: (session) => {
+      if (!session) return
+
+      const { userId, token, sessionId } = session
+
       useStore.setState({
         token: token,
         isAuthenticated: true,
