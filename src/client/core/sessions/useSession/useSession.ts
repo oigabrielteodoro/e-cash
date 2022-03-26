@@ -47,6 +47,12 @@ export function getSession() {
   return useStore.getState()
 }
 
+export function setSessionId(sessionId: string) {
+  return useStore.setState({
+    sessionId,
+  })
+}
+
 export function useIsAuthenticated() {
   return useStore((state) => state.isAuthenticated)
 }

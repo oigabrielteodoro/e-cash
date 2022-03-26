@@ -2,10 +2,6 @@ import React from 'react'
 import { FiX } from 'react-icons/fi'
 import { AiOutlineLogout } from 'react-icons/ai'
 
-import { pipe } from 'fp-ts/function'
-import { toError } from 'fp-ts/Either'
-import { tryCatch } from 'fp-ts/TaskEither'
-
 import { Row, Col, Modal, LoadIcon } from 'ui'
 import { useSignOut } from 'client'
 
@@ -19,8 +15,8 @@ type Props = {
 export function SignOut({ isOpen, onClose }: Props) {
   const { signOut, isLoading } = useSignOut()
 
-  async function handleOnClick() {
-    await pipe(tryCatch(signOut, toError))()
+  function handleOnClick() {
+    signOut()
   }
 
   return (

@@ -12,7 +12,7 @@ export function useSignOut() {
 
   const queryClient = useQueryClient()
 
-  const { mutateAsync: signOut, ...rest } = useMutation<unknown, ApiError>({
+  const { mutate: signOut, ...rest } = useMutation<unknown, ApiError>({
     mutationFn: () => api.delete(`/sessions/${sessionId}`),
     onSuccess: async () => {
       delete api.defaults.headers.common.authorization
