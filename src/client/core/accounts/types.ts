@@ -30,3 +30,7 @@ export type AccountFormParams = {
   | 'accountNumber'
   | 'includeSumOnDashboard'
 >
+
+export type UpdateAccountFormParams = {
+  accountId: string
+} & AccountFormParams

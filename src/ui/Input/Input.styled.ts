@@ -39,11 +39,10 @@ export const Wrapper = styled.fieldset<WrapperProps>`
     ${({ isRequired }) =>
       isRequired &&
       css`
-        &::before {
-          content: '•';
-          font-size: 1.8rem;
-          margin-right: 0.8rem;
-          color: ${theme.colors.blue[500]};
+        &::after {
+          content: '*';
+          margin-left: 0.8rem;
+          color: ${theme.colors.red[400]};
         }
       `}
   }
