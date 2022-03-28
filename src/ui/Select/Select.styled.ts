@@ -36,10 +36,20 @@ export const Wrapper = styled.fieldset`
 export const Container = styled(InputContainer)<Props>`
   height: 5.65rem;
 
-  &:hover ${ClearSelectButton} {
-    opacity: 1;
-    visibility: visible;
-  }
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      pointer-events: none;
+    `}
+
+  ${({ isDisabled }) =>
+    !isDisabled &&
+    css`
+      &:hover ${ClearSelectButton} {
+        opacity: 1;
+        visibility: visible;
+      }
+    `}
 
   ${({ isOpen }) =>
     isOpen &&
@@ -55,6 +65,11 @@ export const Container = styled(InputContainer)<Props>`
 
       &:hover {
         border-color: ${theme.colors.neutral[300]};
+
+        ${ClearSelectButton} {
+          opacity: 0;
+          visibility: hidden;
+        }
       }
 
       > svg {

@@ -31,6 +31,8 @@ export function MaskedInput({
   icon: Icon,
   name,
   id = name,
+  disabled = false,
+  required = false,
   onBlur,
   onFocus,
   onChange,
@@ -47,6 +49,7 @@ export function MaskedInput({
     errorMessage,
     handleOnBlur,
     handleOnFocus,
+    setIsFilled,
   } = useInput({
     defaultValue,
     error,
@@ -57,6 +60,12 @@ export function MaskedInput({
   useEffect(() => {
     register(name)
   }, [name, register])
+
+  useEffect(() => {
+    if (value) {
+      setIsFilled(true)
+    }
+  }, [value, setIsFilled])
 
   const maskedValue = toMask(value, mask)
 
@@ -70,19 +79,22 @@ export function MaskedInput({
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper isRequired={required}>
       <label htmlFor={id}>{label}</label>
       <S.Container
         variant={variant}
         isFilled={isFilled}
         isFocused={isFocused}
         isErrored={isErrored}
+        isDisabled={disabled}
       >
         <input
           id={id}
           name={name}
           aria-label={name}
           defaultValue={defaultValue}
+          disabled={disabled}
+          required={required}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           onChange={handleOnChange}

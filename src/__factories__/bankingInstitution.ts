@@ -1,7 +1,7 @@
 import { Factory } from 'fishery'
 import Faker from '@faker-js/faker'
 
-import type { BankingInstitution } from 'client/useBankingInstitutions/types'
+import type { BankingInstitution } from 'client'
 import { unsafe } from '__helpers__/app-tests'
 
 export const bankingInstitutionFactory = Factory.define<BankingInstitution>(

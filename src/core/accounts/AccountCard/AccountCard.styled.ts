@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components'
 import { theme } from 'config'
 import { Card } from 'ui/Card'
 
-import { AccountCardProps } from '.'
-
-type ContainerProps = Pick<AccountCardProps, 'disabled'>
+type ContainerProps = {
+  disabled?: boolean
+}
 
 export const AccountFlagImg = styled.img`
   width: 4.5rem;

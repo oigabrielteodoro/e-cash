@@ -30,6 +30,8 @@ export function AmountInput({
   variant = 'primary',
   label,
   error,
+  disabled = false,
+  required = false,
   onFocus,
   onBlur,
   onChange,
@@ -76,18 +78,21 @@ export function AmountInput({
   }
 
   return (
-    <InputStyled.Wrapper>
+    <InputStyled.Wrapper isRequired={required}>
       <label htmlFor={id}>{label}</label>
       <InputStyled.Container
         variant={variant}
         isFilled={isFilled}
         isFocused={isFocused}
         isErrored={isErrored}
+        isDisabled={disabled}
       >
         <input
           id={id}
           name={name}
           aria-label={name}
+          disabled={disabled}
+          required={required}
           value={formattedValue}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}

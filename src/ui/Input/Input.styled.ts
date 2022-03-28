@@ -3,10 +3,15 @@ import styled, { css } from 'styled-components'
 
 import { InputProps } from 'ui'
 
+type WrapperProps = {
+  isRequired: boolean
+}
+
 type Props = {
   isFilled: boolean
   isFocused: boolean
   isErrored: boolean
+  isDisabled: boolean
 } & Required<Pick<InputProps, 'variant'>>
 
 const modifiers = {
@@ -18,7 +23,7 @@ const modifiers = {
   `,
 }
 
-export const Wrapper = styled.fieldset`
+export const Wrapper = styled.fieldset<WrapperProps>`
   border: 0;
   display: flex;
   flex-direction: column;
@@ -26,15 +31,21 @@ export const Wrapper = styled.fieldset`
   position: relative;
 
   label {
-    position: absolute;
-    font-size: ${theme.font.sizes.small};
-    left: 1.2rem;
-    top: -0.1rem;
-    background: ${theme.colors.white};
-    padding: 0 0.8rem;
+    font-size: ${theme.font.sizes.paragraph};
     color: ${theme.colors.neutral[500]};
     font-weight: 500;
     cursor: pointer;
+
+    ${({ isRequired }) =>
+      isRequired &&
+      css`
+        &::before {
+          content: '•';
+          font-size: 1.8rem;
+          margin-right: 0.8rem;
+          color: ${theme.colors.blue[500]};
+        }
+      `}
   }
 `
 
@@ -80,8 +91,9 @@ export const Container = styled.div<Props>`
     }
   }
 
-  ${({ isFilled }) =>
+  ${({ isFilled, isDisabled }) =>
     isFilled &&
+    !isDisabled &&
     css`
       > svg {
         color: ${theme.colors.blue[500]};
@@ -132,6 +144,26 @@ export const Container = styled.div<Props>`
         color: ${theme.colors.red[400]};
       }
     `};
+
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      background: ${theme.colors.neutral[200]};
+      cursor: no-drop;
+
+      input {
+        cursor: no-drop;
+      }
+
+      &:hover {
+        border: 0.1rem solid ${theme.colors.neutral[500]};
+
+        > svg,
+        .icon {
+          color: ${theme.colors.neutral[500]};
+        }
+      }
+    `}
 
   input,
   textarea {

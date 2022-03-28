@@ -23,11 +23,19 @@ export function Switch({
 }: SwitchProps) {
   const [isChecked, setIsChecked] = useState(!!defaultChecked)
 
-  const { register, setValue } = useFormContext()
+  const { register, watch, setValue } = useFormContext()
+
+  const value = watch(name)
 
   useEffect(() => {
     register(name)
   }, [name, register])
+
+  useEffect(() => {
+    if (value !== isChecked) {
+      setIsChecked(value)
+    }
+  }, [value, isChecked])
 
   function handleOnChange(event?: ChangeEvent<HTMLInputElement>) {
     setIsChecked((prevState) => {

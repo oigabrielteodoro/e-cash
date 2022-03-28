@@ -1,5 +1,4 @@
-import React from 'react'
-import { AiOutlineBank } from 'react-icons/ai'
+import React, { useState } from 'react'
 
 import truncate from 'lodash/truncate'
 
@@ -11,104 +10,113 @@ import {
   useIsOpen,
 } from 'lib'
 
+import type { Account } from 'client'
+
+import { BankingInstitutionFlag } from 'core/bankingInstitutions'
+import { AccountModal } from '../AccountModal'
+
 import * as S from './AccountCard.styled'
 
 export type AccountCardProps = {
-  name: string
-  flag?: string
-  bankName: string
-  disabled?: boolean
-  agencyNumber: string
-  accountNumber: string
-  balance: string
+  account: Account
 }
 
-export function AccountCard({
-  name,
-  flag,
-  bankName,
-  disabled,
-  agencyNumber,
-  accountNumber,
-  balance,
-}: AccountCardProps) {
-  const isOpen = useIsOpen()
+type GetAccountToRenderParams = {
+  isOpen?: boolean
+  institutionName: string
+} & Pick<Account, 'balance' | 'name' | 'accountNumber'>
+
+export function AccountCard({ account }: AccountCardProps) {
+  const isSideBarOpen = useIsOpen()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const isDisabled = !account.includeSumOnDashboard
+  const institutionName = account.bankingInstitution?.institutionName ?? '--'
+
+  const flagTooltipMessage = isDisabled
+    ? 'This account is not include sum on dashboard'
+    : account.name
 
   const {
     balanceFormatted,
     accountNumberFormatted,
-    bankNameWithEllipsis,
+    institutionNameWithEllipsis,
     nameWithEllipsis,
   } = getAccountToRender({
-    isOpen,
-    name,
-    balance,
-    bankName,
-    accountNumber,
+    institutionName,
+    isOpen: isSideBarOpen,
+    name: account.name,
+    balance: account.balance,
+    accountNumber: account.accountNumber,
   })
 
   return (
-    <S.Container disabled={disabled}>
-      <Row>
-        <Col span={24}>
-          <Row>
-            <S.AccountFlagBox>
-              <Tooltip
-                alwaysOnTop
-                message={
-                  disabled
-                    ? 'This account is not include sum on dashboard'
-                    : name
-                }
-                position={disabled ? 'right' : 'top'}
-              >
-                {flag ? (
-                  <S.AccountFlagImg src={flag} alt={bankName} />
-                ) : (
-                  <S.AccountFlagImg as='div'>
-                    <AiOutlineBank size={28} />
-                  </S.AccountFlagImg>
-                )}
-              </Tooltip>
-              <Row justifyContent='space-between' width='100%'>
-                <S.AccountInfoBox>
-                  <Tooltip
-                    disabled={name.length <= nameWithEllipsis.length}
-                    message={name}
-                    position='top'
-                  >
-                    <strong>{nameWithEllipsis}</strong>
-                  </Tooltip>
-                  <Space marginTop='-0.4rem'>
+    <>
+      <S.Container disabled={isDisabled} onClick={() => setIsOpen(true)}>
+        <Row>
+          <Col span={24}>
+            <Row>
+              <S.AccountFlagBox>
+                <Tooltip
+                  alwaysOnTop
+                  message={flagTooltipMessage}
+                  position={isDisabled ? 'right' : 'top'}
+                >
+                  <BankingInstitutionFlag
+                    disabled={isDisabled}
+                    institutionName={institutionName}
+                    imageUrl={account.bankingInstitution?.imageUrl}
+                  />
+                </Tooltip>
+                <Row justifyContent='space-between' width='100%'>
+                  <S.AccountInfoBox>
                     <Tooltip
-                      disabled={bankName.length <= bankNameWithEllipsis.length}
-                      message={bankName}
-                      position='bottom'
+                      disabled={account.name.length <= nameWithEllipsis.length}
+                      message={account.name}
+                      position='top'
                     >
-                      <small>{bankNameWithEllipsis}</small>
+                      <strong>{nameWithEllipsis}</strong>
                     </Tooltip>
-                  </Space>
-                </S.AccountInfoBox>
-                <S.Separator />
-                <S.AccountInfo>
-                  <span>
-                    Ag. <strong>{agencyNumber}</strong>
-                  </span>
-                  <span>
-                    Conta. <strong>{accountNumberFormatted}</strong>
-                  </span>
-                </S.AccountInfo>
-              </Row>
-            </S.AccountFlagBox>
+                    <Space marginTop='-0.4rem'>
+                      <Tooltip
+                        disabled={
+                          institutionName.length! <=
+                          institutionNameWithEllipsis.length
+                        }
+                        message={institutionName}
+                        position='bottom'
+                      >
+                        <small>{institutionNameWithEllipsis}</small>
+                      </Tooltip>
+                    </Space>
+                  </S.AccountInfoBox>
+                  <S.Separator />
+                  <S.AccountInfo>
+                    <span>
+                      Ag. <strong>{account.agencyNumber}</strong>
+                    </span>
+                    <span>
+                      Conta. <strong>{accountNumberFormatted}</strong>
+                    </span>
+                  </S.AccountInfo>
+                </Row>
+              </S.AccountFlagBox>
 
-            <S.AccountBalanceBox>
-              <S.AccountBalance>{balanceFormatted}</S.AccountBalance>
-              <span>+30% since last month</span>
-            </S.AccountBalanceBox>
-          </Row>
-        </Col>
-      </Row>
-    </S.Container>
+              <S.AccountBalanceBox>
+                <S.AccountBalance>{balanceFormatted}</S.AccountBalance>
+                <span>+30% since last month</span>
+              </S.AccountBalanceBox>
+            </Row>
+          </Col>
+        </Row>
+      </S.Container>
+
+      <AccountModal
+        isOpen={isOpen}
+        account={account}
+        onClose={() => setIsOpen(false)}
+      />
+    </>
   )
 }
 
@@ -154,15 +162,12 @@ AccountCard.Skeleton = function Skeleton() {
 }
 
 function getAccountToRender({
-  isOpen,
+  isOpen = false,
   name,
-  bankName,
+  institutionName,
   balance,
   accountNumber,
-}: { isOpen: boolean } & Pick<
-  AccountCardProps,
-  'balance' | 'name' | 'bankName' | 'accountNumber'
->) {
+}: GetAccountToRenderParams) {
   const balanceFormatted = decimalFromInt(balance)
   const accountNumberFormatted = toMask(accountNumber, [
     accountNumberWithDigitMask,
@@ -172,14 +177,14 @@ function getAccountToRender({
     length: isOpen ? 13 : 16,
   })
 
-  const bankNameWithEllipsis = truncate(bankName, {
+  const institutionNameWithEllipsis = truncate(institutionName, {
     length: isOpen ? 14 : 18,
   })
 
   return {
     balanceFormatted,
     nameWithEllipsis,
-    bankNameWithEllipsis,
+    institutionNameWithEllipsis,
     accountNumberFormatted,
   }
 }

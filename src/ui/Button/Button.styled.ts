@@ -5,16 +5,16 @@ import { theme } from 'config'
 
 import type { ButtonProps } from '.'
 
+type ButtonType = 'icon' | 'text'
+
 type ContainerProps = {
   $full: boolean
   disabled?: boolean
-  $buttonType?: 'icon' | 'text'
+  $buttonType?: ButtonType
 } & Required<Pick<ButtonProps, 'size' | 'variant'>>
 
 const types = {
   icon: css`
-    min-width: 4.2rem;
-    height: 4.2rem;
     padding: 0;
   `,
   text: css`
@@ -30,18 +30,36 @@ const types = {
   `,
 }
 
-const sizes = {
+const sizes = (type?: ButtonType) => ({
   sm: css`
     padding: 0.8rem 1.6rem;
     font-size: ${theme.font.sizes.small};
+
+    ${type === 'icon' &&
+    css`
+      min-width: 3.2rem;
+      height: 3.2rem;
+    `}
   `,
   md: css`
     padding: 1.2rem 3.2rem;
+
+    ${type === 'icon' &&
+    css`
+      min-width: 4.2rem;
+      height: 4.2rem;
+    `}
   `,
   lg: css`
     padding: 1.8rem 4.2rem;
+
+    ${type === 'icon' &&
+    css`
+      min-width: 5.2rem;
+      height: 5.2rem;
+    `}
   `,
-}
+})
 
 const variants = {
   primary: css`
@@ -66,6 +84,24 @@ const variants = {
       opacity: 1;
       box-shadow: none;
       filter: brightness(0.6);
+    }
+  `,
+  ghost: css`
+    background: transparent;
+    color: ${theme.colors.neutral[500]};
+
+    &:hover {
+      opacity: 1;
+      box-shadow: none;
+      background: ${theme.colors.neutral[100]};
+    }
+  `,
+  danger: css`
+    background: ${theme.colors.red[400]};
+    border: 0.1rem solid ${theme.colors.red[400]};
+
+    &:hover {
+      box-shadow: 0 0 0 0.4rem ${theme.shadow.red[400]};
     }
   `,
 }
@@ -103,7 +139,7 @@ const button = ({ $full, size, variant, $buttonType }: ContainerProps) => css`
     width: 100%;
   `};
 
-  ${sizes[size]};
+  ${sizes($buttonType)[size]};
   ${variants[variant]};
   ${$buttonType && types[$buttonType]};
 `

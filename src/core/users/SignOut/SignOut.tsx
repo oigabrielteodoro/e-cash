@@ -2,10 +2,6 @@ import React from 'react'
 import { FiX } from 'react-icons/fi'
 import { AiOutlineLogout } from 'react-icons/ai'
 
-import { pipe } from 'fp-ts/function'
-import { toError } from 'fp-ts/Either'
-import { tryCatch } from 'fp-ts/TaskEither'
-
 import { Row, Col, Modal, LoadIcon } from 'ui'
 import { useSignOut } from 'client'
 
@@ -19,12 +15,12 @@ type Props = {
 export function SignOut({ isOpen, onClose }: Props) {
   const { signOut, isLoading } = useSignOut()
 
-  async function handleOnClick() {
-    await pipe(tryCatch(signOut, toError))()
+  function handleOnClick() {
+    signOut()
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal title='Sign out' isOpen={isOpen} onClose={onClose}>
       <S.Container>
         <h1>Are you sure you want to log out? 😢</h1>
         <p>When you exit the application, the data is still saved</p>

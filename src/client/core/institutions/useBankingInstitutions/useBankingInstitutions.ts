@@ -5,9 +5,9 @@ import { api, decode } from 'client'
 import { of } from 'fp-ts/Task'
 import { pipe } from 'fp-ts/function'
 import { isRight, toError } from 'fp-ts/Either'
-import { tryCatch, map, fold } from 'fp-ts/TaskEither'
+import { tryCatch, map, mapLeft, fold } from 'fp-ts/TaskEither'
 
-import { BankingInstitution, bankingInstitutionsCodec } from './types'
+import { BankingInstitution, bankingInstitutionsCodec } from '../types'
 
 async function getBankingInstitutions() {
   const url = '/banking_institutions'
@@ -15,6 +15,9 @@ async function getBankingInstitutions() {
   const response = await pipe(
     tryCatch(() => api.get<BankingInstitution[]>(url), toError),
     map((response) => response.data),
+    mapLeft((error) => {
+      throw new Error(error.message)
+    }),
   )()
 
   if (!isRight(response)) return null
