@@ -59,7 +59,7 @@ exports[`Steps should be able match snapshot 1`] = `
   font-weight: 500;
   border-color: transparent;
   color: #ffffff;
-  background: #3a67e1;
+  background: #4361ee;
 }
 
 .c4 {

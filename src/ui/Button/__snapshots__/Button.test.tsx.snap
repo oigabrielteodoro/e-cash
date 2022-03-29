@@ -24,7 +24,7 @@ exports[`Button should be able match snapshot 1`] = `
   border: 0.1rem solid transparent;
   width: 100%;
   padding: 1.2rem 3.2rem;
-  background: #3a67e1;
+  background: #4361ee;
 }
 
 .c0:hover {

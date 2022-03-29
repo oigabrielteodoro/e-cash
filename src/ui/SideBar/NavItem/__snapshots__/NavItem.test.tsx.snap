@@ -20,7 +20,7 @@ exports[`NavItem should be able match snapshot 1`] = `
 }
 
 .c7 svg {
-  color: #3a67e1;
+  color: #4361ee;
 }
 
 .c5 {
@@ -45,7 +45,7 @@ exports[`NavItem should be able match snapshot 1`] = `
 }
 
 .c5:hover .c6 svg {
-  color: #3a67e1;
+  color: #4361ee;
 }
 
 .c2 {
