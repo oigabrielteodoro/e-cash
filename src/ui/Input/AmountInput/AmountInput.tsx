@@ -20,7 +20,7 @@ export type AmountInputProps = {
   defaultValue?: string
 } & InputHTMLAttributes<HTMLInputElement>
 
-function inputNumberParser(value?: string): string {
+export function inputNumberParser(value?: string): string {
   return value ? value.replace(/\W/g, '') : ''
 }
 

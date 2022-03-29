@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { AiOutlineBank } from 'react-icons/ai'
 
 import { Button, Col, Drawer, notification, Row, Space, InfoBox } from 'ui'
-import { useCreateAccount } from 'client'
+import { useUpdateAccount } from 'client'
 
 import type { AccountFormParams, Account } from 'client'
 
@@ -27,7 +27,7 @@ export function EditAccountDrawer({ isOpen, account, onClose }: Props) {
     includeSumOnDashboard: account.includeSumOnDashboard,
   }
 
-  const { createAccount, isLoading } = useCreateAccount({
+  const { updateAccount, isLoading } = useUpdateAccount({
     onSuccess: () => {
       notification.success('Congratulations! Your account been edited.')
       onClose()
@@ -35,7 +35,10 @@ export function EditAccountDrawer({ isOpen, account, onClose }: Props) {
   })
 
   function handleOnSubmit(params: AccountFormParams) {
-    createAccount(params)
+    updateAccount({
+      accountId: account.id,
+      ...params,
+    })
   }
 
   return (

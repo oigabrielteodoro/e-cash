@@ -23,7 +23,7 @@ exports[`SideBar should be able match snapshot 1`] = `
   transition: 300ms;
   border: 0.1rem solid transparent;
   padding: 1.2rem 3.2rem;
-  background: #3a67e1;
+  background: #4361ee;
 }
 
 .c13:hover {
@@ -44,7 +44,7 @@ exports[`SideBar should be able match snapshot 1`] = `
 
 .c3 {
   border-radius: 1rem;
-  background: #3a67e1;
+  background: #4361ee;
   height: 5.5rem;
   width: 5.5rem;
   display: grid;
@@ -90,7 +90,7 @@ exports[`SideBar should be able match snapshot 1`] = `
 }
 
 .c16:hover .c17 svg {
-  color: #3a67e1;
+  color: #4361ee;
 }
 
 .c14 {

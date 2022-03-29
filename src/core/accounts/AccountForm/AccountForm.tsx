@@ -65,11 +65,12 @@ export function AccountForm({
               name='category'
               label='Category'
               error={errors.category?.message}
+              defaultValue={initialValues?.category}
             />
           </Col>
           <Col span={12}>
             <Input.Amount
-              required
+              required={!isDisabled}
               name='balance'
               label='Balance'
               placeholder='Example: R$ 15,000.00'
@@ -79,7 +80,7 @@ export function AccountForm({
           </Col>
           <Col span={12}>
             <BankingInstitutionsSelect
-              required
+              required={!isDisabled}
               placeholder='Select banking institution'
               name='bankingInstitutionId'
               label='Banking Institution'
@@ -89,7 +90,7 @@ export function AccountForm({
           </Col>
           <Col span={12}>
             <Input.Masked
-              required
+              required={!isDisabled}
               name='agencyNumber'
               mask={[agencyNumberWithoutDigitMask]}
               placeholder='Example: 0000'
@@ -101,7 +102,7 @@ export function AccountForm({
           </Col>
           <Col span={12}>
             <Input.Masked
-              required
+              required={!isDisabled}
               name='accountNumber'
               mask={[accountNumberWithDigitMask]}
               placeholder='Example: 000000-0'

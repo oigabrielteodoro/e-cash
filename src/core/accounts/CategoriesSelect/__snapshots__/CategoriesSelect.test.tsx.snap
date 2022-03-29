@@ -52,12 +52,12 @@ exports[`CategoriesSelect should be able match snapshot 1`] = `
 }
 
 .c2:hover {
-  border: 0.1rem solid #3a67e1;
+  border: 0.1rem solid #4361ee;
 }
 
 .c2:hover > svg,
 .c2:hover .icon {
-  color: #3a67e1;
+  color: #4361ee;
 }
 
 .c2 input,
