@@ -11,6 +11,7 @@ import type { Account } from 'client'
 import { accountNumberWithDigitMask, decimalFromInt, toMask } from 'lib'
 
 import { EditAccountDrawer } from '../EditAccountDrawer'
+import { EditBalanceAccountModal } from '../EditBalanceAccountModal'
 import * as S from './AccountModal.styled'
 import { ConfirmDeleteAccountModal } from './ConfirmDeleteAccountModal'
 
@@ -24,6 +25,8 @@ export function AccountModal({ isOpen, account, onClose }: Props) {
   const [isConfirmDeleteAccountModal, setIsConfirmDeleteAccountModal] =
     useState(false)
   const [isEditAccountDrawerVisible, setIsEditAccountDrawerVisible] =
+    useState(false)
+  const [isEditBalanceAccountModal, setIsEditBalanceAccountModal] =
     useState(false)
 
   const institutionName = account.bankingInstitution?.institutionName ?? '--'
@@ -39,6 +42,12 @@ export function AccountModal({ isOpen, account, onClose }: Props) {
         account={account}
         isOpen={isEditAccountDrawerVisible}
         onClose={() => setIsEditAccountDrawerVisible(false)}
+      />
+
+      <EditBalanceAccountModal
+        account={account}
+        isOpen={isEditBalanceAccountModal}
+        onClose={() => setIsEditBalanceAccountModal(false)}
       />
 
       <ConfirmDeleteAccountModal
@@ -80,7 +89,10 @@ export function AccountModal({ isOpen, account, onClose }: Props) {
             <strong>{balanceFormatted}</strong>
           </S.AccountBalanceAmountBox>
           <Tooltip position='left' message='Adjust balance'>
-            <Button type='icon'>
+            <Button
+              type='icon'
+              onClick={() => setIsEditBalanceAccountModal(true)}
+            >
               <AiOutlineEdit size={20} />
             </Button>
           </Tooltip>

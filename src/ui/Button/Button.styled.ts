@@ -30,7 +30,7 @@ const types = {
   `,
 }
 
-const sizes = (type?: ButtonType) => ({
+export const sizes = (type?: ButtonType) => ({
   sm: css`
     padding: 0.8rem 1.6rem;
     font-size: ${theme.font.sizes.small};

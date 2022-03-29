@@ -2,6 +2,8 @@ import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import { LoadIcon } from 'ui'
 
+import { IconBadge } from './IconBadge'
+
 import * as S from './Button.styled'
 
 type NaviteProps = ButtonHTMLAttributes<HTMLButtonElement>
@@ -60,3 +62,5 @@ export function Button({
     </S.Container>
   )
 }
+
+Button.IconBadge = IconBadge
